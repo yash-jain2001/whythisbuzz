@@ -25,10 +25,10 @@ export function Navbar() {
             href="/"
             className="flex items-center gap-2 group"
           >
-            <span className="font-serif text-xl md:text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">
+            <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
               WhyThisBuzz
             </span>
-            <span className="hidden sm:inline-block text-xs font-sans text-muted-foreground tracking-wider uppercase">
+            <span className="hidden sm:inline-flex items-center justify-center px-1.5 py-0.5 rounded text-[10px] font-bold font-sans text-muted-foreground bg-muted tracking-wider uppercase">
               Explained
             </span>
           </Link>

@@ -15,7 +15,7 @@ export function CategorySection({ id, title, description, articles }: CategorySe
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <h2 className="text-foreground mb-2">{title}</h2>
+            <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground mb-2">{title}</h2>
             <p className="text-muted-foreground max-w-xl">{description}</p>
           </div>
           <a

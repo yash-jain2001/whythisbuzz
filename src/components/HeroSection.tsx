@@ -36,7 +36,7 @@ export function HeroSection({ article }: HeroSectionProps) {
                 </span>
               </div>
 
-              <h1 className="text-balance group-hover:text-accent transition-colors duration-300">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-balance group-hover:text-accent transition-colors duration-300">
                 {article.title}
               </h1>
 

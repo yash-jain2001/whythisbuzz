@@ -17,7 +17,7 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                serif: ["var(--font-serif)", "Georgia", "serif"],
+                serif: ["var(--font-serif)", "Merriweather", "Georgia", "serif"],
                 sans: ["var(--font-sans)", "system-ui", "sans-serif"],
             },
             colors: {
