@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { ArticleGrid } from "@/components/ArticleGrid";
 import { CategorySection } from "@/components/CategorySection";
 import { getArticlesByCategory, getAllArticles } from "@/lib/mdx";
-import { NewsletterSection } from "@/components/NewsletterSection";
+
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -45,7 +45,7 @@ export default function Home() {
           articles={techArticles}
         />
 
-        <NewsletterSection />
+
       </main>
 
       <Footer />

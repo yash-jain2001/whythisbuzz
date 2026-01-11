@@ -14,6 +14,8 @@ const categories = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -47,6 +49,7 @@ export function Navbar() {
             <button
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Search"
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
             >
               <Search className="w-5 h-5" />
             </button>
@@ -60,6 +63,25 @@ export function Navbar() {
             </button>
           </div>
         </div>
+
+        {/* Search Dropdown */}
+        {isSearchOpen && (
+          <div className="py-4 border-t border-border animate-fade-in">
+            <input
+              type="search"
+              placeholder="Search articles..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
+              autoFocus
+            />
+            {searchQuery && (
+              <p className="mt-2 text-sm text-muted-foreground">
+                Press Enter to search for "{searchQuery}"
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Mobile Navigation */}
         {isOpen && (
