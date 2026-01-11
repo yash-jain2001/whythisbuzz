@@ -108,8 +108,8 @@ export default function CookiesPage() {
                             <p>
                                 Questions about our use of cookies? Contact us at:
                                 <br />
-                                <a href="mailto:info@whythisbuzz.com" className="text-accent hover:underline font-medium">
-                                    info@whythisbuzz.com
+                                <a href="mailto:info.whythisbuzz@gmail.com" className="text-accent hover:underline font-medium">
+                                    info.whythisbuzz@gmail.com
                                 </a>
                             </p>
                         </section>

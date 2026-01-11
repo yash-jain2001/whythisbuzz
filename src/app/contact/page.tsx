@@ -28,8 +28,8 @@ export default function ContactPage() {
                             <p>
                                 For general inquiries, feedback, editorial submissions, or business opportunities, please email us at:
                                 <br />
-                                <a href="mailto:info@whythisbuzz.com" className="text-accent hover:underline font-medium">
-                                    info@whythisbuzz.com
+                                <a href="mailto:info.whythisbuzz@gmail.com" className="text-accent hover:underline font-medium">
+                                    info.whythisbuzz@gmail.com
                                 </a>
                             </p>
                         </section>
@@ -44,7 +44,7 @@ export default function ContactPage() {
                         <section className="mt-8 bg-muted p-6 rounded-lg">
                             <h2 className="text-xl font-serif font-bold mb-3">Our Commitment</h2>
                             <p className="text-sm">
-                                WhyThisBuzz is committed to neutral, fact-based reporting. We present multiple perspectives without taking sides. All content is carefully researched and cited.
+                                WhyThisBuzz is dedicated to providing clear, accurate, and engaging content about the latest trends in technology, entertainment, and digital culture. Our content is carefully researched to keep you informed.
                             </p>
                         </section>
                     </div>
