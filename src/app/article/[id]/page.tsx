@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getArticleBySlug, getRelatedArticles, getArticleSlugs } from '@/lib/mdx'; // Updated import
+import Image from 'next/image';
 import { ArticleView } from '@/components/ArticleView';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -60,7 +61,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
     // Render MDX content
     const content = (
-        <MDXRemote source={article.content} />
+        <MDXRemote source={article.content} components={{ Image }} />
     );
 
     // Transform article for view component (adapting structure)
