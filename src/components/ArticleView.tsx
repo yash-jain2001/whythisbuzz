@@ -4,8 +4,9 @@ import { ArticleMetadata } from "@/lib/mdx";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
-import { ArrowLeft, Clock, Calendar, Share2 } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Share2, Link as LinkIcon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 
 interface ArticleViewProps {
     article: ArticleMetadata & { content: React.ReactNode };
@@ -131,7 +132,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
                                     >
-                                        <span className="text-lg">📱</span>
+                                        <FaWhatsapp className="w-4 h-4 text-green-600" />
                                         <span>WhatsApp</span>
                                     </a>
                                     <a
@@ -140,7 +141,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
                                     >
-                                        <span className="text-lg">𝕏</span>
+                                        <FaXTwitter className="w-4 h-4" />
                                         <span>X (Twitter)</span>
                                     </a>
                                     <a
@@ -149,7 +150,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
                                     >
-                                        <span className="text-lg">💼</span>
+                                        <FaLinkedinIn className="w-4 h-4 text-blue-600" />
                                         <span>LinkedIn</span>
                                     </a>
                                     <a
@@ -158,14 +159,14 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
                                     >
-                                        <span className="text-lg">📘</span>
+                                        <FaFacebookF className="w-4 h-4 text-blue-500" />
                                         <span>Facebook</span>
                                     </a>
                                     <button
                                         onClick={handleCopyLink}
                                         className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors w-full text-left"
                                     >
-                                        <span className="text-lg">🔗</span>
+                                        <LinkIcon className="w-4 h-4" />
                                         <span>Copy Link</span>
                                     </button>
                                 </div>
