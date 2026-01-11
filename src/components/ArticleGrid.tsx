@@ -10,7 +10,7 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
     <section className="py-12 md:py-16">
       <div className="container">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-foreground">Latest Explained</h2>
+          <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground">Trending Now</h2>
           <a
             href="#all"
             className="text-sm font-medium text-accent hover:text-accent/80 transition-colors"
@@ -19,7 +19,7 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
           </a>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {articles.map((article, index) => (
             <div
               key={article.id}

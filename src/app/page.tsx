@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/HeroSection";
 import { ArticleGrid } from "@/components/ArticleGrid";
 import { CategorySection } from "@/components/CategorySection";
 import { getArticlesByCategory, getAllArticles } from "@/lib/mdx";
@@ -9,14 +8,9 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   const allArticles = getAllArticles();
 
-  // For Hero, pick specifically the Dune article or the first one
-  const featuredArticle = allArticles.find(a => a.metadata.id === 'dune-3-announcement')?.metadata || allArticles[0]?.metadata;
-
-  // For "Latest Explained", maybe just the most recent 6 articles excluding the featured one?
-  // Or stick to the specific list if they were important, but dynamic is better.
-  const latestArticles = allArticles
-    .filter(a => a.metadata.id !== featuredArticle?.id)
-    .slice(0, 6)
+  // Show first 12 articles in the main grid (equal weight, no hero)
+  const gridArticles = allArticles
+    .slice(0, 12)
     .map(a => a.metadata);
 
   const moviesArticles = getArticlesByCategory("Movies");
@@ -28,9 +22,7 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-1">
-        {featuredArticle && <HeroSection article={featuredArticle} />}
-
-        <ArticleGrid articles={latestArticles} />
+        <ArticleGrid articles={gridArticles} />
 
         <CategorySection
           id="movies"
