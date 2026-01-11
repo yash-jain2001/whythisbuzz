@@ -27,27 +27,27 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const [copied, setCopied] = useState(false);
+    const [showShareMenu, setShowShareMenu] = useState(false);
 
-    const handleShare = async () => {
-        if (navigator.share) {
-            try {
-                await navigator.share({
-                    title: article.title,
-                    text: article.summary,
-                    url: window.location.href,
-                });
-            } catch (err) {
-                console.error("Error sharing:", err);
-            }
-        } else {
-            try {
-                await navigator.clipboard.writeText(window.location.href);
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            } catch (err) {
-                console.error("Failed to copy:", err);
-            }
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const shareTitle = encodeURIComponent(article.title);
+    const shareText = encodeURIComponent(article.summary);
+
+    const shareLinks = {
+        whatsapp: `https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`,
+        twitter: `https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
+        copy: shareUrl
+    };
+
+    const handleCopyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            alert('Link copied to clipboard!');
+            setShowShareMenu(false);
+        } catch (err) {
+            console.error('Failed to copy:', err);
         }
     };
 
@@ -113,14 +113,63 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     {/* Article Content */}
                     <div className="max-w-3xl mx-auto">
                         {/* Share buttons */}
-                        <div className="flex items-center gap-3 mb-10 pb-6 border-b border-border">
+                        <div className="relative mb-10 pb-6 border-b border-border">
                             <button
-                                onClick={handleShare}
+                                onClick={() => setShowShareMenu(!showShareMenu)}
                                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border border-border rounded-lg hover:border-foreground/20 transition-colors"
                             >
                                 <Share2 className="w-4 h-4" />
-                                <span>{copied ? "Copied Link!" : "Share"}</span>
+                                <span>Share Article</span>
                             </button>
+
+                            {/* Share Menu Dropdown */}
+                            {showShareMenu && (
+                                <div className="absolute top-12 left-0 z-10 bg-card border border-border rounded-lg shadow-lg p-2 min-w-[200px]">
+                                    <a
+                                        href={shareLinks.whatsapp}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
+                                    >
+                                        <span className="text-lg">📱</span>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                    <a
+                                        href={shareLinks.twitter}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
+                                    >
+                                        <span className="text-lg">𝕏</span>
+                                        <span>X (Twitter)</span>
+                                    </a>
+                                    <a
+                                        href={shareLinks.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
+                                    >
+                                        <span className="text-lg">💼</span>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a
+                                        href={shareLinks.facebook}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
+                                    >
+                                        <span className="text-lg">📘</span>
+                                        <span>Facebook</span>
+                                    </a>
+                                    <button
+                                        onClick={handleCopyLink}
+                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors w-full text-left"
+                                    >
+                                        <span className="text-lg">🔗</span>
+                                        <span>Copy Link</span>
+                                    </button>
+                                </div>
+                            )}
                         </div>
 
                         {/* MDX Content */}
