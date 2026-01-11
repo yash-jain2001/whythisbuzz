@@ -5,7 +5,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ArrowLeft, Clock, Calendar, Share2 } from "lucide-react";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 
 interface ArticleViewProps {
@@ -67,13 +66,13 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
             <main className="flex-1">
                 {/* Back link */}
                 <div className="container pt-6">
-                    <Link
+                    <a
                         href="/"
                         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         <span>Back to Home</span>
-                    </Link>
+                    </a>
                 </div>
 
                 {/* Article Header */}

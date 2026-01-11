@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X, Search } from "lucide-react";
 
 const categories = [
@@ -52,14 +50,14 @@ export function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link
+          <a
             href="/"
             className="flex items-center gap-2 group"
           >
             <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
               WhyThisBuzz
             </span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -110,7 +108,7 @@ export function Navbar() {
             {searchQuery && searchResults.length > 0 && (
               <div className="mt-3 space-y-2">
                 {searchResults.map((article) => (
-                  <Link
+                  <a
                     key={article.id}
                     href={`/article/${article.id}`}
                     className="block p-3 rounded-lg hover:bg-secondary/50 transition-colors"
@@ -134,7 +132,7 @@ export function Navbar() {
                         </p>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
             )}

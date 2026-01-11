@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArticleMetadata } from "@/lib/mdx";
 
 interface ArticleCardProps {
@@ -9,7 +8,7 @@ interface ArticleCardProps {
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
   if (variant === "compact") {
     return (
-      <Link href={`/article/${article.id}`} className="group block">
+      <a href={`/article/${article.id}`} className="group block">
         <article className="flex gap-4 py-4 border-b border-border/50 last:border-0">
           <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
             <img
@@ -28,12 +27,12 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             <span className="text-xs text-muted-foreground">{article.readTime}</span>
           </div>
         </article>
-      </Link>
+      </a>
     );
   }
 
   return (
-    <Link href={`/article/${article.id}`} className="group block h-full">
+    <a href={`/article/${article.id}`} className="group block h-full">
       <article className="h-full bg-card rounded-xl overflow-hidden shadow-editorial card-hover">
         {/* Image */}
         <div className="relative aspect-[16/10] overflow-hidden">
@@ -64,6 +63,6 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
           </div>
         </div>
       </article>
-    </Link>
+    </a>
   );
 }
