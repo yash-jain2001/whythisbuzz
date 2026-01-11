@@ -7,7 +7,7 @@ interface ArticleGridProps {
 
 export function ArticleGrid({ articles }: ArticleGridProps) {
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-12">
       <div className="container">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground">Trending Now</h2>

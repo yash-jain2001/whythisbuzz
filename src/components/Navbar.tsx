@@ -14,7 +14,6 @@ const categories = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -27,9 +26,6 @@ export function Navbar() {
           >
             <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
               WhyThisBuzz
-            </span>
-            <span className="hidden sm:inline-flex items-center justify-center px-1.5 py-0.5 rounded text-[10px] font-bold font-sans text-muted-foreground bg-muted tracking-wider uppercase">
-              Explained
             </span>
           </Link>
 
