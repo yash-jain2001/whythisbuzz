@@ -22,17 +22,39 @@ export interface Article {
     content: string;
 }
 
+// Helper to recursively find all MDX files
+function getMdxFiles(dir: string): string[] {
+    let results: string[] = [];
+    const list = fs.readdirSync(dir);
+
+    list.forEach(file => {
+        const filePath = path.join(dir, file);
+        const stat = fs.statSync(filePath);
+        if (stat && stat.isDirectory()) {
+            results = results.concat(getMdxFiles(filePath));
+        } else if (file.endsWith('.mdx')) {
+            results.push(filePath);
+        }
+    });
+    return results;
+}
+
 export function getArticleSlugs() {
-    return fs.readdirSync(contentDirectory);
+    const files = getMdxFiles(contentDirectory);
+    return files.map(file => path.basename(file, '.mdx'));
 }
 
 export function getArticleBySlug(slug: string): Article | undefined {
-    const realSlug = slug.replace(/\.mdx$/, '');
-    const fullPath = path.join(contentDirectory, `${realSlug}.mdx`);
+    // Find the file that matches the slug
+    const files = getMdxFiles(contentDirectory);
+    const targetFile = files.find(file => path.basename(file, '.mdx') === slug);
+
+    if (!targetFile) return undefined;
 
     try {
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const fileContents = fs.readFileSync(targetFile, 'utf8');
         const { data, content } = matter(fileContents);
+        const realSlug = slug.replace(/\.mdx$/, '');
 
         return {
             metadata: {
