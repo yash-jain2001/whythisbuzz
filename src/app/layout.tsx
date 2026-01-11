@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Merriweather, Inter } from "next/font/google";
+import Script from "next/script"; // Added import for Script
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
@@ -45,6 +46,20 @@ export default function RootLayout({
         className={`${merriweather.variable} ${inter.variable} antialiased font-sans bg-background text-foreground`}
         suppressHydrationWarning
       >
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-5CFCSC1436"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5CFCSC1436');
+          `}
+        </Script>
+
         <TooltipProvider>
           {children}
           <Toaster />
