@@ -3,9 +3,9 @@ import Link from "next/link";
 const footerLinks = {
   categories: [
     { name: "Movies", href: "/#movies" },
-    { name: "Celebrities", href: "/#celebrities" },
+    { name: "Technology", href: "/#technology" },
     { name: "Social Media", href: "/#social-media" },
-    { name: "Controversies", href: "/#controversies" },
+    { name: "Entertainment", href: "/#entertainment" },
   ],
   company: [
     { name: "About Us", href: "/about" },
@@ -31,8 +31,7 @@ export function Footer() {
               <span className="font-serif text-2xl font-semibold">WhyThisBuzz</span>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
-              Clear, unbiased explanations of the stories everyone's talking about.
-              No clickbait, no drama—just the context you need.
+              Your source for clear, well-researched articles about technology, entertainment, and digital culture.
             </p>
           </div>
 

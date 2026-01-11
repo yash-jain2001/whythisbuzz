@@ -55,9 +55,9 @@ export default function DisclaimerPage() {
                         </section>
 
                         <section className="mt-8">
-                            <h2 className="text-2xl font-serif font-bold mb-4">Opinions and Views</h2>
+                            <h2 className="text-2xl font-serif font-bold mb-4">Content and Opinions</h2>
                             <p>
-                                WhyThisBuzz aims to present multiple perspectives on topics. Views and opinions expressed in articles are for informational purposes and do not necessarily reflect the official policy or position of WhyThisBuzz.
+                                Articles on WhyThisBuzz are informational and educational. Views expressed are for informational purposes and do not necessarily reflect the official position of WhyThisBuzz.
                             </p>
                         </section>
 

@@ -19,10 +19,10 @@ export const inter = Inter({
 
 export const metadata: Metadata = {
   title: "WhyThisBuzz - Digital Culture Explained",
-  description: "Box office trends, industry drama, and digital culture decoded without the hype.",
+  description: "Clear explanations of trending topics in technology, movies, entertainment, and digital culture.",
   openGraph: {
     title: "WhyThisBuzz - Digital Culture Explained",
-    description: "Box office trends, industry drama, and digital culture decoded without the hype.",
+    description: "Clear explanations of trending topics in technology, movies, entertainment, and digital culture.",
     type: "website",
     locale: "en_US",
     siteName: "WhyThisBuzz",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "WhyThisBuzz - Digital Culture Explained",
-    description: "Box office trends, industry drama, and digital culture decoded without the hype.",
+    description: "Clear explanations of trending topics in technology, movies, entertainment, and digital culture.",
   },
 };
 

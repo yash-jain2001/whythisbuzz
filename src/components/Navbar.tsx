@@ -7,9 +7,9 @@ import { Menu, X, Search } from "lucide-react";
 
 const categories = [
   { name: "Movies", href: "/#movies" },
-  { name: "Celebrities", href: "/#celebrities" },
+  { name: "Technology", href: "/#technology" },
   { name: "Social Media", href: "/#social-media" },
-  { name: "Controversies", href: "/#controversies" },
+  { name: "Entertainment", href: "/#entertainment" },
 ];
 
 export function Navbar() {

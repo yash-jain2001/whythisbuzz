@@ -20,34 +20,33 @@ export default function AboutPage() {
 
                     <div className="prose prose-lg max-w-none space-y-6">
                         <p className="text-xl text-muted-foreground leading-relaxed">
-                            Clear, unbiased explanations of the stories everyone's talking about.
+                            Your source for clear explanations of trending topics in tech, entertainment, and digital culture.
                         </p>
 
                         <section className="mt-12">
                             <h2 className="text-2xl font-serif font-bold mb-4">Our Mission</h2>
                             <p>
-                                WhyThisBuzz explains viral trends, controversies, and digital culture moments without the hype or bias. We break down complex stories into clear, fact-based explanations so you can understand what's happening and why it matters.
+                                WhyThisBuzz explains trending topics in tech, entertainment, and digital culture. We break down complex stories into clear, easy-to-understand articles so you can stay informed about what's happening in the world.
                             </p>
                         </section>
 
                         <section className="mt-8">
                             <h2 className="text-2xl font-serif font-bold mb-4">What We Cover</h2>
                             <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Movies & Entertainment:</strong> Box office trends, industry drama, and cinema news</li>
-                                <li><strong>Social Media:</strong> Platform updates, viral moments, and digital culture</li>
-                                <li><strong>Celebrities:</strong> Public figures in the news, explained fairly</li>
-                                <li><strong>Technology:</strong> AI, frameworks, and developer tools</li>
-                                <li><strong>Controversies:</strong> Both sides of debates, without taking sides</li>
+                                <li><strong>Movies & Entertainment:</strong> Box office news, film releases, and cinema trends</li>
+                                <li><strong>Technology:</strong> AI, software, gadgets, and developer tools</li>
+                                <li><strong>Social Media:</strong> Platform updates, digital trends, and online culture</li>
+                                <li><strong>Entertainment:</strong> Celebrity news, music, and pop culture</li>
                             </ul>
                         </section>
 
                         <section className="mt-8">
                             <h2 className="text-2xl font-serif font-bold mb-4">Our Approach</h2>
                             <p>
-                                We believe in neutral, fact-based reporting. Every article presents multiple perspectives, cites sources, and avoids clickbait. Our goal is to inform, not influence.
+                                We believe in clear, fact-based reporting. Every article is well-researched, cites sources, and presents information in an accessible way. Our goal is to inform and educate our readers.
                             </p>
                             <p className="mt-4">
-                                No hot takes. No drama. Just context, clarity, and the facts you need.
+                                No clickbait. No sensationalism. Just quality content that helps you understand the world better.
                             </p>
                         </section>
 
