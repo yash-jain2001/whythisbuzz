@@ -4,7 +4,7 @@ import { ArticleMetadata } from "@/lib/mdx";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Share2 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -27,6 +27,30 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const [copied, setCopied] = useState(false);
+
+    const handleShare = async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: article.title,
+                    text: article.summary,
+                    url: window.location.href,
+                });
+            } catch (err) {
+                console.error("Error sharing:", err);
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            } catch (err) {
+                console.error("Failed to copy:", err);
+            }
+        }
+    };
 
     if (!article) return null;
 
@@ -91,13 +115,12 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     <div className="max-w-3xl mx-auto">
                         {/* Share buttons */}
                         <div className="flex items-center gap-3 mb-10 pb-6 border-b border-border">
-                            <button className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border border-border rounded-lg hover:border-foreground/20 transition-colors">
+                            <button
+                                onClick={handleShare}
+                                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border border-border rounded-lg hover:border-foreground/20 transition-colors"
+                            >
                                 <Share2 className="w-4 h-4" />
-                                <span>Share</span>
-                            </button>
-                            <button className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border border-border rounded-lg hover:border-foreground/20 transition-colors">
-                                <Bookmark className="w-4 h-4" />
-                                <span>Save</span>
+                                <span>{copied ? "Copied Link!" : "Share"}</span>
                             </button>
                         </div>
 
