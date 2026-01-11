@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Search } from "lucide-react";
@@ -16,6 +16,36 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+
+  // Filter articles based on search query
+  useEffect(() => {
+    if (searchQuery.trim().length > 0) {
+      const fetchResults = async () => {
+        try {
+          const response = await fetch('/search-data.json');
+          const allArticles = await response.json();
+
+          const searchLower = searchQuery.toLowerCase();
+          const filtered = allArticles.filter((article: any) => {
+            return (
+              article.title.toLowerCase().includes(searchLower) ||
+              article.summary.toLowerCase().includes(searchLower) ||
+              article.category.toLowerCase().includes(searchLower)
+            );
+          }).slice(0, 5);
+
+          setSearchResults(filtered);
+        } catch (error) {
+          console.error('Search error:', error);
+          setSearchResults([]);
+        }
+      };
+      fetchResults();
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -75,9 +105,44 @@ export function Navbar() {
               className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
               autoFocus
             />
-            {searchQuery && (
-              <p className="mt-2 text-sm text-muted-foreground">
-                Press Enter to search for "{searchQuery}"
+
+            {/* Search Results */}
+            {searchQuery && searchResults.length > 0 && (
+              <div className="mt-3 space-y-2">
+                {searchResults.map((article) => (
+                  <Link
+                    key={article.id}
+                    href={`/article/${article.id}`}
+                    className="block p-3 rounded-lg hover:bg-secondary/50 transition-colors"
+                    onClick={() => {
+                      setIsSearchOpen(false);
+                      setSearchQuery("");
+                    }}
+                  >
+                    <div className="flex items-start gap-3">
+                      <img
+                        src={article.imageUrl}
+                        alt={article.title}
+                        className="w-16 h-16 object-cover rounded"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm font-medium text-foreground line-clamp-2 mb-1">
+                          {article.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground">
+                          {article.category} · {article.readTime}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* No Results */}
+            {searchQuery && searchResults.length === 0 && (
+              <p className="mt-3 text-sm text-muted-foreground text-center py-4">
+                No articles found for "{searchQuery}"
               </p>
             )}
           </div>

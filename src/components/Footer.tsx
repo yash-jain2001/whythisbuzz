@@ -9,9 +9,7 @@ const footerLinks = {
   ],
   company: [
     { name: "About Us", href: "/about" },
-    { name: "Editorial Policy", href: "/editorial-policy" },
     { name: "Contact", href: "/contact" },
-    { name: "Careers", href: "/careers" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },

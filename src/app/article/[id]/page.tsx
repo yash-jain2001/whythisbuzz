@@ -10,6 +10,9 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
+    const { generateSearchData } = await import('@/lib/searchData');
+    generateSearchData(); // Generate search data during build
+
     const slugs = getArticleSlugs();
     return slugs.map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
