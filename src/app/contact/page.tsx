@@ -26,32 +26,10 @@ export default function ContactPage() {
                         <section className="mt-12">
                             <h2 className="text-2xl font-serif font-bold mb-4">Email Us</h2>
                             <p>
-                                For general inquiries, feedback, or story submissions:
+                                For general inquiries, feedback, editorial submissions, or business opportunities, please email us at:
                                 <br />
-                                <a href="mailto:contact@whythisbuzz.com" className="text-accent hover:underline font-medium">
-                                    contact@whythisbuzz.com
-                                </a>
-                            </p>
-                        </section>
-
-                        <section className="mt-8">
-                            <h2 className="text-2xl font-serif font-bold mb-4">Editorial Submissions</h2>
-                            <p>
-                                Have a trend or controversy you'd like us to explain? Send your suggestions to:
-                                <br />
-                                <a href="mailto:editorial@whythisbuzz.com" className="text-accent hover:underline font-medium">
-                                    editorial@whythisbuzz.com
-                                </a>
-                            </p>
-                        </section>
-
-                        <section className="mt-8">
-                            <h2 className="text-2xl font-serif font-bold mb-4">Business Inquiries</h2>
-                            <p>
-                                For partnerships, advertising, or business opportunities:
-                                <br />
-                                <a href="mailto:business@whythisbuzz.com" className="text-accent hover:underline font-medium">
-                                    business@whythisbuzz.com
+                                <a href="mailto:info@whythisbuzz.com" className="text-accent hover:underline font-medium">
+                                    info@whythisbuzz.com
                                 </a>
                             </p>
                         </section>

@@ -122,8 +122,8 @@ export default function PrivacyPage() {
                             <p>
                                 If you have questions about this Privacy Policy, please contact us at:
                                 <br />
-                                <a href="mailto:privacy@whythisbuzz.com" className="text-accent hover:underline font-medium">
-                                    privacy@whythisbuzz.com
+                                <a href="mailto:info@whythisbuzz.com" className="text-accent hover:underline font-medium">
+                                    info@whythisbuzz.com
                                 </a>
                             </p>
                         </section>

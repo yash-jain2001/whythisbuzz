@@ -87,8 +87,8 @@ export default function DisclaimerPage() {
                             <p>
                                 If you have questions or concerns about this disclaimer, contact us at:
                                 <br />
-                                <a href="mailto:legal@whythisbuzz.com" className="text-accent hover:underline font-medium">
-                                    legal@whythisbuzz.com
+                                <a href="mailto:info@whythisbuzz.com" className="text-accent hover:underline font-medium">
+                                    info@whythisbuzz.com
                                 </a>
                             </p>
                         </section>
