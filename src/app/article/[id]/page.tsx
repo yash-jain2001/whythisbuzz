@@ -31,22 +31,60 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         };
     }
 
+    const articleUrl = `https://whythisbuzz.com/article/${article.metadata.id}`;
+    const description = article.metadata.summary;
+
     return {
         title: `${article.metadata.title} | WhyThisBuzz`,
-        description: article.metadata.summary,
+        description: description,
+        keywords: [
+            article.metadata.category,
+            'WhyThisBuzz',
+            'trending news',
+            'digital culture',
+            article.metadata.title.toLowerCase(),
+        ],
+        authors: [{ name: article.metadata.author || 'WhyThisBuzz Editorial' }],
+        creator: 'WhyThisBuzz',
+        publisher: 'WhyThisBuzz',
+        alternates: {
+            canonical: articleUrl,
+        },
         openGraph: {
             type: 'article',
+            url: articleUrl,
             title: article.metadata.title,
-            description: article.metadata.summary,
-            images: [article.metadata.imageUrl],
+            description: description,
+            images: [
+                {
+                    url: article.metadata.imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: article.metadata.title,
+                },
+            ],
             publishedTime: new Date(article.metadata.date).toISOString(),
-            authors: [article.metadata.author || 'WhyThisBuzz Team'],
+            modifiedTime: new Date(article.metadata.date).toISOString(),
+            authors: [article.metadata.author || 'WhyThisBuzz Editorial'],
+            section: article.metadata.category,
+            tags: [article.metadata.category],
+            siteName: 'WhyThisBuzz',
+            locale: 'en_US',
         },
         twitter: {
             card: 'summary_large_image',
             title: article.metadata.title,
-            description: article.metadata.summary,
+            description: description,
             images: [article.metadata.imageUrl],
+            creator: '@whythisbuzz',
+            site: '@whythisbuzz',
+        },
+        robots: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
         },
     };
 }
@@ -62,6 +100,17 @@ export default async function ArticlePage({ params }: PageProps) {
 
     const relatedArticles = getRelatedArticles(article.metadata.id);
 
+    // Import structured data utilities
+    const { generateArticleSchema, generateBreadcrumbSchema, generateJsonLd } = await import('@/lib/structured-data');
+
+    // Generate structured data
+    const articleSchema = generateArticleSchema(article.metadata, article.content);
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: 'Home', url: 'https://whythisbuzz.com' },
+        { name: article.metadata.category, url: `https://whythisbuzz.com/category/${article.metadata.category.toLowerCase().replace(/\s+/g, '-')}` },
+        { name: article.metadata.title, url: `https://whythisbuzz.com/article/${article.metadata.id}` },
+    ]);
+
     // Render MDX content
     const content = (
         <MDXRemote source={article.content} components={{ Image }} />
@@ -73,5 +122,19 @@ export default async function ArticlePage({ params }: PageProps) {
         content: content, // Passing ReactNode content instead of structured object
     };
 
-    return <ArticleView article={articleForView as any} relatedArticles={relatedArticles as any} />;
+    return (
+        <>
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: generateJsonLd(articleSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: generateJsonLd(breadcrumbSchema) }}
+            />
+
+            <ArticleView article={articleForView as any} relatedArticles={relatedArticles as any} />
+        </>
+    );
 }

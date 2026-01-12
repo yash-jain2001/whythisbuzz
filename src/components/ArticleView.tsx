@@ -4,6 +4,7 @@ import { ArticleMetadata } from "@/lib/mdx";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { ArrowLeft, Clock, Calendar, Share2, Link as LinkIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
@@ -65,15 +66,20 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
             <Navbar />
 
             <main className="flex-1">
-                {/* Back link */}
+                {/* Breadcrumb navigation */}
                 <div className="container pt-6">
-                    <a
-                        href="/"
-                        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                        <ArrowLeft className="w-4 h-4" />
-                        <span>Back to Home</span>
-                    </a>
+                    <Breadcrumb
+                        items={[
+                            {
+                                name: article.category,
+                                url: `/category/${article.category.toLowerCase().replace(/\s+/g, '-')}`
+                            },
+                            {
+                                name: article.title,
+                                url: `/article/${article.id}`
+                            },
+                        ]}
+                    />
                 </div>
 
                 {/* Article Header */}
