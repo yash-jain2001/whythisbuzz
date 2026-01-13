@@ -92,3 +92,11 @@ export function getArticlesByCategory(category: string): ArticleMetadata[] {
         .map(article => article.metadata)
         .filter(article => article.category === category);
 }
+
+export function getAllCategories(): string[] {
+    const categories = fs.readdirSync(contentDirectory, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+    return categories;
+}
+
