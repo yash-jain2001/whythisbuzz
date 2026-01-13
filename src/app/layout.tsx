@@ -3,6 +3,7 @@ import { Merriweather, Inter } from "next/font/google";
 import Script from "next/script"; // Added import for Script
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import PostHogProvider from "@/components/PostHogProvider";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -120,10 +121,12 @@ export default async function RootLayout({
           `}
         </Script>
 
-        <TooltipProvider>
-          {children}
-          <Toaster />
-        </TooltipProvider>
+        <PostHogProvider>
+          <TooltipProvider>
+            {children}
+            <Toaster />
+          </TooltipProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
