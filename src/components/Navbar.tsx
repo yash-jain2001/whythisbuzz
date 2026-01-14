@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { Menu, X, Search } from "lucide-react";
 
 const categories = [
-  { name: "Movies", href: "/#movies" },
+  { name: "Sports", href: "/#sports" },
+  { name: "World Affairs", href: "/#world-affairs" },
   { name: "Technology", href: "/#technology" },
   { name: "Social Media", href: "/#social-media" },
-  { name: "Entertainment", href: "/#entertainment" },
+  { name: "Movies & Entertainment", href: "/#movies" },
 ];
 
 export function Navbar() {

@@ -14,8 +14,16 @@ export default function Home() {
     .map(a => a.metadata);
 
   const moviesArticles = getArticlesByCategory("Movies");
+  const entertainmentArticles = getArticlesByCategory("Entertainment");
   const socialMediaArticles = getArticlesByCategory("Social Media");
   const techArticles = getArticlesByCategory("Technology");
+  const sportsArticles = getArticlesByCategory("Sports");
+  const worldAffairsArticles = getArticlesByCategory("World Affairs");
+
+  // Combine Movies and Entertainment
+  const moviesAndEntertainmentArticles = [...moviesArticles, ...entertainmentArticles].sort((a, b) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -25,10 +33,24 @@ export default function Home() {
         <ArticleGrid articles={gridArticles} />
 
         <CategorySection
+          id="world-affairs"
+          title="World Affairs"
+          description="Global events, politics, and international relations explained clearly."
+          articles={worldAffairsArticles}
+        />
+
+        <CategorySection
+          id="sports"
+          title="Sports"
+          description="Analysis, highlights, and deep dives into the world of sports."
+          articles={sportsArticles}
+        />
+
+        <CategorySection
           id="movies"
           title="Movies & Entertainment"
           description="Box office trends, industry drama, and everything cinema - explained without the hype."
-          articles={moviesArticles}
+          articles={moviesAndEntertainmentArticles}
         />
 
         <CategorySection
