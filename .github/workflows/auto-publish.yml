@@ -43,3 +43,15 @@ jobs:
             git commit -m "docs(content): auto-publish trending news articles"
             git push https://${GH_PAT}@github.com/${{ github.repository }}.git HEAD:main
           fi
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: whythisbuzz
+          directory: out
+          branch: main
