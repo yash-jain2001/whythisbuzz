@@ -59,10 +59,16 @@ export function getArticleBySlug(slug: string): Article | undefined {
         const { data, content } = matter(fileContents);
         const realSlug = slug.replace(/\.mdx$/, '');
 
+        // Provide safe fallbacks so Next.js build never crashes on malformed AI output
+        const safeDate = data.date && !isNaN(new Date(data.date).getTime()) 
+            ? data.date 
+            : new Date().toISOString();
+
         return {
             metadata: {
                 ...data,
                 id: realSlug,
+                date: safeDate,
             } as ArticleMetadata,
             content,
         };

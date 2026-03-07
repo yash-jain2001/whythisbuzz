@@ -71,8 +71,8 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     <Breadcrumb
                         items={[
                             {
-                                name: article.category,
-                                url: `/category/${article.category.toLowerCase().replace(/\s+/g, '-')}`
+                                name: article.category || 'General',
+                                url: `/category/${(article.category || 'General').toLowerCase().replace(/\s+/g, '-')}`
                             },
                             {
                                 name: article.title,

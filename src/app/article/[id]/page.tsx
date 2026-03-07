@@ -44,12 +44,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         ? article.metadata.keywords.split(',').map(k => k.trim()) 
         : [];
         
+    const category = article.metadata.category || 'General';
+    const title = article.metadata.title || 'Untitled';
+
     const finalKeywords = [
-        article.metadata.category,
+        category,
         'WhyThisBuzz',
         'trending news',
         'digital culture',
-        article.metadata.title.toLowerCase(),
+        title.toLowerCase(),
         ...keywordsList
     ];
 
@@ -118,10 +121,13 @@ export default async function ArticlePage({ params }: PageProps) {
 
     // Generate structured data
     const articleSchema = generateArticleSchema(article.metadata, article.content);
+    const category = article.metadata.category || 'General';
+    const title = article.metadata.title || 'Untitled';
+
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: 'https://whythisbuzz.com' },
-        { name: article.metadata.category, url: `https://whythisbuzz.com/category/${article.metadata.category.toLowerCase().replace(/\s+/g, '-')}` },
-        { name: article.metadata.title, url: `https://whythisbuzz.com/article/${article.metadata.id}` },
+        { name: category, url: `https://whythisbuzz.com/category/${category.toLowerCase().replace(/\s+/g, '-')}` },
+        { name: title, url: `https://whythisbuzz.com/article/${article.metadata.id}` },
     ]);
 
     // Render MDX content
