@@ -5,9 +5,10 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { ArrowLeft, Clock, Calendar, Share2, Link as LinkIcon } from "lucide-react";
+import { Clock, Calendar, Share2, Link as LinkIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
+import Image from "next/image";
 
 interface ArticleViewProps {
     article: ArticleMetadata & { content: React.ReactNode };
@@ -33,7 +34,6 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
 
     const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
     const shareTitle = encodeURIComponent(article.title);
-    const shareText = encodeURIComponent(article.summary);
 
     const shareLinks = {
         whatsapp: `https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`,
@@ -109,10 +109,11 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     {/* Featured Image */}
                     <div className="max-w-4xl mx-auto mb-12">
                         <div className="aspect-[2/1] rounded-xl overflow-hidden">
-                            <img
+                            <Image
                                 src={article.imageUrl}
                                 alt={article.title}
-                                className="w-full h-full object-cover"
+                                fill
+                                className="object-cover"
                             />
                         </div>
                     </div>
@@ -191,8 +192,8 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     <div className="container">
                         <h2 className="mb-8 text-center">Related Explainers</h2>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                            {relatedArticles.map((article) => (
-                                <ArticleCard key={article.id} article={article as any} />
+                            {relatedArticles.map((relatedArticle) => (
+                                <ArticleCard key={relatedArticle.id} article={relatedArticle} />
                             ))}
                         </div>
                     </div>
