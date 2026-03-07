@@ -64,6 +64,7 @@ export function generateArticleSchema(
 
     // Extract first paragraph as description if summary is too short
     const description = article.summary || article.description || 'Read more on WhyThisBuzz';
+    const authorName = article.author || 'WhyThisBuzz Editorial';
 
     return {
         '@context': 'https://schema.org',
@@ -77,9 +78,9 @@ export function generateArticleSchema(
             height: 630,
         },
         author: {
-            '@type': article.author.includes('Editorial') ? 'Organization' : 'Person',
-            name: article.author || 'WhyThisBuzz Editorial',
-            url: article.author.includes('Editorial') ? SITE_URL : undefined,
+            '@type': authorName.includes('Editorial') || authorName.includes('Desk') ? 'Organization' : 'Person',
+            name: authorName,
+            url: authorName.includes('Editorial') || authorName.includes('Desk') ? SITE_URL : undefined,
         },
         publisher: {
             '@type': 'Organization',
