@@ -15,6 +15,9 @@ export interface ArticleMetadata {
     imageUrl: string;
     readTime: string;
     summary: string; // Keeping 'summary' to match existing interface
+    seoTitle?: string;
+    metaDescription?: string;
+    keywords?: string; // string of comma separated keywords
 }
 
 export interface Article {

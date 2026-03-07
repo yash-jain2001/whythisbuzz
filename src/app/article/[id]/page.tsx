@@ -32,18 +32,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     const articleUrl = `https://whythisbuzz.com/article/${article.metadata.id}`;
-    const description = article.metadata.summary;
+    
+    // Explicitly use the generated SEO description if available, fallback to the article summary
+    const description = article.metadata.metaDescription || article.metadata.summary;
+    
+    // Explicitly use the generated SEO title if available, fallback to the article title
+    const seoTitle = article.metadata.seoTitle ? `${article.metadata.seoTitle} | WhyThisBuzz` : `${article.metadata.title} | WhyThisBuzz`;
+    
+    // Combine generated keywords with base keywords
+    const keywordsList = article.metadata.keywords 
+        ? article.metadata.keywords.split(',').map(k => k.trim()) 
+        : [];
+        
+    const finalKeywords = [
+        article.metadata.category,
+        'WhyThisBuzz',
+        'trending news',
+        'digital culture',
+        article.metadata.title.toLowerCase(),
+        ...keywordsList
+    ];
 
     return {
-        title: `${article.metadata.title} | WhyThisBuzz`,
+        title: seoTitle,
         description: description,
-        keywords: [
-            article.metadata.category,
-            'WhyThisBuzz',
-            'trending news',
-            'digital culture',
-            article.metadata.title.toLowerCase(),
-        ],
+        keywords: finalKeywords,
         authors: [{ name: article.metadata.author || 'WhyThisBuzz Editorial' }],
         creator: 'WhyThisBuzz',
         publisher: 'WhyThisBuzz',
@@ -53,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         openGraph: {
             type: 'article',
             url: articleUrl,
-            title: article.metadata.title,
+            title: article.metadata.seoTitle || article.metadata.title,
             description: description,
             images: [
                 {

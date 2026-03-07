@@ -141,7 +141,7 @@ async function main() {
     console.log(`Generating article with Gemini...`);
 
     const prompt = `
-You are a top-tier journalist for a modern digital news site called "WhyThisBuzz".
+You are a top-tier journalist and Chief Editor for a modern digital news site called "WhyThisBuzz".
 Your writing style is engaging, punchy, clear, and analytical. You explain not just what happened, but *why* it matters.
 
 I will provide you with the raw scraped text from a trending news article about "${selectedTrend}".
@@ -151,16 +151,33 @@ Add a catchy title, a short summary, and use Markdown for formatting (headers, b
 Important formatting requirement:
 The output MUST be a valid MDX file, starting immediately with frontmatter enclosed in '---', and then the article body.
 
-Use exactly this frontmatter structure (fill in the appropriate details):
+You must categorize this article into exactly ONE of the following valid categories:
+- "Sports": If the article is about athletes, games, teams, drafts, or matches.
+- "Entertainment": If the article concerns celebrities, musicians, TV shows, or pop culture.
+- "Movies": If the article specifically focuses on a film, box office, actors in a film role, or cinema news.
+- "Technology": If the article is about gadgets, software, AI, companies like Apple/Google, or scientific breakthroughs.
+- "Social-Media": If the article revolves around platforms like TikTok, X (Twitter), Instagram, influencers, or viral trends.
+- "World Affairs": If the article is about politics, international news, economics, major crime, or general world events not fitting the others.
+
+CRITICAL SEO INSTRUCTIONS:
+- Generate a 50-60 character click-optimized \`seoTitle\`.
+- Generate a 150-160 character snippet-optimized \`metaDescription\`.
+- Generate exactly 5-7 high-volume \`keywords\` relevant to the article, comma separated.
+- Throughout the article body, use rich, descriptive header tags (## and ###) that include long-tail search queries, instead of generic headers.
+
+Use exactly this frontmatter structure (fill in the appropriate details based on your analysis):
 
 ---
 title: "Your Catchy Headline Here"
 summary: "A 1-2 sentence punchy summary of the article."
-category: "[Choose ONE of: Sports, Entertainment, Technology, World Affairs]"
+category: "[Choose exactly ONE category from the definitions above]"
 author: "WhyThisBuzz Desk"
 date: "${getFormattedDate()}"
 readTime: "[Estimate, e.g., '3 min read']"
 imageUrl: "${articleImage}"
+seoTitle: "[Your 50-60 character SEO Title]"
+metaDescription: "[Your 150-160 character Meta Description]"
+keywords: "[comma, separated, list, of, keywords]"
 ---
 
 Raw Scraped Text:
