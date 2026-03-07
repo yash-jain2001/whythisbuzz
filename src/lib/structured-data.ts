@@ -164,8 +164,9 @@ export function generateCombinedSchema(...schemas: object[]): object {
         '@context': 'https://schema.org',
         '@graph': schemas.map(schema => {
             // Remove @context from individual schemas when combining
-            const { '@context': _, ...rest } = schema as any;
-            return rest;
+            const copy = { ...schema } as Record<string, unknown>;
+            delete copy['@context'];
+            return copy;
         }),
     };
 }

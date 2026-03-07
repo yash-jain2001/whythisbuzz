@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, Search } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 const categories = [
   { name: "Sports", href: "/#sports" },
@@ -42,6 +44,7 @@ export function Navbar() {
       };
       fetchResults();
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSearchResults([]);
     }
   }, [searchQuery]);
@@ -51,25 +54,25 @@ export function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className="flex items-center gap-2 group"
           >
             <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
               WhyThisBuzz
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {categories.map((category) => (
-              <a
+              <Link
                 key={category.name}
                 href={category.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline"
               >
                 {category.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -109,7 +112,7 @@ export function Navbar() {
             {searchQuery && searchResults.length > 0 && (
               <div className="mt-3 space-y-2">
                 {searchResults.map((article) => (
-                  <a
+                  <Link
                     key={article.id}
                     href={`/article/${article.id}`}
                     className="block p-3 rounded-lg hover:bg-secondary/50 transition-colors"
@@ -119,11 +122,14 @@ export function Navbar() {
                     }}
                   >
                     <div className="flex items-start gap-3">
-                      <img
-                        src={article.imageUrl}
-                        alt={article.title}
-                        className="w-16 h-16 object-cover rounded"
-                      />
+                      <div className="relative w-16 h-16 flex-shrink-0">
+                        <Image
+                          src={article.imageUrl}
+                          alt={article.title}
+                          fill
+                          className="object-cover rounded"
+                        />
+                      </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-medium text-foreground line-clamp-2 mb-1">
                           {article.title}
@@ -133,7 +139,7 @@ export function Navbar() {
                         </p>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
@@ -141,7 +147,7 @@ export function Navbar() {
             {/* No Results */}
             {searchQuery && searchResults.length === 0 && (
               <p className="mt-3 text-sm text-muted-foreground text-center py-4">
-                No articles found for "{searchQuery}"
+                No articles found for &quot;{searchQuery}&quot;
               </p>
             )}
           </div>
@@ -152,14 +158,14 @@ export function Navbar() {
           <div className="md:hidden py-4 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
               {categories.map((category) => (
-                <a
+                <Link
                   key={category.name}
                   href={category.href}
                   className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {category.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

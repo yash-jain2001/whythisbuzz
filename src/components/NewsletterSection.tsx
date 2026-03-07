@@ -26,7 +26,7 @@ export function NewsletterSection() {
           <h2 className="mb-4">Stay Informed, Not Overwhelmed</h2>
 
           <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">
-            Get the week's most talked-about stories explained clearly.
+            Get the week&apos;s most talked-about stories explained clearly.
             No clickbait, no bias—just context you can trust.
           </p>
 
@@ -35,7 +35,7 @@ export function NewsletterSection() {
               <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
                 <Check className="w-5 h-5" />
               </div>
-              <span className="font-medium">You're subscribed! Check your inbox.</span>
+              <span className="font-medium">You&apos;re subscribed! Check your inbox.</span>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">

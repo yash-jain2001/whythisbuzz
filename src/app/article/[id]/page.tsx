@@ -153,7 +153,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 dangerouslySetInnerHTML={{ __html: generateJsonLd(breadcrumbSchema) }}
             />
 
-            <ArticleView article={articleForView as any} relatedArticles={relatedArticles as any} />
+            <ArticleView article={articleForView} relatedArticles={relatedArticles} />
         </>
     );
 }
