@@ -108,7 +108,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
 
                     {/* Featured Image */}
                     <div className="max-w-4xl mx-auto mb-12">
-                        <div className="aspect-[2/1] rounded-xl overflow-hidden">
+                        <div className="relative flex w-full aspect-[16/9] md:aspect-[2/1] max-h-[60vh] rounded-xl overflow-hidden bg-muted/20">
                             <Image
                                 src={article.imageUrl}
                                 alt={article.title}
