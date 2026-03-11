@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { ArrowRight } from "lucide-react";
 import { ArticleMetadata } from "@/lib/mdx";
 
@@ -12,7 +12,7 @@ export function HeroSection({ article }: HeroSectionProps) {
   return (
     <section className="py-8 md:py-12">
       <div className="container">
-        <Link
+        <a
           href={`/article/${article.id}`}
           className="group block"
         >
@@ -50,7 +50,7 @@ export function HeroSection({ article }: HeroSectionProps) {
               </div>
             </div>
           </article>
-        </Link>
+        </a>
       </div>
     </section>
   );

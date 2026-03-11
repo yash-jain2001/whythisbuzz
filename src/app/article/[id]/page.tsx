@@ -82,8 +82,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             publishedTime: new Date(article.metadata.date).toISOString(),
             modifiedTime: new Date(article.metadata.date).toISOString(),
             authors: [article.metadata.author || 'WhyThisBuzz Editorial'],
-            section: article.metadata.category,
-            tags: [article.metadata.category],
+            section: category,
+            tags: finalKeywords,
             siteName: 'WhyThisBuzz',
             locale: 'en_US',
         },
@@ -117,7 +117,7 @@ export default async function ArticlePage({ params }: PageProps) {
     const relatedArticles = getRelatedArticles(article.metadata.id);
 
     // Import structured data utilities
-    const { generateArticleSchema, generateBreadcrumbSchema, generateJsonLd } = await import('@/lib/structured-data');
+    const { generateArticleSchema, generateBreadcrumbSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');
 
     // Generate structured data
     const articleSchema = generateArticleSchema(article.metadata, article.content);
@@ -129,6 +129,8 @@ export default async function ArticlePage({ params }: PageProps) {
         { name: category, url: `https://whythisbuzz.com/category/${category.toLowerCase().replace(/\s+/g, '-')}` },
         { name: title, url: `https://whythisbuzz.com/article/${article.metadata.id}` },
     ]);
+    
+    const combinedSchema = generateCombinedSchema(articleSchema, breadcrumbSchema);
 
     // Render MDX content
     const content = (
@@ -146,11 +148,7 @@ export default async function ArticlePage({ params }: PageProps) {
             {/* JSON-LD Structured Data */}
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: generateJsonLd(articleSchema) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: generateJsonLd(breadcrumbSchema) }}
+                dangerouslySetInnerHTML={{ __html: generateJsonLd(combinedSchema) }}
             />
 
             <ArticleView article={articleForView} relatedArticles={relatedArticles} />

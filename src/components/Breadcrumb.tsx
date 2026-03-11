@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 import { ChevronRight, Home } from 'lucide-react';
 
 interface BreadcrumbItem {
@@ -19,14 +19,14 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
             <ol className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
                 {/* Home icon as first item */}
                 <li className="flex items-center">
-                    <Link
+                    <a
                         href="/"
                         className="hover:text-foreground transition-colors flex items-center gap-1"
                         aria-label="Home"
                     >
                         <Home className="w-4 h-4" />
                         <span className="sr-only">Home</span>
-                    </Link>
+                    </a>
                 </li>
 
                 {items.map((item, index) => {
@@ -43,12 +43,12 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                                     {item.name}
                                 </span>
                             ) : (
-                                <Link
+                                <a
                                     href={item.url}
                                     className="hover:text-foreground transition-colors line-clamp-1"
                                 >
                                     {item.name}
-                                </Link>
+                                </a>
                             )}
                         </li>
                     );

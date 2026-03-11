@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, Search } from "lucide-react";
-import Link from "next/link";
+
 import Image from "next/image";
 
 const categories = [
@@ -54,25 +54,25 @@ export function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link
+          <a
             href="/"
             className="flex items-center gap-2 group"
           >
             <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
               WhyThisBuzz
             </span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {categories.map((category) => (
-              <Link
+              <a
                 key={category.name}
                 href={category.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline"
               >
                 {category.name}
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -112,7 +112,7 @@ export function Navbar() {
             {searchQuery && searchResults.length > 0 && (
               <div className="mt-3 space-y-2">
                 {searchResults.map((article) => (
-                  <Link
+                  <a
                     key={article.id}
                     href={`/article/${article.id}`}
                     className="block p-3 rounded-lg hover:bg-secondary/50 transition-colors"
@@ -139,7 +139,7 @@ export function Navbar() {
                         </p>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
             )}
@@ -158,14 +158,14 @@ export function Navbar() {
           <div className="md:hidden py-4 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
               {categories.map((category) => (
-                <Link
+                <a
                   key={category.name}
                   href={category.href}
                   className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {category.name}
-                </Link>
+                </a>
               ))}
             </div>
           </div>

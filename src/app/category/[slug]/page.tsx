@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { getArticlesByCategory, getAllCategories } from '@/lib/mdx';
-import Link from 'next/link';
+
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Breadcrumb } from '@/components/Breadcrumb';
@@ -71,18 +71,20 @@ export default async function CategoryPage({ params }: PageProps) {
     const articles = getArticlesByCategory(category);
 
     // Generate structured data
-    const { generateBreadcrumbSchema, generateJsonLd } = await import('@/lib/structured-data');
+    const { generateBreadcrumbSchema, generateCollectionPageSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: 'https://whythisbuzz.com' },
         { name: category, url: `https://whythisbuzz.com/category/${slug}` },
     ]);
+    const collectionSchema = generateCollectionPageSchema(category, articles.length);
+    const combinedSchema = generateCombinedSchema(breadcrumbSchema, collectionSchema);
 
     return (
         <>
             {/* JSON-LD Structured Data */}
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: generateJsonLd(breadcrumbSchema) }}
+                dangerouslySetInnerHTML={{ __html: generateJsonLd(combinedSchema) }}
             />
 
             <div className="min-h-screen flex flex-col">
@@ -117,7 +119,7 @@ export default async function CategoryPage({ params }: PageProps) {
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {articles.map((article) => (
-                                    <Link
+                                    <a
                                         key={article.id}
                                         href={`/article/${article.id}`}
                                         className="group block"
@@ -154,7 +156,7 @@ export default async function CategoryPage({ params }: PageProps) {
                                                 </div>
                                             </div>
                                         </article>
-                                    </Link>
+                                    </a>
                                 ))}
                             </div>
                         )}

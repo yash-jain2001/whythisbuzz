@@ -1,10 +1,434 @@
 [
   {
+    "id": "olivia-dean-and-niall-horan-light-up-sunderland-radio-1-big-weekend-returns",
+    "title": "Olivia Dean & Niall Horan Light Up Sunderland: Radio 1 Big Weekend Returns!",
+    "summary": "Fresh off a massive awards season, Olivia Dean is set to headline BBC Radio 1's Big Weekend in Sunderland alongside Niall Horan and a star-studded lineup. Get ready for a monumental music event!",
+    "category": "Entertainment",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/07e5/live/bd201890-1bd4-11f1-801a-8f2f63e21096.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "bam-adebayo-unleashed-how-83-points-rewrote-his-legacy-and-ignited-the-miami-heat",
+    "title": "Bam Adebayo Unleashed: How 83 Points Rewrote His Legacy and Ignited the Miami Heat",
+    "summary": "Miami Heat's Bam Adebayo just dropped a historic 83 points, shattering expectations and signaling a monumental shift in his game. This isn't just about one incredible night; it's about a superstar evolving into an undeniable offensive force, dragging the Heat into serious playoff contention.",
+    "category": "Sports",
+    "imageUrl": "https://images2.minutemediacdn.com/image/upload/c_crop,x_820,y_133,w_2485,h_1397/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/115/01kkd5xe5ccayyzbvr4c.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "buzzing-to-washington-brandon-aiyuks-imminent-move-and-the-commanders-big-gamble",
+    "title": "Buzzing to Washington? Brandon Aiyuk's Imminent Move & The Commanders' Big Gamble",
+    "summary": "San Francisco 49ers wide receiver Brandon Aiyuk is set to be released, and the Washington Commanders are poised to make a low-risk, high-reward move that could reunite him with quarterback Jayden Daniels.",
+    "category": "Sports",
+    "imageUrl": "https://images2.minutemediacdn.com/image/upload/c_crop,x_960,y_416,w_4624,h_2601/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/61/01kk919vjtztqpagxpk9.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "flyers-gm-danny-briere-unpacks-bold-trade-deadline-moves-and-michkovs-explosive-rise",
+    "title": "Flyers GM Danny Brière Unpacks Bold Trade Deadline Moves and Michkov's Explosive Rise",
+    "summary": "Flyers GM Danny Brière pulls back the curtain on the team's calculated trade deadline, discussing the Bobby Brink-David Jiříček swap, Matvei Michkov's impressive development, and his long-term vision for Philadelphia's future core.",
+    "category": "Sports",
+    "imageUrl": "https://www.inquirer.com/resizer/v2/WDRNW7MNORG2BJWTT7YUNMNSAE.jpg?auth=766b975d84c425e490626b9aec38ef5c06dd59c1a3284bbc22dd766460f892d0&width=760&height=507&smart=true",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "ice-hockey-shocker-jordan-murrays-mid-game-collapse-stuns-european-playoffs",
+    "title": "Ice Hockey Shocker: Jordan Murray's Mid-Game Collapse Stuns European Playoffs",
+    "summary": "Veteran defenseman Jordan Murray collapsed on the bench during a critical ICE League playoff game, requiring urgent resuscitation. The incident halted play and sent shockwaves through the European hockey community, raising immediate concerns for his well-being.",
+    "category": "Sports",
+    "imageUrl": "https://images.bild.de/69b11354d7b5155f5684a205/2cbf440b610ca99ac223fe573e36af4d,c78db537?w=1280",
+    "readTime": "2 min read"
+  },
+  {
+    "id": "jaylen-brown-ejection-celtics-stars-frustration-boils-over-in-san-antonio",
+    "title": "Jaylen Brown Ejection: Celtics Star's Frustration Boils Over in San Antonio",
+    "summary": "Boston Celtics star Jaylen Brown was ejected after a fiery clash with officials against the San Antonio Spurs, reigniting debate over player-referee dynamics and Brown's vocal frustrations.",
+    "category": "Sports",
+    "imageUrl": "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2026%2F0311%2Fr1626581_1296x729_16%2D9.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "lafc-vs-alajuelense-decoding-the-continental-showdown-buzz",
+    "title": "LAFC vs. Alajuelense: Decoding the Continental Showdown Buzz",
+    "summary": "LAFC and Alajuelense squared off in a highly anticipated continental clash, with massive implications for both club's tournament ambitions. We break down the tactics and the crucial 'why' behind the buzz.",
+    "category": "Sports",
+    "imageUrl": "https://news.nateimg.co.kr/orgImg/sg/2026/03/11/20260311512035.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "lebron-out-can-rui-hachimura-answer-the-lakers-playoff-sos",
+    "title": "LeBron OUT! Can Rui Hachimura Answer the Lakers' Playoff SOS?",
+    "summary": "With LeBron James sidelined by injury, the Los Angeles Lakers are turning to Rui Hachimura to step into the starting lineup against the Knicks. This pivotal moment could define Hachimura's role and the Lakers' playoff hopes in a tight Western Conference race.",
+    "category": "Sports",
+    "imageUrl": "https://s.yimg.com/os/en/athlon_sports_articles_610/02e20908bee315825e2c3a813a0c9d7c",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "ravens-defensive-shake-up-will-trey-hendrickson-be-baltimores-pass-rush-savior",
+    "title": "Ravens' Defensive Shake-Up: Will Trey Hendrickson Be Baltimore's Pass Rush Savior?",
+    "summary": "After the Maxx Crosby trade fell through, the Baltimore Ravens are now aggressively pursuing star pass rusher Trey Hendrickson, intensifying a bidding war that could reshape their defense and impact multiple NFL contenders.",
+    "category": "Sports",
+    "imageUrl": "https://nbcsports.brightspotcdn.com/dims4/default/dc7ce71/2147483647/strip/true/crop/7765x4368+0+0/resize/1440x810!/quality/90/?url=https%3A%2F%2Fnbc-sports-production-nbc-sports.s3.us-east-1.amazonaws.com%2Fbrightspot%2Fbe%2F62%2F2249ad18416bb128bdac4ffc93a8%2Fhttps-delivery-gettyimages.com%2Fdownloads%2F2238226274",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "ucl-showdown-leverkusen-vs-arsenal-mustafi-unpacks-the-high-stakes-clash",
+    "title": "UCL Showdown: Leverkusen vs. Arsenal – Mustafi Unpacks the High-Stakes Clash",
+    "summary": "Former Arsenal star Shkodran Mustafi offers a gripping pre-match analysis of the Champions League Round of 16 battle, dissecting Arsenal's title ambitions against Leverkusen's upset potential.",
+    "category": "Sports",
+    "imageUrl": "https://images.bild.de/69ad7b3010f264d559778110/4efd0193f6669eef1a9762a9c49894d4,92adc5a8?w=1280",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "gerresheimer-in-crisis-financial-delays-spark-stock-plunge-sdax-exit-fears",
+    "title": "Gerresheimer in Crisis: Financial Delays Spark Stock Plunge, SDAX Exit Fears",
+    "summary": "Packaging giant Gerresheimer faces a deepening crisis as delayed 2025 financial reports, intense regulatory scrutiny, and a looming SDAX exclusion send its stock plummeting.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.finanzen.net/mediacenter/unsortiert/gerresheimer-neu-daniel-gebauer-gerresheimer-ag-660.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "uks-digital-id-reborn-voluntary-convenience-or-creeping-control",
+    "title": "UK's Digital ID Reborn: Voluntary Convenience or Creeping Control?",
+    "summary": "The UK government, led by Darren Jones, has dramatically rebranded its digital ID scheme as a voluntary tool for public service access, following a fierce public backlash against mandatory proposals. But critics warn that 'voluntary' can quickly become essential, raising privacy and 'Big Brother' concerns.",
+    "category": "World Affairs",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/cd8b/live/8b095090-1c9e-11f1-b048-c9424b2cf5fd.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "white-house-security-breached-van-crashes-barricade-in-early-morning-scare",
+    "title": "White House Security Breached: Van Crashes Barricade in Early Morning Scare",
+    "summary": "A van crashed through a security barricade near the White House early Wednesday, triggering a rapid response from Secret Service and police. The driver has been apprehended, but questions about motive and potential security vulnerabilities loom large.",
+    "category": "World Affairs",
+    "imageUrl": "https://wjla.com/resources/media2/16x9/1280/1320/center/90/85b18953-0183-403a-888e-570957206d71-WEJOEBALL_frame_769991.jpeg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "enhypen-shake-up-heeseung-departs-for-solo-path-what-it-means-for-k-pop",
+    "title": "ENHYPEN Shake-Up: Heeseung Departs for Solo Path, What It Means for K-Pop",
+    "summary": "K-pop sensation ENHYPEN is set to continue as a six-member group after Belift Lab confirmed Heeseung's departure to pursue his distinct solo musical ambitions, promising a new chapter for both the idol and the globally popular band.",
+    "category": "Entertainment",
+    "imageUrl": "https://newsimg.koreatimes.co.kr/2026/03/10/8f81fbda-c805-49d3-9549-891ab0d3c819.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "itvs-gone-the-psychological-thriller-that-will-mess-with-your-head",
+    "title": "ITV's 'Gone': The Psychological Thriller That Will Mess With Your Head",
+    "summary": "David Morrissey fronts ITV's latest crime drama, 'Gone,' a psychological labyrinth that masterfully subverts expectations as a headteacher's unsettling calm after his wife's disappearance raises more questions than answers.",
+    "category": "Entertainment",
+    "imageUrl": "https://i.guim.co.uk/img/media/e91ca05f1a27ccd4e077517fab4b86439c1a7382/1108_0_7200_5760/master/7200.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctcmV2aWV3LTQucG5n&enable=upscale&s=630a72714f2f28e535c23f4486b3fbce",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "cillian-murphys-peaky-blinders-movie-how-a-historic-abbey-became-a-buzzworthy-set",
+    "title": "Cillian Murphy's Peaky Blinders Movie: How a Historic Abbey Became a Buzzworthy Set",
+    "summary": "The highly anticipated Peaky Blinders film transformed Calke Abbey into a 1940s Birmingham blitz scene, bringing unprecedented buzz and vital financial lifelines to the historic National Trust site.",
+    "category": "Movies",
+    "imageUrl": "https://ichef.bbci.co.uk/news/1024/branded_news/f5e4/live/00ac7c40-1953-11f1-b048-c9424b2cf5fd.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "alcarazs-indian-wells-juggernaut-can-rinderknech-break-the-unbeaten-streak",
+    "title": "Alcaraz's Indian Wells Juggernaut: Can Rinderknech Break the Unbeaten Streak?",
+    "summary": "Carlos Alcaraz, fresh off a dominant start to 2026, enters his Indian Wells third-round clash against Arthur Rinderknech as the heavy favorite. Will the young Spaniard continue his 'steamroller' form and advance in his title defense?",
+    "category": "Sports",
+    "imageUrl": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2026/03/08/69ace94ca2ff5.jpeg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "champions-league-chaos-spurs-implode-keeper-hooked-in-shocking-madrid-meltdown",
+    "title": "Champions League Chaos: Spurs Implode, Keeper Hooked in Shocking Madrid Meltdown",
+    "summary": "Tottenham's Champions League dreams took a catastrophic hit with an epic collapse against Atletico Madrid, featuring a goalkeeper substituted after just 17 minutes. Elsewhere, Bayern Munich dominated, and Liverpool stumbled against Galatasaray in a night of European drama.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/f9dc/live/091d26c0-1cc0-11f1-b048-c9424b2cf5fd.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "dont-miss-a-volley-how-to-stay-ahead-of-the-game-with-official-atp-and-wta-updates",
+    "title": "Don't Miss a Volley: How to Stay Ahead of the Game with Official ATP & WTA Updates",
+    "summary": "Frustrated missing out on the latest tennis action? Discover why signing up for official ATP and WTA communications is your ultimate game plan to stay connected with news, tournaments, and exclusive offers.",
+    "category": "Sports",
+    "imageUrl": "https://cf-images.us-east-1.prod.boltdns.net/v1/static/6057277721001/365e17d1-4727-4a89-9f11-7ed391403a1f/14bd9298-25f5-4a4b-b3db-58a7848d11f1/250x150/match/image.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "jared-mccains-thunderous-ascent-from-trade-shock-to-okcs-game-changer",
+    "title": "Jared McCain's Thunderous Ascent: From Trade Shock to OKC's Game Changer",
+    "summary": "Blindsided by a mid-season trade from the 76ers, Jared McCain has found an explosive new rhythm with the league-leading OKC Thunder, showcasing elite shooting and a unique play style that perfectly complements his new team's philosophy. It's a comeback story of resilience, finding the perfect fit, and proving his worth on the biggest stage.",
+    "category": "Sports",
+    "imageUrl": "https://sportshub.cbsistatic.com/i/r/2026/03/06/9f5e0a8d-8160-4ca4-a232-fbc45cf2283f/thumbnail/1200x675/3a04d4738c4e23ddb7f9d2e2e386b8a2/jared-mccain-thunder-getty.png",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "kinskys-nightmare-tottenhams-champions-league-meltdown-against-atletico-madrid",
+    "title": "Kinsky's Nightmare: Tottenham's Champions League Meltdown Against Atlético Madrid",
+    "summary": "Goalkeeper Antonín Kinský endured a catastrophic Champions League debut for Tottenham, subbed off after just 15 minutes following two shocking errors, as Spurs' defense crumbled in an unforgettable five-goal thriller against Atlético Madrid.",
+    "category": "Sports",
+    "imageUrl": "https://www.telegraph.co.uk/content/dam/football/2026/03/10/TELEMMGLPICT000470924210_17731744687520_trans_NvBQzQNjv4BqMt6RBVGGSn-5vh9uvtVY3EA7jqfqQnjlHWhQdN0aCLg.jpeg?impolicy=OG-Live",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "osula-stuns-man-utd-carricks-unbeaten-streak-shattered-at-st-james-park",
+    "title": "Osula Stuns Man Utd: Carrick's Unbeaten Streak Shattered at St. James' Park",
+    "summary": "Substitute William Osula's 90th-minute stunner handed Newcastle a dramatic 2-1 victory over Manchester United, ending Michael Carrick's unbeaten start as manager amidst red card controversy and high-octane drama.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/4d2c/live/b8629960-1817-11f1-8ff3-d5f5110756d9.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "why-this-buzz-galatasaray-hosts-liverpool-in-champions-league-last-16-showdown",
+    "title": "Why This Buzz: Galatasaray Hosts Liverpool in Champions League Last-16 Showdown",
+    "summary": "Istanbul is buzzing as Galatasaray faces off against English giants Liverpool in a high-stakes Champions League Round of 16 first leg. Can the Lions leverage their home advantage and historical prowess against a struggling Reds side desperately seeking European salvation?",
+    "category": "Sports",
+    "imageUrl": "https://image.hurimg.com/i/hurriyet/90/0x0/69af9c55717271c959b2dc04.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "alice-weidel-heads-to-ard-the-buzzkill-of-the-digital-news-paywall",
+    "title": "Alice Weidel Heads to ARD: The Buzzkill of the Digital News Paywall",
+    "summary": "German politician Alice Weidel was set for a major TV appearance on ARD. But for many, the story ended before it began, highlighting the frustrating reality of paywalls and expiring links in modern journalism.",
+    "category": "World Affairs",
+    "imageUrl": "https://cdn.prod.www.spiegel.de/images/1e0148e2-69f8-4e2b-aaff-82570645caa0_w1200_r1.778_fpx54.17_fpy50.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "dragons-den-uk-ramps-up-eastern-med-presence-amid-escalating-iran-tensions",
+    "title": "Dragon's Den: UK Ramps Up Eastern Med Presence Amid Escalating Iran Tensions",
+    "summary": "The UK is bolstering its naval and air assets in the Eastern Mediterranean, deploying HMS Dragon and placing RFA Lyme Bay on heightened readiness, as escalating tensions with Iran prompt defensive measures and citizen evacuations.",
+    "category": "World Affairs",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/33dd/live/8bbc98a0-1c6a-11f1-8206-178b2777dfa1.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "ex-politician-hartmut-ebbing-denies-child-abuse-amid-co-accuseds-confession",
+    "title": "Ex-Politician Hartmut Ebbing Denies Child Abuse Amid Co-Accused's Confession",
+    "summary": "Former German FDP Bundestag member Hartmut Ebbing is on trial, vehemently denying child sexual abuse charges. This comes as his co-accused admits to abusing her son and implicates Ebbing, deepening a disturbing legal battle.",
+    "category": "World Affairs",
+    "imageUrl": "https://img.zeit.de/gesellschaft/zeitgeschehen/2026-03/hartmut-ebbing-fdp-bestreitet-vorwurf-kindesmissbrauch-bild/wide__1300x731",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "hormuz-hold-up-how-the-iran-crisis-is-squeezing-global-oil-and-trumps-political-future",
+    "title": "Hormuz Hold-Up: How the Iran Crisis Is Squeezing Global Oil & Trump's Political Future",
+    "summary": "The Strait of Hormuz is a geopolitical pressure cooker, with Iran threatening vital oil flows. The Trump administration is caught between a high-stakes military gambit and a looming global economic meltdown, all while battling rising gas prices at home.",
+    "category": "World Affairs",
+    "imageUrl": "https://media.cnn.com/api/v1/images/stellar/prod/ap26064105577258.jpg?c=16x9&q=w_800,c_fill",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "oil-shocks-market-swings-iran-conflict-roils-global-economy",
+    "title": "Oil Shocks, Market Swings: Iran Conflict Roils Global Economy",
+    "summary": "Global markets are reeling from the Iran conflict, triggering wild oil price swings, upending interest rate predictions, and pushing energy costs sky-high. While US stocks rallied on Trump's comments, Europe faced significant losses, signaling a bumpy road ahead for consumers and investors alike.",
+    "category": "World Affairs",
+    "imageUrl": "https://e3.365dm.com/26/03/1600x900/skynews-shahran-fuel-tehran_7186794.jpg?20260309100339",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "ramadan-2026-unpacking-the-daily-shift-in-fasting-and-iftar-timings",
+    "title": "Ramadan 2026: Unpacking the Daily Shift in Fasting & Iftar Timings",
+    "summary": "Ramadan 2026 is underway, and with it comes the daily ritual of fasting. We break down why Iftar and Sehri times are constantly shifting, and what to expect for the 20th day, particularly in France.",
+    "category": "World Affairs",
+    "imageUrl": "https://cdn.sortiraparis.com/images/80/105019/1011334-maison-ambre-paris-restaurant-salon-de-the-et-patisserie-marocain-a7c1729.jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "trumps-monday-blitz-save-america-act-ignites-voting-and-trans-rights-furore",
+    "title": "Trump's Monday Blitz: 'Save America' Act Ignites Voting & Trans Rights Furore",
+    "summary": "Donald Trump's renewed push for the 'Save America Act' on Monday sparked a national debate over restrictive voting measures and controversial transgender bans, amidst a flurry of other significant global and domestic headlines.",
+    "category": "World Affairs",
+    "imageUrl": "https://i.guim.co.uk/img/media/d97398018e29ad34770e7c1e7d354f9d92f56629/582_0_2900_2321/master/2900.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=24520b73d963d202e55b0ee7afe7563b",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "henssler-dethroned-grill-den-henssler-shocker-as-assistant-howan-beats-the-boss",
+    "title": "Henssler Dethroned? 'Grill den Henssler' Shocker as Assistant Howan Beats the Boss!",
+    "summary": "Laura Wontorra celebrated her 100th 'Grill den Henssler' show, but it was chef Steffen Henssler's assistant, Howan, who stole the spotlight with an unexpected culinary victory.",
+    "category": "Entertainment",
+    "imageUrl": "https://images.bild.de/69ad8922161cd9d527cd8a29/6e351937f3d07834cd4b027d6d9c0668,504e07c5?w=1280",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "stacey-solomons-bgt-buzz-why-her-social-clout-is-a-game-changer-for-reality-tv",
+    "title": "Stacey Solomon's BGT Buzz: Why Her Social Clout is a Game Changer for Reality TV",
+    "summary": "From temporary cover to Golden Buzzer hero, Stacey Solomon impressed Britain's Got Talent bosses and is set to return for the live shows, leveraging her massive social media following to potentially redefine TV viewership.",
+    "category": "Entertainment",
+    "imageUrl": "https://www.thesun.co.uk/wp-content/uploads/2026/03/crop-38443284.jpg?quality=90&strip=all&w=1920&h=1080&crop=1",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "eagles-offseason-buzz-high-stakes-as-howie-roseman-navigates-free-agency",
+    "title": "Eagles' Offseason Buzz: High Stakes as Howie Roseman Navigates Free Agency",
+    "summary": "The Philadelphia Eagles are bracing for a transformative 2026 NFL free agency period. After a disappointing season, GM Howie Roseman faces critical decisions to reshape the roster, balancing returning veterans with significant departures and salary cap challenges.",
+    "category": "Sports",
+    "imageUrl": "https://platform.bleedinggreennation.com/wp-content/uploads/sites/36/2026/01/gettyimages-2255754949.jpg?quality=90&strip=all&crop=0%2C10.730215305414%2C100%2C78.539569389172&w=1200",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "indian-wells-heats-up-gauff-eala-rematch-sabalenkas-roaring-return-and-rising-stars-clash",
+    "title": "Indian Wells Heats Up: Gauff-Eala Rematch, Sabalenka's Roaring Return, and Rising Stars Clash",
+    "summary": "The desert heat isn't the only thing rising at Indian Wells! Tennis titans like Sabalenka and Gauff are back in action, facing familiar foes and forging new rivalries as young phenoms aim for glory.",
+    "category": "Sports",
+    "imageUrl": "https://photoresources.wtatennis.com/wta/photo/2026/03/07/569ca538-0469-4200-af8e-083230654451/GettyImages-2262493738.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "jack-drapers-epic-indian-wells-comeback-defying-injury-and-securing-crucial-wins",
+    "title": "Jack Draper's Epic Indian Wells Comeback: Defying Injury & Securing Crucial Wins",
+    "summary": "British tennis star Jack Draper staged a remarkable comeback at Indian Wells, battling back from an 8-month injury layoff to clinch a vital victory. Meanwhile, tennis titans Carlos Alcaraz and Novak Djokovic also advanced, with Alcaraz extending his unbeaten streak and Djokovic praising his rival's historic potential.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/5f5c/live/cf941830-1a6e-11f1-92c3-4b80fe25ce7a.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "ski-jumping-shocker-horngacher-exits-hannawald-reveals-successor-bets-and-germanys-missing-edge",
+    "title": "Ski Jumping Shocker: Horngacher Exits, Hannawald Reveals Successor Bets & Germany's Missing Edge",
+    "summary": "As German national ski jumping coach Stefan Horngacher departs, legend Sven Hannawald offers a candid assessment of his transformative legacy, weighs in on potential successors, and pinpoints the critical ingredient German jumpers need for future glory.",
+    "category": "Sports",
+    "imageUrl": "https://reshape.sport1.de/c/t/14cd1793-2d97-4da8-abe1-c7b9b1693161/1200x630",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "super-bowl-mvp-kenneth-walker-iii-shocks-nfl-lands-with-chiefs",
+    "title": "Super Bowl MVP Kenneth Walker III Shocks NFL, Lands with Chiefs",
+    "summary": "In a seismic free agency move, Super Bowl LX MVP Kenneth Walker III is joining the Kansas City Chiefs, bringing his explosive talent and recent durability renaissance to an already stacked offense.",
+    "category": "Sports",
+    "imageUrl": "https://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2026%2F0122%2Fr1604271_1296x729_16%2D9.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "the-kwity-paye-paradox-why-this-overrated-edge-rusher-is-still-a-top-free-agent-sleeper",
+    "title": "The Kwity Paye Paradox: Why This 'Overrated' Edge Rusher Is Still a Top Free Agent Sleeper",
+    "summary": "Despite damning analytics branding him 'overrated' and at the bottom of key metrics, Indianapolis Colts edge rusher Kwity Paye is surprisingly generating significant buzz as a top free agent sleeper. Why the drastic disconnect, and what does it mean for his future?",
+    "category": "Sports",
+    "imageUrl": "https://coltswire.usatoday.com/gcdn/authoring/authoring-images/2025/08/30/SCMD/85906000007-1699295322.jpg?crop=4258,2395,x0,y0&width=3200&height=1800&format=pjpg&auto=webp",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "ucl-showdown-slots-reds-train-hard-for-crucial-galatasaray-clash",
+    "title": "UCL Showdown: Slot's Reds Train Hard for Crucial Galatasaray Clash",
+    "summary": "Liverpool's squad, under Arne Slot, completed a vital training session at the AXA Training Centre, gearing up for their high-stakes Champions League last-16 first leg against Galatasaray in Istanbul.",
+    "category": "Sports",
+    "imageUrl": "https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/2026-03/live-training-promo-05032026_a0ea78eaf66178627ea288aed9b8bac1.jpg?itok=_p0o8TVf",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "microns-ai-gold-rush-why-this-chipmaker-is-absolutely-crushing-it",
+    "title": "Micron's AI Gold Rush: Why This Chipmaker is Absolutely Crushing It",
+    "summary": "Micron Technology is hitting record highs, fueled by unprecedented demand for its High-Bandwidth Memory (HBM), the critical component powering the AI revolution. Get ready for a deep dive into why MU stock is sizzling.",
+    "category": "Technology",
+    "imageUrl": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F858976%2Fa-digital-rendering-of-a-circuit-board-with-a-chip-in-the-center-with-ai-inscribed-on-it.jpg&w=1200&op=resize",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "clock-chaos-2026-why-europes-daylight-saving-dilemma-continues",
+    "title": "Clock Chaos 2026: Why Europe's Daylight Saving Dilemma Continues",
+    "summary": "Get ready to 'spring forward' again! In March 2026, clocks across much of Europe will jump ahead, triggering annual debate over energy savings, health impacts, and the EU's stalled decision on ending the time change.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.welt.de/69a1b181d759fce4a385a97c/8118ad61d35147d0a27f70decf87929b/ci16x9-w1200/zeitumstellung",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "from-top-tier-to-tail-lights-is-mercedes-benz-losing-its-edge-in-the-german-auto-market",
+    "title": "From Top Tier to Tail Lights: Is Mercedes-Benz Losing Its Edge in the German Auto Market?",
+    "summary": "Mercedes-Benz, once a symbol of German automotive dominance, is rapidly losing ground, falling behind competitors like Skoda and BMW. Its 'Luxury First' strategy and rising prices appear to be backfiring, leaving the iconic brand fighting for relevance in a rapidly changing market.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.t-online.de/2025/02/QBWWTkVe9iJV/0x168:4000x2250/fit-in/1200x0/sparen-statt-strahlen-mercedes-will-seinen-abwaertstrend-bremsen.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "from-tv-star-to-soap-sleuth-leonard-diepenbrock-recovers-stolen-euro50k-empire-in-thrilling-heist",
+    "title": "From TV Star to Soap Sleuth: Leonard Diepenbrock Recovers Stolen €50K Empire in Thrilling Heist",
+    "summary": "Former TV presenter turned vegan soap entrepreneur, Leonard Diepenbrock, faced a devastating €50,000 theft of his products but, with quick thinking and police collaboration, managed to track down and recover his entire stolen shipment.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.t-online.de/2026/03/mMGMG5DVrU3d/0x109:1042x586/fit-in/1200x0/leonard-diepenbrock-bedankt-sich-in-einem-video-bei-der-polizei-sie-half-ihm-gestohlene-seifen-wiederzubekommen.png",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "heartland-horror-deadly-tornado-outbreak-leaves-trail-of-devastation-and-why-were-seeing-more",
+    "title": "Heartland Horror: Deadly Tornado Outbreak Leaves Trail of Devastation and 'Why' We're Seeing More",
+    "summary": "A brutal multi-day tornado outbreak has ripped through the U.S. Heartland, claiming at least eight lives and leaving a wake of catastrophic destruction, prompting emergency declarations across multiple states. This isn't just a weather event; it's a stark reminder of escalating climate challenges.",
+    "category": "World Affairs",
+    "imageUrl": "https://s.yimg.com/os/en/fox_weather_articles_483/a656edcc6a87a6d5ab7b5996d62dadf0",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "pound400k-postcode-lottery-win-grandmothers-shock-sensible-splurges-and-a-big-boost-for-charity",
+    "title": "£400K Postcode Lottery Win: Grandmother's Shock, Sensible Splurges, and a Big Boost for Charity",
+    "summary": "A Hampshire grandmother's £400,000 People's Postcode Lottery win isn't just a life-changer for her; it's also delivering a massive, tax-free boost to local charities, proving sometimes, good fortune truly spreads.",
+    "category": "World Affairs",
+    "imageUrl": "https://www.dailyecho.co.uk/resources/images/20628041.jpg?type=og-image",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "sandp-500-sinks-the-perfect-storm-that-crushed-markets",
+    "title": "S&P 500 Sinks: The Perfect Storm That Crushed Markets",
+    "summary": "The S&P 500 just experienced its lowest close of 2026 after a brutal Friday. A convergence of soaring oil prices, rising bond yields, weak jobs data, and escalating geopolitical tensions created a potent cocktail of market fear, sending stocks spiraling.",
+    "category": "World Affairs",
+    "imageUrl": "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/2254337493/image_2254337493.jpg?io=getty-c-w1536",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "usd-flexes-muscle-yuan-dips-whats-driving-vietnams-currency-market-today",
+    "title": "USD Flexes Muscle, Yuan Dips: What's Driving Vietnam's Currency Market Today?",
+    "summary": "The Vietnamese Dong saw the US Dollar strengthen slightly while the Chinese Yuan edged down today, signalling shifts in Vietnam's currency landscape that could impact your wallet.",
+    "category": "World Affairs",
+    "imageUrl": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2025/3/26/c1579979b296447da55ab342e5e0f033",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "itvs-gone-is-this-headteacher-a-murderer-or-just-a-masterclass-in-manipulation",
+    "title": "ITV's 'Gone': Is This Headteacher a Murderer, or Just a Masterclass in Manipulation?",
+    "summary": "George Kay's new ITV crime thriller 'Gone' hooks viewers with a chilling mystery surrounding a headteacher whose wife is found dead. Get ready for a slow-burn psychological dive that challenges your every assumption.",
+    "category": "Entertainment",
+    "imageUrl": "https://static.the-independent.com/2026/03/06/10/10/gone_episode_1_02.jpeg?trim=237,2482,2388,1457&width=1200&height=800&crop=1200:800",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "joe-rogans-empathy-detour-when-compassion-hits-a-wall-of-anti-trans-misinformation",
+    "title": "Joe Rogan's Empathy Detour: When Compassion Hits a Wall of Anti-Trans Misinformation",
+    "summary": "A recent Joe Rogan Experience episode saw comedian Steve-O advocate for transgender empathy, only for Rogan to quickly revert to harmful anti-trans rhetoric and false claims, exposing the podcast's problematic influence.",
+    "category": "Entertainment",
+    "imageUrl": "https://www.advocate.com/media-library/joe-rogan-speaking-into-a-microphone-with-the-ufc-logo.jpg?id=65167141&width=1200&height=600&coordinates=0%2C39%2C0%2C39",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "ricky-martin-electrifies-argentina-sold-out-shows-and-new-music-buzz",
+    "title": "Ricky Martin Electrifies Argentina: Sold-Out Shows & New Music Buzz",
+    "summary": "Global pop icon Ricky Martin is electrifying Argentina with two sold-out shows, kicking off his 'Ricky Martin Live 2026' tour. Beyond the stage, the superstar teases new music and a project reimagining his classics, sending fans into a frenzy.",
+    "category": "Entertainment",
+    "imageUrl": "https://www.elnuevodia.com/resizer/v2/Y2E6EK27ZZCRXG6XAAKF6OKE4Y.jpg?auth=0968a26a5945f80e61668365092c07ef6cc7d261974dfa5cb711a6c19d1fd1f3&quality=75&width=1200&height=717&focal=3146%2C955",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "transatlantic-love-gracie-abrams-ditches-nyc-la-for-uk-with-paul-mescal",
+    "title": "Transatlantic Love: Gracie Abrams Ditches NYC, LA for UK with Paul Mescal",
+    "summary": "Singer Gracie Abrams has reportedly left her US bases in Los Angeles and New York behind, relocating to the UK to be closer to actor Paul Mescal, signaling a serious new chapter for the celebrity couple and her music career.",
+    "category": "Entertainment",
+    "imageUrl": "https://s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGhhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG90ZXJ_s.yimg.com/ny/api/res/1.2/3ZSM8J_g5GLj6TarbED9PA--/YXBwaWQ9aGlnaGxhbmRpbG0yMDA7aD04MDA7Y2Y9d2VicA--/https://media.zenfs.com/en/sheknows_79/ebd9daca3f114989e4f1d1c1648de9dc",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "braathens-post-olympic-power-play-why-odermatts-crystal-globe-dream-just-got-complicated",
+    "title": "Braathen's Post-Olympic Power Play: Why Odermatt's Crystal Globe Dream Just Got Complicated",
+    "summary": "Lucas Pinheiro Braathen defied expectations, snatching a crucial Giant Slalom victory in Kranjska Gora and putting a serious dent in Marco Odermatt's seemingly secure crystal globe aspirations. This isn't just a win; it's a strategic blow that reshapes the race for ski alpin glory.",
+    "category": "Sports",
+    "imageUrl": "https://images.sportschau.de/image/f4bac65e-678f-4193-bd4c-b1daca434a45/AAABnMglTnk/AAABmyZE0EA/16x9-big/pinheiro-braathen-102.jpg?width=1280",
+    "readTime": "3 min read"
+  },
+  {
     "id": "braxton-sorenson-mcgee-the-dual-code-dynamo-redefining-rugby-dominance",
     "title": "Braxton Sorenson-McGee: The Dual-Code Dynamo Redefining Rugby Dominance",
     "summary": "From lighting up the 2025 Rugby World Cup to dominating the Sevens circuit, phenom Braxton Sorenson-McGee is on a relentless upward trajectory, embodying the Black Ferns' unyielding pursuit of excellence.",
     "category": "Sports",
     "imageUrl": "https://eu-cdn.rugbypass.com/wp/wp-content/uploads/2025/09/GettyImages-2236320410-1024x630.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "de-rossis-genoa-delivers-shockwave-romas-champions-league-hopes-take-a-hit",
+    "title": "De Rossi's Genoa Delivers Shockwave: Roma's Champions League Hopes Take a Hit!",
+    "summary": "Daniele De Rossi's Genoa pulled off a stunning 2-1 victory against his former club Roma, with Vitinha netting the late winner. This crucial win propels Genoa's survival bid while severely complicating Roma's high-stakes race for a Champions League spot.",
+    "category": "Sports",
+    "imageUrl": "https://dimages2.gazzettaobjects.it/files/og_thumbnail/files/fp/uploads/2026/03/08/69adc15c1c7dd.r_d.1500-1302-0.jpeg",
     "readTime": "4 min read"
   },
   {
@@ -16,12 +440,44 @@
     "readTime": "3 min read"
   },
   {
+    "id": "marlene-fichtner-german-biathlons-next-big-hope-shines-brightly-in-world-cup-thriller",
+    "title": "Marlene Fichtner: German Biathlon's Next Big Hope Shines Brightly in World Cup Thriller",
+    "summary": "Just 22, Marlene Fichtner delivered a stunning career-best performance in the Biathlon World Cup Mass Start, narrowly missing the podium and signaling a new era for German biathlon.",
+    "category": "Sports",
+    "imageUrl": "https://images.sportschau.de/image/4cb9380f-991a-4470-b3db-5ad5840d3809/AAABnMhsB1s/AAABmyZE0EA/16x9-big/marlene-fichtner-104.jpg?width=1280",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "naomi-osakas-power-play-a-grand-slam-return-wrapped-in-custom-armor-at-indian-wells",
+    "title": "Naomi Osaka's Power Play: A Grand Slam Return Wrapped in Custom Armor at Indian Wells",
+    "summary": "Tennis superstar Naomi Osaka is back on court at Indian Wells, and she's not just bringing her formidable game. Expect a sartorial power statement with custom Chris Habana pieces designed to fuel her comeback, transforming court style into personal armor.",
+    "category": "Sports",
+    "imageUrl": "https://assets.vogue.com/photos/69a9d1e01e9973ce41140fab/16:9/w_1280,c_limit/NAO-SEB-15.jpg",
+    "readTime": "3 min read"
+  },
+  {
     "id": "orlando-city-shakes-up-starting-xi-for-nycfc-showdown-whos-in-whos-out-and-why-it-matters",
     "title": "Orlando City Shakes Up Starting XI for NYCFC Showdown: Who's In, Who's Out, and Why It Matters",
     "summary": "Orlando City is shaking up its starting lineup and bench for its crucial first road game against New York City FC, with key tactical adjustments and fresh faces signaling a bold strategy. Get ready for a battle where every change could dictate the outcome.",
     "category": "Sports",
     "imageUrl": "https://images.mlssoccer.com/image/private/t_editorial_landscape_3_4_desktop/mls-orl/ctebewdothxvgsv14r3h.jpg",
     "readTime": "3 min read"
+  },
+  {
+    "id": "puka-nacuas-offseason-blitz-just-making-friends-or-scoring-big-in-la",
+    "title": "Puka Nacua's Offseason Blitz: Just 'Making Friends' or Scoring Big in LA?",
+    "summary": "Rams' breakout star Puka Nacua is dominating headlines off the field, addressing a string of high-profile outings with influencers and actresses, insisting he's just 'making new friends' while navigating newfound fame in Los Angeles.",
+    "category": "Sports",
+    "imageUrl": "https://s.yimg.com/os/en/the_sporting_news_articles_584/218b2e88defde761b1bcb0e25c02b7dd",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "romas-injury-tsunami-de-rossis-tactical-tightrope-before-juve-showdown",
+    "title": "Roma's Injury Tsunami: De Rossi's Tactical Tightrope Before Juve Showdown",
+    "summary": "AS Roma faces a brutal injury and suspension crisis, forcing manager Daniele De Rossi into a tactical overhaul ahead of their crucial Serie A clash with Juventus. Can the Giallorossi navigate this storm and protect their Champions League dreams?",
+    "category": "Sports",
+    "imageUrl": "https://platform.chiesaditotti.com/wp-content/uploads/sites/64/2026/03/gettyimages-2264573064.jpg?quality=90&strip=all&crop=0%2C1.4988515445554%2C100%2C78.534031413613&w=1200",
+    "readTime": "4 min read"
   },
   {
     "id": "super-ligs-new-gold-rush-sane-slips-young-guns-soar-in-market-value-shake-up",
@@ -40,11 +496,115 @@
     "readTime": "3 min read"
   },
   {
+    "id": "uk-open-shocks-and-sensations-prices-epic-comeback-littler-dominates-mvg-stunned",
+    "title": "UK Open Shocks & Sensations: Price's Epic Comeback, Littler Dominates, MVG Stunned",
+    "summary": "The UK Open delivered major upsets and thrilling comebacks, as Gerwyn 'The Iceman' Price staged a miraculous recovery and darts prodigy Luke Littler continued his formidable run, while top seeds faltered.",
+    "category": "Sports",
+    "imageUrl": "https://e0.365dm.com/26/03/1600x900/skysports-luke-humphries-darts_7185612.jpg?20260308071457",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "beyond-flowers-why-your-march-8th-message-truly-matters",
+    "title": "Beyond Flowers: Why Your March 8th Message Truly Matters",
+    "summary": "International Women's Day is more than just a date; it's a powerful moment to acknowledge and appreciate the incredible women in your life. Discover why a heartfelt message resonates deepest and how to craft one.",
+    "category": "World Affairs",
+    "imageUrl": "https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTA4dHJhbnNjb2Rlci5yY3Mt/cmRzLnJvJTJGc3RvcmFnZSUyRjIwMjYl/MkYwMyUyRjA1JTJGMjYyNTc5NF8yNjI1/Nzk0X01lc2FqZS1zaS11cmFyaS1kZS04/LW1hcnRpZV8tRm90by1HZXR0eS1JbWFn/ZXMuanBnJnc9MTIwMCZoPTYzMCZ6Yz0x/Jmhhc2g9YzQ5ZTFjODBmZGUzZjA0Zjg2NWE1MmEyOTY2ZmYxZGM=.thumb.jpg",
+    "readTime": "4 min read"
+  },
+  {
     "id": "medieval-mania-descends-hamelns-mystica-festival-returns-free-entry",
     "title": "Medieval Mania Descends: Hameln's Mystica Festival Returns (Free Entry!)",
     "summary": "Hameln's Old Town is transforming into a medieval wonderland this weekend for the 'Mystica Hamelon' festival, packed with over 150 unique experiences, interactive fun, and even a touch of ecclesiastical humor.",
     "category": "World Affairs",
     "imageUrl": "https://images.ndr.de/image/605d1917-56b4-41d3-a74b-5a68cf7e0f9b/AAABnL9aiAE/AAABmyZE0EA/16x9-big/mysticahamelon-100.webp?width=1920",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "michigans-heartbreak-deadly-tornadoes-shatter-communities-claim-young-lives",
+    "title": "Michigan's Heartbreak: Deadly Tornadoes Shatter Communities, Claim Young Lives",
+    "summary": "Suspected tornadoes ripped through southern Michigan, claiming four lives, including a 12-year-old boy, and leaving a trail of destruction. This tragedy unfolds amidst a broader severe weather outbreak across the US midsection, already responsible for more deaths in Oklahoma.",
+    "category": "World Affairs",
+    "imageUrl": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/7361x4141+0+383/resize/1400/quality/85/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F6b%2Fd7%2Fd007b66f4f918ed8195dc6df51ee%2Fap26066620681425.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "putins-coughing-fit-the-unedited-kremlin-clip-that-broke-the-buzz",
+    "title": "Putin's Coughing Fit: The Unedited Kremlin Clip That Broke the Buzz",
+    "summary": "A rare, unedited video of President Putin coughing and clearing his throat during a Women's Day address briefly went public, sparking intense speculation online about Kremlin control and the leader's image.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.welt.de/69ad6758161cd9d527cd87a1/de9bbe0acedfb449efda9fcc1f8086a8/ci16x9-w1200/apdpa-32b8d000a3da0048-jpg",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "unearthing-chicagos-heroines-the-buzz-about-women-who-built-chicago-tour",
+    "title": "Unearthing Chicago's Heroines: The Buzz About 'Women Who Built Chicago' Tour",
+    "summary": "Chicago's rich history is getting a long-overdue spotlight thanks to historian Shermann 'Dilla' Thomas and Ancestry. Discover the untold stories of women who shaped the city, often overlooked by traditional records, in a powerful new bus tour.",
+    "category": "World Affairs",
+    "imageUrl": "https://bcc-newspack.s3.amazonaws.com/uploads/2026/03/Bus-Tour_-Nicka-Sewell-Smith_Shermann-Dilla-Thomas-scaled.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "beyond-the-bulletin-marietta-slomkas-secret-cologne-heartbeat",
+    "title": "Beyond the Bulletin: Marietta Slomka's Secret Cologne Heartbeat",
+    "summary": "High-profile 'heute journal' anchor Marietta Slomka, known for her impeccable German, reveals a charming, deeply rooted connection to her hometown of Cologne, where her accent subtly shifts.",
+    "category": "Entertainment",
+    "imageUrl": "https://static.rundschau-online.de/__images/2026/02/01/17a1ddbd-0322-453f-8483-d3fc3b31d56b.jpeg?w=1200&h=630&fm=jpg&s=1c685ba0a21111e50a71b3f1d530f089",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "hailey-biebers-miracle-baby-the-surprise-pregnancy-that-defied-medical-odds",
+    "title": "Hailey Bieber's Miracle Baby: The Surprise Pregnancy That Defied Medical Odds",
+    "summary": "Hailey Bieber, recently spotted in rare PDA with Justin, dropped a bombshell revelation: her son Jack's pregnancy was a miraculous surprise, overcoming prior medical warnings about significant conception challenges.",
+    "category": "Entertainment",
+    "imageUrl": "https://pagesix.com/wp-content/uploads/sites/3/2026/03/122983797.jpg?quality=75&strip=all&w=1200",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "vladimir-rachel-weisz-dives-into-academic-scandals-and-moral-grey-areas",
+    "title": "Vladimir: Rachel Weisz Dives into Academic Scandals & Moral Grey Areas",
+    "summary": "Rachel Weisz stars in 'Vladimir,' a searing new series tackling academic scandal, complex consent, and the messy realities of middle-aged desire. This eight-part adaptation dives deep into generational divides and moral ambiguity, proving that 'proper television for proper grownups' still exists.",
+    "category": "Entertainment",
+    "imageUrl": "https://i.guim.co.uk/img/media/c5d2130f6b145f162fb4e34ad79e0f0fa70f20a7/729_0_2039_1633/master/2039.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctcmV2aWV3LTUucG5n&enable=upscale&s=31ec3c6dbe0f324122e073b78d5e94f2",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "anthony-blacks-latest-injury-a-gut-punch-for-the-magics-playoff-hopes",
+    "title": "Anthony Black's Latest Injury: A Gut Punch for the Magic's Playoff Hopes?",
+    "summary": "Orlando Magic's Anthony Black exits another game with a fresh injury concern, raising red flags for a team already battling the injury bug and fighting for playoff positioning. We dissect the ripple effect.",
+    "category": "Sports",
+    "imageUrl": "https://images2.minutemediacdn.com/image/upload/c_crop,x_1100,y_116,w_1332,h_749/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/the_magic_insider/01kk4zdqrd95s7s52bse.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "joao-pedro-is-chelseas-star-striker-really-in-the-haaland-kane-mbappe-league",
+    "title": "Joao Pedro: Is Chelsea's Star Striker Really in the Haaland, Kane, Mbappé League?",
+    "summary": "Chelsea's top scorer, Joao Pedro, is drawing audacious comparisons to football's elite from his coach. WhyThisBuzz breaks down the stats to see if the hype is real or just a fleeting buzz.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/03f3/live/fd9d5390-196a-11f1-a1cd-a71e69f1cf89.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "queen-of-the-arenas-comeback-gladiator-athena-defies-savage-injury-back-to-full-sprint",
+    "title": "Queen of the Arena's Comeback: Gladiator Athena Defies 'Savage' Injury, Back to Full Sprint!",
+    "summary": "Gladiator Athena, Karenjeet Kaur Bains, has made a remarkable recovery just six months after sustaining a devastating knee injury during filming, inspiring fans with her incredible grit and determination.",
+    "category": "Sports",
+    "imageUrl": "https://s.yimg.com/os/en/the_bolton_news_616/c392b360c37fe45cbf56b94a4b43545b",
+    "readTime": "3 min read"
+  },
+  {
+    "id": "uclas-moment-of-truth-how-lauren-betts-ignited-a-big-ten-tournament-comeback",
+    "title": "UCLA’s Moment of Truth: How Lauren Betts Ignited a Big Ten Tournament Comeback",
+    "summary": "UCLA's powerhouse women's basketball team faced an unexpected early deficit in the Big Ten Tournament, but a critical timeout and a dominant performance from Lauren Betts quickly extinguished any upset hopes, proving their championship mettle.",
+    "category": "Sports",
+    "imageUrl": "https://ca-times.brightspotcdn.com/dims4/default/1a60d9a/2147483647/strip/true/crop/4236x2224+0+0/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F47%2F22%2Fce08a7284728a1179001b12b4259%2Fb10-washington-ucla-basketball-68261.jpg",
+    "readTime": "4 min read"
+  },
+  {
+    "id": "marathons-mixed-start-buzzworthy-launch-lingering-player-count-questions",
+    "title": "Marathon's Mixed Start: Buzzworthy Launch, Lingering Player Count Questions",
+    "summary": "Bungie's highly anticipated PvPvE shooter, Marathon, launched to 'Very Positive' Steam reviews for its stellar gunplay and atmosphere, yet surprisingly moderate concurrent player numbers spark debate about its future.",
+    "category": "Technology",
+    "imageUrl": "https://www.pcgameshardware.de/screenshots/original/2026/03/Marathon-Announce-Trailer-pc-games_artwork1.jpg",
     "readTime": "3 min read"
   },
   {
