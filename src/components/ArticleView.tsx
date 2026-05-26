@@ -9,6 +9,7 @@ import { Clock, Calendar, Share2, Link as LinkIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import Image from "next/image";
+import { proxifyImage } from "@/lib/utils";
 
 interface ArticleViewProps {
     article: ArticleMetadata & { content: React.ReactNode };
@@ -110,7 +111,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     <div className="max-w-4xl mx-auto mb-12">
                         <div className="relative flex w-full aspect-[16/9] md:aspect-[2/1] max-h-[60vh] rounded-xl overflow-hidden bg-muted/20">
                             <Image
-                                src={article.imageUrl}
+                                src={proxifyImage(article.imageUrl)}
                                 alt={article.title}
                                 fill
                                 className="object-cover"

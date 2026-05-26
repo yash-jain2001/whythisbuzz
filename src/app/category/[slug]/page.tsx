@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getArticlesByCategory, getAllCategories } from '@/lib/mdx';
+import { proxifyImage } from '@/lib/utils';
 
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -128,7 +129,7 @@ export default async function CategoryPage({ params }: PageProps) {
                                             {/* Image */}
                                             <div className="relative aspect-video overflow-hidden bg-muted">
                                                 <Image
-                                                    src={article.imageUrl}
+                                                    src={proxifyImage(article.imageUrl)}
                                                     alt={article.title}
                                                     fill
                                                     className="object-cover group-hover:scale-105 transition-transform duration-300"

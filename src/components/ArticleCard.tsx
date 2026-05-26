@@ -1,4 +1,5 @@
 import { ArticleMetadata } from "@/lib/mdx";
+import { proxifyImage } from "@/lib/utils";
 
 interface ArticleCardProps {
   article: ArticleMetadata;
@@ -12,7 +13,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         <article className="flex gap-4 py-4 border-b border-border/50 last:border-0">
           <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
             <img
-              src={article.imageUrl}
+              src={proxifyImage(article.imageUrl)}
               alt={article.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -37,7 +38,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         {/* Image */}
         <div className="relative aspect-[16/10] overflow-hidden">
           <img
-            src={article.imageUrl}
+            src={proxifyImage(article.imageUrl)}
             alt={article.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
