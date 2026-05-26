@@ -9,8 +9,8 @@ export function proxifyImage(url: string): string {
   if (!url) return "/images/placeholder.jpg";
   if (!url.startsWith("http")) return url;
   
-  // If running locally, fetch directly to avoid needing Pages functions emulation in simple dev mode
-  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+  // In local development, fetch directly since Cloudflare Pages Functions do not run in next dev
+  if (process.env.NODE_ENV !== "production") {
     return url;
   }
   
