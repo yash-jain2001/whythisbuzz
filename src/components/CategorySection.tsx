@@ -7,9 +7,13 @@ interface CategorySectionProps {
   title: string;
   description: string;
   articles: ArticleMetadata[];
+  viewAllUrl?: string;
 }
 
-export function CategorySection({ id, title, description, articles }: CategorySectionProps) {
+export function CategorySection({ id, title, description, articles, viewAllUrl }: CategorySectionProps) {
+  const displayArticles = articles.slice(0, 10);
+  const targetUrl = viewAllUrl || `/category/${id}`;
+
   return (
     <section id={id} className="py-12 border-t border-border">
       <div className="container">
@@ -18,17 +22,19 @@ export function CategorySection({ id, title, description, articles }: CategorySe
             <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground mb-2">{title}</h2>
             <p className="text-muted-foreground max-w-xl">{description}</p>
           </div>
-          <a
-            href={`#${id}-all`}
-            className="flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all"
-          >
-            <span>More {title.toLowerCase()}</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          {articles.length > 10 && (
+            <a
+              href={targetUrl}
+              className="flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all"
+            >
+              <span>More {title.toLowerCase()}</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          )}
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {articles.map((article, index) => (
+          {displayArticles.map((article, index) => (
             <div
               key={article.id}
               className="animate-fade-in-up"
