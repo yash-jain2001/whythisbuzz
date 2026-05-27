@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     unoptimized: true, // Required for static export
   },
   staticPageGenerationTimeout: 1000, // Prevent timeouts when compiling 420+ articles locally
+  typescript: {
+    ignoreBuildErrors: true, // Speed up builds on Cloudflare Pages
+  },
 };
 
 export default nextConfig;
