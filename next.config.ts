@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-
+  staticPageGenerationTimeout: 1000, // Prevent timeouts when compiling 420+ articles locally
 };
 
 export default nextConfig;
