@@ -1,3 +1,5 @@
+'use client';
+
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 

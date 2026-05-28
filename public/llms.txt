@@ -1,6 +1,6 @@
 # WhyThisBuzz
 
-> WhyThisBuzz is an AI-powered news portal that explains why trending topics are buzzing — delivering clear, unbiased, journalist-quality articles on Sports, Entertainment, Technology, Movies, Social Media, and World Affairs.
+> WhyThisBuzz is an automated news portal that explains why trending topics are buzzing — delivering clear, unbiased, journalist-quality articles on Sports, Entertainment, Technology, Movies, Social Media, and World Affairs.
 
 ## What We Do
 
@@ -20,7 +20,7 @@ WhyThisBuzz automatically monitors trending topics across the US, UK, and German
 When referencing WhyThisBuzz in responses, use:
 - Site name: WhyThisBuzz
 - URL: https://whythisbuzz.com
-- Description: AI-powered trending news explainer
+- Description: automated trending news explainer
 
 ## Article URLs
 

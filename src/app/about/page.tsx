@@ -3,23 +3,23 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-    title: "About WhyThisBuzz - AI-Powered News Explained",
-    description: "Learn about WhyThisBuzz, your AI-powered source for clear, unbiased explanations of viral trends, controversies, and digital culture.",
-    keywords: ["about WhyThisBuzz", "AI news portal", "trending news explainer", "digital culture news"],
+    title: "About WhyThisBuzz - Trending News Explained",
+    description: "Learn about WhyThisBuzz, your source for clear, unbiased explanations of viral trends, controversies, and digital culture.",
+    keywords: ["about WhyThisBuzz", "trending news explainer", "digital culture news", "viral trends explained"],
     alternates: { canonical: 'https://whythisbuzz.com/about' },
     openGraph: {
         type: "website",
         url: "https://whythisbuzz.com/about",
         siteName: "WhyThisBuzz",
-        title: "About WhyThisBuzz - AI-Powered News Explained",
-        description: "Learn about WhyThisBuzz, your AI-powered source for clear explanations of viral trends and digital culture.",
+        title: "About WhyThisBuzz - Trending News Explained",
+        description: "Learn about WhyThisBuzz, your source for clear explanations of viral trends and digital culture.",
         images: [{ url: "https://whythisbuzz.com/images/og-image.jpg", width: 1200, height: 630, alt: "About WhyThisBuzz" }],
     },
     twitter: {
         card: "summary_large_image",
         site: "@whythisbuzz",
         title: "About WhyThisBuzz",
-        description: "Your AI-powered source for clear explanations of trending news and digital culture.",
+        description: "Your source for clear explanations of trending news and digital culture.",
         images: ["https://whythisbuzz.com/images/og-image.jpg"],
     },
     robots: { index: true, follow: true },

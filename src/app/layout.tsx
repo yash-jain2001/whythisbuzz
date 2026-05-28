@@ -22,11 +22,11 @@ export const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://whythisbuzz.com'),
   title: {
-    default: "WhyThisBuzz - Trending News Explained by AI",
+    default: "WhyThisBuzz - Trending News Explained",
     template: "%s | WhyThisBuzz",
   },
-  description: "WhyThisBuzz explains why trending topics are buzzing — AI-powered news on Sports, Entertainment, Technology, and World Affairs. Fresh stories published daily.",
-  keywords: ["trending news explained", "AI news portal", "why is this trending", "digital culture", "technology news", "entertainment news", "sports news", "world affairs", "WhyThisBuzz"],
+  description: "WhyThisBuzz explains why trending topics are buzzing — clear, in-depth news on Sports, Entertainment, Technology, and World Affairs. Fresh stories published daily.",
+  keywords: ["trending news explained", "why is this trending", "digital culture", "technology news", "entertainment news", "sports news", "world affairs", "WhyThisBuzz"],
   manifest: "/manifest.json",
   authors: [{ name: "WhyThisBuzz Editorial Team" }],
   creator: "WhyThisBuzz",
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://whythisbuzz.com",
     siteName: "WhyThisBuzz",
-    title: "WhyThisBuzz - Trending News Explained by AI",
-    description: "WhyThisBuzz explains why trending topics are buzzing — AI-powered news on Sports, Entertainment, Technology, and World Affairs.",
+    title: "WhyThisBuzz - Trending News Explained",
+    description: "WhyThisBuzz explains why trending topics are buzzing — clear, in-depth news on Sports, Entertainment, Technology, and World Affairs.",
     images: [
       {
         url: "https://whythisbuzz.com/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "WhyThisBuzz - Trending News Explained by AI",
+        alt: "WhyThisBuzz - Trending News Explained",
       },
     ],
   },
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@whythisbuzz",
     creator: "@whythisbuzz",
-    title: "WhyThisBuzz - Trending News Explained by AI",
-    description: "AI-powered news portal explaining why trending topics are buzzing. Fresh stories on Sports, Entertainment, Tech & more.",
+    title: "WhyThisBuzz - Trending News Explained",
+    description: "Clear, in-depth explanations of why trending topics are buzzing. Fresh stories on Sports, Entertainment, Tech & more.",
     images: ["https://whythisbuzz.com/images/og-image.jpg"],
   },
   robots: {
