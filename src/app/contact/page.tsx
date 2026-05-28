@@ -5,6 +5,18 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
     title: "Contact Us - WhyThisBuzz",
     description: "Get in touch with the WhyThisBuzz team. We'd love to hear your feedback, questions, or story suggestions.",
+    keywords: ["contact WhyThisBuzz", "WhyThisBuzz team", "news feedback"],
+    alternates: { canonical: 'https://whythisbuzz.com/contact' },
+    openGraph: {
+        type: "website",
+        url: "https://whythisbuzz.com/contact",
+        siteName: "WhyThisBuzz",
+        title: "Contact WhyThisBuzz",
+        description: "Get in touch with the WhyThisBuzz team. Feedback, questions, or story suggestions welcome.",
+        images: [{ url: "https://whythisbuzz.com/images/og-image.jpg", width: 1200, height: 630, alt: "Contact WhyThisBuzz" }],
+    },
+    twitter: { card: "summary", site: "@whythisbuzz", title: "Contact WhyThisBuzz" },
+    robots: { index: true, follow: true },
 };
 
 export default function ContactPage() {

@@ -5,6 +5,9 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
     title: "Terms of Service - WhyThisBuzz",
     description: "Terms and conditions for using WhyThisBuzz.",
+    alternates: { canonical: 'https://whythisbuzz.com/terms' },
+    openGraph: { type: "website", url: "https://whythisbuzz.com/terms", siteName: "WhyThisBuzz", title: "Terms of Service - WhyThisBuzz" },
+    robots: { index: true, follow: false },
 };
 
 export default function TermsPage() {

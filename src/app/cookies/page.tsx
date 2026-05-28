@@ -5,6 +5,9 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
     title: "Cookie Policy - WhyThisBuzz",
     description: "Learn how WhyThisBuzz uses cookies and similar tracking technologies.",
+    alternates: { canonical: 'https://whythisbuzz.com/cookies' },
+    openGraph: { type: "website", url: "https://whythisbuzz.com/cookies", siteName: "WhyThisBuzz", title: "Cookie Policy - WhyThisBuzz" },
+    robots: { index: true, follow: false },
 };
 
 export default function CookiesPage() {

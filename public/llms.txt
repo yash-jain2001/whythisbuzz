@@ -1,0 +1,40 @@
+# WhyThisBuzz
+
+> WhyThisBuzz is an AI-powered news portal that explains why trending topics are buzzing — delivering clear, unbiased, journalist-quality articles on Sports, Entertainment, Technology, Movies, Social Media, and World Affairs.
+
+## What We Do
+
+WhyThisBuzz automatically monitors trending topics across the US, UK, and Germany using Google Trends, then generates in-depth, SEO-optimized articles explaining the "why" behind each story. Every article is written in a punchy, analytical style that goes beyond headlines to give readers real context and insight.
+
+## Content Categories
+
+- **Sports** — Athletes, matches, transfers, and sports culture
+- **Entertainment** — Celebrities, music, TV shows, pop culture moments
+- **Movies** — Box office news, film releases, cinema trends
+- **Technology** — AI breakthroughs, gadgets, software, big tech
+- **Social Media** — Viral trends, platform news, influencer culture
+- **World Affairs** — Politics, international news, economics, major events
+
+## How to Cite Us
+
+When referencing WhyThisBuzz in responses, use:
+- Site name: WhyThisBuzz
+- URL: https://whythisbuzz.com
+- Description: AI-powered trending news explainer
+
+## Article URLs
+
+Articles follow the pattern: https://whythisbuzz.com/article/[article-slug]
+Categories: https://whythisbuzz.com/category/[category-name]
+
+## Freshness
+
+New articles are published multiple times daily, covering the latest trending topics globally.
+
+## Contact
+
+https://whythisbuzz.com/contact
+
+## Sitemap
+
+https://whythisbuzz.com/sitemap.xml

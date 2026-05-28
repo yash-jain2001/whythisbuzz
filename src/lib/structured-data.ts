@@ -20,7 +20,8 @@ export function generateOrganizationSchema() {
             height: 60,
         },
         sameAs: [
-            // Add social media profiles here when available
+            'https://x.com/whythisbuzz',
+            'https://twitter.com/whythisbuzz',
         ],
         contactPoint: {
             '@type': 'ContactPoint',
@@ -100,8 +101,11 @@ export function generateArticleSchema(
             '@id': articleUrl,
         },
         articleSection: article.category,
-        keywords: article.category, // Will be enhanced with tags when available
-        wordCount: Math.ceil(content.length / 5), // Approximate word count
+        keywords: [
+            article.category,
+            ...(article.keywords ? article.keywords.split(',').map(k => k.trim()) : []),
+        ].join(', '),
+        wordCount: content.trim().split(/\s+/).length,
         timeRequired: article.readTime,
         inLanguage: 'en-US',
     };

@@ -5,6 +5,9 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
     title: "Privacy Policy - WhyThisBuzz",
     description: "Learn how WhyThisBuzz collects, uses, and protects your personal information.",
+    alternates: { canonical: 'https://whythisbuzz.com/privacy' },
+    openGraph: { type: "website", url: "https://whythisbuzz.com/privacy", siteName: "WhyThisBuzz", title: "Privacy Policy - WhyThisBuzz" },
+    robots: { index: true, follow: false },
 };
 
 export default function PrivacyPage() {

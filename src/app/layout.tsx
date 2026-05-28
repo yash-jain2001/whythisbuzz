@@ -22,11 +22,12 @@ export const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://whythisbuzz.com'),
   title: {
-    default: "WhyThisBuzz - Digital Culture Explained",
+    default: "WhyThisBuzz - Trending News Explained by AI",
     template: "%s | WhyThisBuzz",
   },
-  description: "Clear explanations of trending topics in technology, movies, entertainment, and digital culture.",
-  keywords: ["trending news", "digital culture", "technology", "entertainment", "movies", "social media", "explainer"],
+  description: "WhyThisBuzz explains why trending topics are buzzing — AI-powered news on Sports, Entertainment, Technology, and World Affairs. Fresh stories published daily.",
+  keywords: ["trending news explained", "AI news portal", "why is this trending", "digital culture", "technology news", "entertainment news", "sports news", "world affairs", "WhyThisBuzz"],
+  manifest: "/manifest.json",
   authors: [{ name: "WhyThisBuzz Editorial Team" }],
   creator: "WhyThisBuzz",
   publisher: "WhyThisBuzz",
@@ -38,14 +39,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://whythisbuzz.com",
     siteName: "WhyThisBuzz",
-    title: "WhyThisBuzz - Digital Culture Explained",
-    description: "Clear explanations of trending topics in technology, movies, entertainment, and digital culture.",
+    title: "WhyThisBuzz - Trending News Explained by AI",
+    description: "WhyThisBuzz explains why trending topics are buzzing — AI-powered news on Sports, Entertainment, Technology, and World Affairs.",
     images: [
       {
         url: "https://whythisbuzz.com/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "WhyThisBuzz - Digital Culture Explained",
+        alt: "WhyThisBuzz - Trending News Explained by AI",
       },
     ],
   },
@@ -53,8 +54,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@whythisbuzz",
     creator: "@whythisbuzz",
-    title: "WhyThisBuzz - Digital Culture Explained",
-    description: "Clear explanations of trending topics in technology, movies, entertainment, and digital culture.",
+    title: "WhyThisBuzz - Trending News Explained by AI",
+    description: "AI-powered news portal explaining why trending topics are buzzing. Fresh stories on Sports, Entertainment, Tech & more.",
     images: ["https://whythisbuzz.com/images/og-image.jpg"],
   },
   robots: {
@@ -92,6 +93,8 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        {/* LLM Discovery */}
+        <link rel="llms" href="https://whythisbuzz.com/llms.txt" />
 
         {/* JSON-LD Structured Data for Organization and Website */}
         <script
