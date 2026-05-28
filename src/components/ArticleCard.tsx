@@ -1,6 +1,19 @@
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 
+const CATEGORY_FALLBACKS: Record<string, string> = {
+  "Sports": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200",
+  "Entertainment": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200",
+  "Technology": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200",
+  "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
+  "Movies": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200",
+  "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200",
+};
+
+function getFallback(category: string) {
+  return CATEGORY_FALLBACKS[category] || CATEGORY_FALLBACKS["World Affairs"];
+}
+
 interface ArticleCardProps {
   article: ArticleMetadata;
   variant?: "default" | "compact";
@@ -16,6 +29,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
               src={proxifyImage(article.imageUrl)}
               alt={article.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => { (e.target as HTMLImageElement).src = getFallback(article.category); }}
             />
           </div>
           <div className="flex flex-col gap-1 min-w-0">
@@ -41,6 +55,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             src={proxifyImage(article.imageUrl)}
             alt={article.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onError={(e) => { (e.target as HTMLImageElement).src = getFallback(article.category); }}
           />
           <div className="absolute top-4 left-4">
             <span className="category-tag">{article.category}</span>

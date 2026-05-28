@@ -59,16 +59,30 @@ export function getArticleBySlug(slug: string): Article | undefined {
         const { data, content } = matter(fileContents);
         const realSlug = slug.replace(/\.mdx$/, '');
 
-        // Provide safe fallbacks so Next.js build never crashes on malformed AI output
-        const safeDate = data.date && !isNaN(new Date(data.date).getTime()) 
-            ? data.date 
-            : new Date().toISOString();
+        if (!data.title || !data.category) return undefined;
+
+        const safeDate = data.date && !isNaN(new Date(data.date).getTime())
+            ? data.date
+            : new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        const fallbackImages: Record<string, string> = {
+            "Sports": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200",
+            "Entertainment": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200",
+            "Technology": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200",
+            "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
+            "Movies": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200",
+            "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200",
+        };
+        const safeImageUrl = data.imageUrl && !data.imageUrl.includes('placeholder')
+            ? data.imageUrl
+            : fallbackImages[data.category] || fallbackImages["World Affairs"];
 
         return {
             metadata: {
                 ...data,
                 id: realSlug,
                 date: safeDate,
+                imageUrl: safeImageUrl,
             } as ArticleMetadata,
             content,
         };
