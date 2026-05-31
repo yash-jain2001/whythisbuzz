@@ -130,6 +130,31 @@ export function generateBreadcrumbSchema(
 }
 
 /**
+ * Generate SiteNavigationElement schema to hint Google for sitelinks
+ */
+export function generateSiteNavigationSchema() {
+    const categories = [
+        { name: 'Sports', description: 'Analysis, highlights, and deep dives into the world of sports.', slug: 'sports' },
+        { name: 'Movies & Entertainment', description: 'Box office trends, industry drama, and everything cinema explained.', slug: 'movies' },
+        { name: 'Technology', description: 'The latest in AI, software, gadgets, and developer tools.', slug: 'technology' },
+        { name: 'World Affairs', description: 'Global events, politics, and international relations explained clearly.', slug: 'world-affairs' },
+        { name: 'Social Media', description: 'Platform updates, viral moments, and digital culture decoded.', slug: 'social-media' },
+    ];
+
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: categories.map((cat, index) => ({
+            '@type': 'SiteNavigationElement',
+            position: index + 1,
+            name: cat.name,
+            description: cat.description,
+            url: `${SITE_URL}/category/${cat.slug}`,
+        })),
+    };
+}
+
+/**
  * Generate CollectionPage schema for category pages
  */
 export function generateCollectionPageSchema(

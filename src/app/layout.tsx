@@ -80,10 +80,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // Import structured data utilities
-  const { generateOrganizationSchema, generateWebsiteSchema, generateJsonLd } = await import('@/lib/structured-data');
+  const { generateOrganizationSchema, generateWebsiteSchema, generateSiteNavigationSchema, generateJsonLd } = await import('@/lib/structured-data');
 
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebsiteSchema();
+  const navigationSchema = generateSiteNavigationSchema();
 
   return (
     <html lang="en">
@@ -95,7 +96,7 @@ export default async function RootLayout({
         {/* LLM Discovery */}
         <link rel="llms" href="https://whythisbuzz.com/llms.txt" />
 
-        {/* JSON-LD Structured Data for Organization and Website */}
+        {/* JSON-LD Structured Data for Organization, Website and Navigation */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: generateJsonLd(organizationSchema) }}
@@ -103,6 +104,10 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: generateJsonLd(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateJsonLd(navigationSchema) }}
         />
       </head>
       <body
