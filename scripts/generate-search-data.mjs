@@ -96,3 +96,14 @@ searchData.sort((a, b) => {
 if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
 fs.writeFileSync(outputPath, JSON.stringify(searchData, null, 2));
 console.log(`✅ search-data.json updated: ${searchData.length} articles written to ${outputPath}`);
+
+// Hack to fix Next.js static cache on Cloudflare Pages
+// By "touching" mdx.ts, we trick Webpack into thinking the file changed.
+// Next.js will invalidate the cache for any page importing it (like the Home page)
+// while keeping the compiled cache for all the 900+ older articles!
+const mdxPath = path.join(__dirname, '..', 'src', 'lib', 'mdx.ts');
+if (fs.existsSync(mdxPath)) {
+  const now = new Date();
+  fs.utimesSync(mdxPath, now, now);
+  console.log('🔄 Touched src/lib/mdx.ts to force Next.js cache invalidation');
+}
