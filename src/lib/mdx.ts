@@ -30,7 +30,7 @@ export interface Article {
     content: string;
 }
 
-function useAppwrite(): boolean {
+function isAppwriteEnabled(): boolean {
     return Boolean(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID);
 }
 
@@ -53,7 +53,7 @@ function getLocalMdxFiles(dir: string): string[] {
 }
 
 export async function getArticleSlugs(): Promise<string[]> {
-    if (useAppwrite()) {
+    if (isAppwriteEnabled()) {
         const slugs = await getAppwriteArticleSlugs();
         if (slugs.length > 0) return slugs;
     }
@@ -63,7 +63,7 @@ export async function getArticleSlugs(): Promise<string[]> {
 
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
     const cleanSlug = slug.replace(/\.mdx$/, '');
-    if (useAppwrite()) {
+    if (isAppwriteEnabled()) {
         const appwriteArticle = await getAppwriteArticleBySlug(cleanSlug);
         if (appwriteArticle) return appwriteArticle;
     }
@@ -115,18 +115,23 @@ export async function getArticleBySlug(slug: string): Promise<Article | undefine
 }
 
 export async function getAllArticles(): Promise<Article[]> {
-    if (useAppwrite()) {
-        const appwriteArticles = await getAppwriteArticles();
-        if (appwriteArticles.length > 0) return appwriteArticles;
+    let articles: Article[] = [];
+    if (isAppwriteEnabled()) {
+        articles = await getAppwriteArticles();
     }
 
-    const slugs = await getArticleSlugs();
-    const articles = (
-        await Promise.all(slugs.map((slug) => getArticleBySlug(slug)))
-    )
-        .filter((article): article is Article => article !== undefined)
-        .sort((a, b) => (new Date(a.metadata.date) > new Date(b.metadata.date) ? -1 : 1));
-    return articles;
+    if (articles.length === 0) {
+        const slugs = await getArticleSlugs();
+        articles = (
+            await Promise.all(slugs.map((slug) => getArticleBySlug(slug)))
+        ).filter((article): article is Article => article !== undefined);
+    }
+
+    return articles.sort((a, b) => {
+        const timeA = new Date(a.metadata.date).getTime() || 0;
+        const timeB = new Date(b.metadata.date).getTime() || 0;
+        return timeB - timeA;
+    });
 }
 
 export async function getRelatedArticles(currentId: string, limit: number = 3): Promise<ArticleMetadata[]> {
@@ -138,7 +143,7 @@ export async function getRelatedArticles(currentId: string, limit: number = 3): 
 }
 
 export async function getArticlesByCategory(category: string): Promise<ArticleMetadata[]> {
-    if (useAppwrite()) {
+    if (isAppwriteEnabled()) {
         const appwriteCategoryArticles = await getAppwriteArticlesByCategory(category);
         if (appwriteCategoryArticles.length > 0) return appwriteCategoryArticles;
     }

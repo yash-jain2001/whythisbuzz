@@ -73,7 +73,13 @@ export async function getAppwriteArticles(): Promise<Article[]> {
             offset += limit;
         }
 
-        return allDocs.map(docToArticle);
+        const articles = allDocs.map(docToArticle);
+        articles.sort((a, b) => {
+            const timeA = new Date(a.metadata.date).getTime() || 0;
+            const timeB = new Date(b.metadata.date).getTime() || 0;
+            return timeB - timeA;
+        });
+        return articles;
     } catch (e) {
         console.error('Appwrite fetch error:', e);
         return [];
@@ -109,14 +115,19 @@ export async function getAppwriteArticlesByCategory(category: string): Promise<A
                 Query.equal('category', category),
                 Query.limit(limit),
                 Query.offset(offset),
-                Query.orderDesc('date'),
             ]);
             allDocs = allDocs.concat(response.documents);
             if (response.documents.length < limit) break;
             offset += limit;
         }
 
-        return allDocs.map(docToArticle).map(a => a.metadata);
+        const articles = allDocs.map(docToArticle).map(a => a.metadata);
+        articles.sort((a, b) => {
+            const timeA = new Date(a.date).getTime() || 0;
+            const timeB = new Date(b.date).getTime() || 0;
+            return timeB - timeA;
+        });
+        return articles;
     } catch (e) {
         console.error(`Appwrite fetch error for category ${category}:`, e);
         return [];
