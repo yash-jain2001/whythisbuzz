@@ -6,6 +6,7 @@ import { proxifyImage } from "@/lib/utils";
 function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
   const target = e.currentTarget;
   target.onerror = null; // Prevent infinite error loops
+  target.alt = "";       // Clear browser's default alt text overlay
   target.src = "/images/placeholder.svg";
 }
 
