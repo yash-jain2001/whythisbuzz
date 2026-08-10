@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { ArticleGrid } from "@/components/ArticleGrid";
 import { CategorySection } from "@/components/CategorySection";
-import { getArticlesByCategory, getAllArticles } from "@/lib/mdx";
+import { getAllArticles } from "@/lib/mdx";
 import { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
@@ -21,23 +21,21 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const allArticles = await getAllArticles();
+  const allMetadata = allArticles.map(a => a.metadata);
 
-  // Show first 12 articles in the main grid (equal weight, no hero)
-  const gridArticles = allArticles
-    .slice(0, 12)
-    .map(a => a.metadata);
+  // Show first 12 articles in the main grid
+  const gridArticles = allMetadata.slice(0, 12);
 
-  const moviesArticles = await getArticlesByCategory("Movies");
-  const entertainmentArticles = await getArticlesByCategory("Entertainment");
-  const socialMediaArticles = await getArticlesByCategory("Social Media");
-  const techArticles = await getArticlesByCategory("Technology");
-  const sportsArticles = await getArticlesByCategory("Sports");
-  const worldAffairsArticles = await getArticlesByCategory("World Affairs");
-
-  // Combine Movies and Entertainment
-  const moviesAndEntertainmentArticles = [...moviesArticles, ...entertainmentArticles].sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
+  // Filter category sections directly from in-memory articles
+  const worldAffairsArticles = allMetadata.filter(a => a.category === 'World Affairs');
+  const sportsArticles = allMetadata.filter(a => a.category === 'Sports');
+  const moviesAndEntertainmentArticles = allMetadata.filter(a =>
+    a.category === 'Movies' || a.category === 'Entertainment'
   );
+  const socialMediaArticles = allMetadata.filter(a =>
+    a.category === 'Social Media' || a.category === 'Social-Media'
+  );
+  const techArticles = allMetadata.filter(a => a.category === 'Technology');
 
   return (
     <div className="min-h-screen flex flex-col">

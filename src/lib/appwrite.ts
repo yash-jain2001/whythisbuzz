@@ -54,8 +54,17 @@ function docToArticle(doc: AppwriteArticleDoc): Article {
     };
 }
 
+let cachedArticles: Article[] | null = null;
+let cacheTimestamp = 0;
+const CACHE_TTL = 60 * 1000; // 1 minute cache
+
 export async function getAppwriteArticles(): Promise<Article[]> {
     if (!projectId) return [];
+    const now = Date.now();
+    if (cachedArticles && (now - cacheTimestamp < CACHE_TTL)) {
+        return cachedArticles;
+    }
+
     try {
         const databases = getAppwriteDatabases();
         let allDocs: AppwriteArticleDoc[] = [];
@@ -66,7 +75,6 @@ export async function getAppwriteArticles(): Promise<Article[]> {
             const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
                 Query.limit(limit),
                 Query.offset(offset),
-                Query.orderDesc('date'),
             ]);
             allDocs = allDocs.concat(response.documents);
             if (response.documents.length < limit) break;
@@ -79,10 +87,13 @@ export async function getAppwriteArticles(): Promise<Article[]> {
             const timeB = new Date(b.metadata.date).getTime() || 0;
             return timeB - timeA;
         });
+
+        cachedArticles = articles;
+        cacheTimestamp = now;
         return articles;
     } catch (e) {
         console.error('Appwrite fetch error:', e);
-        return [];
+        return cachedArticles || [];
     }
 }
 
