@@ -35,7 +35,13 @@ function getYearWeekString(): string {
   return `${date.getFullYear()}-W${weekNumber.toString().padStart(2, '0')}`;
 }
 
-// Format date like "Jan 16, 2026"
+function parseToISODate(dateStr?: string): string {
+  if (!dateStr) return new Date().toISOString().split('T')[0];
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return new Date().toISOString().split('T')[0];
+  return d.toISOString().split('T')[0];
+}
+
 function getFormattedDate(): string {
   return new Date().toLocaleDateString('en-US', {
     month: 'short',
@@ -257,7 +263,7 @@ ${articleText}
               content: bodyContent,
               category,
               author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
-              date: dateMatch ? dateMatch[1] : getFormattedDate(),
+              date: parseToISODate(dateMatch ? dateMatch[1] : undefined),
               read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
               image_url: imageUrlMatch ? imageUrlMatch[1] : articleImage,
               seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,

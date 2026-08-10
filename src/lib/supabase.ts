@@ -29,13 +29,24 @@ export interface SupabaseArticleDoc {
     created_at?: string;
 }
 
+function formatDateDisplay(dateStr: string): string {
+    if (!dateStr) return '';
+    // If it's ISO format like "2026-08-10", format to "Aug 10, 2026"
+    if (/^\d{4}-\d{2}-\d{2}/.test(dateStr)) {
+        const [year, month, day] = dateStr.split('T')[0].split('-');
+        const dateObj = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+        return dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    return dateStr;
+}
+
 function docToArticle(doc: SupabaseArticleDoc): Article {
     return {
         metadata: {
             id: doc.slug,
             title: doc.title,
             description: doc.summary || doc.meta_description || '',
-            date: doc.date,
+            date: formatDateDisplay(doc.date),
             author: doc.author || 'WhyThisBuzz Desk',
             category: doc.category,
             imageUrl: doc.image_url || '',
@@ -64,9 +75,11 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
     }
 
     try {
+        // Query Supabase directly using PostgreSQL DATE ordering
         const { data, error } = await supabase
             .from('articles')
-            .select('*');
+            .select('*')
+            .order('date', { ascending: false });
 
         if (error || !data) {
             console.warn('⚠️ Supabase fetch warning:', error?.message);
@@ -74,13 +87,6 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
         }
 
         const articles = data.map(docToArticle);
-        // Sort by actual JS Date timestamp (newest first)
-        articles.sort((a, b) => {
-            const timeA = new Date(a.metadata.date).getTime() || 0;
-            const timeB = new Date(b.metadata.date).getTime() || 0;
-            return timeB - timeA;
-        });
-
         cachedArticles = articles;
         cacheTimestamp = now;
         return articles.slice(0, limit);
