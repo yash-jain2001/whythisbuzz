@@ -6,6 +6,7 @@
     "dev": "next dev -p 3005",
     "prebuild": "node scripts/generate-search-data.mjs",
     "build": "next build",
+    "prune:appwrite": "node scripts/prune-appwrite.mjs",
     "start": "next start",
     "lint": "eslint"
   },
