@@ -19,6 +19,7 @@ dotenv.config({ path: envPath });
 const contentDir = path.join(__dirname, '..', 'src', 'content');
 const publicDir = path.join(__dirname, '..', 'public');
 const outputPath = path.join(publicDir, 'search-data.json');
+const appwriteMarkerPath = path.join(__dirname, '..', '.appwrite-disabled');
 
 const endpoint = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1';
 const projectId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID;
@@ -98,6 +99,8 @@ async function generate() {
         offset += limit;
       }
       console.log(`✅ Fetched ${searchData.length} articles from Appwrite.`);
+      // Appwrite is healthy — remove any stale disabled marker
+      try { fs.unlinkSync(appwriteMarkerPath); } catch {}
 
       // Auto-prune old documents in background if Appwrite has over 50 articles
       if (searchData.length > 50) {
@@ -115,6 +118,11 @@ async function generate() {
       }
     } catch (err) {
       console.error('⚠️ Failed to fetch from Appwrite, falling back to local files:', err.message);
+      // Write marker file so all Next.js workers skip Appwrite with 0 delay
+      try {
+        fs.writeFileSync(appwriteMarkerPath, `disabled at ${new Date().toISOString()} — ${err.message}\n`);
+        console.log('📝 Wrote .appwrite-disabled marker — Next.js workers will skip all Appwrite calls');
+      } catch {}
     }
   }
 
