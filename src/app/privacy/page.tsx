@@ -77,6 +77,11 @@ export default function PrivacyPage() {
                         <section className="mt-8">
                             <h2 className="text-2xl font-serif font-bold mb-4">Third-Party Services</h2>
 
+                            <h3 className="text-xl font-serif font-semibold mt-6 mb-3">Google AdSense</h3>
+                            <p>
+                                We use Google AdSense to display advertisements on our website. Google AdSense may use cookies, web beacons, and other tracking technologies to serve ads based on your visits to our website and other websites across the internet. You can opt out of personalized advertising by visiting Google&apos;s Ads Settings page.
+                            </p>
+
                             <h3 className="text-xl font-serif font-semibold mt-6 mb-3">Analytics</h3>
                             <p>
                                 We may use analytics services (like Google Analytics) to understand how visitors interact with our site. These services may collect information about your device and browsing behavior.

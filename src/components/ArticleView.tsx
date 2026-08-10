@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import Image from "next/image";
 import { proxifyImage } from "@/lib/utils";
+import { AdBanner } from "@/components/AdBanner";
 
 interface ArticleViewProps {
     article: ArticleMetadata & { content: React.ReactNode };
@@ -185,6 +186,9 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                         <div className="article-content prose prose-lg dark:prose-invert max-w-none">
                             {article.content}
                         </div>
+
+                        {/* AdSense Banner */}
+                        <AdBanner className="my-8" />
                     </div>
                 </article>
 
