@@ -49,41 +49,49 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
     const response = await fetch(url);
     const html = await response.text();
     const $ = cheerio.load(html);
-    
-    // Extract og:image or twitter:image
-    const imageUrl = $('meta[property="og:image"]').attr('content') || 
-                   $('meta[name="twitter:image"]').attr('content') || 
-                   '/images/placeholder.jpg';
 
-    // Attempt to extract main article text
+    // Remove unwanted elements
+    $('script, style, nav, footer, iframe, header, noscript, .ad, .advertisement').remove();
+
+    // Extract main text (paragraphs)
     let text = '';
-    $('p').each((_, el) => {
-      const paragraph = $(el).text().trim();
-      if (paragraph.length > 50) {
-        text += paragraph + '\n\n';
+    $('p').each((_, element) => {
+      const pText = $(element).text().trim();
+      if (pText.length > 50) { // Filter out short nav/footer links
+        text += pText + '\n\n';
       }
     });
 
-    return { text, imageUrl };
+    // Extract Open Graph image if available
+    let imageUrl = $('meta[property="og:image"]').attr('content') || 
+                    $('meta[name="twitter:image"]').attr('content') || '';
+
+    // Fallback to placeholder if relative URL or missing
+    if (imageUrl && !imageUrl.startsWith('http')) {
+      imageUrl = '';
+    }
+
+    return { text: text.trim(), imageUrl };
   } catch (error) {
     console.error(`Error scraping ${url}:`, error);
-    return { text: '', imageUrl: '/images/placeholder.jpg' };
+    return { text: '', imageUrl: '' };
   }
 }
 
 async function main() {
   const regions = ['US', 'GB', 'DE'];
   const historyPath = path.join(process.cwd(), 'scripts', 'history.json');
-  
-  // Load history to avoid duplicates
   let history: string[] = [];
+
   if (fs.existsSync(historyPath)) {
     try {
       history = JSON.parse(fs.readFileSync(historyPath, 'utf-8'));
-    } catch (_) {
+    } catch {
       console.warn("Could not parse history.json, starting fresh.");
     }
   }
+
+  const TARGET_PER_REGION = 2;
 
   for (const region of regions) {
     console.log(`\n--- Processing Region: ${region} ---`);
@@ -100,14 +108,13 @@ async function main() {
       continue;
     }
 
-    let selectedTrend = null;
-    let articleText = '';
-    let articleImage = '/images/placeholder.jpg';
+    let regionProcessed = 0;
 
     for (const item of feed.items) {
+      if (regionProcessed >= TARGET_PER_REGION) break;
+
       const title = item.title || 'Unknown';
       
-      // Basic deduplication based on trend title
       const slugifiedTitle = slugify(title, { lower: true, strict: true });
       if (history.includes(slugifiedTitle)) {
         console.log(`Skipping already covered trend: ${title}`);
@@ -117,30 +124,23 @@ async function main() {
       if (!item.news_item || item.news_item.length === 0) continue;
       
       const newsLink = item.news_item[0]['ht:news_item_url'][0];
-      console.log(`Analyzing trend: ${title} - fetching ${newsLink}`);
+      console.log(`Analyzing trend (${regionProcessed + 1}/${TARGET_PER_REGION} for ${region}): ${title} - fetching ${newsLink}`);
       
       const { text, imageUrl } = await scrapeArticleData(newsLink);
-      if (text.length > 500) { // Require at least some decent length text
-        selectedTrend = title;
-        articleText = text;
-        articleImage = imageUrl;
-        history.push(slugifiedTitle); // Mark as processed
-        break;
-      } else {
+      if (text.length <= 500) {
         console.log(`Skipping link (text too short): ${newsLink}`);
+        continue;
       }
-    }
 
-    if (!selectedTrend || !articleText) {
-      console.log(`Could not find a valid article to scrape for ${region}.`);
-      continue;
-    }
+      const selectedTrend = title;
+      const articleText = text;
+      const articleImage = imageUrl || '/images/placeholder.jpg';
+      history.push(slugifiedTitle);
 
-    console.log(`Selected trend for ${region}: ${selectedTrend}`);
-    console.log(`Extracted image: ${articleImage}`);
-    console.log(`Generating article with Gemini...`);
+      console.log(`Selected trend for ${region}: ${selectedTrend}`);
+      console.log(`Generating article with Gemini...`);
 
-    const prompt = `
+      const prompt = `
 You are a top-tier journalist and Chief Editor for a modern digital news site called "WhyThisBuzz".
 Your writing style is engaging, punchy, clear, and analytical. You explain not just what happened, but *why* it matters.
 
@@ -184,102 +184,100 @@ Raw Scraped Text:
 ${articleText}
 `;
 
-    try {
-      const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-      const result = await model.generateContent(prompt);
-      let output = result.response.text();
-      
-      // Clean up potential markdown code block wrappers
-      if (output.startsWith('\`\`\`mdx')) output = output.replace(/^\`\`\`mdx\n/, '');
-      else if (output.startsWith('\`\`\`markdown')) output = output.replace(/^\`\`\`markdown\n/, '');
-      else if (output.startsWith('\`\`\`')) output = output.replace(/^\`\`\`\n/, '');
-      if (output.endsWith('\`\`\`')) output = output.replace(/\n\`\`\`$/, '');
+      try {
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+        const result = await model.generateContent(prompt);
+        let output = result.response.text();
+        
+        if (output.startsWith('```mdx')) output = output.replace(/^```mdx\n/, '');
+        else if (output.startsWith('```markdown')) output = output.replace(/^```markdown\n/, '');
+        else if (output.startsWith('```')) output = output.replace(/^```\n/, '');
+        if (output.endsWith('```')) output = output.replace(/\n```$/, '');
 
-      // Extract frontmatter to verify and get the category and title
-      const frontmatterMatch = output.match(/---\n([\s\S]*?)\n---/);
-      if (!frontmatterMatch) {
-        console.error(`Could not parse frontmatter for ${region} article.`);
-        continue;
-      }
-
-      const frontmatter = frontmatterMatch[1];
-      let category = "World Affairs";
-      const titleMatch = frontmatter.match(/title:\s*"(.*?)"/);
-      const categoryMatch = frontmatter.match(/category:\s*"(.*?)"/);
-      
-      if (categoryMatch) category = categoryMatch[1];
-      const title = titleMatch ? titleMatch[1] : selectedTrend;
-
-      // Build the deep path like: src/content/Sports/2026/03-March/2026-W10/slug.mdx
-      const date = new Date();
-      const year = date.getFullYear().toString();
-      const monthFormatter = new Intl.DateTimeFormat('en-US', { month: 'long' });
-      const monthName = monthFormatter.format(date);
-      const monthNum = (date.getMonth() + 1).toString().padStart(2, '0');
-      const monthFolder = `${monthNum}-${monthName}`;
-      const yearWeek = getYearWeekString();
-      
-      const slug = slugify(title, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
-      
-      // Ensure "category" is one of the directories, fallback to "World Affairs" if invalid
-      const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media"];
-      if (!validCategories.includes(category)) {
-        category = "World Affairs";
-      }
-
-      const targetDir = path.join(process.cwd(), 'src', 'content', category, year, monthFolder, yearWeek);
-      if (!fs.existsSync(targetDir)) {
-        fs.mkdirSync(targetDir, { recursive: true });
-      }
-
-      const filePath = path.join(targetDir, `${slug}.mdx`);
-      fs.writeFileSync(filePath, output.trim());
-      console.log(`Successfully saved local MDX at: ${filePath}`);
-
-      // Push straight to Supabase if configured
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-      if (supabaseUrl && supabaseKey) {
-        try {
-          const { createClient } = await import('@supabase/supabase-js');
-          const supabase = createClient(supabaseUrl, supabaseKey);
-          
-          const bodyContent = output.slice(frontmatterMatch[0].length).trim();
-          const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
-          const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
-          const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
-          const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
-          const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
-          const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
-          const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
-          const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
-
-          const { error: sbError } = await supabase.from('articles').upsert({
-            slug,
-            title,
-            summary: summaryMatch ? summaryMatch[1] : '',
-            content: bodyContent,
-            category,
-            author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
-            date: dateMatch ? dateMatch[1] : getFormattedDate(),
-            read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
-            image_url: imageUrlMatch ? imageUrlMatch[1] : articleImage,
-            seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
-            meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
-            keywords: keywordsMatch ? keywordsMatch[1] : undefined,
-          }, { onConflict: 'slug' });
-
-          if (sbError) {
-            console.error(`⚠️ Supabase upload error for ${slug}:`, sbError.message);
-          } else {
-            console.log(`🚀 Successfully published ${slug} to Supabase Database!`);
-          }
-        } catch (sbErr) {
-          console.error(`⚠️ Failed to push to Supabase:`, sbErr);
+        const frontmatterMatch = output.match(/---\n([\s\S]*?)\n---/);
+        if (!frontmatterMatch) {
+          console.error(`Could not parse frontmatter for ${region} article.`);
+          continue;
         }
+
+        const frontmatter = frontmatterMatch[1];
+        let category = "World Affairs";
+        const titleMatch = frontmatter.match(/title:\s*"(.*?)"/);
+        const categoryMatch = frontmatter.match(/category:\s*"(.*?)"/);
+        
+        if (categoryMatch) category = categoryMatch[1];
+        const articleTitle = titleMatch ? titleMatch[1] : selectedTrend;
+
+        const date = new Date();
+        const year = date.getFullYear().toString();
+        const monthFormatter = new Intl.DateTimeFormat('en-US', { month: 'long' });
+        const monthName = monthFormatter.format(date);
+        const monthNum = (date.getMonth() + 1).toString().padStart(2, '0');
+        const monthFolder = `${monthNum}-${monthName}`;
+        const yearWeek = getYearWeekString();
+        
+        const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
+        
+        const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media"];
+        if (!validCategories.includes(category)) {
+          category = "World Affairs";
+        }
+
+        const targetDir = path.join(process.cwd(), 'src', 'content', category, year, monthFolder, yearWeek);
+        if (!fs.existsSync(targetDir)) {
+          fs.mkdirSync(targetDir, { recursive: true });
+        }
+
+        const filePath = path.join(targetDir, `${slug}.mdx`);
+        fs.writeFileSync(filePath, output.trim());
+        console.log(`Successfully saved local MDX at: ${filePath}`);
+
+        // Push straight to Supabase if configured
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        if (supabaseUrl && supabaseKey) {
+          try {
+            const { createClient } = await import('@supabase/supabase-js');
+            const supabase = createClient(supabaseUrl, supabaseKey);
+            
+            const bodyContent = output.slice(frontmatterMatch[0].length).trim();
+            const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
+            const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
+            const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
+            const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
+            const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
+            const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
+            const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
+            const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
+
+            const { error: sbError } = await supabase.from('articles').upsert({
+              slug,
+              title: articleTitle,
+              summary: summaryMatch ? summaryMatch[1] : '',
+              content: bodyContent,
+              category,
+              author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
+              date: dateMatch ? dateMatch[1] : getFormattedDate(),
+              read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
+              image_url: imageUrlMatch ? imageUrlMatch[1] : articleImage,
+              seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
+              meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
+              keywords: keywordsMatch ? keywordsMatch[1] : undefined,
+            }, { onConflict: 'slug' });
+
+            if (sbError) {
+              console.error(`⚠️ Supabase upload error for ${slug}:`, sbError.message);
+            } else {
+              console.log(`🚀 Successfully published ${slug} to Supabase Database!`);
+            }
+          } catch (sbErr) {
+            console.error(`⚠️ Failed to push to Supabase:`, sbErr);
+          }
+        }
+        regionProcessed++;
+      } catch (error) {
+        console.error(`Failed to generate or save article for ${region}:`, error);
       }
-    } catch (error) {
-      console.error(`Failed to generate or save article for ${region}:`, error);
     }
   }
 
