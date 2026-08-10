@@ -1,30 +1,18 @@
 /**
  * generate-search-data.mjs
  * 
- * Standalone script to regenerate public/search-data.json.
- * Fetches from Appwrite if credentials are present, or falls back to local MDX files.
+ * Standalone script to regenerate public/search-data.json from local MDX files.
  * Run via: node scripts/generate-search-data.mjs
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { Client, Databases, Query } from 'node-appwrite';
-import dotenv from 'dotenv';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const envPath = path.join(__dirname, '..', '.env');
-dotenv.config({ path: envPath });
-
 const contentDir = path.join(__dirname, '..', 'src', 'content');
 const publicDir = path.join(__dirname, '..', 'public');
 const outputPath = path.join(publicDir, 'search-data.json');
-const appwriteMarkerPath = path.join(__dirname, '..', '.appwrite-disabled');
-
-const endpoint = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1';
-const projectId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID;
-const databaseId = process.env.APPWRITE_DATABASE_ID || 'whythisbuzz_db';
-const collectionId = process.env.APPWRITE_COLLECTION_ID || 'articles';
 
 function parseFrontmatter(fileContent) {
   const match = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -70,88 +58,30 @@ const fallbackImages = {
 async function generate() {
   const searchData = [];
 
-  if (projectId) {
-    console.log('🌐 Fetching articles from Appwrite Cloud for search-data.json...');
-    try {
-      const client = new Client().setEndpoint(endpoint).setProject(projectId);
-      const databases = new Databases(client);
-      let offset = 0;
-      const limit = 100;
-      while (true) {
-        const res = await databases.listDocuments(databaseId, collectionId, [
-          Query.limit(limit),
-          Query.offset(offset),
-          Query.orderDesc('date'),
-        ]);
+  console.log('🔍 Scanning local content directory for search-data.json...');
+  const files = getMdxFiles(contentDir);
+  console.log(`📄 Found ${files.length} local MDX files`);
 
-        for (const doc of res.documents) {
-          searchData.push({
-            id: doc.slug,
-            title: doc.title,
-            summary: doc.summary || doc.metaDescription || '',
-            category: doc.category,
-            imageUrl: doc.imageUrl,
-            readTime: doc.readTime || '3 min read',
-            date: doc.date || '',
-          });
-        }
-        if (res.documents.length < limit) break;
-        offset += limit;
-      }
-      console.log(`✅ Fetched ${searchData.length} articles from Appwrite.`);
-      // Appwrite is healthy — remove any stale disabled marker
-      try { fs.unlinkSync(appwriteMarkerPath); } catch {}
+  for (const filePath of files) {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const fm = parseFrontmatter(content);
+    if (!fm || !fm.title || !fm.category) continue;
 
-      // Auto-prune old documents in background if Appwrite has over 50 articles
-      if (searchData.length > 50) {
-        console.log('🧹 Auto-pruning old articles in Appwrite Database...');
-        try {
-          const allDocs = await databases.listDocuments(databaseId, collectionId, [Query.limit(100)]);
-          const docs = allDocs.documents;
-          docs.sort((a, b) => (new Date(b.date).getTime() || 0) - (new Date(a.date).getTime() || 0));
-          const toDelete = docs.slice(50);
-          for (const d of toDelete) {
-            databases.deleteDocument(databaseId, collectionId, d.$id).catch(() => {});
-          }
-          console.log(`✅ Background pruned ${toDelete.length} old articles from Appwrite.`);
-        } catch (_) {}
-      }
-    } catch (err) {
-      console.error('⚠️ Failed to fetch from Appwrite, falling back to local files:', err.message);
-      // Write marker file so all Next.js workers skip Appwrite with 0 delay
-      try {
-        fs.writeFileSync(appwriteMarkerPath, `disabled at ${new Date().toISOString()} — ${err.message}\n`);
-        console.log('📝 Wrote .appwrite-disabled marker — Next.js workers will skip all Appwrite calls');
-      } catch {}
-    }
-  }
+    const slug = path.basename(filePath, '.mdx');
+    const imageUrl =
+      fm.imageUrl && !fm.imageUrl.includes('placeholder')
+        ? fm.imageUrl
+        : fallbackImages[fm.category] || fallbackImages['World Affairs'];
 
-  if (searchData.length === 0) {
-    console.log('🔍 Scanning local content directory...');
-    const files = getMdxFiles(contentDir);
-    console.log(`📄 Found ${files.length} local MDX files`);
-
-    for (const filePath of files) {
-      const content = fs.readFileSync(filePath, 'utf-8');
-      const fm = parseFrontmatter(content);
-      if (!fm || !fm.title || !fm.category) continue;
-
-      const slug = path.basename(filePath, '.mdx');
-      const imageUrl =
-        fm.imageUrl && !fm.imageUrl.includes('placeholder')
-          ? fm.imageUrl
-          : fallbackImages[fm.category] || fallbackImages['World Affairs'];
-
-      searchData.push({
-        id: slug,
-        title: fm.title,
-        summary: fm.summary || fm.description || '',
-        category: fm.category,
-        imageUrl,
-        readTime: fm.readTime || '3 min read',
-        date: fm.date || '',
-      });
-    }
+    searchData.push({
+      id: slug,
+      title: fm.title,
+      summary: fm.summary || fm.description || '',
+      category: fm.category,
+      imageUrl,
+      readTime: fm.readTime || '3 min read',
+      date: fm.date || '',
+    });
   }
 
   // Sort newest first

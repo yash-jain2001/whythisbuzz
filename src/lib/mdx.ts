@@ -1,12 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import {
-    getAppwriteArticles,
-    getAppwriteArticleBySlug,
-    getAppwriteArticlesByCategory,
-    getAppwriteArticleSlugs,
-} from './appwrite';
+import { cache } from 'react';
 
 const contentDirectory = path.join(process.cwd(), 'src/content');
 
@@ -30,13 +25,7 @@ export interface Article {
     content: string;
 }
 
-function isAppwriteEnabled(): boolean {
-    return Boolean(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID);
-}
-
 // ─── Cached local file index ───────────────────────────────
-// Built once per process, shared across all page generations.
-// This avoids re-scanning the filesystem 937+ times.
 let _localFileIndex: Map<string, string> | null = null;
 
 function getLocalFileIndex(): Map<string, string> {
@@ -51,8 +40,6 @@ function getLocalFileIndex(): Map<string, string> {
 }
 
 // ─── Cached metadata index ─────────────────────────────────
-// Stores parsed frontmatter for all local MDX files.
-// Built once, used by getRelatedArticles to avoid re-reading files.
 let _metadataCache: Map<string, ArticleMetadata> | null = null;
 
 function getAllLocalMetadata(): Map<string, ArticleMetadata> {
@@ -129,10 +116,6 @@ function buildMetadata(slug: string, data: Record<string, unknown>): ArticleMeta
 }
 
 export async function getArticleSlugs(limit: number = 50): Promise<string[]> {
-    if (isAppwriteEnabled()) {
-        const slugs = await getAppwriteArticleSlugs();
-        if (slugs.length > 0) return slugs.slice(0, limit);
-    }
     const metaMap = getAllLocalMetadata();
     const sorted = Array.from(metaMap.values()).sort((a, b) => {
         const timeA = new Date(a.date).getTime() || 0;
@@ -142,15 +125,8 @@ export async function getArticleSlugs(limit: number = 50): Promise<string[]> {
     return sorted.slice(0, limit).map((m) => m.id);
 }
 
-import { cache } from 'react';
-
 export const getArticleBySlug = cache(async (slug: string): Promise<Article | undefined> => {
     const cleanSlug = slug.replace(/\.mdx$/, '');
-    if (isAppwriteEnabled()) {
-        const appwriteArticle = await getAppwriteArticleBySlug(cleanSlug);
-        if (appwriteArticle) return appwriteArticle;
-    }
-
     const index = getLocalFileIndex();
     const targetFile = index.get(cleanSlug);
     if (!targetFile) return undefined;
@@ -171,17 +147,10 @@ export const getArticleBySlug = cache(async (slug: string): Promise<Article | un
 });
 
 export async function getAllArticles(): Promise<Article[]> {
-    let articles: Article[] = [];
-    if (isAppwriteEnabled()) {
-        articles = await getAppwriteArticles();
-    }
-
-    if (articles.length === 0) {
-        const slugs = await getArticleSlugs();
-        articles = (
-            await Promise.all(slugs.map((slug) => getArticleBySlug(slug)))
-        ).filter((article): article is Article => article !== undefined);
-    }
+    const slugs = await getArticleSlugs(50);
+    const articles = (
+        await Promise.all(slugs.map((slug) => getArticleBySlug(slug)))
+    ).filter((article): article is Article => article !== undefined);
 
     return articles.sort((a, b) => {
         const timeA = new Date(a.metadata.date).getTime() || 0;
@@ -191,7 +160,6 @@ export async function getAllArticles(): Promise<Article[]> {
 }
 
 export async function getRelatedArticles(currentId: string, category?: string, limit: number = 3): Promise<ArticleMetadata[]> {
-    // Use the cached metadata index instead of reading every file again
     const metaMap = getAllLocalMetadata();
     const allMeta = Array.from(metaMap.values())
         .filter(m => m.id !== currentId)
@@ -210,11 +178,6 @@ export async function getRelatedArticles(currentId: string, category?: string, l
 }
 
 export async function getArticlesByCategory(category: string): Promise<ArticleMetadata[]> {
-    if (isAppwriteEnabled()) {
-        const appwriteCategoryArticles = await getAppwriteArticlesByCategory(category);
-        if (appwriteCategoryArticles.length > 0) return appwriteCategoryArticles;
-    }
-
     const metaMap = getAllLocalMetadata();
     return Array.from(metaMap.values())
         .filter((m) => m.category.toLowerCase() === category.toLowerCase())
