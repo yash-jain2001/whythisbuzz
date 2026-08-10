@@ -34,6 +34,45 @@ function isAppwriteEnabled(): boolean {
     return Boolean(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID);
 }
 
+// ─── Cached local file index ───────────────────────────────
+// Built once per process, shared across all page generations.
+// This avoids re-scanning the filesystem 937+ times.
+let _localFileIndex: Map<string, string> | null = null;
+
+function getLocalFileIndex(): Map<string, string> {
+    if (_localFileIndex) return _localFileIndex;
+    _localFileIndex = new Map();
+    const files = getLocalMdxFiles(contentDirectory);
+    for (const file of files) {
+        const slug = path.basename(file, '.mdx');
+        _localFileIndex.set(slug, file);
+    }
+    return _localFileIndex;
+}
+
+// ─── Cached metadata index ─────────────────────────────────
+// Stores parsed frontmatter for all local MDX files.
+// Built once, used by getRelatedArticles to avoid re-reading files.
+let _metadataCache: Map<string, ArticleMetadata> | null = null;
+
+function getAllLocalMetadata(): Map<string, ArticleMetadata> {
+    if (_metadataCache) return _metadataCache;
+    _metadataCache = new Map();
+    const index = getLocalFileIndex();
+    for (const [slug, filePath] of index) {
+        try {
+            const fileContents = fs.readFileSync(filePath, 'utf8');
+            const { data } = matter(fileContents);
+            if (!data.title || !data.category) continue;
+            const meta = buildMetadata(slug, data);
+            _metadataCache.set(slug, meta);
+        } catch {
+            // skip broken files
+        }
+    }
+    return _metadataCache;
+}
+
 // Local helper to recursively find all MDX files
 function getLocalMdxFiles(dir: string): string[] {
     let results: string[] = [];
@@ -52,13 +91,50 @@ function getLocalMdxFiles(dir: string): string[] {
     return results;
 }
 
+const fallbackImages: Record<string, string> = {
+    Sports: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200',
+    Entertainment: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200',
+    Technology: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200',
+    'World Affairs': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200',
+    Movies: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200',
+    'Social-Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
+    'Social Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
+};
+
+function buildMetadata(slug: string, data: Record<string, unknown>): ArticleMetadata {
+    const safeDate =
+        data.date && !isNaN(new Date(data.date as string).getTime())
+            ? (data.date as string)
+            : new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+    const safeImageUrl =
+        data.imageUrl && !(data.imageUrl as string).includes('placeholder')
+            ? (data.imageUrl as string)
+            : fallbackImages[data.category as string] || fallbackImages['World Affairs'];
+
+    return {
+        id: slug,
+        title: data.title as string,
+        description: (data.description as string) || (data.summary as string) || '',
+        date: safeDate,
+        author: data.author as string,
+        category: data.category as string,
+        imageUrl: safeImageUrl,
+        readTime: data.readTime as string,
+        summary: (data.summary as string) || (data.description as string) || '',
+        seoTitle: data.seoTitle as string | undefined,
+        metaDescription: data.metaDescription as string | undefined,
+        keywords: data.keywords as string | undefined,
+    } as ArticleMetadata;
+}
+
 export async function getArticleSlugs(): Promise<string[]> {
     if (isAppwriteEnabled()) {
         const slugs = await getAppwriteArticleSlugs();
         if (slugs.length > 0) return slugs;
     }
-    const files = getLocalMdxFiles(contentDirectory);
-    return files.map((file) => path.basename(file, '.mdx'));
+    const index = getLocalFileIndex();
+    return Array.from(index.keys());
 }
 
 import { cache } from 'react';
@@ -70,9 +146,8 @@ export const getArticleBySlug = cache(async (slug: string): Promise<Article | un
         if (appwriteArticle) return appwriteArticle;
     }
 
-    const files = getLocalMdxFiles(contentDirectory);
-    const targetFile = files.find((file) => path.basename(file, '.mdx') === cleanSlug);
-
+    const index = getLocalFileIndex();
+    const targetFile = index.get(cleanSlug);
     if (!targetFile) return undefined;
 
     try {
@@ -81,34 +156,8 @@ export const getArticleBySlug = cache(async (slug: string): Promise<Article | un
 
         if (!data.title || !data.category) return undefined;
 
-        const safeDate =
-            data.date && !isNaN(new Date(data.date).getTime())
-                ? data.date
-                : new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-        const fallbackImages: Record<string, string> = {
-            Sports: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200',
-            Entertainment: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200',
-            Technology: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200',
-            'World Affairs': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200',
-            Movies: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200',
-            'Social-Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
-            'Social Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
-        };
-        const safeImageUrl =
-            data.imageUrl && !data.imageUrl.includes('placeholder')
-                ? data.imageUrl
-                : fallbackImages[data.category] || fallbackImages['World Affairs'];
-
         return {
-            metadata: {
-                ...data,
-                id: cleanSlug,
-                date: safeDate,
-                imageUrl: safeImageUrl,
-                summary: data.summary || data.description || '',
-                description: data.description || data.summary || '',
-            } as ArticleMetadata,
+            metadata: buildMetadata(cleanSlug, data),
             content,
         };
     } catch {
@@ -137,17 +186,22 @@ export async function getAllArticles(): Promise<Article[]> {
 }
 
 export async function getRelatedArticles(currentId: string, category?: string, limit: number = 3): Promise<ArticleMetadata[]> {
-    const allArticles = await getAllArticles();
-    const filtered = allArticles
-        .filter((article) => article.metadata.id !== currentId)
-        .map((article) => article.metadata);
+    // Use the cached metadata index instead of reading every file again
+    const metaMap = getAllLocalMetadata();
+    const allMeta = Array.from(metaMap.values())
+        .filter(m => m.id !== currentId)
+        .sort((a, b) => {
+            const timeA = new Date(a.date).getTime() || 0;
+            const timeB = new Date(b.date).getTime() || 0;
+            return timeB - timeA;
+        });
 
     if (category) {
-        const sameCat = filtered.filter((a) => a.category.toLowerCase() === category.toLowerCase());
+        const sameCat = allMeta.filter((a) => a.category.toLowerCase() === category.toLowerCase());
         if (sameCat.length >= limit) return sameCat.slice(0, limit);
     }
 
-    return filtered.slice(0, limit);
+    return allMeta.slice(0, limit);
 }
 
 export async function getArticlesByCategory(category: string): Promise<ArticleMetadata[]> {
@@ -156,10 +210,14 @@ export async function getArticlesByCategory(category: string): Promise<ArticleMe
         if (appwriteCategoryArticles.length > 0) return appwriteCategoryArticles;
     }
 
-    const allArticles = await getAllArticles();
-    return allArticles
-        .map((article) => article.metadata)
-        .filter((article) => article.category.toLowerCase() === category.toLowerCase());
+    const metaMap = getAllLocalMetadata();
+    return Array.from(metaMap.values())
+        .filter((m) => m.category.toLowerCase() === category.toLowerCase())
+        .sort((a, b) => {
+            const timeA = new Date(a.date).getTime() || 0;
+            const timeB = new Date(b.date).getTime() || 0;
+            return timeB - timeA;
+        });
 }
 
 export function getAllCategories(): string[] {
