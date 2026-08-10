@@ -234,8 +234,50 @@ ${articleText}
 
       const filePath = path.join(targetDir, `${slug}.mdx`);
       fs.writeFileSync(filePath, output.trim());
-      
-      console.log(`Successfully published ${region} article at: ${filePath}`);
+      console.log(`Successfully saved local MDX at: ${filePath}`);
+
+      // Push straight to Supabase if configured
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+      if (supabaseUrl && supabaseKey) {
+        try {
+          const { createClient } = await import('@supabase/supabase-js');
+          const supabase = createClient(supabaseUrl, supabaseKey);
+          
+          const bodyContent = output.slice(frontmatterMatch[0].length).trim();
+          const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
+          const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
+          const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
+          const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
+          const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
+          const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
+          const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
+          const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
+
+          const { error: sbError } = await supabase.from('articles').upsert({
+            slug,
+            title,
+            summary: summaryMatch ? summaryMatch[1] : '',
+            content: bodyContent,
+            category,
+            author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
+            date: dateMatch ? dateMatch[1] : getFormattedDate(),
+            read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
+            image_url: imageUrlMatch ? imageUrlMatch[1] : articleImage,
+            seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
+            meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
+            keywords: keywordsMatch ? keywordsMatch[1] : undefined,
+          }, { onConflict: 'slug' });
+
+          if (sbError) {
+            console.error(`⚠️ Supabase upload error for ${slug}:`, sbError.message);
+          } else {
+            console.log(`🚀 Successfully published ${slug} to Supabase Database!`);
+          }
+        } catch (sbErr) {
+          console.error(`⚠️ Failed to push to Supabase:`, sbErr);
+        }
+      }
     } catch (error) {
       console.error(`Failed to generate or save article for ${region}:`, error);
     }

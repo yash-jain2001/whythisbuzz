@@ -2,6 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { cache } from 'react';
+import {
+    isSupabaseConfigured,
+    getSupabaseArticles,
+    getSupabaseArticleBySlug,
+    getSupabaseArticlesByCategory,
+    getSupabaseArticleSlugs,
+} from './supabase';
 
 const contentDirectory = path.join(process.cwd(), 'src/content');
 
@@ -116,6 +123,10 @@ function buildMetadata(slug: string, data: Record<string, unknown>): ArticleMeta
 }
 
 export async function getArticleSlugs(limit: number = 50): Promise<string[]> {
+    if (isSupabaseConfigured()) {
+        const slugs = await getSupabaseArticleSlugs(limit);
+        if (slugs.length > 0) return slugs;
+    }
     const metaMap = getAllLocalMetadata();
     const sorted = Array.from(metaMap.values()).sort((a, b) => {
         const timeA = new Date(a.date).getTime() || 0;
@@ -127,6 +138,12 @@ export async function getArticleSlugs(limit: number = 50): Promise<string[]> {
 
 export const getArticleBySlug = cache(async (slug: string): Promise<Article | undefined> => {
     const cleanSlug = slug.replace(/\.mdx$/, '');
+
+    if (isSupabaseConfigured()) {
+        const supabaseArticle = await getSupabaseArticleBySlug(cleanSlug);
+        if (supabaseArticle) return supabaseArticle;
+    }
+
     const index = getLocalFileIndex();
     const targetFile = index.get(cleanSlug);
     if (!targetFile) return undefined;
@@ -146,8 +163,13 @@ export const getArticleBySlug = cache(async (slug: string): Promise<Article | un
     }
 });
 
-export async function getAllArticles(): Promise<Article[]> {
-    const slugs = await getArticleSlugs(50);
+export async function getAllArticles(limit: number = 50): Promise<Article[]> {
+    if (isSupabaseConfigured()) {
+        const articles = await getSupabaseArticles(limit);
+        if (articles.length > 0) return articles;
+    }
+
+    const slugs = await getArticleSlugs(limit);
     const articles = (
         await Promise.all(slugs.map((slug) => getArticleBySlug(slug)))
     ).filter((article): article is Article => article !== undefined);
@@ -160,6 +182,20 @@ export async function getAllArticles(): Promise<Article[]> {
 }
 
 export async function getRelatedArticles(currentId: string, category?: string, limit: number = 3): Promise<ArticleMetadata[]> {
+    if (isSupabaseConfigured()) {
+        const supabaseArticles = await getSupabaseArticles(20);
+        if (supabaseArticles.length > 0) {
+            const filtered = supabaseArticles
+                .filter(a => a.metadata.id !== currentId)
+                .map(a => a.metadata);
+            if (category) {
+                const sameCat = filtered.filter(a => a.category.toLowerCase() === category.toLowerCase());
+                if (sameCat.length >= limit) return sameCat.slice(0, limit);
+            }
+            return filtered.slice(0, limit);
+        }
+    }
+
     const metaMap = getAllLocalMetadata();
     const allMeta = Array.from(metaMap.values())
         .filter(m => m.id !== currentId)
@@ -177,7 +213,12 @@ export async function getRelatedArticles(currentId: string, category?: string, l
     return allMeta.slice(0, limit);
 }
 
-export async function getArticlesByCategory(category: string): Promise<ArticleMetadata[]> {
+export async function getArticlesByCategory(category: string, limit: number = 50): Promise<ArticleMetadata[]> {
+    if (isSupabaseConfigured()) {
+        const supabaseCategoryArticles = await getSupabaseArticlesByCategory(category, limit);
+        if (supabaseCategoryArticles.length > 0) return supabaseCategoryArticles;
+    }
+
     const metaMap = getAllLocalMetadata();
     return Array.from(metaMap.values())
         .filter((m) => m.category.toLowerCase() === category.toLowerCase())
@@ -185,7 +226,8 @@ export async function getArticlesByCategory(category: string): Promise<ArticleMe
             const timeA = new Date(a.date).getTime() || 0;
             const timeB = new Date(b.date).getTime() || 0;
             return timeB - timeA;
-        });
+        })
+        .slice(0, limit);
 }
 
 export function getAllCategories(): string[] {
