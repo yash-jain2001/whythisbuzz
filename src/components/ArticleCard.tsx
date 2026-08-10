@@ -3,11 +3,40 @@
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 
-function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
+const DEMO_IMAGES: Record<string, string> = {
+  "Sports": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80",
+  "Entertainment": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+  "Technology": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+  "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+  "Movies": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",
+  "Social Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+  "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+};
+
+function getDemoImage(category: string): string {
+  const matchedKey = Object.keys(DEMO_IMAGES).find(k => 
+    k.toLowerCase() === category.toLowerCase() || category.toLowerCase().includes(k.toLowerCase())
+  );
+  return matchedKey ? DEMO_IMAGES[matchedKey] : DEMO_IMAGES["World Affairs"];
+}
+
+function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>, category: string) {
   const target = e.currentTarget;
-  target.onerror = null; // Prevent infinite error loops
-  target.alt = "";       // Clear browser's default alt text overlay
-  target.src = "/images/placeholder.svg";
+  const demoFallback = getDemoImage(category);
+  
+  if (target.src === demoFallback) {
+    target.onerror = null;
+    target.alt = "";
+    target.src = "/images/placeholder.svg";
+    return;
+  }
+  
+  target.onerror = () => {
+    target.onerror = null;
+    target.alt = "";
+    target.src = "/images/placeholder.svg";
+  };
+  target.src = demoFallback;
 }
 
 interface ArticleCardProps {
@@ -16,7 +45,7 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
-  const imageSrc = article.imageUrl ? proxifyImage(article.imageUrl) : "/images/placeholder.svg";
+  const imageSrc = article.imageUrl ? proxifyImage(article.imageUrl) : getDemoImage(article.category);
 
   if (variant === "compact") {
     return (
@@ -27,7 +56,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
               src={imageSrc}
               alt={article.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={handleImageError}
+              onError={(e) => handleImageError(e, article.category)}
             />
           </div>
           <div className="flex flex-col gap-1 min-w-0">
@@ -53,7 +82,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             src={imageSrc}
             alt={article.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={handleImageError}
+            onError={(e) => handleImageError(e, article.category)}
           />
           <div className="absolute top-4 left-4 z-10">
             <span className="category-tag">{article.category}</span>
