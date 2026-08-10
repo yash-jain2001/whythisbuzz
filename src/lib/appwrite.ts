@@ -56,10 +56,11 @@ function docToArticle(doc: AppwriteArticleDoc): Article {
 
 let cachedArticles: Article[] | null = null;
 let cacheTimestamp = 0;
+let appwriteDisabledDueToError = false;
 const CACHE_TTL = 60 * 1000; // 1 minute cache
 
 export async function getAppwriteArticles(): Promise<Article[]> {
-    if (!projectId) return [];
+    if (!projectId || appwriteDisabledDueToError) return cachedArticles || [];
     const now = Date.now();
     if (cachedArticles && (now - cacheTimestamp < CACHE_TTL)) {
         return cachedArticles;
@@ -92,13 +93,21 @@ export async function getAppwriteArticles(): Promise<Article[]> {
         cacheTimestamp = now;
         return articles;
     } catch (e) {
-        console.error('Appwrite fetch error:', e);
+        console.warn('⚠️ Appwrite disabled for this process due to connection/bandwidth error:', e instanceof Error ? e.message : e);
+        appwriteDisabledDueToError = true;
         return cachedArticles || [];
     }
 }
 
 export async function getAppwriteArticleBySlug(slug: string): Promise<Article | undefined> {
-    if (!projectId) return undefined;
+    if (!projectId || appwriteDisabledDueToError) return undefined;
+
+    // Check in-memory cache first to avoid 900+ HTTP calls during static build
+    if (cachedArticles) {
+        const found = cachedArticles.find(a => a.metadata.id === slug);
+        if (found) return found;
+    }
+
     try {
         const databases = getAppwriteDatabases();
         const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
@@ -108,13 +117,20 @@ export async function getAppwriteArticleBySlug(slug: string): Promise<Article | 
         if (response.documents.length === 0) return undefined;
         return docToArticle(response.documents[0]);
     } catch (e) {
-        console.error(`Appwrite fetch error for slug ${slug}:`, e);
+        console.warn(`⚠️ Appwrite error for slug ${slug}, disabling Appwrite:`, e instanceof Error ? e.message : e);
+        appwriteDisabledDueToError = true;
         return undefined;
     }
 }
 
 export async function getAppwriteArticlesByCategory(category: string): Promise<ArticleMetadata[]> {
-    if (!projectId) return [];
+    if (!projectId || appwriteDisabledDueToError) return [];
+    if (cachedArticles) {
+        return cachedArticles
+            .filter(a => a.metadata.category.toLowerCase() === category.toLowerCase())
+            .map(a => a.metadata);
+    }
+
     try {
         const databases = getAppwriteDatabases();
         let allDocs: AppwriteArticleDoc[] = [];
@@ -140,13 +156,18 @@ export async function getAppwriteArticlesByCategory(category: string): Promise<A
         });
         return articles;
     } catch (e) {
-        console.error(`Appwrite fetch error for category ${category}:`, e);
+        console.warn(`⚠️ Appwrite error for category ${category}, disabling Appwrite:`, e instanceof Error ? e.message : e);
+        appwriteDisabledDueToError = true;
         return [];
     }
 }
 
 export async function getAppwriteArticleSlugs(): Promise<string[]> {
-    if (!projectId) return [];
+    if (!projectId || appwriteDisabledDueToError) return [];
+    if (cachedArticles) {
+        return cachedArticles.map(a => a.metadata.id);
+    }
+
     try {
         const databases = getAppwriteDatabases();
         let allSlugs: string[] = [];
@@ -166,7 +187,8 @@ export async function getAppwriteArticleSlugs(): Promise<string[]> {
 
         return allSlugs;
     } catch (e) {
-        console.error('Appwrite fetch slugs error:', e);
+        console.warn('⚠️ Appwrite error for slugs, disabling Appwrite:', e instanceof Error ? e.message : e);
+        appwriteDisabledDueToError = true;
         return [];
     }
 }
