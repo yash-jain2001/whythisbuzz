@@ -132,10 +132,9 @@ async function main() {
       const newsLink = item.news_item[0]['ht:news_item_url'][0];
       console.log(`Analyzing trend (${regionProcessed + 1}/${TARGET_PER_REGION} for ${region}): ${title} - fetching ${newsLink}`);
       
-      const { text, imageUrl } = await scrapeArticleData(newsLink);
-      if (text.length <= 500) {
-        console.log(`Skipping link (text too short): ${newsLink}`);
-        continue;
+      let { text, imageUrl } = await scrapeArticleData(newsLink);
+      if (text.length <= 150) {
+        text = `Headline trend: ${title}. Provide a full in-depth news analysis explaining what happened, key background details, and why this matters to the public.`;
       }
 
       const selectedTrend = title;
@@ -191,6 +190,7 @@ ${articleText}
 `;
 
       try {
+        await new Promise(res => setTimeout(res, 2500));
         const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
         const result = await model.generateContent(prompt);
         let output = result.response.text();
