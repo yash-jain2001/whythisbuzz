@@ -11,6 +11,7 @@ interface CategorySectionProps {
 }
 
 export function CategorySection({ id, title, description, articles, viewAllUrl }: CategorySectionProps) {
+  if (!articles || articles.length === 0) return null;
   const displayArticles = articles.slice(0, 10);
   const targetUrl = viewAllUrl || `/category/${id}`;
 

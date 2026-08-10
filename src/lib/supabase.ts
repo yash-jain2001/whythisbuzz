@@ -68,7 +68,7 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
             .from('articles')
             .select('*')
             .order('created_at', { ascending: false })
-            .limit(100);
+            .limit(200);
 
         if (error || !data) {
             console.warn('⚠️ Supabase fetch warning:', error?.message);
