@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-static';
 
 export async function GET() {
-    const articles = getAllArticles();
+    const articles = await getAllArticles();
     const siteUrl = 'https://whythisbuzz.com';
     const siteTitle = 'WhyThisBuzz - Trending News, Digital Culture & Tech Explained';
     const siteDescription = 'Clear explanations of trending topics in technology, movies, entertainment, and digital culture.';

@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { getAllArticles } from './mdx';
 
-export function generateSearchData() {
-    const articles = getAllArticles();
+export async function generateSearchData() {
+    const articles = await getAllArticles();
     const searchData = articles.map((article) => ({
         id: article.metadata.id,
         title: article.metadata.title,

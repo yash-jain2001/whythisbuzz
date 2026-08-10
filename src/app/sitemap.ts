@@ -3,9 +3,9 @@ import { getAllArticles } from '@/lib/mdx';
 
 export const dynamic = 'force-static';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://whythisbuzz.com';
-    const articles = getAllArticles();
+    const articles = await getAllArticles();
     const currentDate = new Date();
 
     // Calculate if article is recent (within last 7 days)
