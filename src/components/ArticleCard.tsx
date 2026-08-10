@@ -16,6 +16,16 @@ function getFallback(category: string) {
   return CATEGORY_FALLBACKS[category] || CATEGORY_FALLBACKS["World Affairs"];
 }
 
+function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>, category: string) {
+  const target = e.currentTarget;
+  if (target.src.includes('/images/placeholder.svg')) return;
+  target.onerror = () => {
+    target.onerror = null;
+    target.src = "/images/placeholder.svg";
+  };
+  target.src = getFallback(category);
+}
+
 interface ArticleCardProps {
   article: ArticleMetadata;
   variant?: "default" | "compact";
@@ -26,12 +36,12 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
     return (
       <a href={`/article/${article.id}`} className="group block">
         <article className="flex gap-4 py-4 border-b border-border/50 last:border-0">
-          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
+          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-muted">
             <img
               src={proxifyImage(article.imageUrl)}
               alt={article.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => { (e.target as HTMLImageElement).src = getFallback(article.category); }}
+              onError={(e) => handleImageError(e, article.category)}
             />
           </div>
           <div className="flex flex-col gap-1 min-w-0">
@@ -50,22 +60,22 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
 
   return (
     <a href={`/article/${article.id}`} className="group block h-full">
-      <article className="h-full bg-card rounded-xl overflow-hidden shadow-editorial card-hover">
+      <article className="h-full bg-card rounded-xl overflow-hidden shadow-editorial card-hover flex flex-col">
         {/* Image */}
-        <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           <img
             src={proxifyImage(article.imageUrl)}
             alt={article.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={(e) => { (e.target as HTMLImageElement).src = getFallback(article.category); }}
+            onError={(e) => handleImageError(e, article.category)}
           />
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 z-10">
             <span className="category-tag">{article.category}</span>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-5 flex flex-col gap-3">
+        <div className="p-5 flex flex-col gap-3 flex-1">
           <h3 className="font-serif text-xl font-semibold text-foreground line-clamp-2 group-hover:text-accent transition-colors">
             {article.title}
           </h3>
