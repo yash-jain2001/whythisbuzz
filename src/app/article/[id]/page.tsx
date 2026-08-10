@@ -11,7 +11,8 @@ interface PageProps {
 
 export async function generateStaticParams() {
     const slugs = await getArticleSlugs();
-    return slugs.map((slug) => ({
+    // Only pre-render top 50 newest articles at build time to prevent Cloudflare build timeouts
+    return slugs.slice(0, 50).map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
     }));
 }
