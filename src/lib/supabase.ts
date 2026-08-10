@@ -66,9 +66,7 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
     try {
         const { data, error } = await supabase
             .from('articles')
-            .select('*')
-            .order('created_at', { ascending: false })
-            .limit(200);
+            .select('*');
 
         if (error || !data) {
             console.warn('⚠️ Supabase fetch warning:', error?.message);
@@ -76,7 +74,7 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
         }
 
         const articles = data.map(docToArticle);
-        // Sort by actual JS Date timestamp (prevents alphabetical string sorting issues like "May" > "Aug")
+        // Sort by actual JS Date timestamp (newest first)
         articles.sort((a, b) => {
             const timeA = new Date(a.metadata.date).getTime() || 0;
             const timeB = new Date(b.metadata.date).getTime() || 0;
@@ -116,9 +114,14 @@ export async function getSupabaseArticleBySlug(slug: string): Promise<Article | 
 }
 
 export async function getSupabaseArticlesByCategory(category: string, limit: number = 50): Promise<ArticleMetadata[]> {
-    const articles = await getSupabaseArticles(100);
+    const articles = await getSupabaseArticles(1000);
+    const catLower = category.toLowerCase().replace(/[-_]/g, ' ').trim();
+
     return articles
-        .filter(a => a.metadata.category.toLowerCase() === category.toLowerCase())
+        .filter(a => {
+            const cLower = a.metadata.category.toLowerCase().replace(/[-_]/g, ' ').trim();
+            return cLower === catLower || cLower.includes(catLower) || catLower.includes(cLower);
+        })
         .slice(0, limit)
         .map(a => a.metadata);
 }
