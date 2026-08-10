@@ -66,9 +66,7 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
     try {
         const { data, error } = await supabase
             .from('articles')
-            .select('*')
-            .order('date', { ascending: false })
-            .limit(limit);
+            .select('*');
 
         if (error || !data) {
             console.warn('⚠️ Supabase fetch warning:', error?.message);
@@ -76,9 +74,16 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
         }
 
         const articles = data.map(docToArticle);
+        // Sort by actual JS Date timestamp (prevents alphabetical string sorting issues like "May" > "Aug")
+        articles.sort((a, b) => {
+            const timeA = new Date(a.metadata.date).getTime() || 0;
+            const timeB = new Date(b.metadata.date).getTime() || 0;
+            return timeB - timeA;
+        });
+
         cachedArticles = articles;
         cacheTimestamp = now;
-        return articles;
+        return articles.slice(0, limit);
     } catch (e) {
         console.warn('⚠️ Supabase connection error:', e instanceof Error ? e.message : e);
         return cachedArticles || [];
@@ -109,28 +114,11 @@ export async function getSupabaseArticleBySlug(slug: string): Promise<Article | 
 }
 
 export async function getSupabaseArticlesByCategory(category: string, limit: number = 50): Promise<ArticleMetadata[]> {
-    if (!supabase) return [];
-
-    if (cachedArticles) {
-        return cachedArticles
-            .filter(a => a.metadata.category.toLowerCase() === category.toLowerCase())
-            .slice(0, limit)
-            .map(a => a.metadata);
-    }
-
-    try {
-        const { data, error } = await supabase
-            .from('articles')
-            .select('*')
-            .ilike('category', category)
-            .order('date', { ascending: false })
-            .limit(limit);
-
-        if (error || !data) return [];
-        return data.map(docToArticle).map(a => a.metadata);
-    } catch {
-        return [];
-    }
+    const articles = await getSupabaseArticles(100);
+    return articles
+        .filter(a => a.metadata.category.toLowerCase() === category.toLowerCase())
+        .slice(0, limit)
+        .map(a => a.metadata);
 }
 
 export async function getSupabaseArticleSlugs(limit: number = 50): Promise<string[]> {
