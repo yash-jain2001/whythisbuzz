@@ -36,9 +36,21 @@ function getYearWeekString(): string {
 }
 
 function parseToISODate(dateStr?: string): string {
-  if (!dateStr) return new Date().toISOString().split('T')[0];
+  if (!dateStr) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
   const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return new Date().toISOString().split('T')[0];
+  if (isNaN(d.getTime())) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
   return d.toISOString().split('T')[0];
 }
 
