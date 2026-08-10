@@ -74,21 +74,28 @@ async function generate() {
     try {
       const client = new Client().setEndpoint(endpoint).setProject(projectId);
       const databases = new Databases(client);
-      const res = await databases.listDocuments(databaseId, collectionId, [
-        Query.limit(500),
-        Query.orderDesc('date'),
-      ]);
+      let offset = 0;
+      const limit = 100;
+      while (true) {
+        const res = await databases.listDocuments(databaseId, collectionId, [
+          Query.limit(limit),
+          Query.offset(offset),
+          Query.orderDesc('date'),
+        ]);
 
-      for (const doc of res.documents) {
-        searchData.push({
-          id: doc.slug,
-          title: doc.title,
-          summary: doc.summary || doc.metaDescription || '',
-          category: doc.category,
-          imageUrl: doc.imageUrl,
-          readTime: doc.readTime || '3 min read',
-          date: doc.date || '',
-        });
+        for (const doc of res.documents) {
+          searchData.push({
+            id: doc.slug,
+            title: doc.title,
+            summary: doc.summary || doc.metaDescription || '',
+            category: doc.category,
+            imageUrl: doc.imageUrl,
+            readTime: doc.readTime || '3 min read',
+            date: doc.date || '',
+          });
+        }
+        if (res.documents.length < limit) break;
+        offset += limit;
       }
       console.log(`✅ Fetched ${searchData.length} articles from Appwrite.`);
     } catch (err) {

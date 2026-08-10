@@ -58,11 +58,22 @@ export async function getAppwriteArticles(): Promise<Article[]> {
     if (!projectId) return [];
     try {
         const databases = getAppwriteDatabases();
-        const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
-            Query.limit(100),
-            Query.orderDesc('date'),
-        ]);
-        return response.documents.map(docToArticle);
+        let allDocs: AppwriteArticleDoc[] = [];
+        let offset = 0;
+        const limit = 100;
+
+        while (true) {
+            const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
+                Query.limit(limit),
+                Query.offset(offset),
+                Query.orderDesc('date'),
+            ]);
+            allDocs = allDocs.concat(response.documents);
+            if (response.documents.length < limit) break;
+            offset += limit;
+        }
+
+        return allDocs.map(docToArticle);
     } catch (e) {
         console.error('Appwrite fetch error:', e);
         return [];
@@ -89,12 +100,23 @@ export async function getAppwriteArticlesByCategory(category: string): Promise<A
     if (!projectId) return [];
     try {
         const databases = getAppwriteDatabases();
-        const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
-            Query.equal('category', category),
-            Query.limit(50),
-            Query.orderDesc('date'),
-        ]);
-        return response.documents.map(docToArticle).map(a => a.metadata);
+        let allDocs: AppwriteArticleDoc[] = [];
+        let offset = 0;
+        const limit = 100;
+
+        while (true) {
+            const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
+                Query.equal('category', category),
+                Query.limit(limit),
+                Query.offset(offset),
+                Query.orderDesc('date'),
+            ]);
+            allDocs = allDocs.concat(response.documents);
+            if (response.documents.length < limit) break;
+            offset += limit;
+        }
+
+        return allDocs.map(docToArticle).map(a => a.metadata);
     } catch (e) {
         console.error(`Appwrite fetch error for category ${category}:`, e);
         return [];
@@ -105,11 +127,22 @@ export async function getAppwriteArticleSlugs(): Promise<string[]> {
     if (!projectId) return [];
     try {
         const databases = getAppwriteDatabases();
-        const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
-            Query.limit(500),
-            Query.select(['slug']),
-        ]);
-        return response.documents.map(doc => doc.slug);
+        let allSlugs: string[] = [];
+        let offset = 0;
+        const limit = 100;
+
+        while (true) {
+            const response = await databases.listDocuments<AppwriteArticleDoc>(databaseId, collectionId, [
+                Query.limit(limit),
+                Query.offset(offset),
+                Query.select(['slug']),
+            ]);
+            allSlugs = allSlugs.concat(response.documents.map(doc => doc.slug));
+            if (response.documents.length < limit) break;
+            offset += limit;
+        }
+
+        return allSlugs;
     } catch (e) {
         console.error('Appwrite fetch slugs error:', e);
         return [];
