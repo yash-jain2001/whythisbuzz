@@ -2,8 +2,8 @@ name: Auto Publish Trending Articles
 
 on:
   schedule:
-    # Runs every 6 hours automatically
-    - cron: '0 */6 * * *'
+    # Runs every 3 hours automatically
+    - cron: '0 */3 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 jobs:
