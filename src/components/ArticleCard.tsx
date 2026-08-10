@@ -3,27 +3,10 @@
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 
-const CATEGORY_FALLBACKS: Record<string, string> = {
-  "Sports": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200",
-  "Entertainment": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200",
-  "Technology": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200",
-  "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
-  "Movies": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200",
-  "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200",
-};
-
-function getFallback(category: string) {
-  return CATEGORY_FALLBACKS[category] || CATEGORY_FALLBACKS["World Affairs"];
-}
-
-function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>, category: string) {
+function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
   const target = e.currentTarget;
-  if (target.src.includes('/images/placeholder.svg')) return;
-  target.onerror = () => {
-    target.onerror = null;
-    target.src = "/images/placeholder.svg";
-  };
-  target.src = getFallback(category);
+  target.onerror = null; // Prevent infinite error loops
+  target.src = "/images/placeholder.svg";
 }
 
 interface ArticleCardProps {
@@ -32,16 +15,18 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
+  const imageSrc = article.imageUrl ? proxifyImage(article.imageUrl) : "/images/placeholder.svg";
+
   if (variant === "compact") {
     return (
       <a href={`/article/${article.id}`} className="group block">
         <article className="flex gap-4 py-4 border-b border-border/50 last:border-0">
-          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-muted">
+          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-slate-900">
             <img
-              src={proxifyImage(article.imageUrl)}
+              src={imageSrc}
               alt={article.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => handleImageError(e, article.category)}
+              onError={handleImageError}
             />
           </div>
           <div className="flex flex-col gap-1 min-w-0">
@@ -62,12 +47,12 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
     <a href={`/article/${article.id}`} className="group block h-full">
       <article className="h-full bg-card rounded-xl overflow-hidden shadow-editorial card-hover flex flex-col">
         {/* Image */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+        <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
           <img
-            src={proxifyImage(article.imageUrl)}
+            src={imageSrc}
             alt={article.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={(e) => handleImageError(e, article.category)}
+            onError={handleImageError}
           />
           <div className="absolute top-4 left-4 z-10">
             <span className="category-tag">{article.category}</span>
