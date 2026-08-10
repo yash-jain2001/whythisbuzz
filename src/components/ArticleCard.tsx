@@ -4,7 +4,7 @@ import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 
 const DEMO_IMAGES: Record<string, string> = {
-  "Sports": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80",
+  "Sports": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
   "Entertainment": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
   "Technology": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
   "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
@@ -14,29 +14,18 @@ const DEMO_IMAGES: Record<string, string> = {
 };
 
 function getDemoImage(category: string): string {
+  const catLower = (category || '').toLowerCase().trim();
   const matchedKey = Object.keys(DEMO_IMAGES).find(k => 
-    k.toLowerCase() === category.toLowerCase() || category.toLowerCase().includes(k.toLowerCase())
+    k.toLowerCase() === catLower || catLower.includes(k.toLowerCase()) || k.toLowerCase().includes(catLower)
   );
   return matchedKey ? DEMO_IMAGES[matchedKey] : DEMO_IMAGES["World Affairs"];
 }
 
 function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>, category: string) {
   const target = e.currentTarget;
-  const demoFallback = getDemoImage(category);
-  
-  if (target.src === demoFallback) {
-    target.onerror = null;
-    target.alt = "";
-    target.src = "/images/placeholder.svg";
-    return;
-  }
-  
-  target.onerror = () => {
-    target.onerror = null;
-    target.alt = "";
-    target.src = "/images/placeholder.svg";
-  };
-  target.src = demoFallback;
+  target.onerror = null; // Prevent infinite error loops
+  target.alt = "";       // Clear browser default text overlay
+  target.src = getDemoImage(category); // Load vibrant HD category demo photo
 }
 
 interface ArticleCardProps {
@@ -51,7 +40,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
     return (
       <a href={`/article/${article.id}`} className="group block">
         <article className="flex gap-4 py-4 border-b border-border/50 last:border-0">
-          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-slate-900">
+          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-muted">
             <img
               src={imageSrc}
               alt={article.title}
@@ -77,7 +66,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
     <a href={`/article/${article.id}`} className="group block h-full">
       <article className="h-full bg-card rounded-xl overflow-hidden shadow-editorial card-hover flex flex-col">
         {/* Image */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
+        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           <img
             src={imageSrc}
             alt={article.title}
