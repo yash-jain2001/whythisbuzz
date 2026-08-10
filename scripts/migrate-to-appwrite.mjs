@@ -160,6 +160,37 @@ async function migrate() {
 
     console.log('\n================ Migration Summary ================');
     console.log(`Total: ${files.length} | Success: ${successCount} | Skipped: ${skipCount} | Failed: ${failCount}`);
+
+    console.log('\n🧹 Automatically pruning old articles from Appwrite to stay within Free Tier limits...');
+    try {
+        let allDocs = [];
+        let offset = 0;
+        const limit = 100;
+        while (true) {
+            const res = await databases.listDocuments(databaseId, collectionId, [
+                Query.limit(limit),
+                Query.offset(offset),
+            ]);
+            allDocs = allDocs.concat(res.documents);
+            if (res.documents.length < limit) break;
+            offset += limit;
+        }
+
+        const KEEP_LIMIT = 50;
+        if (allDocs.length > KEEP_LIMIT) {
+            allDocs.sort((a, b) => (new Date(b.date).getTime() || 0) - (new Date(a.date).getTime() || 0));
+            const toDelete = allDocs.slice(KEEP_LIMIT);
+            console.log(`🗑️ Deleting ${toDelete.length} old articles from Appwrite...`);
+            for (const doc of toDelete) {
+                try {
+                    await databases.deleteDocument(databaseId, collectionId, doc.$id);
+                } catch (_) {}
+            }
+            console.log(`✅ Auto-pruned Appwrite DB to latest ${KEEP_LIMIT} articles.`);
+        }
+    } catch (e) {
+        console.warn('⚠️ Auto-prune warning:', e.message);
+    }
 }
 
 migrate();

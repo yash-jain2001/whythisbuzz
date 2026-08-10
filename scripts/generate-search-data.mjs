@@ -98,6 +98,21 @@ async function generate() {
         offset += limit;
       }
       console.log(`✅ Fetched ${searchData.length} articles from Appwrite.`);
+
+      // Auto-prune old documents in background if Appwrite has over 50 articles
+      if (searchData.length > 50) {
+        console.log('🧹 Auto-pruning old articles in Appwrite Database...');
+        try {
+          const allDocs = await databases.listDocuments(databaseId, collectionId, [Query.limit(100)]);
+          const docs = allDocs.documents;
+          docs.sort((a, b) => (new Date(b.date).getTime() || 0) - (new Date(a.date).getTime() || 0));
+          const toDelete = docs.slice(50);
+          for (const d of toDelete) {
+            databases.deleteDocument(databaseId, collectionId, d.$id).catch(() => {});
+          }
+          console.log(`✅ Background pruned ${toDelete.length} old articles from Appwrite.`);
+        } catch (_) {}
+      }
     } catch (err) {
       console.error('⚠️ Failed to fetch from Appwrite, falling back to local files:', err.message);
     }
