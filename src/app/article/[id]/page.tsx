@@ -11,8 +11,12 @@ interface PageProps {
 
 export async function generateStaticParams() {
     const slugs = await getArticleSlugs();
-    // Only pre-render top 50 newest articles at build time to prevent Cloudflare build timeouts
-    return slugs.slice(0, 50).map((slug) => ({
+    // On Cloudflare Pages build CI, limit pre-rendering to top 50 to prevent build timeouts.
+    // In local development or local builds, return all slugs so every article renders without dev warnings.
+    const isCloudflareBuild = Boolean(process.env.CF_PAGES || (process.env.CI && process.env.NODE_ENV === 'production'));
+    const targetSlugs = isCloudflareBuild ? slugs.slice(0, 50) : slugs;
+
+    return targetSlugs.map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
     }));
 }
