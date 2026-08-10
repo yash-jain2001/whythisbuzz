@@ -69,7 +69,7 @@ export default async function CategoryPage({ params }: PageProps) {
         notFound();
     }
 
-    const articles = getArticlesByCategory(category);
+    const articles = await getArticlesByCategory(category);
 
     // Generate structured data
     const { generateBreadcrumbSchema, generateCollectionPageSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');

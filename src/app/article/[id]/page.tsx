@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getArticleBySlug, getRelatedArticles, getArticleSlugs } from '@/lib/mdx'; // Updated import
+import { getArticleBySlug, getRelatedArticles, getArticleSlugs } from '@/lib/mdx';
 import Image from 'next/image';
 import { ArticleView } from '@/components/ArticleView';
 import { notFound } from 'next/navigation';
@@ -10,10 +10,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-    const { generateSearchData } = await import('@/lib/searchData');
-    generateSearchData(); // Generate search data during build
-
-    const slugs = getArticleSlugs();
+    const slugs = await getArticleSlugs();
     return slugs.map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
     }));
@@ -23,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const { id } = await params;
 
     // Fetch article by ID (slug)
-    const article = getArticleBySlug(id);
+    const article = await getArticleBySlug(id);
 
     if (!article) {
         return {
@@ -108,13 +105,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ArticlePage({ params }: PageProps) {
     const { id } = await params;
 
-    const article = getArticleBySlug(id);
+    const article = await getArticleBySlug(id);
 
     if (!article) {
         notFound();
     }
 
-    const relatedArticles = getRelatedArticles(article.metadata.id);
+    const relatedArticles = await getRelatedArticles(article.metadata.id);
 
     // Import structured data utilities
     const { generateArticleSchema, generateBreadcrumbSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');

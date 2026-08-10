@@ -1,23 +1,28 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import {
+    getAppwriteArticles,
+    getAppwriteArticleBySlug,
+    getAppwriteArticlesByCategory,
+    getAppwriteArticleSlugs,
+} from './appwrite';
 
-// Define the content directory
 const contentDirectory = path.join(process.cwd(), 'src/content');
 
 export interface ArticleMetadata {
     id: string;
     title: string;
-    description: string; // Mapped from 'summary' in frontmatter if needed, or 'description'
+    description: string;
     date: string;
     author: string;
     category: string;
     imageUrl: string;
     readTime: string;
-    summary: string; // Keeping 'summary' to match existing interface
+    summary: string;
     seoTitle?: string;
     metaDescription?: string;
-    keywords?: string; // string of comma separated keywords
+    keywords?: string;
 }
 
 export interface Article {
@@ -25,16 +30,21 @@ export interface Article {
     content: string;
 }
 
-// Helper to recursively find all MDX files
-function getMdxFiles(dir: string): string[] {
+function useAppwrite(): boolean {
+    return Boolean(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID);
+}
+
+// Local helper to recursively find all MDX files
+function getLocalMdxFiles(dir: string): string[] {
     let results: string[] = [];
+    if (!fs.existsSync(dir)) return results;
     const list = fs.readdirSync(dir);
 
-    list.forEach(file => {
+    list.forEach((file) => {
         const filePath = path.join(dir, file);
         const stat = fs.statSync(filePath);
         if (stat && stat.isDirectory()) {
-            results = results.concat(getMdxFiles(filePath));
+            results = results.concat(getLocalMdxFiles(filePath));
         } else if (file.endsWith('.mdx')) {
             results.push(filePath);
         }
@@ -42,84 +52,110 @@ function getMdxFiles(dir: string): string[] {
     return results;
 }
 
-export function getArticleSlugs() {
-    const files = getMdxFiles(contentDirectory);
-    return files.map(file => path.basename(file, '.mdx'));
+export async function getArticleSlugs(): Promise<string[]> {
+    if (useAppwrite()) {
+        const slugs = await getAppwriteArticleSlugs();
+        if (slugs.length > 0) return slugs;
+    }
+    const files = getLocalMdxFiles(contentDirectory);
+    return files.map((file) => path.basename(file, '.mdx'));
 }
 
-export function getArticleBySlug(slug: string): Article | undefined {
-    // Find the file that matches the slug
-    const files = getMdxFiles(contentDirectory);
-    const targetFile = files.find(file => path.basename(file, '.mdx') === slug);
+export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
+    const cleanSlug = slug.replace(/\.mdx$/, '');
+    if (useAppwrite()) {
+        const appwriteArticle = await getAppwriteArticleBySlug(cleanSlug);
+        if (appwriteArticle) return appwriteArticle;
+    }
+
+    const files = getLocalMdxFiles(contentDirectory);
+    const targetFile = files.find((file) => path.basename(file, '.mdx') === cleanSlug);
 
     if (!targetFile) return undefined;
 
     try {
         const fileContents = fs.readFileSync(targetFile, 'utf8');
         const { data, content } = matter(fileContents);
-        const realSlug = slug.replace(/\.mdx$/, '');
 
         if (!data.title || !data.category) return undefined;
 
-        const safeDate = data.date && !isNaN(new Date(data.date).getTime())
-            ? data.date
-            : new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const safeDate =
+            data.date && !isNaN(new Date(data.date).getTime())
+                ? data.date
+                : new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
         const fallbackImages: Record<string, string> = {
-            "Sports": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200",
-            "Entertainment": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200",
-            "Technology": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200",
-            "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
-            "Movies": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200",
-            "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200",
+            Sports: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200',
+            Entertainment: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200',
+            Technology: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200',
+            'World Affairs': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200',
+            Movies: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200',
+            'Social-Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
+            'Social Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
         };
-        const safeImageUrl = data.imageUrl && !data.imageUrl.includes('placeholder')
-            ? data.imageUrl
-            : fallbackImages[data.category] || fallbackImages["World Affairs"];
+        const safeImageUrl =
+            data.imageUrl && !data.imageUrl.includes('placeholder')
+                ? data.imageUrl
+                : fallbackImages[data.category] || fallbackImages['World Affairs'];
 
         return {
             metadata: {
                 ...data,
-                id: realSlug,
+                id: cleanSlug,
                 date: safeDate,
                 imageUrl: safeImageUrl,
+                summary: data.summary || data.description || '',
+                description: data.description || data.summary || '',
             } as ArticleMetadata,
             content,
         };
-    } catch (e) {
+    } catch {
         return undefined;
     }
 }
 
-export function getAllArticles(): Article[] {
-    const slugs = getArticleSlugs();
-    const articles = slugs
-        .map((slug) => getArticleBySlug(slug))
+export async function getAllArticles(): Promise<Article[]> {
+    if (useAppwrite()) {
+        const appwriteArticles = await getAppwriteArticles();
+        if (appwriteArticles.length > 0) return appwriteArticles;
+    }
+
+    const slugs = await getArticleSlugs();
+    const articles = (
+        await Promise.all(slugs.map((slug) => getArticleBySlug(slug)))
+    )
         .filter((article): article is Article => article !== undefined)
-        // Sort posts by date in descending order
         .sort((a, b) => (new Date(a.metadata.date) > new Date(b.metadata.date) ? -1 : 1));
     return articles;
 }
 
-export function getRelatedArticles(currentId: string, limit: number = 3): ArticleMetadata[] {
-    const allArticles = getAllArticles();
+export async function getRelatedArticles(currentId: string, limit: number = 3): Promise<ArticleMetadata[]> {
+    const allArticles = await getAllArticles();
     return allArticles
-        .filter(article => article.metadata.id !== currentId)
-        .map(article => article.metadata)
+        .filter((article) => article.metadata.id !== currentId)
+        .map((article) => article.metadata)
         .slice(0, limit);
 }
 
-export function getArticlesByCategory(category: string): ArticleMetadata[] {
-    const allArticles = getAllArticles();
+export async function getArticlesByCategory(category: string): Promise<ArticleMetadata[]> {
+    if (useAppwrite()) {
+        const appwriteCategoryArticles = await getAppwriteArticlesByCategory(category);
+        if (appwriteCategoryArticles.length > 0) return appwriteCategoryArticles;
+    }
+
+    const allArticles = await getAllArticles();
     return allArticles
-        .map(article => article.metadata)
-        .filter(article => article.category === category);
+        .map((article) => article.metadata)
+        .filter((article) => article.category.toLowerCase() === category.toLowerCase());
 }
 
 export function getAllCategories(): string[] {
-    const categories = fs.readdirSync(contentDirectory, { withFileTypes: true })
-        .filter(dirent => dirent.isDirectory())
-        .map(dirent => dirent.name);
-    return categories;
+    if (!fs.existsSync(contentDirectory)) {
+        return ['Sports', 'Entertainment', 'Technology', 'World Affairs', 'Movies', 'Social-Media'];
+    }
+    const categories = fs
+        .readdirSync(contentDirectory, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory())
+        .map((dirent) => dirent.name);
+    return categories.length > 0 ? categories : ['Sports', 'Entertainment', 'Technology', 'World Affairs', 'Movies', 'Social-Media'];
 }
-

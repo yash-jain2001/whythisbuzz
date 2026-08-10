@@ -19,20 +19,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  const allArticles = getAllArticles();
+export default async function Home() {
+  const allArticles = await getAllArticles();
 
   // Show first 12 articles in the main grid (equal weight, no hero)
   const gridArticles = allArticles
     .slice(0, 12)
     .map(a => a.metadata);
 
-  const moviesArticles = getArticlesByCategory("Movies");
-  const entertainmentArticles = getArticlesByCategory("Entertainment");
-  const socialMediaArticles = getArticlesByCategory("Social Media");
-  const techArticles = getArticlesByCategory("Technology");
-  const sportsArticles = getArticlesByCategory("Sports");
-  const worldAffairsArticles = getArticlesByCategory("World Affairs");
+  const moviesArticles = await getArticlesByCategory("Movies");
+  const entertainmentArticles = await getArticlesByCategory("Entertainment");
+  const socialMediaArticles = await getArticlesByCategory("Social Media");
+  const techArticles = await getArticlesByCategory("Technology");
+  const sportsArticles = await getArticlesByCategory("Sports");
+  const worldAffairsArticles = await getArticlesByCategory("World Affairs");
 
   // Combine Movies and Entertainment
   const moviesAndEntertainmentArticles = [...moviesArticles, ...entertainmentArticles].sort((a, b) =>
