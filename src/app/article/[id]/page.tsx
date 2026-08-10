@@ -111,7 +111,7 @@ export default async function ArticlePage({ params }: PageProps) {
         notFound();
     }
 
-    const relatedArticles = await getRelatedArticles(article.metadata.id);
+    const relatedArticles = await getRelatedArticles(article.metadata.id, article.metadata.category);
 
     // Import structured data utilities
     const { generateArticleSchema, generateBreadcrumbSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');

@@ -61,7 +61,9 @@ export async function getArticleSlugs(): Promise<string[]> {
     return files.map((file) => path.basename(file, '.mdx'));
 }
 
-export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
+import { cache } from 'react';
+
+export const getArticleBySlug = cache(async (slug: string): Promise<Article | undefined> => {
     const cleanSlug = slug.replace(/\.mdx$/, '');
     if (isAppwriteEnabled()) {
         const appwriteArticle = await getAppwriteArticleBySlug(cleanSlug);
@@ -112,7 +114,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | undefine
     } catch {
         return undefined;
     }
-}
+});
 
 export async function getAllArticles(): Promise<Article[]> {
     let articles: Article[] = [];
@@ -134,12 +136,18 @@ export async function getAllArticles(): Promise<Article[]> {
     });
 }
 
-export async function getRelatedArticles(currentId: string, limit: number = 3): Promise<ArticleMetadata[]> {
+export async function getRelatedArticles(currentId: string, category?: string, limit: number = 3): Promise<ArticleMetadata[]> {
     const allArticles = await getAllArticles();
-    return allArticles
+    const filtered = allArticles
         .filter((article) => article.metadata.id !== currentId)
-        .map((article) => article.metadata)
-        .slice(0, limit);
+        .map((article) => article.metadata);
+
+    if (category) {
+        const sameCat = filtered.filter((a) => a.category.toLowerCase() === category.toLowerCase());
+        if (sameCat.length >= limit) return sameCat.slice(0, limit);
+    }
+
+    return filtered.slice(0, limit);
 }
 
 export async function getArticlesByCategory(category: string): Promise<ArticleMetadata[]> {
