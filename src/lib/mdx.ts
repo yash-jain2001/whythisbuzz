@@ -128,13 +128,18 @@ function buildMetadata(slug: string, data: Record<string, unknown>): ArticleMeta
     } as ArticleMetadata;
 }
 
-export async function getArticleSlugs(): Promise<string[]> {
+export async function getArticleSlugs(limit: number = 50): Promise<string[]> {
     if (isAppwriteEnabled()) {
         const slugs = await getAppwriteArticleSlugs();
-        if (slugs.length > 0) return slugs;
+        if (slugs.length > 0) return slugs.slice(0, limit);
     }
-    const index = getLocalFileIndex();
-    return Array.from(index.keys());
+    const metaMap = getAllLocalMetadata();
+    const sorted = Array.from(metaMap.values()).sort((a, b) => {
+        const timeA = new Date(a.date).getTime() || 0;
+        const timeB = new Date(b.date).getTime() || 0;
+        return timeB - timeA;
+    });
+    return sorted.slice(0, limit).map((m) => m.id);
 }
 
 import { cache } from 'react';
