@@ -199,13 +199,6 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                         </div>
                     </div>
                 </section>
-
-                {/* Footer ad */}
-                <div className="container py-10">
-                    <div className="ad-slot h-32 max-w-4xl mx-auto">
-                        <span>Advertisement</span>
-                    </div>
-                </div>
             </main>
 
             <Footer />

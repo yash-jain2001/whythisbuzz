@@ -59,7 +59,6 @@ export default function CookiesPage() {
                                 Some cookies on WhyThisBuzz are set by third-party services:
                             </p>
                             <ul className="list-disc pl-6 space-y-2">
-                                <li><strong>Google AdSense:</strong> For displaying personalized advertisements</li>
                                 <li><strong>Google Analytics:</strong> For tracking and analyzing site traffic</li>
                             </ul>
                             <p className="mt-4">
@@ -67,7 +66,6 @@ export default function CookiesPage() {
                             </p>
                             <ul className="list-disc pl-6 space-y-2">
                                 <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Google Privacy Policy</a></li>
-                                <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Google Advertising</a></li>
                             </ul>
                         </section>
 

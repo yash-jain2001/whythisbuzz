@@ -86,13 +86,6 @@ export default function TermsPage() {
                         </section>
 
                         <section className="mt-8">
-                            <h2 className="text-2xl font-serif font-bold mb-4">Advertising</h2>
-                            <p>
-                                WhyThisBuzz displays advertisements through third-party services like Google AdSense. We are not responsible for the content of advertisements or the practices of advertisers.
-                            </p>
-                        </section>
-
-                        <section className="mt-8">
                             <h2 className="text-2xl font-serif font-bold mb-4">Changes to Terms</h2>
                             <p>
                                 We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting. Your continued use of the site constitutes acceptance of the updated terms.
