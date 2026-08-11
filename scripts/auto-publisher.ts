@@ -278,7 +278,9 @@ ${articleText}
         if (supabaseUrl && supabaseKey) {
           try {
             const { createClient } = await import('@supabase/supabase-js');
-            const supabase = createClient(supabaseUrl, supabaseKey);
+            const supabase = createClient(supabaseUrl, supabaseKey, {
+              auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+            });
             
             const bodyContent = output.slice(frontmatterMatch[0].length).trim();
             const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
