@@ -12,7 +12,7 @@ interface CategorySectionProps {
 
 export function CategorySection({ id, title, description, articles, viewAllUrl }: CategorySectionProps) {
   if (!articles || articles.length === 0) return null;
-  const displayArticles = articles.slice(0, 10);
+  const displayArticles = articles.slice(0, 6);
   const targetUrl = viewAllUrl || `/category/${id}`;
 
   return (
@@ -23,15 +23,13 @@ export function CategorySection({ id, title, description, articles, viewAllUrl }
             <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground mb-2">{title}</h2>
             <p className="text-muted-foreground max-w-xl">{description}</p>
           </div>
-          {articles.length > 10 && (
-            <a
-              href={targetUrl}
-              className="flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all"
-            >
-              <span>More {title.toLowerCase()}</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          )}
+          <a
+            href={targetUrl}
+            className="flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all shrink-0"
+          >
+            <span>View all {title.toLowerCase()}</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
