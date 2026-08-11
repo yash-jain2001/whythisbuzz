@@ -74,7 +74,7 @@ async function generate() {
       const { data, error } = await supabase
         .from('articles')
         .select('slug, title, summary, meta_description, category, image_url, read_time, date')
-        .order('date', { ascending: false })
+        .order('created_at', { ascending: false })
         .limit(100);
 
       if (!error && data && data.length > 0) {

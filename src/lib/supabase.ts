@@ -75,11 +75,13 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
     }
 
     try {
-        // Query Supabase directly using PostgreSQL DATE ordering
+        // Query lightweight fields with limit and indexed created_at sorting to prevent statement timeouts
+        const fetchLimit = Math.max(limit, 100);
         const { data, error } = await supabase
             .from('articles')
-            .select('*')
-            .order('date', { ascending: false });
+            .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
+            .order('created_at', { ascending: false })
+            .limit(fetchLimit);
 
         if (error || !data) {
             console.warn('⚠️ Supabase fetch warning:', error?.message);
@@ -98,12 +100,6 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
 
 export async function getSupabaseArticleBySlug(slug: string): Promise<Article | undefined> {
     if (!supabase) return undefined;
-
-    // Check in-memory cache first to avoid extra API calls
-    if (cachedArticles) {
-        const found = cachedArticles.find(a => a.metadata.id === slug);
-        if (found) return found;
-    }
 
     try {
         const { data, error } = await supabase
