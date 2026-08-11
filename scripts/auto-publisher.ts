@@ -1,8 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { createClient } from '@supabase/supabase-js';
 import Parser from 'rss-parser';
 import * as cheerio from 'cheerio';
-import fs from 'fs';
-import path from 'path';
 import slugify from 'slugify';
 import dotenv from 'dotenv';
 
@@ -14,6 +13,17 @@ if (!GEMINI_API_KEY) {
   process.exit(1);
 }
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Missing Supabase URL or Key in environment variables.");
+  process.exit(1);
+}
+
+const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+});
+
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 const parser = new Parser({
@@ -24,16 +34,6 @@ const parser = new Parser({
     ],
   }
 });
-
-// Helper to get Year-Week format (e.g., 2026-W02)
-function getYearWeekString(): string {
-  const date = new Date();
-  date.setHours(0, 0, 0, 0);
-  date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
-  const week1 = new Date(date.getFullYear(), 0, 4);
-  const weekNumber = 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
-  return `${date.getFullYear()}-W${weekNumber.toString().padStart(2, '0')}`;
-}
 
 function parseToISODate(dateStr?: string): string {
   if (!dateStr) {
@@ -68,23 +68,19 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
     const html = await response.text();
     const $ = cheerio.load(html);
 
-    // Remove unwanted elements
     $('script, style, nav, footer, iframe, header, noscript, .ad, .advertisement').remove();
 
-    // Extract main text (paragraphs)
     let text = '';
     $('p').each((_, element) => {
       const pText = $(element).text().trim();
-      if (pText.length > 50) { // Filter out short nav/footer links
+      if (pText.length > 50) {
         text += pText + '\n\n';
       }
     });
 
-    // Extract Open Graph image if available
     let imageUrl = $('meta[property="og:image"]').attr('content') || 
                     $('meta[name="twitter:image"]').attr('content') || '';
 
-    // Fallback to placeholder if relative URL or missing
     if (imageUrl && !imageUrl.startsWith('http')) {
       imageUrl = '';
     }
@@ -96,7 +92,7 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
   }
 }
 
-async function generateWithRetry(genAI: GoogleGenerativeAI, prompt: string): Promise<string> {
+async function generateWithRetry(prompt: string): Promise<string> {
   const models = ['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.6-flash'];
   let lastError: any = null;
 
@@ -122,18 +118,20 @@ async function generateWithRetry(genAI: GoogleGenerativeAI, prompt: string): Pro
   throw lastError;
 }
 
+async function getPublishedSlugs(): Promise<Set<string>> {
+  try {
+    const { data, error } = await supabase.from('articles').select('slug');
+    if (error || !data) return new Set();
+    return new Set(data.map(item => item.slug));
+  } catch {
+    return new Set();
+  }
+}
+
 async function main() {
   const regions = ['US', 'GB', 'DE'];
-  const historyPath = path.join(process.cwd(), 'scripts', 'history.json');
-  let history: string[] = [];
-
-  if (fs.existsSync(historyPath)) {
-    try {
-      history = JSON.parse(fs.readFileSync(historyPath, 'utf-8'));
-    } catch {
-      console.warn("Could not parse history.json, starting fresh.");
-    }
-  }
+  const publishedSlugs = await getPublishedSlugs();
+  console.log(`🌐 Supabase DB currently contains ${publishedSlugs.size} articles.`);
 
   const TARGET_PER_REGION = 2;
 
@@ -158,10 +156,10 @@ async function main() {
       if (regionProcessed >= TARGET_PER_REGION) break;
 
       const title = item.title || 'Unknown';
-      
       const slugifiedTitle = slugify(title, { lower: true, strict: true });
-      if (history.includes(slugifiedTitle)) {
-        console.log(`Skipping already covered trend: ${title}`);
+
+      if (publishedSlugs.has(slugifiedTitle)) {
+        console.log(`Skipping already published trend: ${title}`);
         continue;
       }
 
@@ -178,7 +176,6 @@ async function main() {
       const selectedTrend = title;
       const articleText = text;
       const articleImage = imageUrl || '/images/placeholder.jpg';
-      history.push(slugifiedTitle);
 
       console.log(`Selected trend for ${region}: ${selectedTrend}`);
       console.log(`Generating article with Gemini...`);
@@ -227,7 +224,7 @@ ${articleText}
 `;
 
       try {
-        let output = await generateWithRetry(genAI, prompt);
+        let output = await generateWithRetry(prompt);
         
         if (output.startsWith('```mdx')) output = output.replace(/^```mdx\n/, '');
         else if (output.startsWith('```markdown')) output = output.replace(/^```markdown\n/, '');
@@ -247,15 +244,6 @@ ${articleText}
         
         if (categoryMatch) category = categoryMatch[1];
         const articleTitle = titleMatch ? titleMatch[1] : selectedTrend;
-
-        const date = new Date();
-        const year = date.getFullYear().toString();
-        const monthFormatter = new Intl.DateTimeFormat('en-US', { month: 'long' });
-        const monthName = monthFormatter.format(date);
-        const monthNum = (date.getMonth() + 1).toString().padStart(2, '0');
-        const monthFolder = `${monthNum}-${monthName}`;
-        const yearWeek = getYearWeekString();
-        
         const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
         
         const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media"];
@@ -263,69 +251,46 @@ ${articleText}
           category = "World Affairs";
         }
 
-        const targetDir = path.join(process.cwd(), 'src', 'content', category, year, monthFolder, yearWeek);
-        if (!fs.existsSync(targetDir)) {
-          fs.mkdirSync(targetDir, { recursive: true });
+        const bodyContent = output.slice(frontmatterMatch[0].length).trim();
+        const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
+        const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
+        const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
+        const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
+        const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
+        const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
+        const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
+        const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
+
+        const { error: sbError } = await supabase.from('articles').upsert({
+          slug,
+          title: articleTitle,
+          summary: summaryMatch ? summaryMatch[1] : '',
+          content: bodyContent,
+          category,
+          author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
+          date: parseToISODate(dateMatch ? dateMatch[1] : undefined),
+          read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
+          image_url: imageUrlMatch ? imageUrlMatch[1] : articleImage,
+          seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
+          meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
+          keywords: keywordsMatch ? keywordsMatch[1] : undefined,
+        }, { onConflict: 'slug' });
+
+        if (sbError) {
+          console.error(`⚠️ Supabase upload error for ${slug}:`, sbError.message);
+        } else {
+          publishedSlugs.add(slugifiedTitle);
+          publishedSlugs.add(slug);
+          console.log(`🚀 Successfully published "${articleTitle}" (${slug}) directly to Supabase DB!`);
+          regionProcessed++;
         }
-
-        const filePath = path.join(targetDir, `${slug}.mdx`);
-        fs.writeFileSync(filePath, output.trim());
-        console.log(`Successfully saved local MDX at: ${filePath}`);
-
-        // Push straight to Supabase if configured
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-        if (supabaseUrl && supabaseKey) {
-          try {
-            const { createClient } = await import('@supabase/supabase-js');
-            const supabase = createClient(supabaseUrl, supabaseKey, {
-              auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
-            });
-            
-            const bodyContent = output.slice(frontmatterMatch[0].length).trim();
-            const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
-            const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
-            const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
-            const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
-            const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
-            const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
-            const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
-            const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
-
-            const { error: sbError } = await supabase.from('articles').upsert({
-              slug,
-              title: articleTitle,
-              summary: summaryMatch ? summaryMatch[1] : '',
-              content: bodyContent,
-              category,
-              author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
-              date: parseToISODate(dateMatch ? dateMatch[1] : undefined),
-              read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
-              image_url: imageUrlMatch ? imageUrlMatch[1] : articleImage,
-              seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
-              meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
-              keywords: keywordsMatch ? keywordsMatch[1] : undefined,
-            }, { onConflict: 'slug' });
-
-            if (sbError) {
-              console.error(`⚠️ Supabase upload error for ${slug}:`, sbError.message);
-            } else {
-              console.log(`🚀 Successfully published ${slug} to Supabase Database!`);
-            }
-          } catch (sbErr) {
-            console.error(`⚠️ Failed to push to Supabase:`, sbErr);
-          }
-        }
-        regionProcessed++;
       } catch (error) {
         console.error(`Failed to generate or save article for ${region}:`, error);
       }
     }
   }
 
-  // Save updated history
-  fs.writeFileSync(historyPath, JSON.stringify(history, null, 2));
-  console.log("History saved successfully.");
+  console.log("✅ All articles processed and saved directly to Supabase DB!");
 }
 
 main().catch(console.error);
