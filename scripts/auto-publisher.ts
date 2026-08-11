@@ -96,6 +96,29 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
   }
 }
 
+async function generateWithRetry(genAI: GoogleGenerativeAI, prompt: string): Promise<string> {
+  let lastError: any = null;
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      if (attempt > 1) {
+        console.log(`[Attempt ${attempt}/3] Waiting 25 seconds for quota reset...`);
+        await new Promise(res => setTimeout(res, 25000));
+      } else {
+        await new Promise(res => setTimeout(res, 3000));
+      }
+      const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
+      const result = await model.generateContent(prompt);
+      return result.response.text();
+    } catch (err: any) {
+      lastError = err;
+      const msg = err.message || String(err);
+      console.warn(`[Attempt ${attempt}/3] Failed: ${msg.substring(0, 120)}`);
+    }
+  }
+  throw lastError;
+}
+
 async function main() {
   const regions = ['US', 'GB', 'DE'];
   const historyPath = path.join(process.cwd(), 'scripts', 'history.json');
@@ -179,8 +202,7 @@ You must categorize this article into exactly ONE of the following valid categor
 CRITICAL SEO INSTRUCTIONS:
 - Generate a 50-60 character click-optimized \`seoTitle\`.
 - Generate a 150-160 character snippet-optimized \`metaDescription\`.
-- Generate exactly 5-7 high-volume \`keywords\` relevant to the article, comma separated.
-- Throughout the article body, use rich, descriptive header tags (## and ###) that include long-tail search queries, instead of generic headers.
+- Include 4-8 targeted keywords as a comma-separated list in \`keywords\`.
 
 Use exactly this frontmatter structure (fill in the appropriate details based on your analysis):
 
@@ -202,10 +224,7 @@ ${articleText}
 `;
 
       try {
-        await new Promise(res => setTimeout(res, 2500));
-        const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
-        const result = await model.generateContent(prompt);
-        let output = result.response.text();
+        let output = await generateWithRetry(genAI, prompt);
         
         if (output.startsWith('```mdx')) output = output.replace(/^```mdx\n/, '');
         else if (output.startsWith('```markdown')) output = output.replace(/^```markdown\n/, '');
