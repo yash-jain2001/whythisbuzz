@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function proxifyImage(url: string): string {
-  if (!url || url === '/images/placeholder.jpg') return "/images/placeholder.svg";
+  if (!url || url === '/images/placeholder.jpg' || url === '/images/placeholder.svg') return '';
   if (!url.startsWith("http")) return url;
   
   // In local development, fetch directly since Cloudflare Pages Functions do not run in next dev

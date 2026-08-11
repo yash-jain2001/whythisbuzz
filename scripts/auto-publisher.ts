@@ -173,9 +173,18 @@ async function main() {
         text = `Headline trend: ${title}. Provide a full in-depth news analysis explaining what happened, key background details, and why this matters to the public.`;
       }
 
+      const categoryFallbackImages: Record<string, string> = {
+        Sports: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
+        Entertainment: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+        Technology: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+        "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+        Movies: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",
+        "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+      };
+
       const selectedTrend = title;
       const articleText = text;
-      const articleImage = imageUrl || '/images/placeholder.jpg';
+      const articleImage = imageUrl || categoryFallbackImages["World Affairs"];
 
       console.log(`Selected trend for ${region}: ${selectedTrend}`);
       console.log(`Generating article with Gemini...`);
@@ -261,6 +270,11 @@ ${articleText}
         const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
         const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
 
+        const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
+        const finalImage = (parsedImg && parsedImg.startsWith('http')) 
+          ? parsedImg 
+          : (imageUrl && imageUrl.startsWith('http') ? imageUrl : (categoryFallbackImages[category] || categoryFallbackImages["World Affairs"]));
+
         const { error: sbError } = await supabase.from('articles').upsert({
           slug,
           title: articleTitle,
@@ -270,7 +284,7 @@ ${articleText}
           author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
           date: parseToISODate(dateMatch ? dateMatch[1] : undefined),
           read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
-          image_url: imageUrlMatch ? imageUrlMatch[1] : articleImage,
+          image_url: finalImage,
           seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
           meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
           keywords: keywordsMatch ? keywordsMatch[1] : undefined,

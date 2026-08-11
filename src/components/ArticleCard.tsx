@@ -34,7 +34,8 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
-  const imageSrc = article.imageUrl ? proxifyImage(article.imageUrl) : getDemoImage(article.category);
+  const proxified = article.imageUrl ? proxifyImage(article.imageUrl) : '';
+  const imageSrc = proxified || getDemoImage(article.category);
 
   if (variant === "compact") {
     return (
