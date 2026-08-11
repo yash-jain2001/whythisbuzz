@@ -115,17 +115,60 @@ export async function getSupabaseArticleBySlug(slug: string): Promise<Article | 
     }
 }
 
-export async function getSupabaseArticlesByCategory(category: string, limit: number = 50): Promise<ArticleMetadata[]> {
-    const articles = await getSupabaseArticles(1000);
-    const catLower = category.toLowerCase().replace(/[-_]/g, ' ').trim();
+function docToMetadata(doc: SupabaseArticleDoc): ArticleMetadata {
+    return {
+        id: doc.slug,
+        title: doc.title,
+        description: doc.summary || doc.meta_description || '',
+        date: formatDateDisplay(doc.date),
+        author: doc.author || 'WhyThisBuzz Desk',
+        category: doc.category,
+        imageUrl: doc.image_url || '',
+        readTime: doc.read_time || '3 min read',
+        summary: doc.summary || '',
+        seoTitle: doc.seo_title,
+        metaDescription: doc.meta_description,
+        keywords: doc.keywords,
+    } as ArticleMetadata;
+}
 
-    return articles
-        .filter(a => {
-            const cLower = a.metadata.category.toLowerCase().replace(/[-_]/g, ' ').trim();
-            return cLower === catLower || cLower.includes(catLower) || catLower.includes(cLower);
-        })
-        .slice(0, limit)
-        .map(a => a.metadata);
+export async function getSupabaseArticlesByCategory(category: string, limit: number = 50): Promise<ArticleMetadata[]> {
+    if (!supabase) return [];
+
+    try {
+        const catLower = category.toLowerCase().replace(/[-_]/g, ' ').trim();
+        let catQuery = category;
+        if (catLower.includes('social')) {
+            catQuery = 'Social';
+        } else if (catLower.includes('tech')) {
+            catQuery = 'Technology';
+        } else if (catLower.includes('sport')) {
+            catQuery = 'Sports';
+        } else if (catLower.includes('movie') || catLower.includes('entertain')) {
+            catQuery = 'Movie';
+        } else if (catLower.includes('world')) {
+            catQuery = 'World';
+        }
+
+        const { data, error } = await supabase
+            .from('articles')
+            .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
+            .ilike('category', `%${catQuery}%`)
+            .order('created_at', { ascending: false })
+            .limit(limit);
+
+        if (error || !data || data.length === 0) {
+            const all = await getSupabaseArticles(200);
+            return all
+                .map(a => a.metadata)
+                .filter(m => m.category.toLowerCase().replace(/[-_]/g, ' ').trim().includes(catLower))
+                .slice(0, limit);
+        }
+
+        return data.map(docToMetadata);
+    } catch {
+        return [];
+    }
 }
 
 export async function getSupabaseArticleSlugs(limit: number = 50): Promise<string[]> {

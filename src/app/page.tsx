@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { ArticleGrid } from "@/components/ArticleGrid";
 import { CategorySection } from "@/components/CategorySection";
-import { getAllArticles } from "@/lib/mdx";
+import { getAllArticles, getArticlesByCategory } from "@/lib/mdx";
 import { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
@@ -20,22 +20,22 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const allArticles = await getAllArticles(200);
-  const allMetadata = allArticles.map(a => a.metadata);
+  const allArticles = await getAllArticles(12);
+  const gridArticles = allArticles.map(a => a.metadata);
 
-  // Show first 12 articles in the main grid
-  const gridArticles = allMetadata.slice(0, 12);
-
-  // Filter category sections directly from in-memory articles
-  const worldAffairsArticles = allMetadata.filter(a => a.category === 'World Affairs');
-  const sportsArticles = allMetadata.filter(a => a.category === 'Sports');
-  const moviesAndEntertainmentArticles = allMetadata.filter(a =>
-    a.category === 'Movies' || a.category === 'Entertainment'
-  );
-  const socialMediaArticles = allMetadata.filter(a =>
-    a.category === 'Social Media' || a.category === 'Social-Media'
-  );
-  const techArticles = allMetadata.filter(a => a.category === 'Technology');
+  const [
+    worldAffairsArticles,
+    sportsArticles,
+    moviesAndEntertainmentArticles,
+    socialMediaArticles,
+    techArticles
+  ] = await Promise.all([
+    getArticlesByCategory('World Affairs', 6),
+    getArticlesByCategory('Sports', 6),
+    getArticlesByCategory('Movies', 6),
+    getArticlesByCategory('Social-Media', 6),
+    getArticlesByCategory('Technology', 6)
+  ]);
 
   return (
     <div className="min-h-screen flex flex-col">
