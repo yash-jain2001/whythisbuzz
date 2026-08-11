@@ -97,23 +97,26 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
 }
 
 async function generateWithRetry(genAI: GoogleGenerativeAI, prompt: string): Promise<string> {
+  const models = ['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.6-flash'];
   let lastError: any = null;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      if (attempt > 1) {
-        console.log(`[Attempt ${attempt}/3] Waiting 25 seconds for quota reset...`);
-        await new Promise(res => setTimeout(res, 25000));
-      } else {
-        await new Promise(res => setTimeout(res, 3000));
+    for (const modelName of models) {
+      try {
+        await new Promise(res => setTimeout(res, 2500));
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(prompt);
+        return result.response.text();
+      } catch (err: any) {
+        lastError = err;
+        const msg = err.message || String(err);
+        if (msg.includes('429') || msg.includes('503') || msg.includes('quota')) {
+          console.warn(`[Attempt ${attempt}/3] ${modelName} rate limited / busy. Waiting 10s...`);
+          await new Promise(res => setTimeout(res, 10000));
+        } else {
+          console.warn(`[Attempt ${attempt}/3] ${modelName} failed: ${msg.substring(0, 100)}`);
+        }
       }
-      const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
-      const result = await model.generateContent(prompt);
-      return result.response.text();
-    } catch (err: any) {
-      lastError = err;
-      const msg = err.message || String(err);
-      console.warn(`[Attempt ${attempt}/3] Failed: ${msg.substring(0, 120)}`);
     }
   }
   throw lastError;
