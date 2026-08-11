@@ -12,7 +12,7 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground">Trending Now</h2>
           <a
-            href="#all"
+            href="/trending"
             className="text-sm font-medium text-accent hover:text-accent/80 transition-colors"
           >
             View all →
