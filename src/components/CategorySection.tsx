@@ -1,6 +1,10 @@
+'use client';
+
+import { useState, useEffect } from "react";
 import { ArticleCard } from "./ArticleCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { ArrowRight } from "lucide-react";
+import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 
 interface CategorySectionProps {
   id: string;
@@ -10,7 +14,64 @@ interface CategorySectionProps {
   viewAllUrl?: string;
 }
 
-export function CategorySection({ id, title, description, articles, viewAllUrl }: CategorySectionProps) {
+function formatDateDisplay(dateStr: string): string {
+  if (!dateStr) return '';
+  if (/^\d{4}-\d{2}-\d{2}/.test(dateStr)) {
+    const [year, month, day] = dateStr.split('T')[0].split('-');
+    const dateObj = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    return dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  return dateStr;
+}
+
+export function CategorySection({ id, title, description, articles: initialArticles, viewAllUrl }: CategorySectionProps) {
+  const [articles, setArticles] = useState<ArticleMetadata[]>(initialArticles);
+
+  useEffect(() => {
+    if (!supabase) return;
+
+    const catLower = title.toLowerCase().replace(/[-_]/g, ' ').trim();
+    let catQuery = title;
+    if (catLower.includes('social')) {
+      catQuery = 'Social';
+    } else if (catLower.includes('tech')) {
+      catQuery = 'Technology';
+    } else if (catLower.includes('sport')) {
+      catQuery = 'Sports';
+    } else if (catLower.includes('movie') || catLower.includes('entertain')) {
+      catQuery = 'Movie';
+    } else if (catLower.includes('world')) {
+      catQuery = 'World';
+    }
+
+    supabase
+      .from('articles')
+      .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
+      .ilike('category', `%${catQuery}%`)
+      .order('date', { ascending: false })
+      .order('created_at', { ascending: false })
+      .limit(6)
+      .then(({ data, error }) => {
+        if (!error && data && data.length > 0) {
+          const liveArticles: ArticleMetadata[] = (data as SupabaseArticleDoc[]).map((doc) => ({
+            id: doc.slug,
+            title: doc.title,
+            description: doc.summary || doc.meta_description || '',
+            date: formatDateDisplay(doc.date),
+            author: doc.author || 'WhyThisBuzz Desk',
+            category: doc.category,
+            imageUrl: doc.image_url || '',
+            readTime: doc.read_time || '3 min read',
+            summary: doc.summary || '',
+            seoTitle: doc.seo_title,
+            metaDescription: doc.meta_description,
+            keywords: doc.keywords,
+          }));
+          setArticles(liveArticles);
+        }
+      });
+  }, [title]);
+
   if (!articles || articles.length === 0) return null;
   const displayArticles = articles.slice(0, 6);
   const targetUrl = viewAllUrl || `/category/${id}`;
@@ -47,3 +108,4 @@ export function CategorySection({ id, title, description, articles, viewAllUrl }
     </section>
   );
 }
+
