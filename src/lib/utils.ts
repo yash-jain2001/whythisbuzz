@@ -9,10 +9,6 @@ export function proxifyImage(url: string): string {
   if (!url || url === '/images/placeholder.jpg' || url === '/images/placeholder.svg') return '';
   if (!url.startsWith("http")) return url;
   
-  // In local development, fetch directly since Cloudflare Pages Functions do not run in next dev
-  if (process.env.NODE_ENV !== "production") {
-    return url;
-  }
-  
-  return `/api/image-proxy?url=${encodeURIComponent(url)}`;
+  // Return direct URL so the user's browser fetches directly from the image CDN
+  return url;
 }
