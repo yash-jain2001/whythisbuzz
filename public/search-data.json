@@ -1,5 +1,50 @@
 [
   {
+    "id": "bela-rethys-epic-comeback-why-the-legendary-voice-is-returning",
+    "title": "Béla Réthy's Epic Comeback: Why the Legendary Voice is Returning",
+    "summary": "Legendary German broadcaster Béla Réthy is coming out of retirement to voice Eintracht Frankfurt's pre-season derby—and it might just be the start of a permanent return.",
+    "category": "Sports",
+    "imageUrl": "https://images.bild.de/6a7b270167ddb2e13c584361/9e2aa1f51e6b118f9c00902863b44bcc,aed27a9d?w=1280",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-great-sussex-pivot-why-harry-and-meghan-are-quietly-going-solo",
+    "title": "The Great Sussex Pivot: Why Harry and Meghan Are Quietly Going Solo",
+    "summary": "The Duke and Duchess of Sussex are shifting from joint royal tell-alls to distinct, individual brands. Here is why this tactical split is their high-stakes bid for long-term survival.",
+    "category": "Entertainment",
+    "imageUrl": "https://www.thetimes.com/imageserver/image/efb4684b-d566-4301-bb03-2013ecb3c9e7.jpg?strip=all&format=webp&crop=3351px%2C1885px%2C378px%2C771px&resize=1200",
+    "readTime": "4 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-dry-tap-why-the-global-water-crisis-is-closer-to-home-than-you-think",
+    "title": "The Dry Tap: Why the Global Water Crisis Is Closer to Home Than You Think",
+    "summary": "As major cities edge closer to 'Day Zero' water emergencies, we look behind the taps to analyze the infrastructure failures and climate realities driving the global liquid gold rush.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    "readTime": "4 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "beyond-the-cutlet-why-tommy-devitos-patriots-glow-up-matters",
+    "title": "Beyond the Cutlet: Why Tommy DeVito’s Patriots Glow-Up Matters",
+    "summary": "Tommy DeVito is shedding his viral 'Tommy Cutlets' persona for a sleek new nickname and a serious role as the Patriots' locked-in backup quarterback.",
+    "category": "Sports",
+    "imageUrl": "https://bostonglobe-prod.cdn.arcpublishing.com/resizer/v2/A4DFSHTP5RZXTALSZJ76RB4C6M.jpg?auth=94282652a5fe2d267ae870c11d5a280318ccc5461c9436af38bc51262f93159b&width=1440",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-spidey-effect-why-superhero-fatigue-is-a-myth",
+    "title": "The Spidey Effect: Why Superhero Fatigue is a Myth",
+    "summary": "Spider-Man: Brand New Day has shattered box office records, and MCU star Iman Vellani is calling out the 'superhero fatigue' myth once and for all.",
+    "category": "Movies",
+    "imageUrl": "https://s.yimg.com/lo/mysterio/api/faa733c65a2f9264feb881aeb8960aa2b96d2fb47c3f801ebb9f67af688af981/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftotal_film_411%2F5ea856d9d6be974ba8787df28ea6ac97.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
     "id": "vw-id-buzz-goes-camping-meet-the-id-california-cruise",
     "title": "VW ID. Buzz Goes Camping: Meet the ID. California Cruise",
     "summary": "Volkswagen is teasing its first-ever all-electric camper concept based on the ID. Buzz, complete with ultra-light inflatable gear.",
@@ -382,7 +427,7 @@
     "title": "The Return of the 'Flick': Why This Viral Trend is Taking Over Your Feed",
     "summary": "A microscopic gesture is dominating digital culture overnight. Here is the breakdown of what the 'flick' trend is and why it's suddenly everywhere.",
     "category": "Social-Media",
-    "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "/images/default-thumbnail.png",
     "readTime": "3 min read",
     "date": "2026-08-11"
   },
@@ -589,7 +634,7 @@
     "title": "Who is Jake Whisenant? Inside the Internet's Latest Viral Obsession",
     "summary": "From regional storytelling to viral sensation, Jake Whisenant's sudden rise reveals the changing rules of modern internet fame.",
     "category": "Social-Media",
-    "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "/images/default-thumbnail.png",
     "readTime": "4 min read",
     "date": "2026-08-11"
   },
@@ -679,7 +724,7 @@
     "title": "Viral Creator Trends Shaping Digital Culture & Social Media in August 2026",
     "summary": "From AI-assisted short-form content to decentralized community platforms, explore the latest trends sweeping social networks.",
     "category": "Social Media",
-    "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "/images/default-thumbnail.png",
     "readTime": "3 min read",
     "date": "2026-08-10"
   },
@@ -729,15 +774,6 @@
     "date": "2026-08-09"
   },
   {
-    "id": "a-voice-silenced-remembering-brian-banks-daily-expresss-unforgettable-reader",
-    "title": "A Voice Silenced: Remembering Brian Banks, Daily Express's Unforgettable Reader",
-    "summary": "Brian Banks, the spirited and opinionated Daily Express letter writer, has passed away at 85. His distinctive voice and passion for public discourse made him a cherished figure among readers.",
-    "category": "World Affairs",
-    "imageUrl": "https://cdn.images.express.co.uk/img/dynamic/140/1200x630/7082700.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-09"
-  },
-  {
     "id": "germanys-harvest-crisis-farmers-sweat-minister-shrugs",
     "title": "Germany's Harvest Crisis: Farmers Sweat, Minister Shrugs",
     "summary": "Germany's farmers are grappling with a dire harvest forecast amidst extreme heat and drought, sparking urgent calls for government support. But with the Agriculture Minister claiming he 'can't make it rain,' a deeper crisis looms for the nation's food security and agricultural future.",
@@ -747,38 +783,11 @@
     "date": "2026-08-09"
   },
   {
-    "id": "wnba-blockbuster-aces-vs-liberty-star-power-playoff-stakes-and-a-strategic-gamble",
-    "title": "WNBA Blockbuster: Aces vs. Liberty — Star Power, Playoff Stakes, and a Strategic Gamble",
-    "summary": "The Las Vegas Aces and New York Liberty clash in a highly anticipated WNBA matchup, but a strategic decision to potentially rest key Aces players could redefine the stakes for playoff positioning and the season series.",
-    "category": "Sports",
-    "imageUrl": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_5281,h_2970/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/si/01kzk4ksgqrzt558kfrj.jpg",
-    "readTime": "4 min read",
-    "date": "2026-08-09"
-  },
-  {
-    "id": "the-buzz-shohei-ohtani-begins-throwing-is-a-dodgers-mound-return-imminent",
-    "title": "The Buzz: Shohei Ohtani Begins Throwing – Is a Dodgers Mound Return Imminent?",
-    "summary": "Dodgers two-way phenom Shohei Ohtani has officially started his throwing progression, igniting speculation about his return to the mound. What does this crucial step mean for the superstar and L.A.'s playoff aspirations?",
-    "category": "Sports",
-    "imageUrl": "https://img.mlbstatic.com/mlb-images/image/upload/t_2x1/t_w1536/mlb/jjhbs5tqdnnrfntnbxhx.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-09"
-  },
-  {
-    "id": "quillan-salkilld-shocks-mateusz-gamrot-a-new-lightweight-contender-ignites-the-ufc",
-    "title": "Quillan Salkilld Shocks Mateusz Gamrot: A New Lightweight Contender Ignites the UFC",
-    "summary": "Quillan Salkilld delivered a seismic shock at Meta Apex, submitting top contender Mateusz Gamrot in the first round and instantly rocketing himself into the UFC lightweight title picture.",
-    "category": "Sports",
-    "imageUrl": "https://www.ufc-fr.com/data/actualite/14126/large/ufc-fight-night-284-quillan-salkilld-choque-la-planete-mma-en-soumettant-mateusz-gamrot-des-la-premiere-reprise-photo___ID_2026-08-09-04-47-31_14126.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-09"
-  },
-  {
-    "id": "pariss-seine-splashdown-elite-diving-defies-water-worries-reclaims-an-icon",
-    "title": "Paris's Seine Splashdown: Elite Diving Defies Water Worries, Reclaims an Icon",
-    "summary": "Paris hosted a dramatic high-diving spectacle in the Seine, showcasing its ambitious river reclamation project. Despite a brief scare over water quality, the event proceeded, celebrating the city's €1.4bn effort to make the iconic river swimmable again.",
-    "category": "Sports",
-    "imageUrl": "https://i.guim.co.uk/img/media/19973ee662f6750aafe1b450520fdeee330f96b6/1048_234_4707_3766/master/4707.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3Zlrlay/tg-default.png&enable=upscale&s=0ef2bb43b0d3fdf3d1b678149630d6dd",
+    "id": "a-voice-silenced-remembering-brian-banks-daily-expresss-unforgettable-reader",
+    "title": "A Voice Silenced: Remembering Brian Banks, Daily Express's Unforgettable Reader",
+    "summary": "Brian Banks, the spirited and opinionated Daily Express letter writer, has passed away at 85. His distinctive voice and passion for public discourse made him a cherished figure among readers.",
+    "category": "World Affairs",
+    "imageUrl": "https://cdn.images.express.co.uk/img/dynamic/140/1200x630/7082700.jpg",
     "readTime": "3 min read",
     "date": "2026-08-09"
   },
@@ -792,11 +801,29 @@
     "date": "2026-08-09"
   },
   {
-    "id": "snooker-shockwave-judd-trumps-world-no-1-reign-rocked-by-china-open-upset",
-    "title": "Snooker Shockwave: Judd Trump's World No. 1 Reign Rocked by China Open Upset",
-    "summary": "Judd Trump's status as world number one hangs by a thread after a stunning first-round exit at the China Open, signaling a potential seismic shift in snooker's top hierarchy.",
+    "id": "the-buzz-shohei-ohtani-begins-throwing-is-a-dodgers-mound-return-imminent",
+    "title": "The Buzz: Shohei Ohtani Begins Throwing – Is a Dodgers Mound Return Imminent?",
+    "summary": "Dodgers two-way phenom Shohei Ohtani has officially started his throwing progression, igniting speculation about his return to the mound. What does this crucial step mean for the superstar and L.A.'s playoff aspirations?",
     "category": "Sports",
-    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/c548/live/cb62dcc0-93df-11f1-8231-7d4e2048054e.jpg",
+    "imageUrl": "https://img.mlbstatic.com/mlb-images/image/upload/t_2x1/t_w1536/mlb/jjhbs5tqdnnrfntnbxhx.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "pariss-seine-splashdown-elite-diving-defies-water-worries-reclaims-an-icon",
+    "title": "Paris's Seine Splashdown: Elite Diving Defies Water Worries, Reclaims an Icon",
+    "summary": "Paris hosted a dramatic high-diving spectacle in the Seine, showcasing its ambitious river reclamation project. Despite a brief scare over water quality, the event proceeded, celebrating the city's €1.4bn effort to make the iconic river swimmable again.",
+    "category": "Sports",
+    "imageUrl": "https://i.guim.co.uk/img/media/19973ee662f6750aafe1b450520fdeee330f96b6/1048_234_4707_3766/master/4707.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3Zlrlay/tg-default.png&enable=upscale&s=0ef2bb43b0d3fdf3d1b678149630d6dd",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "quillan-salkilld-shocks-mateusz-gamrot-a-new-lightweight-contender-ignites-the-ufc",
+    "title": "Quillan Salkilld Shocks Mateusz Gamrot: A New Lightweight Contender Ignites the UFC",
+    "summary": "Quillan Salkilld delivered a seismic shock at Meta Apex, submitting top contender Mateusz Gamrot in the first round and instantly rocketing himself into the UFC lightweight title picture.",
+    "category": "Sports",
+    "imageUrl": "https://www.ufc-fr.com/data/actualite/14126/large/ufc-fight-night-284-quillan-salkilld-choque-la-planete-mma-en-soumettant-mateusz-gamrot-des-la-premiere-reprise-photo___ID_2026-08-09-04-47-31_14126.jpg",
     "readTime": "3 min read",
     "date": "2026-08-09"
   },
@@ -810,12 +837,21 @@
     "date": "2026-08-09"
   },
   {
-    "id": "holmgrens-solo-masterclass-and-the-rivalry-dividing-the-peloton",
-    "title": "Holmgren's Solo Masterclass & The Rivalry Dividing the Peloton",
-    "summary": "Rising star Isabella Holmgren delivered a stunning solo attack in a high-stakes stage, but behind her, the intense battle between yellow jersey Demi Vollering and rival Kasia Niewiadoma is reaching boiling point, fueled by controversy and aggressive team tactics.",
+    "id": "wnba-blockbuster-aces-vs-liberty-star-power-playoff-stakes-and-a-strategic-gamble",
+    "title": "WNBA Blockbuster: Aces vs. Liberty — Star Power, Playoff Stakes, and a Strategic Gamble",
+    "summary": "The Las Vegas Aces and New York Liberty clash in a highly anticipated WNBA matchup, but a strategic decision to potentially rest key Aces players could redefine the stakes for playoff positioning and the season series.",
     "category": "Sports",
-    "imageUrl": "https://i.guim.co.uk/img/media/a45370fa5bca2dcf162a8ec993f6cf7badcd2dcd/0_0_6038_4830/master/6038.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=8b8717961cececb1c58a3aed6536dad9",
+    "imageUrl": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_5281,h_2970/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/si/01kzk4ksgqrzt558kfrj.jpg",
     "readTime": "4 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "snooker-shockwave-judd-trumps-world-no-1-reign-rocked-by-china-open-upset",
+    "title": "Snooker Shockwave: Judd Trump's World No. 1 Reign Rocked by China Open Upset",
+    "summary": "Judd Trump's status as world number one hangs by a thread after a stunning first-round exit at the China Open, signaling a potential seismic shift in snooker's top hierarchy.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/c548/live/cb62dcc0-93df-11f1-8231-7d4e2048054e.jpg",
+    "readTime": "3 min read",
     "date": "2026-08-09"
   },
   {
@@ -824,6 +860,15 @@
     "summary": "The iconic 'Clássico Vovô' explodes onto the Brasileirão stage this Saturday, pitting an resurgent Botafogo against a Fluminense reeling from a brutal losing streak and eyeing a crucial Libertadores clash. Who will claim Rio's bragging rights and navigate their season's turning point?",
     "category": "Sports",
     "imageUrl": "https://s2-ge.glbimg.com/9F3yu_GsvVEUarf-dC0C3aO70cU=/4000x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/L/5/afIcazTTyEJXrP2nz01g/gettyimages-1322585575.jpg",
+    "readTime": "4 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "holmgrens-solo-masterclass-and-the-rivalry-dividing-the-peloton",
+    "title": "Holmgren's Solo Masterclass & The Rivalry Dividing the Peloton",
+    "summary": "Rising star Isabella Holmgren delivered a stunning solo attack in a high-stakes stage, but behind her, the intense battle between yellow jersey Demi Vollering and rival Kasia Niewiadoma is reaching boiling point, fueled by controversy and aggressive team tactics.",
+    "category": "Sports",
+    "imageUrl": "https://i.guim.co.uk/img/media/a45370fa5bca2dcf162a8ec993f6cf7badcd2dcd/0_0_6038_4830/master/6038.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=8b8717961cececb1c58a3aed6536dad9",
     "readTime": "4 min read",
     "date": "2026-08-09"
   },
@@ -853,50 +898,5 @@
     "imageUrl": "https://s.yimg.com/lo/mysterio/api/642661cc7b7fd56cbeeda05dd8facdd49b4e625a4fc049d6e053ff13f00bb57e/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwealth_of_geeks_188%2F02fd8c55df9574d3c3722ce2f390b92b",
     "readTime": "4 min read",
     "date": "2026-08-09"
-  },
-  {
-    "id": "the-unconventional-secret-to-charles-and-camillas-enduring-royal-love",
-    "title": "The Unconventional Secret to Charles & Camilla's Enduring Royal Love",
-    "summary": "Forget traditional royal romance! King Charles III and Queen Camilla are defying expectations with an unconventional secret to their enduring marriage: strategic independence, including separate residences.",
-    "category": "World Affairs",
-    "imageUrl": "https://i.f1g.fr/media/cms/1200x630_crop/2026/08/07/5069687bac164f5575bf5fd56d02a9f16b3d4b8b74efe855a9e686f609754136.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-08"
-  },
-  {
-    "id": "germanys-health-fund-fiasco-where-did-your-euro500-million-go",
-    "title": "Germany's Health Fund Fiasco: Where Did Your €500 Million Go?",
-    "summary": "A bombshell investigation reveals German health insurance funds gambled away over €500 million of public money in risky investments, sparking outrage and reigniting a fierce debate about the nation's healthcare system.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.t-online.de/2026/07/wYf29M6KAHom/0x107:2048x1152/fit-in/1200x0/cdu-generalsekretaer-carsten-linnemann-wird-minister-archivbild.jpg",
-    "readTime": "4 min read",
-    "date": "2026-08-08"
-  },
-  {
-    "id": "lindsay-clancy-trial-diary-reveals-despair-amid-murder-charges",
-    "title": "Lindsay Clancy Trial: Diary Reveals Despair Amid Murder Charges",
-    "summary": "The second week of the Lindsay Clancy murder trial unveiled her first audible words, emotional courtroom moments, and chilling diary entries detailing mental health struggles, painting a complex picture of a mother accused of killing her three children.",
-    "category": "World Affairs",
-    "imageUrl": "https://media.cnn.com/api/v1/images/stellar/prod/7-20260807124736673.jpg?c=16x9&q=w_800,c_fill",
-    "readTime": "4 min read",
-    "date": "2026-08-08"
-  },
-  {
-    "id": "heathrow-scare-british-airways-flight-issues-mayday-after-double-stall-warnings",
-    "title": "Heathrow Scare: British Airways Flight Issues Mayday After Double Stall Warnings",
-    "summary": "A British Airways flight declared a 'mayday' approaching Heathrow after two severe stall warnings and system failures. Though it landed safely, UK authorities are now probing the alarming technical issues that put passengers at risk.",
-    "category": "World Affairs",
-    "imageUrl": "https://ichef.bbci.co.uk/news/1024/branded_news/89dd/live/c63fb180-8c3e-11f1-a7ab-8b30adf0800a.jpg",
-    "readTime": "4 min read",
-    "date": "2026-08-08"
-  },
-  {
-    "id": "verizon-outage-snares-grand-traverse-county-why-a-minnesota-glitch-matters-to-you",
-    "title": "Verizon Outage Snares Grand Traverse County: Why a Minnesota Glitch Matters to You",
-    "summary": "Grand Traverse County's phone lines are down for many, thanks to a Verizon switch failure hundreds of miles away. We break down the tech hiccup, its impact on residents, and why this remote outage rings alarms for local services.",
-    "category": "Technology",
-    "imageUrl": "https://cloudfront-us-east-1.images.arcpublishing.com/910mediagroup/ROTG6TGACFP7VJMQHFTOQISRZA.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-08"
   }
 ]

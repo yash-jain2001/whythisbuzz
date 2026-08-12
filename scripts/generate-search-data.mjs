@@ -55,14 +55,7 @@ function getMdxFiles(dir) {
   return results;
 }
 
-const fallbackImages = {
-  Sports: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200',
-  Entertainment: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200',
-  Technology: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200',
-  'World Affairs': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200',
-  Movies: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200',
-  'Social-Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
-};
+const DEFAULT_BRAND_THUMBNAIL = '/images/default-thumbnail.png';
 
 async function generate() {
   const searchData = [];

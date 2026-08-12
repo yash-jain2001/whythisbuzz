@@ -85,15 +85,7 @@ function getLocalMdxFiles(dir: string): string[] {
     return results;
 }
 
-const fallbackImages: Record<string, string> = {
-    Sports: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200',
-    Entertainment: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200',
-    Technology: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200',
-    'World Affairs': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200',
-    Movies: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200',
-    'Social-Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
-    'Social Media': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200',
-};
+const DEFAULT_BRAND_THUMBNAIL = '/images/default-thumbnail.png';
 
 function buildMetadata(slug: string, data: Record<string, unknown>): ArticleMetadata {
     const safeDate =
@@ -101,10 +93,11 @@ function buildMetadata(slug: string, data: Record<string, unknown>): ArticleMeta
             ? (data.date as string)
             : new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
+    const rawImg = data.imageUrl as string | undefined;
     const safeImageUrl =
-        data.imageUrl && !(data.imageUrl as string).includes('placeholder')
-            ? (data.imageUrl as string)
-            : fallbackImages[data.category as string] || fallbackImages['World Affairs'];
+        rawImg && !rawImg.includes('placeholder') && !rawImg.includes('photo-1611162617474-5b21e879e113')
+            ? rawImg
+            : DEFAULT_BRAND_THUMBNAIL;
 
     return {
         id: slug,

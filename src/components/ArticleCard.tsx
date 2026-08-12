@@ -3,29 +3,13 @@
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 
-const DEMO_IMAGES: Record<string, string> = {
-  "Sports": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
-  "Entertainment": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
-  "Technology": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
-  "World Affairs": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
-  "Movies": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",
-  "Social Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
-  "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
-};
+const DEFAULT_THUMBNAIL = "/images/default-thumbnail.png";
 
-function getDemoImage(category: string): string {
-  const catLower = (category || '').toLowerCase().trim();
-  const matchedKey = Object.keys(DEMO_IMAGES).find(k => 
-    k.toLowerCase() === catLower || catLower.includes(k.toLowerCase()) || k.toLowerCase().includes(catLower)
-  );
-  return matchedKey ? DEMO_IMAGES[matchedKey] : DEMO_IMAGES["World Affairs"];
-}
-
-function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>, category: string) {
+function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
   const target = e.currentTarget;
   target.onerror = null; // Prevent infinite error loops
   target.alt = "";       // Clear browser default text overlay
-  target.src = getDemoImage(category); // Load vibrant HD category demo photo
+  target.src = DEFAULT_THUMBNAIL; // Load WhyThisBuzz brand thumbnail
 }
 
 interface ArticleCardProps {
@@ -34,8 +18,9 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
-  const proxified = article.imageUrl ? proxifyImage(article.imageUrl) : '';
-  const imageSrc = proxified || getDemoImage(article.category);
+  const isBadImage = !article.imageUrl || article.imageUrl.includes('photo-1611162617474-5b21e879e113') || article.imageUrl.includes('placeholder');
+  const proxified = isBadImage ? DEFAULT_THUMBNAIL : proxifyImage(article.imageUrl);
+  const imageSrc = proxified || DEFAULT_THUMBNAIL;
 
   if (variant === "compact") {
     return (
@@ -46,7 +31,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
               src={imageSrc}
               alt={article.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => handleImageError(e, article.category)}
+              onError={handleImageError}
             />
           </div>
           <div className="flex flex-col gap-1 min-w-0">
@@ -72,7 +57,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             src={imageSrc}
             alt={article.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={(e) => handleImageError(e, article.category)}
+            onError={handleImageError}
           />
           <div className="absolute top-4 left-4 z-10">
             <span className="category-tag">{article.category}</span>
