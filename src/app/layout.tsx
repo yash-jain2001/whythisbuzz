@@ -96,6 +96,13 @@ export default async function RootLayout({
         {/* LLM Discovery */}
         <link rel="llms" href="https://whythisbuzz.com/llms.txt" />
 
+        {/* Google AdSense Script */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695332994037412"
+          crossOrigin="anonymous"
+        />
+
         {/* JSON-LD Structured Data for Organization, Website and Navigation */}
         <script
           type="application/ld+json"
