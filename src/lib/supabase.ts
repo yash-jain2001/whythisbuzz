@@ -80,6 +80,7 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
         const { data, error } = await supabase
             .from('articles')
             .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
+            .order('date', { ascending: false })
             .order('created_at', { ascending: false })
             .limit(fetchLimit);
 
@@ -154,6 +155,7 @@ export async function getSupabaseArticlesByCategory(category: string, limit: num
             .from('articles')
             .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
             .ilike('category', `%${catQuery}%`)
+            .order('date', { ascending: false })
             .order('created_at', { ascending: false })
             .limit(limit);
 

@@ -32,3 +32,10 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npx tsx scripts/auto-publisher.ts
 
+      - name: Trigger Cloudflare Pages Rebuild
+        if: env.CLOUDFLARE_HOOK_URL != ''
+        env:
+          CLOUDFLARE_HOOK_URL: ${{ secrets.CLOUDFLARE_HOOK_URL }}
+        run: curl -X POST "$CLOUDFLARE_HOOK_URL"
+
+

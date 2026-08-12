@@ -1,5 +1,374 @@
 [
   {
+    "id": "vw-id-buzz-goes-camping-meet-the-id-california-cruise",
+    "title": "VW ID. Buzz Goes Camping: Meet the ID. California Cruise",
+    "summary": "Volkswagen is teasing its first-ever all-electric camper concept based on the ID. Buzz, complete with ultra-light inflatable gear.",
+    "category": "Technology",
+    "imageUrl": "https://images.welt.de/6a7b36b50e3689919ec780f0/ff109d3ab56eb655f641a903a205c4ff-master/ci16x9-w1200/auf-der-caravan-in-duesseldorf-wird-vw-seinen-california-beach-mit-aufblasbarer-stuff-bubble-ausstattung-zeigen",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-dagenham-fire-why-londons-latest-blaze-is-a-warning-we-keep-ignoring",
+    "title": "The Dagenham Fire: Why London’s Latest Blaze Is a Warning We Keep Ignoring",
+    "summary": "A massive fire in East London exposes the deadly, ongoing crisis of unsafe cladding—nearly a decade after the Grenfell tragedy.",
+    "category": "World Affairs",
+    "imageUrl": "https://www.barkinganddagenhampost.co.uk/resources/images/21306739.jpg?type=og-image",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "why-north-koreas-deadliest-exports-are-raining-down-on-ukraine",
+    "title": "Why North Korea’s Deadliest Exports Are Raining Down on Ukraine",
+    "summary": "Pyongyang has supercharged Russia's war machine with missiles, 50,000 troops, and a new border bridge. Here is what Kim Jong-un is getting in return.",
+    "category": "World Affairs",
+    "imageUrl": "https://www.telegraph.co.uk/content/dam/briefs/2026/08/11/TELEMMGLPICT000405852409_17864593912150_trans_NvBQzQNjv4BqaPpDzwJJw1wIg36NbpYACUbgyk-mq8IfXaLr6xOBXrQ.jpeg?impolicy=OG-Standard",
+    "readTime": "4 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "fortnites-bold-new-crossover-proves-epics-storefront-war-isnt-over",
+    "title": "Fortnite's Bold New Crossover Proves Epic's Storefront War Isn't Over",
+    "summary": "Epic Games is leveraging its crown jewel to boost PC game pre-orders, offering a highly anticipated Fortnite skin bundle to anyone who buys the upcoming action RPG Phantom Blade Zero.",
+    "category": "Technology",
+    "imageUrl": "https://s.yimg.com/lo/mysterio/api/e92d24010684fdc135498fae0d3bae2abb96ba2fbf5d7ad4f0e6197d0c958f51/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgamedaily_articles_552%2Faaf8c11f99d7f92850564e8f042bbeee.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-brink-of-war-why-jeff-daniels-reagan-biopic-falls-into-the-sorkin-trap",
+    "title": "The Brink of War: Why Jeff Daniels’ Reagan Biopic Falls Into the Sorkin Trap",
+    "summary": "The Brink of War brings the historic 1986 Reykjavik summit to life, but despite a powerhouse cast, it plays out more like a preachy academic lecture than a tense political thriller.",
+    "category": "Movies",
+    "imageUrl": "https://www.hollywoodreporter.com/wp-content/uploads/2026/08/The-Brink-of-War-Main-2026.jpg?w=1296&h=730&crop=1",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "leo-neugebauers-quest-why-the-birmingham-decathlon-is-must-watch-tv",
+    "title": "Leo Neugebauer's Quest: Why the Birmingham Decathlon is Must-Watch TV",
+    "summary": "As the brutal 10-event decathlon kicks off at the European Athletics Championships in Birmingham, German powerhouse Leo Neugebauer is ready to dominate.",
+    "category": "Sports",
+    "imageUrl": "https://images.sportschau.de/image/05161996-d478-4ff5-8d00-c275c9b458b8/AAABmWeODiU/AAABnSSvrFg/16x9-big/niklas-kaul-150.jpg?width=1280",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "greiz-crash-how-one-right-of-way-blunder-triggered-a-4-car-chain-reaction",
+    "title": "Greiz Crash: How One Right-of-Way Blunder Triggered a 4-Car Chain Reaction",
+    "summary": "A split-second oversight on a German road turned a quiet morning into a major four-vehicle pileup, leaving three injured and thousands in damages.",
+    "category": "World Affairs",
+    "imageUrl": "https://img.sparknews.funkemedien.de/412517388/412517388_1783499134_v16_9_1600.jpeg",
+    "readTime": "2 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "400-acres-ablaze-why-the-new-forest-wildfire-is-a-british-wake-up-call",
+    "title": "400 Acres Ablaze: Why the New Forest Wildfire is a British Wake-Up Call",
+    "summary": "A single van fire on the A31 has erupted into a 400-acre wildfire in the New Forest, exposing the UK's vulnerability to extreme summer heat and parched landscapes.",
+    "category": "World Affairs",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/ad0b/live/41e759c0-9610-11f1-9e5b-d5848bb02f11.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "inside-rosie-kellys-stunning-scottish-wedding-why-the-royal-inspired-day-captured-our-hearts",
+    "title": "Inside Rosie Kelly’s Stunning Scottish Wedding: Why the Royal-Inspired Day Captured Our Hearts",
+    "summary": "TV legend Lorraine Kelly's daughter Rosie tied the knot in an intimate, multi-generational Scottish celebration. Here is a look inside the stunning day and why it's trending.",
+    "category": "Entertainment",
+    "imageUrl": "https://images.hellomagazine.com/horizon/landscape/f5bed4a11477-rosie-kelly-watermarked013.jpg?tx=c_fill,w_1200",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "gold-green-and-gorgeous-nintendo-switch-2-zelda-edition-leaks-online",
+    "title": "Gold, Green, and Gorgeous: Nintendo Switch 2 Zelda Edition Leaks Online",
+    "summary": "Leaked images reveal a stunning Zelda-themed Nintendo Switch 2 and Pro Controller, set to launch alongside the highly anticipated Ocarina of Time remake.",
+    "category": "Technology",
+    "imageUrl": "https://nintendoeverything.com/wp-content/uploads/Zelda-Switch-2-system-and-Pro-Controller-leak.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-newtown-preschool-arrest-why-this-daycare-case-is-sparking-a-nationwide-safety-debate",
+    "title": "The Newtown Preschool Arrest: Why This Daycare Case is Sparking a Nationwide Safety Debate",
+    "summary": "A Pennsylvania preschool teacher's arrest for allegedly assaulting a toddler exposes the terrifying realities of childcare safety and the systemic pressure cooker facing modern daycares.",
+    "category": "World Affairs",
+    "imageUrl": "https://cdn.abcotvs.com/dip/images/19659868_081026-wpvi-preschool-employee-arrested-10pm-CC-vid.jpg?w=1600",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "autobahn-nightmare-why-a-bridge-collapse-on-germanys-a81-is-a-wake-up-call",
+    "title": "Autobahn Nightmare: Why a Bridge Collapse on Germany's A81 is a Wake-Up Call",
+    "summary": "A massive steel girder collapsed onto Germany's A81 highway, leaving one person severely injured and triggering an unprecedented reverse-traffic evacuation.",
+    "category": "World Affairs",
+    "imageUrl": "https://www.nrwz.de/wp-content/uploads/2026/01/IMG_2599.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-lincoln-memorial-pool-feud-why-trump-is-demanding-new-charges-against-an-olympian",
+    "title": "The Lincoln Memorial Pool Feud: Why Trump is Demanding New Charges Against an Olympian",
+    "summary": "The White House is pressuring the DOJ to resurrect a dropped vandalism case against former Olympian David Hearn, crossing traditional independent legal boundaries.",
+    "category": "World Affairs",
+    "imageUrl": "https://i.guim.co.uk/img/media/c00a27d9e1844cdf7cd3690aab0729299ae58337/500_0_5000_4000/master/5000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=ee6f4271fb2550f22defdb6af76151d4",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-eerie-magic-of-1999-why-the-uks-last-total-eclipse-still-holds-us-captive",
+    "title": "The Eerie Magic of 1999: Why the UK’s Last Total Eclipse Still Holds Us Captive",
+    "summary": "As the UK preps for another celestial event, we look back at the spine-chilling, awe-inspiring day when the sun vanished over Cornwall and the Channel Islands.",
+    "category": "Technology",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/759b/live/1bd36a20-94a9-11f1-afe9-fb1a837ec5d9.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-foster-care-panic-how-a-south-dakota-policy-shift-threatened-a-fragile-system",
+    "title": "The Foster Care Panic: How a South Dakota Policy Shift Threatened a Fragile System",
+    "summary": "A minor change in South Dakota's child care payment structure sparked panic among foster parents, highlighting the fragile economics of state-supported care.",
+    "category": "World Affairs",
+    "imageUrl": "https://gray-ksfy-prod.gtv-cdn.com/resizer/v2/S2EWINRSGNELLP6J3YXNA33AIY.jpg?auth=96c7e80e94517e84987f24e539865eb520cba7fd347d5388252abf283efadf09&width=1200&height=600&smart=true",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-invisible-dragnet-why-the-fight-to-map-flock-cameras-is-exploding",
+    "title": "The Invisible Dragnet: Why the Fight to Map Flock Cameras Is Exploding",
+    "summary": "A grassroots movement is exposing the hidden network of AI-powered police cameras tracking millions of American cars daily.",
+    "category": "Technology",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    "readTime": "4 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "vincent-kompanys-brutal-warning-to-bayern-munich",
+    "title": "Vincent Kompany's Brutal Warning to Bayern Munich",
+    "summary": "Bayern Munich boss Vincent Kompany is demanding total focus and zero arrogance as the German giants gear up for a fiercely competitive new European campaign.",
+    "category": "Sports",
+    "imageUrl": "https://platform.bavarianfootballworks.com/wp-content/uploads/sites/24/2026/08/gettyimages-2289051913.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "super-el-nino-and-record-summer-whats-next-for-winter",
+    "title": "Super-El-Niño & Record Summer: What's Next for Winter?",
+    "summary": "Following a historic heatwave, a powerful Super-El-Niño in the Pacific is threatening to upend our winter weather patterns entirely.",
+    "category": "World Affairs",
+    "imageUrl": "https://www.merkur.de/assets/images/43/658/43658100-die-niederschlagsanomalie-im-winter-2026-27-3Kef.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-flight-cost-crisis-why-flying-is-getting-harder-and-more-expensive",
+    "title": "The Flight Cost Crisis: Why Flying is Getting Harder and More Expensive",
+    "summary": "High demand, extreme weather, and algorithmic pricing have sent airfares soaring. Here is why your next flight might cost you a fortune.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
+    "readTime": "4 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "uk-government-shuts-13-more-asylum-hotels-to-cut-costs",
+    "title": "UK Government Shuts 13 More Asylum Hotels to Cut Costs",
+    "summary": "Thirteen more hotels housing asylum seekers have closed as the UK shifts toward basic military sites, saving taxpayers an estimated £51 million.",
+    "category": "World Affairs",
+    "imageUrl": "https://static.independent.co.uk/2026/08/11/16/44/Metropole_blackpool_hotel.jpeg?trim=11,0,13,0&width=1200&height=800&crop=1200:800",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "jackson-merrills-moonshot-powers-padres-closer-to-wild-card-spot",
+    "title": "Jackson Merrill's Moonshot Powers Padres Closer to Wild Card Spot",
+    "summary": "Jackson Merrill's clutch 431-foot home run lifts the San Diego Padres over the Brewers, keeping San Diego's high-stakes playoff push alive.",
+    "category": "Sports",
+    "imageUrl": "https://img.mlbstatic.com/mlb-images/image/upload/t_2x1/t_w1536/mlb/whqn7k4k1cdeny8615rm.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "dave-roberts-demands-urgency-inside-the-dodgers-aggressive-late-season-shakeup",
+    "title": "Dave Roberts Demands Urgency: Inside the Dodgers’ Aggressive Late-Season Shakeup",
+    "summary": "With the postseason looming, Dodgers manager Dave Roberts is shaking up his lineup, benching cold bats, and tightening the screws on tactical mistakes.",
+    "category": "Sports",
+    "imageUrl": "https://www.ocregister.com/wp-content/uploads/2026/08/AP25261094041643.jpg?w=2000&h=1333",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "monster-beverage-aktiensplit-warum-das-minus-im-depot-ein-irrtum-ist",
+    "title": "Monster Beverage Aktiensplit: Warum das Minus im Depot ein Irrtum ist",
+    "summary": "Schrecksekunde für Anleger: Die Monster Beverage Aktie zeigt plötzlich ein Minus von 50 Prozent an. Wir erklären, warum dahinter kein Crash, sondern ein cleverer Aktiensplit steckt.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.boersenmedien.com/images/f4c61ed5-0b81-4209-b90b-824dcb6b1c8e.jpg?w=1280",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "why-rani-khediras-potential-exit-could-shake-up-union-berlin",
+    "title": "Why Rani Khedira's Potential Exit Could Shake Up Union Berlin",
+    "summary": "FC Cologne has set its sights on Union Berlin vice-captain Rani Khedira, sparking intense speculation about the veteran midfielder's future in Köpenick.",
+    "category": "Sports",
+    "imageUrl": "https://images.bild.de/6a7ada3567ddb2e13c583bdc/269e0a804ea2e1ce2a80425d85b24009,77791b0f?w=1280",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "clash-of-the-titans-why-osaka-vs-rybakina-is-the-match-tennis-desperately-needed",
+    "title": "Clash of the Titans: Why Osaka vs. Rybakina Is the Match Tennis Desperately Needed",
+    "summary": "Naomi Osaka and Elena Rybakina are set for a blockbuster quarter-final showdown at the National Bank Open. Here is why this matchup is a defining moment for the WTA tour.",
+    "category": "Sports",
+    "imageUrl": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-silent-fitness-shift-why-traditional-gyms-are-losing",
+    "title": "The Silent Fitness Shift: Why Traditional Gyms Are Losing",
+    "summary": "The wellness landscape is undergoing a massive structural shift as consumers ditch traditional heavy-lifting regimens for longevity-focused functional movement.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+    "readTime": "4 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "tarik-skubal-survives-nerves-in-electric-dodger-stadium-debut",
+    "title": "Tarik Skubal Survives Nerves in Electric Dodger Stadium Debut",
+    "summary": "Two-time Cy Young winner Tarik Skubal battled early nerves and command issues in his Dodgers home debut, but Los Angeles rallied for a 6-5 win over the Royals.",
+    "category": "Sports",
+    "imageUrl": "https://img.mlbstatic.com/mlb-images/image/upload/t_2x1/t_w1536/v1786420053/mlb/v6brys5qptudxxhkry9m.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-ultimate-border-war-inside-the-brutal-new-leagues-cup-format",
+    "title": "The Ultimate Border War: Inside the Brutal New Leagues Cup Format",
+    "summary": "The battle for North American soccer supremacy is back. Here is how the high-stakes Leagues Cup standings work and why every single match is a must-win.",
+    "category": "Sports",
+    "imageUrl": "https://images.mlssoccer.com/image/private/t_editorial_landscape_3_4_desktop/mls/rq8puvdfdanyjskaruiz.png",
+    "readTime": "3 min read",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "the-euro100k-coffee-break-how-a-faulty-appliance-sparked-a-fire-in-osnabruck",
+    "title": "The €100K Coffee Break: How a Faulty Appliance Sparked a Fire in Osnabrück",
+    "summary": "A routine coffee maker malfunction sparked a major kitchen fire at a painting business in Bad Laer, leaving one injured and causing staggering financial damage.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.ndr.de/image/657b8d66-f740-42e6-8620-03aac06d42f5/AAABkbwgY-Q/AAABnSSvrFg/16x9-big/filterkaffee150.jpg?width=1280",
+    "readTime": "2 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "pitch-meets-screen-inside-helin-kandemir-and-dorukhan-tokozs-surprise-romance",
+    "title": "Pitch Meets Screen: Inside Helin Kandemir and Dorukhan Toköz’s Surprise Romance",
+    "summary": "Turkish actress Helin Kandemir has gone Instagram-official with football star Dorukhan Toköz, sparking a massive social media buzz.",
+    "category": "Entertainment",
+    "imageUrl": "https://foto.sondakika.com/haber/2026/08/11/surpriz-ask-ortaya-cikti-oyuncu-helin-kandemir-ve-20137057_6552_amp.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "tragic-crash-on-b-221-niederkruchten-man-dies-after-hitting-tree",
+    "title": "Tragic Crash on B 221: Niederkrüchten Man Dies After Hitting Tree",
+    "summary": "A fatal afternoon accident on the B 221 leaves a 60-year-old driver dead after his car veered into oncoming traffic and struck a tree.",
+    "category": "World Affairs",
+    "imageUrl": "https://rp-online.de/imgs/32/2/7/7/0/2/7/5/8/9/tok_f25e7bf6a14af969703233d553321f59/w1200_h630_x1024_y526_DPA_dpa_urn_newsml_dpa.com_20090101_260808-935-1530477-v1-s2048-50b922ec58875b03.jpeg",
+    "readTime": "2 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "andrew-lincoln-and-tv-highlights-what-to-watch-tonight",
+    "title": "Andrew Lincoln and TV Highlights: What to Watch Tonight",
+    "summary": "Get the lowdown on tonight's must-watch television, from gripping climate dramas to explosive action classics.",
+    "category": "Entertainment",
+    "imageUrl": "https://i.guim.co.uk/img/media/253d5cac585c29a87093746309d2410f05f826e9/44_120_2394_1915/master/2394.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=c55b7fd2ab0bea207e36cfde9db001bd",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "inside-the-kim-kardashian-mansion-break-in-why-gated-communities-arent-impenetrable",
+    "title": "Inside the Kim Kardashian Mansion Break-In: Why Gated Communities Aren't Impenetrable",
+    "summary": "A suspect was arrested after breaking into Kim Kardashian's multi-million dollar Hidden Hills estate and stealing a staffer's car, highlighting a growing security blind spot for the ultra-rich.",
+    "category": "Entertainment",
+    "imageUrl": "https://ca-times.brightspotcdn.com/dims4/default/c610f0b/2147483647/strip/true/crop/3250x1706+0+25/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fd9%2Fd9%2Fd5b317024de1837ddd0b7b214228%2F2023-time100-gala-90278.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "inside-dwcs-season-10-the-ultimate-ufc-pipeline-returns",
+    "title": "Inside DWCS Season 10: The Ultimate UFC Pipeline Returns",
+    "summary": "Dana White’s Contender Series is back for a landmark Season 10, kicking off with explosive heavyweight clashes and high-stakes prospect battles at the Meta APEX.",
+    "category": "Sports",
+    "imageUrl": "https://ufc.com/images/styles/card/s3/2026-08/081225-DWCS_General-View-GettyImages-2229806044.jpg?itok=Fm8Czna9",
+    "readTime": "4 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "from-21st-round-afterthought-to-the-bronx-why-bradley-hanners-yankees-call-up-matters",
+    "title": "From 21st-Round Afterthought to the Bronx: Why Bradley Hanner’s Yankees Call-Up Matters",
+    "summary": "The New York Yankees have officially called up 27-year-old reliever Bradley Hanner. Here is why this under-the-radar roster move is a masterclass in modern bullpen management.",
+    "category": "Sports",
+    "imageUrl": "https://cdn.mlbtraderumors.com/files/2026/08/2026-08-06T004012Z_1606220477_MT1USATODAY29523724_RTRMADP_3_MLB-ST-LOUIS-CARDINALS-AT-NEW-YORK-YANKEES-1024x683.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "inside-the-fei-world-championships-aachen-2026",
+    "title": "Inside the FEI World Championships Aachen 2026",
+    "summary": "Aachen is gearing up to host the prestigious FEI World Championships 2026, marking a monumental milestone for global equestrian sports.",
+    "category": "Sports",
+    "imageUrl": "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=800&q=80",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "lia-flotow-and-mv-stars-shine-at-european-athletics",
+    "title": "Lia Flotow and MV Stars Shine at European Athletics",
+    "summary": "Discover how Lia Flotow and elite athletes from Mecklenburg-Vorpommern are taking the European Athletics Championships by storm in Birmingham.",
+    "category": "Sports",
+    "imageUrl": "https://images.ndr.de/image/c693b3c8-d661-422e-b658-c5798b3dc0be/AAABnKmV4hU/AAABnSSvrFg/16x9-big/hallenmeisterschaft102.jpg?width=1280",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "the-russian-warship-sitting-dangerously-close-to-britain",
+    "title": "The Russian Warship Sitting Dangerously Close to Britain",
+    "summary": "Moscow has quietly stationed a permanent warship off the UK coast, exposing a critical shortage of British naval power and leaving the mainland dangerously vulnerable.",
+    "category": "World Affairs",
+    "imageUrl": "https://www.telegraph.co.uk/content/dam/news/2026/08/11/TELEMMGLPICT000498021866_17864550709600_trans_NvBQzQNjv4BqrarJ6rECX6phQRdOPzW-OMjF5wVnB-TbPhfuOt6nD6E.jpeg?impolicy=OG-Comment",
+    "readTime": "4 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "play-or-leave-inside-the-lucas-bergvall-and-de-zerbi-tottenham-standoff",
+    "title": "Play or Leave: Inside the Lucas Bergvall and De Zerbi Tottenham Standoff",
+    "summary": "Spurs manager Roberto De Zerbi has thrown down the gauntlet to Swedish prodigy Lucas Bergvall: commit to the fight for midfield minutes, or find the exit.",
+    "category": "Sports",
+    "imageUrl": "https://www.whitchurchherald.co.uk/resources/images/21251031.jpg?type=og-image",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "arthur-fils-vs-rafa-jodar-the-montreal-clash-set-to-define-a-new-era",
+    "title": "Arthur Fils vs. Rafa Jódar: The Montreal Clash Set to Define a New Era",
+    "summary": "Arthur Fils and Rafa Jódar collide in a high-stakes Montreal Masters 1000 quarterfinal, setting up a stylistic powerhouse showdown that could crown tennis's next great star.",
+    "category": "Sports",
+    "imageUrl": "https://www.puntodebreak.com/sites/puntodebreak/files/2026-08/jodar-fils-clave-canada.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
+    "id": "the-next-alcaraz-why-rafa-jodars-historic-ascent-is-shaking-up-mens-tennis",
+    "title": "The Next Alcaraz? Why Rafa Jódar's Historic Ascent is Shaking Up Men's Tennis",
+    "summary": "Rising Spanish sensation Rafa Jódar eyes a historic Top 10 breakthrough in Montreal, chasing a legendary Boris Becker record not seen since 1985.",
+    "category": "Sports",
+    "imageUrl": "https://imagenes.elpais.com/resizer/v2/RWOF7VQKRFK5HPG23J6XDDZCUA.jpg?auth=a0b0fbc3aeffcf35311d2522b35e0f5c282d174bd14690bb313e139f59e0b949&width=1200",
+    "readTime": "3 min read",
+    "date": "2026-08-11"
+  },
+  {
     "id": "wuppertal-garden-center-closes-the-end-of-an-era",
     "title": "Wuppertal Garden Center Closes: The End of an Era",
     "summary": "Amoflor in Wuppertal is closing its doors permanently by September due to economic pressures and a lack of generational succession.",
@@ -360,15 +729,6 @@
     "date": "2026-08-09"
   },
   {
-    "id": "germanys-harvest-crisis-farmers-sweat-minister-shrugs",
-    "title": "Germany's Harvest Crisis: Farmers Sweat, Minister Shrugs",
-    "summary": "Germany's farmers are grappling with a dire harvest forecast amidst extreme heat and drought, sparking urgent calls for government support. But with the Agriculture Minister claiming he 'can't make it rain,' a deeper crisis looms for the nation's food security and agricultural future.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.tagesschau.de/image/73b4774d-fb17-4cdf-b76b-46d7c29e43fd/AAABn9u97ao/AAABnSSvrFg/16x9-big/rainer-106.jpg?width=1280",
-    "readTime": "4 min read",
-    "date": "2026-08-09"
-  },
-  {
     "id": "a-voice-silenced-remembering-brian-banks-daily-expresss-unforgettable-reader",
     "title": "A Voice Silenced: Remembering Brian Banks, Daily Express's Unforgettable Reader",
     "summary": "Brian Banks, the spirited and opinionated Daily Express letter writer, has passed away at 85. His distinctive voice and passion for public discourse made him a cherished figure among readers.",
@@ -378,12 +738,138 @@
     "date": "2026-08-09"
   },
   {
+    "id": "germanys-harvest-crisis-farmers-sweat-minister-shrugs",
+    "title": "Germany's Harvest Crisis: Farmers Sweat, Minister Shrugs",
+    "summary": "Germany's farmers are grappling with a dire harvest forecast amidst extreme heat and drought, sparking urgent calls for government support. But with the Agriculture Minister claiming he 'can't make it rain,' a deeper crisis looms for the nation's food security and agricultural future.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.tagesschau.de/image/73b4774d-fb17-4cdf-b76b-46d7c29e43fd/AAABn9u97ao/AAABnSSvrFg/16x9-big/rainer-106.jpg?width=1280",
+    "readTime": "4 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "wnba-blockbuster-aces-vs-liberty-star-power-playoff-stakes-and-a-strategic-gamble",
+    "title": "WNBA Blockbuster: Aces vs. Liberty — Star Power, Playoff Stakes, and a Strategic Gamble",
+    "summary": "The Las Vegas Aces and New York Liberty clash in a highly anticipated WNBA matchup, but a strategic decision to potentially rest key Aces players could redefine the stakes for playoff positioning and the season series.",
+    "category": "Sports",
+    "imageUrl": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_5281,h_2970/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/si/01kzk4ksgqrzt558kfrj.jpg",
+    "readTime": "4 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "the-buzz-shohei-ohtani-begins-throwing-is-a-dodgers-mound-return-imminent",
+    "title": "The Buzz: Shohei Ohtani Begins Throwing – Is a Dodgers Mound Return Imminent?",
+    "summary": "Dodgers two-way phenom Shohei Ohtani has officially started his throwing progression, igniting speculation about his return to the mound. What does this crucial step mean for the superstar and L.A.'s playoff aspirations?",
+    "category": "Sports",
+    "imageUrl": "https://img.mlbstatic.com/mlb-images/image/upload/t_2x1/t_w1536/mlb/jjhbs5tqdnnrfntnbxhx.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "quillan-salkilld-shocks-mateusz-gamrot-a-new-lightweight-contender-ignites-the-ufc",
+    "title": "Quillan Salkilld Shocks Mateusz Gamrot: A New Lightweight Contender Ignites the UFC",
+    "summary": "Quillan Salkilld delivered a seismic shock at Meta Apex, submitting top contender Mateusz Gamrot in the first round and instantly rocketing himself into the UFC lightweight title picture.",
+    "category": "Sports",
+    "imageUrl": "https://www.ufc-fr.com/data/actualite/14126/large/ufc-fight-night-284-quillan-salkilld-choque-la-planete-mma-en-soumettant-mateusz-gamrot-des-la-premiere-reprise-photo___ID_2026-08-09-04-47-31_14126.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "pariss-seine-splashdown-elite-diving-defies-water-worries-reclaims-an-icon",
+    "title": "Paris's Seine Splashdown: Elite Diving Defies Water Worries, Reclaims an Icon",
+    "summary": "Paris hosted a dramatic high-diving spectacle in the Seine, showcasing its ambitious river reclamation project. Despite a brief scare over water quality, the event proceeded, celebrating the city's €1.4bn effort to make the iconic river swimmable again.",
+    "category": "Sports",
+    "imageUrl": "https://i.guim.co.uk/img/media/19973ee662f6750aafe1b450520fdeee330f96b6/1048_234_4707_3766/master/4707.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3Zlrlay/tg-default.png&enable=upscale&s=0ef2bb43b0d3fdf3d1b678149630d6dd",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "sunrisers-electrify-the-hundred-phoenix-crash-out-of-play-off-contention",
+    "title": "Sunrisers Electrify The Hundred: Phoenix Crash Out of Play-Off Contention",
+    "summary": "Sunrisers Leeds fired a clear warning shot in The Hundred, demolishing Birmingham Phoenix by 45 runs to vault into second place and officially knock their rivals out of the tournament.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/13d0/live/054b0780-929d-11f1-b6aa-e1ff997f01b8.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "snooker-shockwave-judd-trumps-world-no-1-reign-rocked-by-china-open-upset",
+    "title": "Snooker Shockwave: Judd Trump's World No. 1 Reign Rocked by China Open Upset",
+    "summary": "Judd Trump's status as world number one hangs by a thread after a stunning first-round exit at the China Open, signaling a potential seismic shift in snooker's top hierarchy.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/c548/live/cb62dcc0-93df-11f1-8231-7d4e2048054e.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "showdown-in-miami-inter-miami-battles-monterrey-in-high-stakes-leagues-cup-rematch",
+    "title": "Showdown in Miami: Inter Miami Battles Monterrey in High-Stakes Leagues Cup Rematch",
+    "summary": "Inter Miami faces a crucial Leagues Cup rematch against Rayados de Monterrey this Saturday, seeking redemption after their Concacaf Champions Cup exit earlier this year. This is more than just a game; it's a battle for group stage dominance with unique tournament rules.",
+    "category": "Sports",
+    "imageUrl": "https://images.daznservices.com/di/library/DAZN_News/ad/cb/messi-gol-inter-miami_a4uzi52u13ow1hf3jtrk353o0.jpg?t=693357352",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "holmgrens-solo-masterclass-and-the-rivalry-dividing-the-peloton",
+    "title": "Holmgren's Solo Masterclass & The Rivalry Dividing the Peloton",
+    "summary": "Rising star Isabella Holmgren delivered a stunning solo attack in a high-stakes stage, but behind her, the intense battle between yellow jersey Demi Vollering and rival Kasia Niewiadoma is reaching boiling point, fueled by controversy and aggressive team tactics.",
+    "category": "Sports",
+    "imageUrl": "https://i.guim.co.uk/img/media/a45370fa5bca2dcf162a8ec993f6cf7badcd2dcd/0_0_6038_4830/master/6038.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=8b8717961cececb1c58a3aed6536dad9",
+    "readTime": "4 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "classico-vovo-chaos-botafogos-buzz-meets-fluminenses-crisis-in-high-stakes-derby",
+    "title": "Clássico Vovô Chaos: Botafogo's Buzz Meets Fluminense's Crisis in High-Stakes Derby",
+    "summary": "The iconic 'Clássico Vovô' explodes onto the Brasileirão stage this Saturday, pitting an resurgent Botafogo against a Fluminense reeling from a brutal losing streak and eyeing a crucial Libertadores clash. Who will claim Rio's bragging rights and navigate their season's turning point?",
+    "category": "Sports",
+    "imageUrl": "https://s2-ge.glbimg.com/9F3yu_GsvVEUarf-dC0C3aO70cU=/4000x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/L/5/afIcazTTyEJXrP2nz01g/gettyimages-1322585575.jpg",
+    "readTime": "4 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "blackburn-rovers-stage-stunner-late-goals-seal-dramatic-cup-comeback",
+    "title": "Blackburn Rovers Stage Stunner: Late Goals Seal Dramatic Cup Comeback",
+    "summary": "Blackburn Rovers clawed back from a goal down with two late strikes against League One Burton Albion, securing a dramatic 2-1 victory and a spot in the Carabao Cup second round.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/9c07/live/2405b8d0-9344-11f1-a35f-039358cea467.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "why-her-secret-life-blew-up-amelies-unexpected-path-to-redemption",
+    "title": "Why Her Secret Life Blew Up: Amelie's Unexpected Path to Redemption",
+    "summary": "A shocking kleptomania conviction shatters Amelie's perfect life. Released from prison, she finds her family gone, only to land in the chaotic, but kind, home of a terrible taxi driver. Will this unconventional refuge be her true second chance?",
+    "category": "Entertainment",
+    "imageUrl": "https://www.ardmediathek.de/img?imwidth=1280&url=https%3A%2F%2Fapi.ardmediathek.de%2Fimage-service%2Fimages%2Furn%3Aard%3Aimage%3A51f78c512745b418%3Fw%3D%7Bwidth%7D%26ch%3D89eaf5f868d330b9",
+    "readTime": "3 min read",
+    "date": "2026-08-09"
+  },
+  {
+    "id": "britney-spears-unpacks-motherhood-faith-and-freedoms-cost",
+    "title": "Britney Spears Unpacks Motherhood, Faith, and Freedom's Cost",
+    "summary": "Pop icon Britney Spears shares a raw, emotional confession about feeling like a 'failed mother' after a conversation with her son, tying her struggles to the lasting trauma of her conservatorship and a quest for personal truth.",
+    "category": "Entertainment",
+    "imageUrl": "https://s.yimg.com/lo/mysterio/api/642661cc7b7fd56cbeeda05dd8facdd49b4e625a4fc049d6e053ff13f00bb57e/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fwealth_of_geeks_188%2F02fd8c55df9574d3c3722ce2f390b92b",
+    "readTime": "4 min read",
+    "date": "2026-08-09"
+  },
+  {
     "id": "the-unconventional-secret-to-charles-and-camillas-enduring-royal-love",
     "title": "The Unconventional Secret to Charles & Camilla's Enduring Royal Love",
     "summary": "Forget traditional royal romance! King Charles III and Queen Camilla are defying expectations with an unconventional secret to their enduring marriage: strategic independence, including separate residences.",
     "category": "World Affairs",
     "imageUrl": "https://i.f1g.fr/media/cms/1200x630_crop/2026/08/07/5069687bac164f5575bf5fd56d02a9f16b3d4b8b74efe855a9e686f609754136.jpg",
     "readTime": "3 min read",
+    "date": "2026-08-08"
+  },
+  {
+    "id": "germanys-health-fund-fiasco-where-did-your-euro500-million-go",
+    "title": "Germany's Health Fund Fiasco: Where Did Your €500 Million Go?",
+    "summary": "A bombshell investigation reveals German health insurance funds gambled away over €500 million of public money in risky investments, sparking outrage and reigniting a fierce debate about the nation's healthcare system.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.t-online.de/2026/07/wYf29M6KAHom/0x107:2048x1152/fit-in/1200x0/cdu-generalsekretaer-carsten-linnemann-wird-minister-archivbild.jpg",
+    "readTime": "4 min read",
     "date": "2026-08-08"
   },
   {
@@ -405,498 +891,12 @@
     "date": "2026-08-08"
   },
   {
-    "id": "germanys-health-fund-fiasco-where-did-your-euro500-million-go",
-    "title": "Germany's Health Fund Fiasco: Where Did Your €500 Million Go?",
-    "summary": "A bombshell investigation reveals German health insurance funds gambled away over €500 million of public money in risky investments, sparking outrage and reigniting a fierce debate about the nation's healthcare system.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.t-online.de/2026/07/wYf29M6KAHom/0x107:2048x1152/fit-in/1200x0/cdu-generalsekretaer-carsten-linnemann-wird-minister-archivbild.jpg",
-    "readTime": "4 min read",
+    "id": "verizon-outage-snares-grand-traverse-county-why-a-minnesota-glitch-matters-to-you",
+    "title": "Verizon Outage Snares Grand Traverse County: Why a Minnesota Glitch Matters to You",
+    "summary": "Grand Traverse County's phone lines are down for many, thanks to a Verizon switch failure hundreds of miles away. We break down the tech hiccup, its impact on residents, and why this remote outage rings alarms for local services.",
+    "category": "Technology",
+    "imageUrl": "https://cloudfront-us-east-1.images.arcpublishing.com/910mediagroup/ROTG6TGACFP7VJMQHFTOQISRZA.jpg",
+    "readTime": "3 min read",
     "date": "2026-08-08"
-  },
-  {
-    "id": "powerball-jackpot-soars-to-dollar856-million-whats-fueling-the-summer-frenzy",
-    "title": "Powerball Jackpot Soars to $856 Million: What's Fueling the Summer Frenzy?",
-    "summary": "The Powerball jackpot has rocketed to an estimated $856 million, igniting 'jackpot fever' across the nation. We break down why this immense sum matters, the astronomical odds, and the cultural pull of chasing a life-changing win.",
-    "category": "World Affairs",
-    "imageUrl": "https://i.abcnewsfe.com/a/1ae351d1-f8d3-4c27-847c-d81d3a6bb44/powerball-ap-gmh-260806_1786030171109_hpMain_16x9.jpg?w=1600",
-    "readTime": "4 min read",
-    "date": "2026-08-07"
-  },
-  {
-    "id": "madeiras-morning-commute-chaos-tunnel-crash-snarls-via-rapida-traffic",
-    "title": "Madeira's Morning Commute Chaos: Tunnel Crash Snarls Via Rápida Traffic",
-    "summary": "A morning accident in Madeira's Marmeleiros Tunnel brought the Via Rápida to a crawl, creating a 3km traffic jam and sending one woman to the hospital with minor injuries, underscoring persistent road safety challenges.",
-    "category": "World Affairs",
-    "imageUrl": "https://static-storage.dnoticias.pt/www-assets.dnoticias.pt/images/configuration/MD/Captura_de_ecr%C3%A3_2026-08-07_102333.JPEG",
-    "readTime": "2 min read",
-    "date": "2026-08-07"
-  },
-  {
-    "id": "ballroom-brouhaha-appeals-court-halts-trumps-dollar400m-white-house-project",
-    "title": "Ballroom Brouhaha: Appeals Court Halts Trump's $400M White House Project",
-    "summary": "A federal appeals court has dealt a major blow to the Trump administration, blocking construction of a controversial $400M White House ballroom, citing a lack of congressional approval and a challenge to executive power.",
-    "category": "World Affairs",
-    "imageUrl": "https://ichef.bbci.co.uk/news/1024/branded_news/4fd7/live/be914890-9274-11f1-a7ab-8b30adf0800a.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-07"
-  },
-  {
-    "id": "germanys-scorching-reality-how-the-century-summer-is-redefining-normal",
-    "title": "Germany's Scorching Reality: How the 'Century Summer' is Redefining Normal",
-    "summary": "Germany is caught in a relentless cycle of extreme heatwaves and severe storms, revealing a nation grappling with the immediate and long-term impacts of climate change. The 'Jahrhundertsommer' isn't just a phrase anymore; it's our uncomfortable new normal.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.mdr.de/image/3c30e23b-fdb8-4f96-8d87-93bff06beb04/AAABn85Dngo/AAABnSSvrFg/16x9-big/gewitter-302.webp?width=1920",
-    "readTime": "4 min read",
-    "date": "2026-08-07"
-  },
-  {
-    "id": "texas-hemp-wars-multi-billion-dollar-industry-fights-back-against-sweeping-thc-ban",
-    "title": "Texas Hemp Wars: Multi-Billion Dollar Industry Fights Back Against Sweeping THC Ban",
-    "summary": "Texas has abruptly reclassified popular hemp-derived THC products like Delta-8 as illegal Schedule I drugs, sparking a massive lawsuit from the state's multi-billion dollar industry. Businesses argue the ban violates federal law and creates unconstitutional burdens on commerce.",
-    "category": "World Affairs",
-    "imageUrl": "https://i0.wp.com/www.texastribune.org/wp-content/uploads/2026/08/0209-Delta-8-Products-SF-37-.jpg?quality=100&w=1200&h=630&ssl=1",
-    "readTime": "4 min read",
-    "date": "2026-08-06"
-  },
-  {
-    "id": "salford-street-shaken-man-in-50s-dies-after-medical-emergency",
-    "title": "Salford Street Shaken: Man in 50s Dies After Medical Emergency",
-    "summary": "A quiet Salford street was the scene of a tragedy today as emergency services responded to a man suffering a severe medical episode, who later sadly passed away.",
-    "category": "World Affairs",
-    "imageUrl": "https://i2-prod.manchestereveningnews.co.uk/article34394774.ece/ALTERNATES/s1200d/1_ABR_MEN_030826_AUCKLANDDRIVEJPG.jpg",
-    "readTime": "2 min read",
-    "date": "2026-08-06"
-  },
-  {
-    "id": "missile-meltdown-did-trumps-rage-reveal-a-critical-us-arsenal-shortage",
-    "title": "Missile Meltdown: Did Trump's Rage Reveal a Critical US Arsenal Shortage?",
-    "summary": "Reports claim a furious President Trump confronted his Defense Secretary over critically low US missile stockpiles, leading to swift denials and accusations of 'fake news.' This alleged crisis might explain a sudden halt to a major military offensive.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.bild.de/6a749f2ae04765407d9a1904/15b89199018c14fa9ab6a33997a8f991,7c975ec7?w=1280",
-    "readTime": "4 min read",
-    "date": "2026-08-06"
-  },
-  {
-    "id": "the-great-gherkin-grab-is-your-spreewald-pickle-really-german",
-    "title": "The Great Gherkin Grab: Is Your Spreewald Pickle Really German?",
-    "summary": "Iconic German Spreewald pickles are facing an identity crisis. Weak harvests, rising costs, and a new EU-India trade deal mean the gherkins in your jar might hail from thousands of miles away, challenging the very essence of a beloved regional specialty.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.t-online.de/2026/08/C8EpJcdZvnJo/0x218:4288x2412/fit-in/1200x0/spreewaldgurken-aus-dem-supermarkt-spreewaldgurken-aus-dem-supermarkt-license-rf-copyright-xzoonar-com-markusxgrummtx-25160463.jpg",
-    "readTime": "4 min read",
-    "date": "2026-08-06"
-  },
-  {
-    "id": "balaclava-chase-prince-andrew-details-stalker-confrontation-in-court-drama",
-    "title": "Balaclava Chase: Prince Andrew Details Stalker Confrontation in Court Drama",
-    "summary": "Prince Andrew faced an alleged balaclava-clad stalker near his Sandringham estate, a court heard, as police seek a Stalking Protection Order against Alex Jenkinson. The dramatic details of the chase and the accused's unusual defense are now emerging in Westminster Magistrates' Court.",
-    "category": "World Affairs",
-    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/4709/live/099eecc0-8b54-11f1-8322-5bf52455cf04.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-06"
-  },
-  {
-    "id": "buffetts-blunt-warning-is-todays-stock-market-a-casino-or-a-catastrophe-waiting-to-happen",
-    "title": "Buffett's Blunt Warning: Is Today's Stock Market a Casino or a Catastrophe Waiting to Happen?",
-    "summary": "Billionaire investor Warren Buffett signals alarm bells for today's 'casino-like' stock market, pointing to historic overvaluation metrics reminiscent of past bubbles. Here's why his warning matters for your portfolio.",
-    "category": "World Affairs",
-    "imageUrl": "https://s.yimg.com/lo/mysterio/api/0B119C9926B68EB7FB5B5B4F0A7C03384DE810113DDE62FBD0C02D5336FE9973/subgraphmysterio/resizefill_w1200_h800;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Fmotleyfool.com%2F118205326d044b512bd7632d02ef925d",
-    "readTime": "4 min read",
-    "date": "2026-08-06"
-  },
-  {
-    "id": "rocky-mount-tragedy-was-a-power-shut-off-behind-a-familys-carbon-monoxide-deaths",
-    "title": "Rocky Mount Tragedy: Was a Power Shut-Off Behind a Family's Carbon Monoxide Deaths?",
-    "summary": "A Rocky Mount family of three was found dead, with carbon monoxide from a generator suspected after their electricity was reportedly disconnected over an unpaid utility bill, raising urgent questions about city policies and public safety.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.wral.com/18a594a5-8ce5-5b46-b1c2-7523d34bd659?w=1200&h=630&height=630",
-    "readTime": "4 min read",
-    "date": "2026-08-05"
-  },
-  {
-    "id": "idaho-in-n-out-hero-jordan-salinas-stops-shooter-saves-lives",
-    "title": "Idaho In-N-Out Hero: Jordan Salinas Stops Shooter, Saves Lives",
-    "summary": "A healthcare worker in Twin Falls, Idaho, became an unlikely hero, returning fire during a mass shooting at an In-N-Out Burger, a move police credit with saving lives and reigniting the complex debate on civilian intervention.",
-    "category": "World Affairs",
-    "imageUrl": "https://i.guim.co.uk/img/media/dbb18e5c274135e788ea6a45f47e4d42bb18a433/1072_0_2522_2018/master/2522.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=cab4f3027a64ab8fa74f97aab53c5d23",
-    "readTime": "4 min read",
-    "date": "2026-08-05"
-  },
-  {
-    "id": "hormuz-hold-up-unpacking-trumps-iran-war-chess-game-and-global-stakes",
-    "title": "Hormuz Hold-Up: Unpacking Trump's Iran War Chess Game & Global Stakes",
-    "summary": "As the Iran conflict drags on, the Strait of Hormuz becomes a diplomatic battleground. Meanwhile, US missile stockpiles are under scrutiny, and global markets grapple with the war's economic ripple effects.",
-    "category": "World Affairs",
-    "imageUrl": "https://assets3.cbsnewsstatic.com/hub/i/r/2026/08/04/544a065c-1933-4a82-a8aa-80bff60631f0/thumbnail/1200x630/552b7751a4f267eff03e93b56e46c4a8/gettyimages-2288238585.jpg",
-    "readTime": "5 min read",
-    "date": "2026-08-05"
-  },
-  {
-    "id": "german-pharmacies-face-new-financial-hit-as-levy-jumps-17percent-what-this-means-for-your-local-drugstore",
-    "title": "German Pharmacies Face New Financial Hit as Levy Jumps 17% – What This Means For Your Local Drugstore",
-    "summary": "Germany's government is set to impose a permanent 17% increase on pharmacy levies from January 2027, sparking outrage from pharmacists already struggling with rising costs. This new move is part of a broader health insurance savings plan, but critics argue it burdens an already strained sector.",
-    "category": "World Affairs",
-    "imageUrl": "https://www.pharmazeutische-zeitung.de//fileadmin/_processed_/f/7/csm_95900_908b114078.jpg",
-    "readTime": "4 min read",
-    "date": "2026-08-04"
-  },
-  {
-    "id": "europes-july-weather-whine-west-scorches-east-soaks-what-gives",
-    "title": "Europe's July Weather Whine: West Scorches, East Soaks – What Gives?",
-    "summary": "July served up a stark climatic divide across Europe, plunging the west into extreme heat and drought while drenching the east with unusually heavy rains. This isn't just a weather report; it's a stark reminder of our planet's volatile shifts.",
-    "category": "World Affairs",
-    "imageUrl": "https://purple-cdn.web-apps-prod.wo-cloud.com/purple/0f7a645f-e3c1-4a9c-a6dd-ccfa5dcf68a7/ccaeda65-166e-49c6-bbcd-ece973f0339c/7d02f541-eeda-4cdd-9e10-f7a145d2947d/thumbnails/fe48f36c-456-44b6-a5d4-928e6529da29.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-04"
-  },
-  {
-    "id": "bryan-kohbergers-stunner-idaho-murders-suspect-retracts-guilty-plea-reignites-outrage",
-    "title": "Bryan Kohberger's Stunner: Idaho Murders Suspect Retracts Guilty Plea, Reignites Outrage",
-    "summary": "Bryan Kohberger, the man who pleaded guilty to the horrific Idaho murders, has made a shocking move, petitioning to withdraw his plea and reigniting the painful case. This twist reopens questions about his alleged motive, specifically a disturbing theory that he targeted the home due to a deep-seated animosity towards women.",
-    "category": "World Affairs",
-    "imageUrl": "https://s.yimg.com/lo/mysterio/api/6a7b2c51bbdcfb92a8365ab88d755a07d1e4ac622b3612ed9abff4a006b6c7eb/lightyear_networkapi/resizefill_w1200;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Fus_magazine_896%2F32db089ab158ebbaf7b68d6dac95f26b",
-    "readTime": "4 min read",
-    "date": "2026-08-04"
-  },
-  {
-    "id": "sachsen-anhalt-shockwave-far-right-afd-dominates-pre-election-poll",
-    "title": "Sachsen-Anhalt Shockwave: Far-Right AfD Dominates Pre-Election Poll",
-    "summary": "Weeks before the state election, a new poll reveals the AfD holding a commanding lead in Sachsen-Anhalt, challenging traditional power structures and sparking complex coalition dilemmas.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.mdr.de/image/d4ef3f48-1926-487e-a577-e2ef3f48-1926-487e-a577-e36fc8281c39/AAABn68U-Fk/AAABnSSvrFg/16x9-big/landtagswahl-plakate-112.webp?width=1920",
-    "readTime": "4 min read",
-    "date": "2026-07-30"
-  },
-  {
-    "id": "sarah-tacke-fights-back-why-her-burgergeld-doc-sparked-a-firestorm",
-    "title": "Sarah Tacke Fights Back: Why Her Bürgergeld Doc Sparked a Firestorm",
-    "summary": "ZDF journalist Sarah Tacke defends her controversial 'System Bürgergeld' documentary, pushing back against accusations of stigmatization and revealing the intense personal backlash she's faced from both political extremes.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.welt.de/6a6ae4a795262dd1627854dd/4190b90e08a7625b3bb852ae1a236e1c-master/ci16x9-w1200/96369-0-1-jpg",
-    "readTime": "4 min read",
-    "date": "2026-07-30"
-  },
-  {
-    "id": "germanys-pension-tsunami-why-your-retirement-income-just-got-a-reality-check",
-    "title": "Germany's Pension Tsunami: Why Your Retirement Income Just Got a Reality Check",
-    "summary": "Germany's top economic advisors are sounding the alarm on the pension system, proposing a radical shift: tying existing pension increases to inflation, not wage growth. This controversial move could reshape retirement for millions, potentially slowing income rises and sparking a major generational debate.",
-    "category": "World Affairs",
-    "imageUrl": "https://www.gegen-hartz.de/wp-content/uploads/2026/06/rente-wirtschaftsweise-deutschland-bestandsrentner.jpeg",
-    "readTime": "4 min read",
-    "date": "2026-07-29"
-  },
-  {
-    "id": "diageos-rollercoaster-is-this-spirits-giant-finally-shaking-off-its-hangover",
-    "title": "Diageo's Rollercoaster: Is This Spirits Giant Finally Shaking Off Its Hangover?",
-    "summary": "After years of plummeting share prices, spirits giant Diageo has seen a surprising 10.5% jump this July. But is this a genuine turnaround, or just another false dawn for investors?",
-    "category": "World Affairs",
-    "imageUrl": "https://s.yimg.com/lo/mysterio/api/00142461F0633B74641C08C055B343AB756CFAC696BE35E3D396B4425E29D79D/subgraphmysterio/resizefill_w1200_h632;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Ffool.co.uk%2F02f03e54a919e915cfe851f87cf64e31",
-    "readTime": "4 min read",
-    "date": "2026-07-29"
-  },
-  {
-    "id": "dunwich-heath-engulfed-why-this-suffolk-blaze-is-a-critical-wake-up-call",
-    "title": "Dunwich Heath Engulfed: Why This Suffolk Blaze Is a Critical Wake-Up Call",
-    "summary": "A 'significant' fire is ripping through Dunwich Heath, a vital National Trust site on the Suffolk coast. Battling extreme heat and challenging winds, emergency services face an uphill struggle against a blaze threatening precious wildlife and heritage.",
-    "category": "World Affairs",
-    "imageUrl": "https://www.eadt.co.uk/resources/images/21251990.jpg?type=og-image",
-    "readTime": "3 min read",
-    "date": "2026-07-29"
-  },
-  {
-    "id": "martin-lewiss-urgent-easyjet-warning-your-blueprint-for-cheap-summer-2027-flights",
-    "title": "Martin Lewis's Urgent EasyJet Warning: Your Blueprint for Cheap Summer 2027 Flights",
-    "summary": "Amidst travel chaos, Martin Lewis drops a bombshell: a crucial window to snag unbelievably cheap easyJet flights for Summer 2027. Don't snooze on this dynamic pricing hack!",
-    "category": "World Affairs",
-    "imageUrl": "https://metro.co.uk/wp-content/uploads/2026/06/SEI_302079674-bf8d_1785168355.jpg?quality=90&strip=all&w=1200&h=630&crop=1",
-    "readTime": "3 min read",
-    "date": "2026-07-28"
-  },
-  {
-    "id": "market-jitters-tech-giants-under-the-microscope-oil-plunges-amid-iran-truce-and-the-fed-looms-large",
-    "title": "Market Jitters: Tech Giants Under the Microscope, Oil Plunges Amid Iran Truce, & The Fed Looms Large",
-    "summary": "Global markets are gripped by caution as oil prices take a dramatic tumble following a hinted de-escalation in the Iran conflict, while Wall Street braces for crucial tech earnings and a pivotal Federal Reserve interest rate decision.",
-    "category": "World Affairs",
-    "imageUrl": "https://www.n-tv.de/img/31131083/1785194531/Img_16_9/1200/Traders-work-on-the-floor-of-the-New-York-Stock-Exchange-on-Wall-Street-on-Monday-July-27-2026-in-New-York-City-The-DOW-began-the-day-up-over-600-points-before-falling-back-a-bit-but-chip-stocks-There-was-a-pause-in-Iran-fighting-over-the-weekend.jpg",
-    "readTime": "4 min read",
-    "date": "2026-07-28"
-  },
-  {
-    "id": "summer-travel-chaos-eus-new-border-system-sparks-panic-for-millions-of-uk-holidaymakers",
-    "title": "Summer Travel Chaos? EU's New Border System Sparks Panic for Millions of UK Holidaymakers",
-    "summary": "As millions of Brits jet off for summer, the EU's new Entry-Exit System (EES) is raising fears of major airport and port delays, prompting urgent calls for its suspension amidst claims of a 'malfunctioning' post-Brexit border.",
-    "category": "World Affairs",
-    "imageUrl": "https://i.guim.co.uk/img/media/368df0fb7c9576ae386d17f06056205debf2181c/554_81_4609_3687/master/4609.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltL3N0YXRpYy9vdmVybGF5cy90Zy1kZWZhdWx0LnBuZw&enable=upscale&s=dc6c7a76ea6ab1fc95a87d05f8ed9b4b",
-    "readTime": "4 min read",
-    "date": "2026-07-27"
-  },
-  {
-    "id": "ontarios-wildfire-crisis-is-your-cottage-a-fire-risk-hotspot",
-    "title": "Ontario's Wildfire Crisis: Is Your Cottage a Fire-Risk Hotspot?",
-    "summary": "Wildfires are raging across Ontario, putting cottage country on high alert. Officials are urging property owners to take immediate action to protect their homes from devastating fire risks.",
-    "category": "World Affairs",
-    "imageUrl": "https://i.cbc.ca/ais/62545ff6-e629-41b1-8042-676ec30c7289,1784758924884/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1920%2C1080%29%3BResize%3D620",
-    "readTime": "4 min read",
-    "date": "2026-07-27"
-  },
-  {
-    "id": "stuttgarts-sky-saga-sun-storms-and-shifting-winds-rock-baden-wurttemberg",
-    "title": "Stuttgart's Sky Saga: Sun, Storms & Shifting Winds Rock Baden-Württemberg!",
-    "summary": "Baden-Württemberg is bracing for a wild weather mix this Sunday, with sun, heat, strong winds, and sudden thunderstorms threatening to disrupt weekend plans. Get the full breakdown here!",
-    "category": "World Affairs",
-    "imageUrl": "https://www.sueddeutsche.de/2026/07/26/34d328b9-7b26-4ee5-85f6-a03a8cdc150d.jpg?q=60&fm=webp&width=1200&rect=undefined%2Cundefined%2Cundefined%2Cundefined",
-    "readTime": "2 min read",
-    "date": "2026-07-27"
-  },
-  {
-    "id": "ice-under-fire-tom-homan-slams-vetting-process-amid-fatal-shootings-and-abuse-allegations",
-    "title": "ICE Under Fire: Tom Homan Slams Vetting Process Amid Fatal Shootings & Abuse Allegations",
-    "summary": "Former 'border czar' Tom Homan critically evaluates ICE's hiring process after an agent involved in a fatal Maine shooting faces serious abuse allegations from ex-wives, sparking wider scrutiny of the agency's protocols and calls for reform.",
-    "category": "World Affairs",
-    "imageUrl": "https://i.guim.co.uk/img/media/9a1a95209b54b7ece0f64190d8ac135bb001c6f1/703_0_7027_5622/master/7027.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=3f4fa3c04e10ac52c17ebfcea2d54de3",
-    "readTime": "4 min read",
-    "date": "2026-07-27"
-  },
-  {
-    "id": "dry-times-wet-rules-munichs-absurd-water-paradox-leaves-citizens-soaked",
-    "title": "Dry Times, Wet Rules: Munich's Absurd Water Paradox Leaves Citizens Soaked",
-    "summary": "Munich residents face an astonishing bureaucratic dilemma: save water during a drought or sprinkle streets to avoid dust. Contradictory city ordinances mean following one rule breaks another, potentially leading to fines for doing nothing at all.",
-    "category": "World Affairs",
-    "imageUrl": "https://www.sueddeutsche.de/2022/06/21/930ad183-eb22-4e0e-9761-bd536f001819.jpeg?q=60&fm=webp&width=1200&rect=0%2C69%2C1353%2C761",
-    "readTime": "3 min read",
-    "date": "2026-07-27"
-  },
-  {
-    "id": "sunda-strait-shakes-anak-krakatau-roars-twice-alert-level-holds",
-    "title": "Sunda Strait Shakes: Anak Krakatau Roars Twice, Alert Level Holds",
-    "summary": "Indonesia's Anak Krakatau volcano erupted twice in an hour, sending ash plumes 457 meters high. Despite the dramatic increase in activity, its status remains at Level III (Siaga), with officials urging a 3km exclusion zone.",
-    "category": "World Affairs",
-    "imageUrl": "https://cdn1-production-images-kly.akamaized.net/lrtzv2WOKbZfXGlOCb8oiIKKTmI=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/9307739/original/090307800_1785065574-1001499854.jpg",
-    "readTime": "3 min read",
-    "date": "2026-07-26"
-  },
-  {
-    "id": "powerball-payouts-did-ohios-latest-drawing-mint-a-millionaire",
-    "title": "Powerball Payouts: Did Ohio's Latest Drawing Mint a Millionaire?",
-    "summary": "Hopefuls across Ohio checked their Powerball tickets after the latest drawing. While dreams of a mega-jackpot persist, the top prize remains elusive for last night's draw, keeping the anticipation building.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
-    "readTime": "3 min read",
-    "date": "2026-07-26"
-  },
-  {
-    "id": "gatwicks-water-crisis-why-thousands-of-travelers-are-facing-a-dry-spell-of-disruption",
-    "title": "Gatwick's Water Crisis: Why Thousands of Travelers Are Facing a Dry Spell of Disruption",
-    "summary": "Gatwick Airport is in chaos after a major water supply issue left both terminals without running water, forcing toilet closures, restaurant shutdowns, and frustrating thousands of passengers. A power outage at a local water treatment plant is blamed, causing widespread disruption.",
-    "category": "World Affairs",
-    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/970a/live/b77ebe10-88de-11f1-aeef-edf7e578a56d.jpg",
-    "readTime": "4 min read",
-    "date": "2026-07-26"
-  },
-  {
-    "id": "lauterbachs-emigration-gaffe-is-germany-really-doing-without-skilled-workers",
-    "title": "Lauterbach's Emigration Gaffe: Is Germany Really 'Doing Without' Skilled Workers?",
-    "summary": "German Health Minister Karl Lauterbach's dismissive remarks about highly qualified emigrants have sparked outrage, revealing a perceived disconnect from economic realities and the nation's critical need for talent.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.welt.de/6a61edd5efccf0c0d5536a42/6c39f75296eb9fbc78c8042d262d1fce/ci16x9-w1200/551600186-jpg",
-    "readTime": "3 min read",
-    "date": "2026-07-25"
-  },
-  {
-    "id": "bitcoins-silent-accumulation-is-a-market-bottom-brewing",
-    "title": "Bitcoin's Silent Accumulation: Is a Market Bottom Brewing?",
-    "summary": "Bitcoin's long-term investors are holding record amounts of BTC, signaling a potential market bottom despite ongoing price debates. WhyThisBuzz digs into what this means for the crypto future.",
-    "category": "World Affairs",
-    "imageUrl": "https://quadro.burda-forward.de/ctf/ee98debc-43d0-4a4c-8ac6-cb9c62b969af.ccb87795-e115-4d80-b75eee641dc8.jpg?im=RegionOfInterestCrop=(1200,630),regionOfInterest=(725,393)&hash=d61b5608a5489be7cd796e6ef126a238d9619c80be530d892ac0e95407f5ad50",
-    "readTime": "3 min read",
-    "date": "2026-07-25"
-  },
-  {
-    "id": "kyiv-reels-from-deadly-strike-us-and-russia-talk-peace-and-nato-scrambles-jets",
-    "title": "Kyiv Reels from Deadly Strike, US & Russia Talk Peace, and NATO Scrambles Jets",
-    "summary": "A devastating missile strike rocks Kyiv, killing at least ten, as President Zelenskyy prepares for a White House visit. Meanwhile, diplomatic efforts intensify amidst new war crime allegations, and a NATO member shoots down an unidentified drone near its border with Ukraine.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.t-online.de/2026/07/dldiE4R0Oi3V/0x32:2048x1152/fit-in/1200x0/russischer-raketenangriff-auf-kiew-putin-terrorisiert-die-ukrainische-zivilbevoelkerung.jpg",
-    "readTime": "4 min read",
-    "date": "2026-07-24"
-  },
-  {
-    "id": "the-strawberry-kings-gamble-pays-off-karls-erlebnis-dorf-takes-over-oberhausen",
-    "title": "The Strawberry King's Gamble Pays Off: Karls Erlebnis-Dorf Takes Over Oberhausen",
-    "summary": "After nail-biting delays, Germany's 'Strawberry King,' Robert Dahl, has successfully opened his ninth Karls Erlebnis-Dorf in Oberhausen, marking a significant new chapter for the Ruhrgebiet's leisure scene.",
-    "category": "World Affairs",
-    "imageUrl": "https://cdn.schwaebische.de/2026/07/22/8f294778-5559-46f3-856c-c982a7574de.jpg?rect=0%2C86%2C1152%2C648&w=1200&auto=format",
-    "readTime": "4 min read",
-    "date": "2026-07-24"
-  },
-  {
-    "id": "gironde-ablaze-frances-wildfire-emergency-escalates-cap-ferret-evacuated",
-    "title": "Gironde Ablaze: France's Wildfire Emergency Escalates, Cap Ferret Evacuated",
-    "summary": "Thousands are fleeing the popular Cap Ferret peninsula as a devastating wildfire rips through France's Gironde region, prompting a national emergency and EU aid. This isn't just a local crisis; it's a stark reminder of escalating climate challenges across Europe.",
-    "category": "World Affairs",
-    "imageUrl": "https://ichef.bbci.co.uk/news/1024/branded_news/dad3/live/0e54c2b0-872d-11f1-9733-edfe8d3e29a7.jpg",
-    "readTime": "3 min read",
-    "date": "2026-07-24"
-  },
-  {
-    "id": "house-delivers-bold-rebuke-to-trump-on-iran-war-powers-symbolic-or-strategic",
-    "title": "House Delivers Bold Rebuke to Trump on Iran War Powers: Symbolic or Strategic?",
-    "summary": "The U.S. House just delivered a potent, if legally non-binding, rebuke to President Trump, voting to curb his Iran war powers. This move signals deep bipartisan discontent and an escalating political battle over military action abroad.",
-    "category": "World Affairs",
-    "imageUrl": "https://media.cnn.com/api/v1/images/stellar/prod/2026-07-14t021432z-1-lynxmpem6d03e-rtroptp-4-usa-trump.jpg?c=16x9&q=w_800,c_fill",
-    "readTime": "3 min read",
-    "date": "2026-07-23"
-  },
-  {
-    "id": "prediction-markets-is-kalshi-the-new-crystal-ball-for-elections",
-    "title": "Prediction Markets: Is Kalshi the New Crystal Ball for Elections?",
-    "summary": "Forget static polls – Kalshi's real-time prediction market is changing how we track elections, offering a dynamic, 'wisdom of the crowds' view backed by real money, not just rhetoric.",
-    "category": "World Affairs",
-    "imageUrl": "https://static.foxnews.com/foxnews.com/content/uploads/2026/07/f7721b60-capitol-dome-statue.png",
-    "readTime": "4 min read",
-    "date": "2026-07-22"
-  },
-  {
-    "id": "phoenix-storm-chaos-united-flight-forced-to-land-at-military-base",
-    "title": "Phoenix Storm Chaos: United Flight Forced to Land at Military Base",
-    "summary": "A United Airlines flight bound for Phoenix was rerouted to a military air base after severe weather turned the Valley into a no-fly zone, highlighting the critical role of emergency protocols in air travel.",
-    "category": "World Affairs",
-    "imageUrl": "https://gray-kpho-prod.gtv-cdn.com/resizer/v2/6ITMSY6BLZCZFKUBOTRRKP2GZA.png?auth=ba9dba282d6094a600a8d4b1c71b9e33f52c6a3db7d7389f93294d1c77613aec&width=1200&height=600&smart=true",
-    "readTime": "3 min read",
-    "date": "2026-07-21"
-  },
-  {
-    "id": "phoenix-braces-for-dual-threat-extreme-heat-and-flash-floods-loom-over-arizona",
-    "title": "Phoenix Braces for Dual Threat: Extreme Heat and Flash Floods Loom Over Arizona",
-    "summary": "Arizona is caught in a chaotic weather pattern, with Phoenix battling a brutal heatwave reaching 114°F while other regions face severe flash flood risks. Get the critical breakdown of this week's wild forecast.",
-    "category": "World Affairs",
-    "imageUrl": "https://gray-kpho-prod.gtv-cdn.com/resizer/v2/GDN7DM2G2FFQTKVRSELPU2ARU4.jpg?auth=54bfc3280345015084ae4c70ef2b22c6a62f9266eb3d35a7eb5ffbaef105e671&width=1200&height=600&smart=true",
-    "readTime": "3 min read",
-    "date": "2026-07-21"
-  },
-  {
-    "id": "prison-break-why-uk-justice-minister-lord-timpson-just-walked-away",
-    "title": "Prison Break: Why UK Justice Minister Lord Timpson Just Walked Away",
-    "summary": "Lord James Timpson, the UK's Prisons Minister, has unexpectedly resigned after two years, leaving a controversial legacy of reforms in a justice system still grappling with deep-seated issues.",
-    "category": "World Affairs",
-    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/6384/live/0d7bf680-841a-11f1-926f-c90d1bcfbc84.jpg",
-    "readTime": "4 min read",
-    "date": "2026-07-20"
-  },
-  {
-    "id": "us-iran-conflict-explodes-a-wider-war-looms-as-casualties-mount",
-    "title": "US-Iran Conflict Explodes: A 'Wider War' Looms as Casualties Mount",
-    "summary": "The US-Iran conflict has reached a dangerous new peak with a ninth night of intense strikes and mounting US casualties, sparking fears of an uncontrollable, wider war threatening global oil supply and regional stability.",
-    "category": "World Affairs",
-    "imageUrl": "https://media.cnn.com/api/v1/images/stellar/videothumbnails/32054518-93534552-generated-thumbnail.jpg?c=16x9&q=w_800,c_fill",
-    "readTime": "5 min read",
-    "date": "2026-07-20"
-  },
-  {
-    "id": "mega-millions-mania-dollar672-million-jackpot-explained-the-real-payout-shock",
-    "title": "Mega Millions Mania: $672 Million Jackpot Explained – The Real Payout Shock!",
-    "summary": "The Mega Millions jackpot has soared to an eye-watering $672 million, the biggest lottery prize of the year. But before you dream of private islands, brace yourself for the significant tax implications and staggering odds awaiting a potential winner.",
-    "category": "World Affairs",
-    "imageUrl": "https://imageio.forbes.com/specials-images/imageserve/68ef2b9df9ac12ea43ffc4ce/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
-    "readTime": "3 min read",
-    "date": "2026-07-18"
-  },
-  {
-    "id": "volkswagen-osnabruck-from-cars-to-arms-germanys-industrial-tectonic-shift",
-    "title": "Volkswagen Osnabrück: From Cars to Arms? Germany's Industrial Tectonic Shift",
-    "summary": "Volkswagen's Osnabrück plant faces a seismic shift as car production ends by 2027. Amidst talks with an Israeli defense giant, the Niedersachsen government is reportedly weighing a controversial investment to convert the facility into a defense hub, sparking a fierce debate about jobs and Germany's industrial future.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.ndr.de/image/481eadb6-d8f1-4c31-86f8-8e115aabaede/AAABl6x4SCc/AAABnSSvrFg/16x9-big/vw-950.webp?width=1920",
-    "readTime": "4 min read",
-    "date": "2026-07-14"
-  },
-  {
-    "id": "alex-pretti-minneapolis-shooting-stephen-miller-assassin-remark",
-    "title": "Alex Pretti Minneapolis Shooting: Why Stephen Miller’s ‘Assassin’ Remark Sparked Backlash",
-    "summary": "An explanation of the controversy surrounding Stephen Miller’s comments after the fatal shooting of nurse Alex Pretti by a federal agent in Minneapolis.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&h=400&fit=crop",
-    "readTime": "7 min read",
-    "date": "2026-01-25"
-  },
-  {
-    "id": "us-winter-storm-ice-snow-alert-new-mexico-carolinas-washington",
-    "title": "US Winter Storm Alert Explained: Ice Storm Threatens New Mexico to Carolinas, Heavy Snow for Washington",
-    "summary": "Millions across the US are under winter storm alerts as an ice storm and heavy snowfall threaten power outages, travel disruption, and extreme cold.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=600&h=400&fit=crop",
-    "readTime": "7 min read",
-    "date": "2026-01-24"
-  },
-  {
-    "id": "ryan-wedding-arrest-explained-olympian-drug-kingpin-case",
-    "title": "Ryan Wedding Arrest Explained: How a Former Olympian Became a Global Crime Figure",
-    "summary": "A clear breakdown of who Ryan Wedding is, why his arrest matters, and how a former Olympic snowboarder became one of the FBI’s most wanted fugitives.",
-    "category": "Global Affairs",
-    "imageUrl": "/images/WorldAffairs23Jan.png",
-    "readTime": "8 min read",
-    "date": "2026-01-23"
-  },
-  {
-    "id": "usha-vance-fourth-child-announcement",
-    "title": "Usha Vance and JD Vance Announce Fourth Child, Baby Boy Due in July",
-    "summary": "US Vice President JD Vance and Second Lady Usha Vance have shared that they are expecting their fourth child, a baby boy, later this year.",
-    "category": "World Affairs",
-    "imageUrl": "/images/WorldAffair22Jan.avif",
-    "readTime": "4 min read",
-    "date": "2026-01-22"
-  },
-  {
-    "id": "south-winter-storm-forecast-explained",
-    "title": "Why the Southern US Is Preparing for a Major Winter Storm This Weekend",
-    "summary": "Millions across the southern United States are under winter storm alerts as forecasts warn of snow, ice, and freezing rain. Here’s what’s driving the concern.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop",
-    "readTime": "6 min read",
-    "date": "2026-01-22"
-  },
-  {
-    "id": "rare-snow-southeast-florida-georgia-winter-weather",
-    "title": "Rare Snow Could Make Winter Weather History in Florida and Georgia — Here’s What’s Happening",
-    "summary": "An unusual winter setup could bring rare snowfall to parts of the Southeast, including Georgia and possibly Florida. Here’s why this weather event is getting attention.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=400&fit=crop",
-    "readTime": "8 min read",
-    "date": "2026-01-17"
-  },
-  {
-    "id": "us-insurrection-act-explained-minnesota-protests",
-    "title": "What Is the Insurrection Act? Why It’s Being Discussed Amid Minnesota Protests",
-    "summary": "An easy-to-understand explanation of the Insurrection Act, why Donald Trump has mentioned it during Minnesota protests, and how the rarely used law has been applied in the past.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1478576573461-bb5026f9b302?q=80&w=2342",
-    "readTime": "8 min read",
-    "date": "2026-01-16"
-  },
-  {
-    "id": "palak-paneer-smell-racism-case-explained",
-    "title": "Palak Paneer ‘Smell Racism’ Case Explained: Why the $200,000 Settlement Is Back in the Spotlight",
-    "summary": "A 2018 discrimination case involving Indian food smells and university housing rules has resurfaced online — here’s what happened, why it’s trending again, and what it reveals about cultural bias debates.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?q=80&w=2072",
-    "readTime": "7 min read",
-    "date": "2026-01-15"
-  },
-  {
-    "id": "thailand-train-derailment-china-backed-rail-project-explained",
-    "title": "Thailand Train Derailment Explained: What Happened at the China-Backed Rail Project",
-    "summary": "A clear explanation of the crane collapse that derailed a passenger train in Thailand, the casualties involved, and why the incident is drawing global attention.",
-    "category": "World Affairs",
-    "imageUrl": "/images/Thailand.jpg",
-    "readTime": "6 min read",
-    "date": "2026-01-14"
-  },
-  {
-    "id": "greenland-response-to-trump-control-claims",
-    "title": "Why Greenland Is Pushing Back Against Trump’s Control Claims",
-    "summary": "Greenland’s political parties have issued a rare united response rejecting Donald Trump’s statements about taking control of the island. Here’s why the issue is gaining global attention.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1537267013710-d7b37fa331b3?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "readTime": "8 min read",
-    "date": "2026-01-11"
   }
 ]

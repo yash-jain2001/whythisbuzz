@@ -1,11 +1,57 @@
+'use client';
+
+import { useState, useEffect } from "react";
 import { ArticleCard } from "./ArticleCard";
 import { ArticleMetadata } from "@/lib/mdx";
+import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 
 interface ArticleGridProps {
   articles: ArticleMetadata[];
 }
 
-export function ArticleGrid({ articles }: ArticleGridProps) {
+function formatDateDisplay(dateStr: string): string {
+  if (!dateStr) return '';
+  if (/^\d{4}-\d{2}-\d{2}/.test(dateStr)) {
+    const [year, month, day] = dateStr.split('T')[0].split('-');
+    const dateObj = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    return dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  return dateStr;
+}
+
+export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
+  const [articles, setArticles] = useState<ArticleMetadata[]>(initialArticles);
+
+  useEffect(() => {
+    if (!supabase) return;
+
+    supabase
+      .from('articles')
+      .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
+      .order('date', { ascending: false })
+      .order('created_at', { ascending: false })
+      .limit(12)
+      .then(({ data, error }) => {
+        if (!error && data && data.length > 0) {
+          const liveArticles: ArticleMetadata[] = (data as SupabaseArticleDoc[]).map((doc) => ({
+            id: doc.slug,
+            title: doc.title,
+            description: doc.summary || doc.meta_description || '',
+            date: formatDateDisplay(doc.date),
+            author: doc.author || 'WhyThisBuzz Desk',
+            category: doc.category,
+            imageUrl: doc.image_url || '',
+            readTime: doc.read_time || '3 min read',
+            summary: doc.summary || '',
+            seoTitle: doc.seo_title,
+            metaDescription: doc.meta_description,
+            keywords: doc.keywords,
+          }));
+          setArticles(liveArticles);
+        }
+      });
+  }, []);
+
   return (
     <section className="py-12">
       <div className="container">
@@ -34,3 +80,4 @@ export function ArticleGrid({ articles }: ArticleGridProps) {
     </section>
   );
 }
+
