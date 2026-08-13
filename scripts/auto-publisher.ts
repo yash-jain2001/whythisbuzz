@@ -1,11 +1,42 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { createClient } from '@supabase/supabase-js';
+import { TwitterApi } from 'twitter-api-v2';
 import Parser from 'rss-parser';
 import * as cheerio from 'cheerio';
 import slugify from 'slugify';
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+async function postToTwitter(title: string, summary: string, slug: string) {
+  const apiKey = process.env.TWITTER_API_KEY;
+  const apiSecret = process.env.TWITTER_API_SECRET;
+  const accessToken = process.env.TWITTER_ACCESS_TOKEN;
+  const accessSecret = process.env.TWITTER_ACCESS_SECRET;
+
+  if (!apiKey || !apiSecret || !accessToken || !accessSecret) {
+    console.log(`ℹ️ Twitter API keys not fully configured. Skipping tweet for "${title}".`);
+    return;
+  }
+
+  try {
+    const client = new TwitterApi({
+      appKey: apiKey,
+      appSecret: apiSecret,
+      accessToken: accessToken,
+      accessSecret: accessSecret,
+    });
+
+    const articleUrl = `https://whythisbuzz.com/article/${slug}`;
+    const cleanSummary = summary.length > 120 ? summary.substring(0, 117) + '...' : summary;
+    const tweetText = `⚡ ${title}\n\n${cleanSummary}\n\nRead full story ⤵️\n${articleUrl}`;
+
+    const tweet = await client.v2.tweet(tweetText);
+    console.log(`🐦 Successfully posted automated tweet on X for "${title}" (ID: ${tweet.data.id})`);
+  } catch (err: any) {
+    console.error(`⚠️ Failed to post tweet for "${title}":`, err?.message || err);
+  }
+}
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 if (!GEMINI_API_KEY) {
@@ -290,6 +321,9 @@ ${articleText}
           publishedSlugs.add(slug);
           console.log(`🚀 Successfully published "${articleTitle}" (${slug}) directly to Supabase DB!`);
           regionProcessed++;
+
+          // Automatically tweet out the new article to X (Twitter)
+          await postToTwitter(articleTitle, summaryMatch ? summaryMatch[1] : '', slug);
         }
       } catch (error) {
         console.error(`Failed to generate or save article for ${region}:`, error);
