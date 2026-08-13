@@ -188,7 +188,7 @@ Your writing style is engaging, punchy, clear, and analytical. You explain not j
 
 I will provide you with the raw scraped text from a trending news article about "${selectedTrend}".
 Your task is to re-write this article completely in your own words, adhering strictly to the "WhyThisBuzz" style.
-Add a catchy title, a short summary, and use Markdown for formatting (headers, bold text, bullet points if needed).
+Create a Google Discover-optimized headline that uses curiosity-gap formulas (e.g., starting with "Why...", "The Real Reason Behind...", or "Inside..."), a short summary, and use Markdown for formatting (headers, bold text, bullet points if needed).
 
 Important formatting requirement:
 The output MUST be a valid MDX file, starting immediately with frontmatter enclosed in '---', and then the article body.
