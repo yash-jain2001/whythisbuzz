@@ -103,6 +103,27 @@ export default async function RootLayout({
           crossOrigin="anonymous"
         />
 
+        {/* Google Reader Revenue Manager Script */}
+        <script
+          async
+          type="application/javascript"
+          src="https://news.google.com/swg/js/v1/swg-basic.js"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
+                basicSubscriptions.init({
+                  type: "NewsArticle",
+                  isPartOfType: ["Product"],
+                  isPartOfProductId: "CAow7L_HDA:openaccess",
+                  clientOptions: { theme: "light", lang: "en" },
+                });
+              });
+            `,
+          }}
+        />
+
         {/* JSON-LD Structured Data for Organization, Website and Navigation */}
         <script
           type="application/ld+json"
