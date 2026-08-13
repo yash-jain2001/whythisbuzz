@@ -9,12 +9,16 @@ const PostHogPageView = () => {
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        if (pathname && posthog) {
-            let url = window.origin + pathname;
-            if (searchParams && searchParams.toString()) {
-                url = url + `?${searchParams.toString()}`;
+        try {
+            if (pathname && posthog) {
+                let url = window.origin + pathname;
+                if (searchParams && searchParams.toString()) {
+                    url = url + `?${searchParams.toString()}`;
+                }
+                posthog.capture('$pageview', { '$current_url': url });
             }
-            posthog.capture('$pageview', { '$current_url': url });
+        } catch {
+            // Silently ignore pageview capture errors
         }
     }, [pathname, searchParams]);
 
@@ -24,17 +28,20 @@ const PostHogPageView = () => {
 const PostHogProvider = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         try {
-            posthog.init("phc_a2zTf2inviVnTyYMJ4i8PleiAlXGpLLMd6BGS14NxLB" as string, {
-                api_host: "https://us.i.posthog.com",
+            const key = process.env.NEXT_PUBLIC_POSTHOG_KEY || "phc_a2zTf2inviVnTyYMJ4i8PleiAlXGpLLMd6BGS14NxLB";
+            if (!key) return;
+
+            posthog.init(key, {
+                api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
                 person_profiles: 'identified_only',
-                // Enable debug mode in development
-                loaded: (posthog) => {
-                    if (process.env.NODE_ENV === 'development') posthog.debug();
+                capture_pageview: false,
+                disable_session_recording: true,
+                on_xhr_error: () => {
+                    // Silently ignore network / ad-blocker blocks
                 },
             });
-        } catch (error) {
-            // Silently handle errors (likely ad blocker or network issue)
-            console.log('PostHog initialization blocked (ad blocker or network issue)');
+        } catch {
+            // Silently handle initialization blocks
         }
     }, []);
 
