@@ -1,16 +1,10 @@
 'use client';
 
+import { useState } from "react";
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 
 const DEFAULT_THUMBNAIL = "/images/default-thumbnail.png";
-
-function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
-  const target = e.currentTarget;
-  target.onerror = null; // Prevent infinite error loops
-  target.alt = "";       // Clear browser default text overlay
-  target.src = DEFAULT_THUMBNAIL; // Load WhyThisBuzz brand thumbnail
-}
 
 interface ArticleCardProps {
   article: ArticleMetadata;
@@ -19,8 +13,15 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
   const isBadImage = !article.imageUrl || article.imageUrl.includes('photo-1611162617474-5b21e879e113') || article.imageUrl.includes('placeholder');
-  const proxified = isBadImage ? DEFAULT_THUMBNAIL : proxifyImage(article.imageUrl);
-  const imageSrc = proxified || DEFAULT_THUMBNAIL;
+  const targetSrc = isBadImage ? DEFAULT_THUMBNAIL : (proxifyImage(article.imageUrl) || DEFAULT_THUMBNAIL);
+  
+  const [failedUrl, setFailedUrl] = useState<string | null>(null);
+
+  const imageSrc = (failedUrl === targetSrc) ? DEFAULT_THUMBNAIL : targetSrc;
+
+  const handleImageError = () => {
+    setFailedUrl(targetSrc);
+  };
 
   if (variant === "compact") {
     return (
@@ -29,7 +30,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
           <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-muted">
             <img
               src={imageSrc}
-              alt={article.title}
+              alt=""
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               onError={handleImageError}
             />
@@ -55,7 +56,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           <img
             src={imageSrc}
-            alt={article.title}
+            alt=""
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={handleImageError}
           />
@@ -84,3 +85,4 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
     </a>
   );
 }
+
