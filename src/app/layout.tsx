@@ -103,7 +103,7 @@ export default async function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* Google Reader Revenue Manager Script */}
+        {/* Google Reader Revenue Manager Script (Disabled for now)
         <script
           async
           type="application/javascript"
@@ -123,6 +123,7 @@ export default async function RootLayout({
             `,
           }}
         />
+        */}
 
         {/* JSON-LD Structured Data for Organization, Website and Navigation */}
         <script
