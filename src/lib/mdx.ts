@@ -25,6 +25,10 @@ export interface ArticleMetadata {
     seoTitle?: string;
     metaDescription?: string;
     keywords?: string;
+    country?: string;
+    countryFlag?: string;
+    countryName?: string;
+    trendTime?: string;
 }
 
 export interface Article {

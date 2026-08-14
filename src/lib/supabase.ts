@@ -27,6 +27,8 @@ export interface SupabaseArticleDoc {
     meta_description?: string;
     keywords?: string;
     created_at?: string;
+    geo?: string;
+    country?: string;
 }
 
 function formatDateDisplay(dateStr: string): string {
@@ -40,7 +42,12 @@ function formatDateDisplay(dateStr: string): string {
     return dateStr;
 }
 
+import { getCountryForArticle, getRelativeTrendTime } from './country-utils';
+
 function docToArticle(doc: SupabaseArticleDoc): Article {
+    const country = getCountryForArticle(doc.geo || doc.country, doc.title, doc.summary);
+    const trendTime = getRelativeTrendTime(doc.date, doc.created_at);
+
     return {
         metadata: {
             id: doc.slug,
@@ -55,6 +62,10 @@ function docToArticle(doc: SupabaseArticleDoc): Article {
             seoTitle: doc.seo_title,
             metaDescription: doc.meta_description,
             keywords: doc.keywords,
+            country: country.code,
+            countryFlag: country.flag,
+            countryName: country.name,
+            trendTime: trendTime,
         } as ArticleMetadata,
         content: doc.content || '',
     };
