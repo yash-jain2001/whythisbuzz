@@ -5,6 +5,7 @@ import Parser from 'rss-parser';
 import * as cheerio from 'cheerio';
 import slugify from 'slugify';
 import dotenv from 'dotenv';
+import crypto from 'crypto';
 
 dotenv.config();
 
@@ -93,9 +94,23 @@ function getFormattedDate(): string {
   });
 }
 
+const CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
+  Sports: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
+  Entertainment: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+  Movies: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+  Technology: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+  "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
+  "World Affairs": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
+  General: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80"
+};
+
 async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl: string }> {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
     const html = await response.text();
     const $ = cheerio.load(html);
 
@@ -109,11 +124,23 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
       }
     });
 
-    let imageUrl = $('meta[property="og:image"]').attr('content') || 
-                    $('meta[name="twitter:image"]').attr('content') || '';
+    let imageUrl = $('meta[property="og:image:secure_url"]').attr('content') ||
+                    $('meta[property="og:image"]').attr('content') || 
+                    $('meta[name="twitter:image:src"]').attr('content') ||
+                    $('meta[name="twitter:image"]').attr('content') ||
+                    $('meta[name="image"]').attr('content') ||
+                    $('link[rel="image_src"]').attr('href') || '';
 
     if (imageUrl && !imageUrl.startsWith('http')) {
       imageUrl = '';
+    }
+
+    // Ensure image query params target HD 1200px width for Google Discover eligibility
+    if (imageUrl) {
+      imageUrl = imageUrl.replace(/([?&])(w|width|resize|quality)=\d+/gi, (match, p1, p2) => {
+        if (p2.toLowerCase() === 'w' || p2.toLowerCase() === 'width') return `${p1}${p2}=1200`;
+        return match;
+      });
     }
 
     return { text: text.trim(), imageUrl };
@@ -159,8 +186,112 @@ async function getPublishedSlugs(): Promise<Set<string>> {
   }
 }
 
+async function getGoogleAccessToken(email: string, privateKey: string): Promise<string | null> {
+  try {
+    const header = Buffer.from(JSON.stringify({ alg: 'RS256', typ: 'JWT' })).toString('base64url');
+    const now = Math.floor(Date.now() / 1000);
+    const claimSet = Buffer.from(JSON.stringify({
+      iss: email,
+      scope: 'https://www.googleapis.com/auth/indexing',
+      aud: 'https://oauth2.googleapis.com/token',
+      exp: now + 3600,
+      iat: now
+    })).toString('base64url');
+
+    const signatureInput = `${header}.${claimSet}`;
+    const signer = crypto.createSign('RSA-SHA256');
+    signer.update(signatureInput);
+    const signature = signer.sign(privateKey.replace(/\\n/g, '\n'), 'base64url');
+    const jwt = `${signatureInput}.${signature}`;
+
+    const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+        assertion: jwt
+      })
+    });
+
+    const tokenData = await tokenRes.json();
+    return tokenData.access_token || null;
+  } catch (error) {
+    console.warn('[Google Indexing API] Auth token error:', error);
+    return null;
+  }
+}
+
+async function pingGoogleIndexingApi(articleSlug: string): Promise<void> {
+  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
+  const articleUrl = `https://whythisbuzz.com/article/${articleSlug}`;
+
+  if (!email || !privateKey) {
+    console.log(`ℹ️ [Google Indexing API] GOOGLE_SERVICE_ACCOUNT_EMAIL or GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY not configured in .env. Skipping Google Indexing API ping.`);
+    return;
+  }
+
+  try {
+    const accessToken = await getGoogleAccessToken(email, privateKey);
+    if (!accessToken) {
+      console.warn(`[Google Indexing API] Failed to acquire OAuth access token for ${articleUrl}`);
+      return;
+    }
+
+    const res = await fetch('https://indexing.googleapis.com/v3/urlNotifications:publish', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        url: articleUrl,
+        type: 'URL_UPDATED'
+      })
+    });
+
+    if (res.ok || res.status === 200) {
+      console.log(`⚡ [Google Indexing API] Instant indexing ping sent for ${articleUrl}`);
+    } else {
+      const errText = await res.text();
+      console.warn(`[Google Indexing API] HTTP ${res.status} response for ${articleUrl}:`, errText);
+    }
+  } catch (err) {
+    console.error(`[Google Indexing API] Failed to ping for ${articleUrl}:`, err);
+  }
+}
+
+async function pingIndexNow(articleSlug: string): Promise<void> {
+  const host = 'whythisbuzz.com';
+  const key = '9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c';
+  const articleUrl = `https://${host}/article/${articleSlug}`;
+
+  try {
+    const payload = {
+      host,
+      key,
+      keyLocation: `https://${host}/${key}.txt`,
+      urlList: [articleUrl]
+    };
+
+    const res = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok || res.status === 200 || res.status === 202) {
+      console.log(`⚡ [IndexNow] Instant indexing ping sent for ${articleUrl}`);
+    } else {
+      console.warn(`[IndexNow] Ping returned HTTP ${res.status} for ${articleUrl}`);
+    }
+  } catch (err) {
+    console.error(`[IndexNow] Failed to ping for ${articleUrl}:`, err);
+  }
+}
+
 async function main() {
-  const regions = ['US', 'GB', 'DE'];
+  const regions = ['US', 'GB', 'DE', 'IN', 'CA', 'AU', 'FR', 'JP', 'BR', 'ES', 'IT', 'MX', 'KR', 'SG', 'NL', 'CN'];
   const publishedSlugs = await getPublishedSlugs();
   console.log(`🌐 Supabase DB currently contains ${publishedSlugs.size} articles.`);
 
@@ -199,7 +330,8 @@ async function main() {
       const newsLink = item.news_item[0]['ht:news_item_url'][0];
       console.log(`Analyzing trend (${regionProcessed + 1}/${TARGET_PER_REGION} for ${region}): ${title} - fetching ${newsLink}`);
       
-      let { text, imageUrl } = await scrapeArticleData(newsLink);
+      const { text: scrapedText, imageUrl } = await scrapeArticleData(newsLink);
+      let text = scrapedText;
       if (text.length <= 150) {
         text = `Headline trend: ${title}. Provide a full in-depth news analysis explaining what happened, key background details, and why this matters to the public.`;
       }
@@ -215,11 +347,22 @@ async function main() {
 
       const prompt = `
 You are a top-tier journalist and Chief Editor for a modern digital news site called "WhyThisBuzz".
-Your writing style is engaging, punchy, clear, and analytical. You explain not just what happened, but *why* it matters.
+Your writing style is highly engaging, clear, analytical, and optimized for **Google Discover feeds**.
 
 I will provide you with the raw scraped text from a trending news article about "${selectedTrend}".
 Your task is to re-write this article completely in your own words, adhering strictly to the "WhyThisBuzz" style.
-Create a Google Discover-optimized headline that uses curiosity-gap formulas (e.g., starting with "Why...", "The Real Reason Behind...", or "Inside..."), a short summary, and use Markdown for formatting (headers, bold text, bullet points if needed).
+
+CRITICAL GOOGLE DISCOVER HEADLINE FORMULAS:
+Create a magnetic, high-CTR headline (50-70 characters) tailored for Google Discover recommendations.
+Must use one of these proven Google Discover curiosity-gap formulas:
+- "Why [Subject] is [Action/Trend] Right Now"
+- "The Real Reason Behind [News Event]"
+- "Inside [Topic/Event]: What You Need to Know"
+- "What [Event] Means for [Industry/Public]"
+- "How [Entity] Unexpectedly [Development]"
+
+CRITICAL DISCOVER SUMMARY FORMULA:
+Craft a punchy 1-2 sentence summary that hooks mobile readers immediately on Discover feeds.
 
 Important formatting requirement:
 The output MUST be a valid MDX file, starting immediately with frontmatter enclosed in '---', and then the article body.
@@ -240,7 +383,7 @@ CRITICAL SEO INSTRUCTIONS:
 Use exactly this frontmatter structure (fill in the appropriate details based on your analysis):
 
 ---
-title: "Your Catchy Headline Here"
+title: "Your Catchy Google Discover Headline Here"
 summary: "A 1-2 sentence punchy summary of the article."
 category: "[Choose exactly ONE category from the definitions above]"
 author: "WhyThisBuzz Desk"
@@ -295,9 +438,10 @@ ${articleText}
         const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
 
         const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
-        const finalImage = (parsedImg && parsedImg.startsWith('http') && !parsedImg.includes('photo-1611162617474-5b21e879e113')) 
+        const fallbackHDImage = CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES['General'];
+        const finalImage = (parsedImg && parsedImg.startsWith('http')) 
           ? parsedImg 
-          : (imageUrl && imageUrl.startsWith('http') ? imageUrl : defaultBrandThumbnail);
+          : (imageUrl && imageUrl.startsWith('http') ? imageUrl : fallbackHDImage);
 
         const { error: sbError } = await supabase.from('articles').upsert({
           slug,
@@ -324,6 +468,12 @@ ${articleText}
 
           // Automatically tweet out the new article to X (Twitter)
           await postToTwitter(articleTitle, summaryMatch ? summaryMatch[1] : '', slug);
+
+          // Automatically ping IndexNow (Bing, Copilot, Yahoo, Yandex) for instant indexing
+          await pingIndexNow(slug);
+
+          // Automatically ping Google Indexing API for instant Google indexation
+          await pingGoogleIndexingApi(slug);
         }
       } catch (error) {
         console.error(`Failed to generate or save article for ${region}:`, error);

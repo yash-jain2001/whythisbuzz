@@ -72,12 +72,15 @@ export function generateArticleSchema(
         '@type': 'NewsArticle',
         headline: article.title,
         description: description,
-        image: {
-            '@type': 'ImageObject',
-            url: imageUrl,
-            width: 1200,
-            height: 630,
-        },
+        image: [
+            imageUrl,
+            {
+                '@type': 'ImageObject',
+                url: imageUrl,
+                width: 1200,
+                height: 675,
+            }
+        ],
         author: {
             '@type': authorName.includes('Editorial') || authorName.includes('Desk') ? 'Organization' : 'Person',
             name: authorName,

@@ -4,7 +4,7 @@
 
 ## What We Do
 
-WhyThisBuzz automatically monitors trending topics across the US, UK, and Germany using Google Trends, then generates in-depth, SEO-optimized articles explaining the "why" behind each story. Every article is written in a punchy, analytical style that goes beyond headlines to give readers real context and insight.
+WhyThisBuzz automatically monitors trending topics across global regions (including US, UK, Germany, India, Canada, Australia, France, Japan, Brazil, Spain, Italy, Mexico, South Korea, Singapore, Netherlands, China) using Google Trends, then generates in-depth, SEO-optimized articles explaining the "why" behind each story. Every article is written in a punchy, analytical style that goes beyond headlines to give readers real context and insight.
 
 ## Content Categories
 

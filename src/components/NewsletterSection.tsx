@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, ArrowRight, Check } from "lucide-react";
+import { Mail, Check } from "lucide-react";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
@@ -47,13 +47,13 @@ export function NewsletterSection() {
                 className="flex-1 px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
                 required
               />
-              <button
+              {/* <button
                 type="submit"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
               >
                 <span>Subscribe</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </button> */}
             </form>
           )}
 
