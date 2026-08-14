@@ -133,41 +133,51 @@ function docToMetadata(doc: SupabaseArticleDoc): ArticleMetadata {
     } as ArticleMetadata;
 }
 
-export async function getSupabaseArticlesByCategory(category: string, limit: number = 50): Promise<ArticleMetadata[]> {
+export async function getSupabaseArticlesByCategory(category: string, limit: number = 8): Promise<ArticleMetadata[]> {
     if (!supabase) return [];
 
     try {
         const catLower = category.toLowerCase().replace(/[-_]/g, ' ').trim();
-        let catQuery = category;
-        if (catLower.includes('social')) {
-            catQuery = 'Social';
-        } else if (catLower.includes('tech')) {
-            catQuery = 'Technology';
-        } else if (catLower.includes('sport')) {
-            catQuery = 'Sports';
-        } else if (catLower.includes('movie') || catLower.includes('entertain')) {
-            catQuery = 'Movie';
-        } else if (catLower.includes('world')) {
-            catQuery = 'World';
-        }
-
-        const { data, error } = await supabase
+        let query = supabase
             .from('articles')
             .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
-            .ilike('category', `%${catQuery}%`)
             .order('date', { ascending: false })
-            .order('created_at', { ascending: false })
-            .limit(limit);
+            .order('created_at', { ascending: false });
 
-        if (error || !data || data.length === 0) {
-            const all = await getSupabaseArticles(200);
-            return all
-                .map(a => a.metadata)
-                .filter(m => m.category.toLowerCase().replace(/[-_]/g, ' ').trim().includes(catLower))
-                .slice(0, limit);
+        if (catLower.includes('social')) {
+            query = query.ilike('category', '%Social%');
+        } else if (catLower.includes('tech')) {
+            query = query.ilike('category', '%Tech%');
+        } else if (catLower.includes('sport')) {
+            query = query.ilike('category', '%Sport%');
+        } else if (catLower.includes('movie') || catLower.includes('entertain')) {
+            query = query.or('category.ilike.%Movie%,category.ilike.%Entertain%');
+        } else if (catLower.includes('world')) {
+            query = query.ilike('category', '%World%');
+        } else {
+            query = query.ilike('category', `%${category}%`);
         }
 
-        return data.map(docToMetadata);
+        const { data, error } = await query.limit(limit);
+
+        let results: ArticleMetadata[] = [];
+        if (!error && data && data.length > 0) {
+            results = data.map(docToMetadata);
+        }
+
+        if (results.length < limit) {
+            const all = await getSupabaseArticles(50);
+            const existingSlugs = new Set(results.map(r => r.id));
+            for (const item of all) {
+                if (results.length >= limit) break;
+                if (!existingSlugs.has(item.metadata.id)) {
+                    results.push(item.metadata);
+                    existingSlugs.add(item.metadata.id);
+                }
+            }
+        }
+
+        return results.slice(0, limit);
     } catch {
         return [];
     }

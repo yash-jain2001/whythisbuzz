@@ -31,55 +31,92 @@ export function CategorySection({ id, title, description, articles: initialArtic
     if (!supabase) return;
 
     const catLower = title.toLowerCase().replace(/[-_]/g, ' ').trim();
-    let catQuery = title;
-    if (catLower.includes('social')) {
-      catQuery = 'Social';
-    } else if (catLower.includes('tech')) {
-      catQuery = 'Technology';
-    } else if (catLower.includes('sport')) {
-      catQuery = 'Sports';
-    } else if (catLower.includes('movie') || catLower.includes('entertain')) {
-      catQuery = 'Movie';
-    } else if (catLower.includes('world')) {
-      catQuery = 'World';
-    }
-
-    supabase
+    let query = supabase
       .from('articles')
       .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
-      .ilike('category', `%${catQuery}%`)
       .order('date', { ascending: false })
-      .order('created_at', { ascending: false })
-      .limit(6)
-      .then(({ data, error }) => {
-        if (!error && data && data.length > 0) {
-          const liveArticles: ArticleMetadata[] = (data as SupabaseArticleDoc[]).map((doc) => ({
-            id: doc.slug,
-            title: doc.title,
-            description: doc.summary || doc.meta_description || '',
-            date: formatDateDisplay(doc.date),
-            author: doc.author || 'WhyThisBuzz Desk',
-            category: doc.category,
-            imageUrl: doc.image_url || '',
-            readTime: doc.read_time || '3 min read',
-            summary: doc.summary || '',
-            seoTitle: doc.seo_title,
-            metaDescription: doc.meta_description,
-            keywords: doc.keywords,
-          }));
-          setArticles(liveArticles);
+      .order('created_at', { ascending: false });
+
+    if (catLower.includes('social')) {
+      query = query.ilike('category', '%Social%');
+    } else if (catLower.includes('tech')) {
+      query = query.ilike('category', '%Tech%');
+    } else if (catLower.includes('sport')) {
+      query = query.ilike('category', '%Sport%');
+    } else if (catLower.includes('movie') || catLower.includes('entertain')) {
+      query = query.or('category.ilike.%Movie%,category.ilike.%Entertain%');
+    } else if (catLower.includes('world')) {
+      query = query.ilike('category', '%World%');
+    } else {
+      query = query.ilike('category', `%${title}%`);
+    }
+
+    query.limit(8).then(async ({ data, error }) => {
+      let results: ArticleMetadata[] = [];
+      if (!error && data && data.length > 0) {
+        results = (data as SupabaseArticleDoc[]).map((doc) => ({
+          id: doc.slug,
+          title: doc.title,
+          description: doc.summary || doc.meta_description || '',
+          date: formatDateDisplay(doc.date),
+          author: doc.author || 'WhyThisBuzz Desk',
+          category: doc.category,
+          imageUrl: doc.image_url || '',
+          readTime: doc.read_time || '3 min read',
+          summary: doc.summary || '',
+          seoTitle: doc.seo_title,
+          metaDescription: doc.meta_description,
+          keywords: doc.keywords,
+        }));
+      }
+
+      if (results.length < 8 && supabase) {
+        const { data: allData } = await supabase
+          .from('articles')
+          .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
+          .order('date', { ascending: false })
+          .order('created_at', { ascending: false })
+          .limit(20);
+
+        if (allData) {
+          const existingSlugs = new Set(results.map(r => r.id));
+          for (const doc of allData) {
+            if (results.length >= 8) break;
+            if (!existingSlugs.has(doc.slug)) {
+              results.push({
+                id: doc.slug,
+                title: doc.title,
+                description: doc.summary || doc.meta_description || '',
+                date: formatDateDisplay(doc.date),
+                author: doc.author || 'WhyThisBuzz Desk',
+                category: doc.category,
+                imageUrl: doc.image_url || '',
+                readTime: doc.read_time || '3 min read',
+                summary: doc.summary || '',
+                seoTitle: doc.seo_title,
+                metaDescription: doc.meta_description,
+                keywords: doc.keywords,
+              });
+              existingSlugs.add(doc.slug);
+            }
+          }
         }
-      });
+      }
+
+      if (results.length > 0) {
+        setArticles(results.slice(0, 8));
+      }
+    });
   }, [title]);
 
   if (!articles || articles.length === 0) return null;
-  const displayArticles = articles.slice(0, 6);
+  const displayArticles = articles.slice(0, 8);
   const targetUrl = viewAllUrl || `/category/${id}`;
 
   return (
-    <section id={id} className="py-12 border-t border-border">
+    <section id={id} className="scroll-mt-10 py-10 border-t border-border">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
             <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground mb-2">{title}</h2>
             <p className="text-muted-foreground max-w-xl">{description}</p>
@@ -93,7 +130,7 @@ export function CategorySection({ id, title, description, articles: initialArtic
           </a>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
           {displayArticles.map((article, index) => (
             <div
               key={article.id}

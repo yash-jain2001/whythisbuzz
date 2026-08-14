@@ -12,23 +12,30 @@ export async function GET() {
     const feedXml = `<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${siteTitle}</title>
+    <title><![CDATA[${siteTitle}]]></title>
     <link>${siteUrl}</link>
     <atom:link href="${siteUrl}/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>${siteDescription}</description>
+    <description><![CDATA[${siteDescription}]]></description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${articles.map(article => {
         const articleUrl = `${siteUrl}/article/${article.metadata.id}`;
+        const rawDate = new Date(article.metadata.date);
+        const validPubDate = !isNaN(rawDate.getTime()) ? rawDate.toUTCString() : new Date().toUTCString();
+        const itemTitle = article.metadata.title || 'Untitled Story';
+        const itemSummary = article.metadata.description || article.metadata.summary || '';
+        const itemCategory = article.metadata.category || 'General';
+        const itemAuthor = article.metadata.author || 'WhyThisBuzz Editorial';
+
         return `
     <item>
-      <title><![CDATA[${article.metadata.title}]]></title>
+      <title><![CDATA[${itemTitle}]]></title>
       <link>${articleUrl}</link>
       <guid>${articleUrl}</guid>
-      <pubDate>${new Date(article.metadata.date).toUTCString()}</pubDate>
-      <description><![CDATA[${article.metadata.description || article.metadata.summary}]]></description>
-      ${article.metadata.category ? `<category><![CDATA[${article.metadata.category}]]></category>` : ''}
-      <author><![CDATA[editor@whythisbuzz.com (${article.metadata.author || 'WhyThisBuzz Editorial'})]]></author>
+      <pubDate>${validPubDate}</pubDate>
+      <description><![CDATA[${itemSummary}]]></description>
+      <category><![CDATA[${itemCategory}]]></category>
+      <author><![CDATA[editor@whythisbuzz.com (${itemAuthor})]]></author>
     </item>`;
     }).join('')}
   </channel>

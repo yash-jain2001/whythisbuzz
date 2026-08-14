@@ -4,6 +4,7 @@ import { TwitterApi } from 'twitter-api-v2';
 import Parser from 'rss-parser';
 import * as cheerio from 'cheerio';
 import slugify from 'slugify';
+import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
 
@@ -482,6 +483,12 @@ ${articleText}
   }
 
   console.log("✅ All articles processed and saved directly to Supabase DB!");
+  try {
+    console.log("🔄 Updating public/search-data.json...");
+    execSync('node scripts/generate-search-data.mjs', { stdio: 'inherit' });
+  } catch (err) {
+    console.warn("⚠️ Failed to update search-data.json automatically:", err);
+  }
 }
 
 main().catch(console.error);

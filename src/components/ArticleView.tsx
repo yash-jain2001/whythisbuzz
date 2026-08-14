@@ -5,12 +5,13 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { Clock, Calendar, Share2, Link as LinkIcon } from "lucide-react";
+import { Clock, Calendar, Link as LinkIcon, Bookmark } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import Image from "next/image";
 import { proxifyImage } from "@/lib/utils";
 import { AdBanner } from "@/components/AdBanner";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ArticleViewProps {
     article: ArticleMetadata & { content: React.ReactNode };
@@ -32,8 +33,6 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const [showShareMenu, setShowShareMenu] = useState(false);
-
     const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
     const shareTitle = encodeURIComponent(article.title);
 
@@ -49,7 +48,6 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         try {
             await navigator.clipboard.writeText(shareUrl);
             alert('Link copied to clipboard!');
-            setShowShareMenu(false);
         } catch (err) {
             console.error('Failed to copy:', err);
         }
@@ -122,64 +120,101 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
 
                     {/* Article Content */}
                     <div className="max-w-3xl mx-auto">
-                        {/* Share buttons */}
-                        <div className="relative mb-10 pb-6 border-b border-border">
-                            <button
-                                onClick={() => setShowShareMenu(!showShareMenu)}
-                                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border border-border rounded-lg hover:border-foreground/20 transition-colors"
-                            >
-                                <Share2 className="w-4 h-4" />
-                                <span>Share Article</span>
-                            </button>
+                        {/* Share buttons bar with Tooltips */}
+                        <div className="flex items-center justify-between mb-10 pb-6 border-b border-border">
+                            <TooltipProvider>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mr-2">Share:</span>
+                                    
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <a
+                                                href={shareLinks.whatsapp}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2.5 rounded-full bg-secondary/80 hover:bg-green-500/10 hover:text-green-600 transition-all border border-border"
+                                                aria-label="Share on WhatsApp"
+                                            >
+                                                <FaWhatsapp className="w-4 h-4 text-green-600" />
+                                            </a>
+                                        </TooltipTrigger>
+                                        <TooltipContent>Share on WhatsApp</TooltipContent>
+                                    </Tooltip>
 
-                            {/* Share Menu Dropdown */}
-                            {showShareMenu && (
-                                <div className="absolute top-12 left-0 z-10 bg-card border border-border rounded-lg shadow-lg p-2 min-w-[200px]">
-                                    <a
-                                        href={shareLinks.whatsapp}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
-                                    >
-                                        <FaWhatsapp className="w-4 h-4 text-green-600" />
-                                        <span>WhatsApp</span>
-                                    </a>
-                                    <a
-                                        href={shareLinks.twitter}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
-                                    >
-                                        <FaXTwitter className="w-4 h-4" />
-                                        <span>X (Twitter)</span>
-                                    </a>
-                                    <a
-                                        href={shareLinks.linkedin}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
-                                    >
-                                        <FaLinkedinIn className="w-4 h-4 text-blue-600" />
-                                        <span>LinkedIn</span>
-                                    </a>
-                                    <a
-                                        href={shareLinks.facebook}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors"
-                                    >
-                                        <FaFacebookF className="w-4 h-4 text-blue-500" />
-                                        <span>Facebook</span>
-                                    </a>
-                                    <button
-                                        onClick={handleCopyLink}
-                                        className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-secondary rounded-md transition-colors w-full text-left"
-                                    >
-                                        <LinkIcon className="w-4 h-4" />
-                                        <span>Copy Link</span>
-                                    </button>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <a
+                                                href={shareLinks.twitter}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2.5 rounded-full bg-secondary/80 hover:bg-accent/10 hover:text-accent transition-all border border-border"
+                                                aria-label="Share on X"
+                                            >
+                                                <FaXTwitter className="w-4 h-4" />
+                                            </a>
+                                        </TooltipTrigger>
+                                        <TooltipContent>Share on X (Twitter)</TooltipContent>
+                                    </Tooltip>
+
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <a
+                                                href={shareLinks.linkedin}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2.5 rounded-full bg-secondary/80 hover:bg-blue-600/10 hover:text-blue-600 transition-all border border-border"
+                                                aria-label="Share on LinkedIn"
+                                            >
+                                                <FaLinkedinIn className="w-4 h-4 text-blue-600" />
+                                            </a>
+                                        </TooltipTrigger>
+                                        <TooltipContent>Share on LinkedIn</TooltipContent>
+                                    </Tooltip>
+
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <a
+                                                href={shareLinks.facebook}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2.5 rounded-full bg-secondary/80 hover:bg-blue-500/10 hover:text-blue-500 transition-all border border-border"
+                                                aria-label="Share on Facebook"
+                                            >
+                                                <FaFacebookF className="w-4 h-4 text-blue-500" />
+                                            </a>
+                                        </TooltipTrigger>
+                                        <TooltipContent>Share on Facebook</TooltipContent>
+                                    </Tooltip>
+
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <button
+                                                onClick={handleCopyLink}
+                                                className="p-2.5 rounded-full bg-secondary/80 hover:bg-foreground/10 transition-all border border-border"
+                                                aria-label="Copy Link"
+                                            >
+                                                <LinkIcon className="w-4 h-4 text-foreground" />
+                                            </button>
+                                        </TooltipTrigger>
+                                        <TooltipContent>Copy Article Link</TooltipContent>
+                                    </Tooltip>
                                 </div>
-                            )}
+                            </TooltipProvider>
+
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <button
+                                            onClick={handleCopyLink}
+                                            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-accent border border-border rounded-lg transition-colors"
+                                        >
+                                            <Bookmark className="w-3.5 h-3.5" />
+                                            <span>Save Story</span>
+                                        </button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>Copy link to bookmark this story</TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
                         </div>
 
                         {/* MDX Content */}

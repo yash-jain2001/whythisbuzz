@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Search } from "lucide-react";
-
+import { Menu, Search, Flame, Rss, ArrowRight, Info, Mail } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
 
 const categories = [
@@ -24,19 +25,43 @@ export function Navbar() {
     if (searchQuery.trim().length > 0) {
       const fetchResults = async () => {
         try {
-          const response = await fetch('/search-data.json');
-          const allArticles = await response.json();
+          const searchLower = searchQuery.toLowerCase().trim();
+          let results: any[] = [];
 
-          const searchLower = searchQuery.toLowerCase();
-          const filtered = allArticles.filter((article: any) => {
-            return (
-              article.title.toLowerCase().includes(searchLower) ||
-              article.summary.toLowerCase().includes(searchLower) ||
-              article.category.toLowerCase().includes(searchLower)
-            );
-          }).slice(0, 5);
+          if (supabase) {
+            const { data } = await supabase
+              .from('articles')
+              .select('slug, title, summary, category, image_url, read_time, date')
+              .or(`title.ilike.%${searchLower}%,summary.ilike.%${searchLower}%,category.ilike.%${searchLower}%`)
+              .order('date', { ascending: false })
+              .limit(10);
 
-          setSearchResults(filtered);
+            if (data && data.length > 0) {
+              results = data.map((doc: any) => ({
+                id: doc.slug,
+                title: doc.title,
+                summary: doc.summary || '',
+                category: doc.category,
+                imageUrl: doc.image_url || '',
+                readTime: doc.read_time || '3 min read',
+                date: doc.date || '',
+              }));
+            }
+          }
+
+          if (results.length === 0) {
+            const response = await fetch('/search-data.json');
+            const fileArticles = await response.json();
+            results = fileArticles.filter((article: any) => {
+              return (
+                article.title.toLowerCase().includes(searchLower) ||
+                article.summary.toLowerCase().includes(searchLower) ||
+                article.category.toLowerCase().includes(searchLower)
+              );
+            });
+          }
+
+          setSearchResults(results.slice(0, 15));
         } catch (error) {
           console.error('Search error:', error);
           setSearchResults([]);
@@ -86,13 +111,82 @@ export function Navbar() {
               <Search className="w-5 h-5" />
             </button>
 
-            <button
-              className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <button
+                  className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Toggle menu"
+                >
+                  <Menu className="w-5 h-5" />
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] p-6 flex flex-col justify-between">
+                <div>
+                  <SheetHeader className="text-left pb-6 border-b border-border">
+                    <SheetTitle className="font-serif text-2xl font-bold tracking-tight text-foreground">
+                      WhyThisBuzz
+                    </SheetTitle>
+                    <p className="text-xs text-muted-foreground">Digital · Culture · Trends</p>
+                  </SheetHeader>
+
+                  <div className="py-6 flex flex-col gap-4">
+                    <span className="text-xs font-semibold text-accent uppercase tracking-wider">Categories</span>
+                    {categories.map((category) => (
+                      <a
+                        key={category.name}
+                        href={category.href}
+                        className="flex items-center justify-between text-base font-medium text-foreground/90 hover:text-accent transition-colors py-1.5"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span>{category.name}</span>
+                        <ArrowRight className="w-4 h-4 text-muted-foreground" />
+                      </a>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-border flex flex-col gap-3">
+                    <span className="text-xs font-semibold text-accent uppercase tracking-wider">Quick Links</span>
+                    <a
+                      href="/trending"
+                      className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Flame className="w-4 h-4 text-accent" />
+                      <span>Trending Topics</span>
+                    </a>
+                    <a
+                      href="/about"
+                      className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Info className="w-4 h-4 text-accent" />
+                      <span>About Us</span>
+                    </a>
+                    <a
+                      href="/contact"
+                      className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Mail className="w-4 h-4 text-accent" />
+                      <span>Contact Us</span>
+                    </a>
+                    <a
+                      href="/feed.xml"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
+                    >
+                      <Rss className="w-4 h-4 text-accent" />
+                      <span>RSS Feed</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-border text-center">
+                  <p className="text-xs text-muted-foreground">© 2026 WhyThisBuzz</p>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
 
@@ -110,7 +204,7 @@ export function Navbar() {
 
             {/* Search Results */}
             {searchQuery && searchResults.length > 0 && (
-              <div className="mt-3 space-y-2">
+              <div className="mt-3 max-h-[360px] overflow-y-auto pr-2 space-y-2">
                 {searchResults.map((article) => (
                   <a
                     key={article.id}
@@ -122,7 +216,7 @@ export function Navbar() {
                     }}
                   >
                     <div className="flex items-start gap-3">
-                      <div className="relative w-16 h-16 flex-shrink-0">
+                      <div className="relative w-16 h-16 shrink-0">
                         <Image
                           src={article.imageUrl}
                           alt={article.title}
@@ -150,24 +244,6 @@ export function Navbar() {
                 No articles found for &quot;{searchQuery}&quot;
               </p>
             )}
-          </div>
-        )}
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col gap-4">
-              {categories.map((category) => (
-                <a
-                  key={category.name}
-                  href={category.href}
-                  className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {category.name}
-                </a>
-              ))}
-            </div>
           </div>
         )}
       </div>

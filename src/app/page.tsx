@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { TrendingTicker } from "@/components/TrendingTicker";
 import { ArticleGrid } from "@/components/ArticleGrid";
 import { CategorySection } from "@/components/CategorySection";
 import { getAllArticles, getArticlesByCategory } from "@/lib/mdx";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const allArticles = await getAllArticles(25);
+  const allArticles = await getAllArticles(20);
   const gridArticles = allArticles.map(a => a.metadata);
 
   const [
@@ -30,16 +31,17 @@ export default async function Home() {
     socialMediaArticles,
     techArticles
   ] = await Promise.all([
-    getArticlesByCategory('World Affairs', 6),
-    getArticlesByCategory('Sports', 6),
-    getArticlesByCategory('Movies', 6),
-    getArticlesByCategory('Social-Media', 6),
-    getArticlesByCategory('Technology', 6)
+    getArticlesByCategory('World Affairs', 8),
+    getArticlesByCategory('Sports', 8),
+    getArticlesByCategory('Movies', 8),
+    getArticlesByCategory('Social-Media', 8),
+    getArticlesByCategory('Technology', 8)
   ]);
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <TrendingTicker initialArticles={gridArticles} />
 
       <main className="flex-1">
         <ArticleGrid articles={gridArticles} />
