@@ -6,13 +6,18 @@ module.exports = {
     theme: {
         container: {
             center: true,
-            padding: "25px",
+            padding: {
+                DEFAULT: "1.5rem",
+                sm: "2rem",
+                lg: "2.5rem",
+                xl: "3rem",
+            },
             screens: {
                 sm: "640px",
                 md: "768px",
                 lg: "1024px",
                 xl: "1280px",
-                "2xl": "1536px",
+                "2xl": "1440px",
             },
         },
         extend: {
