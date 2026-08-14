@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const allArticles = await getAllArticles(12);
+  const allArticles = await getAllArticles(25);
   const gridArticles = allArticles.map(a => a.metadata);
 
   const [

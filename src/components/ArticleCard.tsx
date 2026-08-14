@@ -60,22 +60,22 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={handleImageError}
           />
-          <div className="absolute top-4 left-4 z-10">
+          <div className="absolute top-3 left-3 z-10">
             <span className="category-tag">{article.category}</span>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-5 flex flex-col gap-3 flex-1">
-          <h3 className="font-serif text-xl font-semibold text-foreground line-clamp-2 group-hover:text-accent transition-colors">
+        <div className="p-4 sm:p-4.5 flex flex-col gap-2.5 flex-1">
+          <h3 className="font-serif text-base sm:text-lg font-semibold text-foreground line-clamp-2 group-hover:text-accent transition-colors">
             {article.title}
           </h3>
 
-          <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+          <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-2">
             {article.summary}
           </p>
 
-          <div className="flex items-center gap-2 text-xs text-muted-foreground mt-auto pt-2">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground mt-auto pt-1">
             <span>{article.date}</span>
             <span>•</span>
             <span>{article.readTime}</span>

@@ -30,7 +30,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
       .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
       .order('date', { ascending: false })
       .order('created_at', { ascending: false })
-      .limit(12)
+      .limit(25)
       .then(({ data, error }) => {
         if (!error && data && data.length > 0) {
           const liveArticles: ArticleMetadata[] = (data as SupabaseArticleDoc[]).map((doc) => ({
@@ -53,9 +53,9 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
   }, []);
 
   return (
-    <section className="py-12">
+    <section className="py-8 md:py-10">
       <div className="container">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground">Trending Now</h2>
           <a
             href="/trending"
@@ -65,7 +65,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
           </a>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
           {articles.map((article, index) => (
             <div
               key={article.id}
