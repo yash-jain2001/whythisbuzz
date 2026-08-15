@@ -26,12 +26,16 @@ export default async function Home() {
 
   const [
     worldAffairsArticles,
+    politicsArticles,
+    economicsArticles,
     sportsArticles,
     moviesAndEntertainmentArticles,
     socialMediaArticles,
     techArticles
   ] = await Promise.all([
     getArticlesByCategory('World Affairs', 8),
+    getArticlesByCategory('Politics', 8),
+    getArticlesByCategory('Economics', 8),
     getArticlesByCategory('Sports', 8),
     getArticlesByCategory('Movies', 8),
     getArticlesByCategory('Social-Media', 8),
@@ -49,8 +53,22 @@ export default async function Home() {
         <CategorySection
           id="world-affairs"
           title="World Affairs"
-          description="Global events, politics, and international relations explained clearly."
+          description="Global events, diplomacy, and international relations explained clearly."
           articles={worldAffairsArticles}
+        />
+
+        <CategorySection
+          id="politics"
+          title="Politics"
+          description="Elections, government policies, leaders, and political developments."
+          articles={politicsArticles}
+        />
+
+        <CategorySection
+          id="economics"
+          title="Economics & Business"
+          description="Markets, inflation, trade, central bank policies, and global finance."
+          articles={economicsArticles}
         />
 
         <CategorySection

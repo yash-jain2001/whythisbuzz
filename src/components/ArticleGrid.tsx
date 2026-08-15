@@ -25,6 +25,8 @@ const CATEGORY_TABS = [
   { id: "all", label: "All Trending" },
   { id: "sports", label: "Sports" },
   { id: "world", label: "World Affairs" },
+  { id: "politics", label: "Politics" },
+  { id: "economics", label: "Economics" },
   { id: "tech", label: "Technology" },
   { id: "social", label: "Social Media" },
   { id: "movies", label: "Movies & Ent." },
@@ -81,6 +83,8 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
     const catLower = article.category.toLowerCase();
     if (selectedCategory === "sports") return catLower.includes("sport");
     if (selectedCategory === "world") return catLower.includes("world");
+    if (selectedCategory === "politics") return catLower.includes("politic");
+    if (selectedCategory === "economics") return catLower.includes("economic") || catLower.includes("finance");
     if (selectedCategory === "tech") return catLower.includes("tech");
     if (selectedCategory === "social") return catLower.includes("social");
     if (selectedCategory === "movies") return catLower.includes("movie") || catLower.includes("entertain");

@@ -102,6 +102,8 @@ const CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
   Technology: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
   "Social-Media": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
   "World Affairs": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
+  Politics: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80",
+  Economics: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
   General: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80"
 };
 
@@ -434,7 +436,9 @@ You must categorize this article into exactly ONE of the following valid categor
 - "Movies": If the article specifically focuses on a film, box office, actors in a film role, or cinema news.
 - "Technology": If the article is about gadgets, software, AI, companies like Apple/Google, or scientific breakthroughs.
 - "Social-Media": If the article revolves around platforms like TikTok, X (Twitter), Instagram, influencers, or viral trends.
-- "World Affairs": If the article is about politics, international news, economics, major crime, or general world events not fitting the others.
+- "Politics": If the article is about elections, government policies, leaders, legislation, diplomacy, or political events.
+- "Economics": If the article is about stock markets, inflation, business, central banks, trade, or economic trends.
+- "World Affairs": If the article is about international news, major events, crime, or general world events not fitting the others.
 
 CRITICAL SEO INSTRUCTIONS:
 - Generate a 50-60 character click-optimized \`seoTitle\`.
@@ -483,7 +487,7 @@ ${articleText}
       const articleTitle = titleMatch ? titleMatch[1] : selectedTrend;
       const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
       
-      const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media"];
+      const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media", "Politics", "Economics"];
       if (!validCategories.includes(category)) {
         category = "World Affairs";
       }

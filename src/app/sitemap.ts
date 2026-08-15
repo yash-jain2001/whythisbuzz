@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     // Category URLs
-    const categories = ['Movies', 'Entertainment', 'Sports', 'Social Media', 'Technology', 'World Affairs'];
+    const categories = ['Movies', 'Entertainment', 'Sports', 'Social Media', 'Technology', 'World Affairs', 'Politics', 'Economics'];
     const categoryUrls = categories.map((category) => ({
         url: `${baseUrl}/category/${category.toLowerCase().replace(/\s+/g, '-')}`,
         lastModified: currentDate,

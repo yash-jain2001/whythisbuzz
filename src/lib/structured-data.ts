@@ -144,9 +144,11 @@ export function generateBreadcrumbSchema(
 export function generateSiteNavigationSchema() {
     const categories = [
         { name: 'Sports', description: 'Analysis, highlights, and deep dives into the world of sports.', slug: 'sports' },
+        { name: 'World Affairs', description: 'Global events, diplomacy, and international relations explained clearly.', slug: 'world-affairs' },
+        { name: 'Politics', description: 'Elections, government policies, leaders, and political developments.', slug: 'politics' },
+        { name: 'Economics', description: 'Markets, inflation, trade, central bank policies, and global finance.', slug: 'economics' },
         { name: 'Movies & Entertainment', description: 'Box office trends, industry drama, and everything cinema explained.', slug: 'movies' },
         { name: 'Technology', description: 'The latest in AI, software, gadgets, and developer tools.', slug: 'technology' },
-        { name: 'World Affairs', description: 'Global events, politics, and international relations explained clearly.', slug: 'world-affairs' },
         { name: 'Social Media', description: 'Platform updates, viral moments, and digital culture decoded.', slug: 'social-media' },
     ];
 

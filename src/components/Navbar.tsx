@@ -9,6 +9,8 @@ import Image from "next/image";
 const categories = [
   { name: "Sports", href: "/#sports" },
   { name: "World Affairs", href: "/#world-affairs" },
+  { name: "Politics", href: "/#politics" },
+  { name: "Economics", href: "/#economics" },
   { name: "Technology", href: "/#technology" },
   { name: "Social Media", href: "/#social-media" },
   { name: "Movies & Entertainment", href: "/#movies" },
