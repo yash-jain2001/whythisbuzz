@@ -112,11 +112,6 @@ export function generateArticleSchema(
         timeRequired: article.readTime,
         inLanguage: 'en-US',
         isAccessibleForFree: true,
-        isPartOf: {
-            '@type': ['CreativeWork', 'Product'],
-            name: SITE_NAME,
-            productID: 'CAow7L_HDA:openaccess',
-        },
     };
 }
 

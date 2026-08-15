@@ -32,6 +32,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.9,
     }));
 
+    // Country URLs
+    const countries = ['us', 'gb', 'in', 'de', 'ca', 'au', 'fr', 'jp', 'br', 'es', 'it', 'mx', 'kr', 'nl', 'co', 'ar', 'tr', 'ua', 'il', 'za', 'ng', 'eg', 'sa', 'ae', 'pk', 'bd', 'sg', 'cn'];
+    const countryUrls = countries.map((code) => ({
+        url: `${baseUrl}/country/${code}`,
+        lastModified: currentDate,
+        changeFrequency: 'daily' as const,
+        priority: 0.85,
+    }));
+
     // Static pages
     const staticPages = [
         { path: '/about', priority: 0.6 },
@@ -57,6 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 1.0,
         },
         ...categoryUrls,
+        ...countryUrls,
         ...articleUrls,
         ...staticUrls,
     ];
