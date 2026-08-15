@@ -30,8 +30,17 @@ const CATEGORY_TABS = [
   { id: "movies", label: "Movies & Ent." },
 ];
 
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
-  const [allArticles, setAllArticles] = useState<ArticleMetadata[]>(initialArticles);
+  const [allArticles, setAllArticles] = useState<ArticleMetadata[]>(() => shuffleArray(initialArticles));
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +49,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
 
     supabase
       .from('articles')
-      .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
+      .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at, geo')
       .order('date', { ascending: false })
       .order('created_at', { ascending: false })
       .limit(30)
@@ -59,8 +68,9 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             seoTitle: doc.seo_title,
             metaDescription: doc.meta_description,
             keywords: doc.keywords,
+            country: doc.geo,
           }));
-          setAllArticles(liveArticles);
+          setAllArticles(shuffleArray(liveArticles));
         }
         setIsLoading(false);
       });
