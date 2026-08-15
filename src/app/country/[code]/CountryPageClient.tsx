@@ -61,6 +61,13 @@ export function CountryPageClient({ countryCode, countryName, initialArticles }:
             return countryInfo.code.toUpperCase() === countryCode.toUpperCase();
           });
 
+          // Sort strictly by newest creation time / date descending (newest trends first)
+          matchedDocs.sort((a, b) => {
+            const timeA = new Date(a.created_at || a.date).getTime();
+            const timeB = new Date(b.created_at || b.date).getTime();
+            return timeB - timeA;
+          });
+
           const liveArticles: ArticleMetadata[] = matchedDocs.map((doc) => ({
             id: doc.slug,
             title: doc.title,
