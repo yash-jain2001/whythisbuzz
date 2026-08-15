@@ -109,7 +109,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             keywords: doc.keywords,
             country: doc.geo,
           }));
-          setAllArticles(liveArticles);
+          setAllArticles(shuffleArray(liveArticles));
         }
         setIsLoading(false);
       });
