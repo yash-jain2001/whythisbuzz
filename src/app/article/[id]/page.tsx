@@ -10,7 +10,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-    const slugs = await getArticleSlugs();
+    const slugs = await getArticleSlugs(2000);
     return slugs.map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
     }));

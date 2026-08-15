@@ -521,7 +521,6 @@ ${articleText}
         seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
         meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
         keywords: keywordsMatch ? keywordsMatch[1] : undefined,
-        geo: region,
       }, { onConflict: 'slug' });
 
       if (sbError) {

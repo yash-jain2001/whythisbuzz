@@ -1,6 +1,7 @@
-"use client";
+'use client';
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
 import { getCountryForArticle, getRelativeTrendTime, getFlagImageUrl } from "@/lib/country-utils";
@@ -86,14 +87,18 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         {/* Content */}
         <div className="p-4 sm:p-4.5 flex flex-col gap-2 flex-1">
           {/* Country Origin Indicator */}
-          <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+          <Link 
+            href={`/country/${countryInfo.code.toLowerCase()}`}
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-accent transition-colors w-fit group/country"
+          >
             <img
               src={getFlagImageUrl(countryInfo.code)}
               alt={countryInfo.name}
-              className="w-4 h-3 object-cover rounded-[2px] shadow-xs"
+              className="w-4 h-3 object-cover rounded-[2px] shadow-xs group-hover/country:scale-105 transition-transform"
             />
-            <span className="uppercase tracking-wider text-[11px] font-sans font-semibold text-muted-foreground/80">{countryInfo.name}</span>
-          </div>
+            <span className="uppercase tracking-wider text-[11px] font-sans font-semibold text-muted-foreground/80 group-hover/country:text-accent transition-colors">{countryInfo.name}</span>
+          </Link>
 
           <h3 className="font-serif text-base sm:text-lg font-semibold text-foreground line-clamp-2 group-hover:text-accent transition-colors">
             {article.title}

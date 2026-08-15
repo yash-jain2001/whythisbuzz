@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { ArticleCard } from "./ArticleCard";
 import { ArticleSkeletonCard } from "./ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sparkles } from "lucide-react";
+import { getCountryForArticle } from "@/lib/country-utils";
+import { Sparkles, Globe, ChevronDown } from "lucide-react";
 
 interface ArticleGridProps {
   articles: ArticleMetadata[];
@@ -23,7 +25,7 @@ function formatDateDisplay(dateStr: string): string {
 }
 
 const CATEGORY_TABS = [
-  { id: "all", label: "All Trending" },
+  { id: "all", label: "All Categories" },
   { id: "sports", label: "Sports" },
   { id: "world", label: "World Affairs" },
   { id: "politics", label: "Politics" },
@@ -31,6 +33,38 @@ const CATEGORY_TABS = [
   { id: "tech", label: "Technology" },
   { id: "social", label: "Social Media" },
   { id: "movies", label: "Movies & Ent." },
+];
+
+const COUNTRY_OPTIONS = [
+  { code: "all", name: "All Regions" },
+  { code: "US", name: "🇺🇸 United States" },
+  { code: "GB", name: "🇬🇧 United Kingdom" },
+  { code: "IN", name: "🇮🇳 India" },
+  { code: "DE", name: "🇩🇪 Germany" },
+  { code: "CA", name: "🇨🇦 Canada" },
+  { code: "AU", name: "🇦🇺 Australia" },
+  { code: "FR", name: "🇫🇷 France" },
+  { code: "JP", name: "🇯🇵 Japan" },
+  { code: "BR", name: "🇧🇷 Brazil" },
+  { code: "ES", name: "🇪🇸 Spain" },
+  { code: "IT", name: "🇮🇹 Italy" },
+  { code: "MX", name: "🇲🇽 Mexico" },
+  { code: "KR", name: "🇰🇷 South Korea" },
+  { code: "NL", name: "🇳🇱 Netherlands" },
+  { code: "CO", name: "🇨🇴 Colombia" },
+  { code: "AR", name: "🇦🇷 Argentina" },
+  { code: "TR", name: "🇹🇷 Turkey" },
+  { code: "UA", name: "🇺🇦 Ukraine" },
+  { code: "IL", name: "🇮🇱 Israel" },
+  { code: "ZA", name: "🇿🇦 South Africa" },
+  { code: "NG", name: "🇳🇬 Nigeria" },
+  { code: "EG", name: "🇪🇬 Egypt" },
+  { code: "SA", name: "🇸🇦 Saudi Arabia" },
+  { code: "AE", name: "🇦🇪 UAE" },
+  { code: "PK", name: "🇵🇰 Pakistan" },
+  { code: "BD", name: "🇧🇩 Bangladesh" },
+  { code: "SG", name: "🇸🇬 Singapore" },
+  { code: "CN", name: "🇨🇳 China" },
 ];
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -43,8 +77,10 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
+  const router = useRouter();
   const [allArticles, setAllArticles] = useState<ArticleMetadata[]>(() => shuffleArray(initialArticles));
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCountry, setSelectedCountry] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -53,9 +89,9 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
     supabase
       .from('articles')
       .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at, geo')
-      .order('date', { ascending: false })
       .order('created_at', { ascending: false })
-      .limit(30)
+      .order('date', { ascending: false })
+      .limit(1000)
       .then(({ data, error }) => {
         if (!error && data && data.length > 0) {
           const liveArticles: ArticleMetadata[] = (data as SupabaseArticleDoc[]).map((doc) => ({
@@ -73,45 +109,87 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             keywords: doc.keywords,
             country: doc.geo,
           }));
-          setAllArticles(shuffleArray(liveArticles));
+          setAllArticles(liveArticles);
         }
         setIsLoading(false);
       });
   }, []);
 
   const filteredArticles = allArticles.filter((article) => {
-    if (selectedCategory === "all") return true;
-    const catLower = article.category.toLowerCase();
-    if (selectedCategory === "sports") return catLower.includes("sport");
-    if (selectedCategory === "world") return catLower.includes("world");
-    if (selectedCategory === "politics") return catLower.includes("politic");
-    if (selectedCategory === "economics") return catLower.includes("economic") || catLower.includes("finance");
-    if (selectedCategory === "tech") return catLower.includes("tech");
-    if (selectedCategory === "social") return catLower.includes("social") || catLower.includes("media") || catLower.includes("viral") || catLower.includes("internet");
-    if (selectedCategory === "movies") return catLower.includes("movie") || catLower.includes("entertain");
+    // 1. Category Filter
+    if (selectedCategory !== "all") {
+      const catLower = article.category.toLowerCase();
+      if (selectedCategory === "sports" && !catLower.includes("sport")) return false;
+      if (selectedCategory === "world" && !catLower.includes("world")) return false;
+      if (selectedCategory === "politics" && !catLower.includes("politic")) return false;
+      if (selectedCategory === "economics" && !catLower.includes("economic") && !catLower.includes("finance")) return false;
+      if (selectedCategory === "tech" && !catLower.includes("tech")) return false;
+      if (selectedCategory === "social" && !catLower.includes("social") && !catLower.includes("media") && !catLower.includes("viral") && !catLower.includes("internet")) return false;
+      if (selectedCategory === "movies" && !catLower.includes("movie") && !catLower.includes("entertain")) return false;
+    }
+
+    // 2. Country / Region Filter
+    if (selectedCountry !== "all") {
+      const countryInfo = getCountryForArticle(article.country, article.title, article.summary);
+      if (countryInfo.code !== selectedCountry) return false;
+    }
+
     return true;
-  }).slice(0, 20);
+  });
+
+  const displayedArticles = (selectedCategory === "all" && selectedCountry === "all")
+    ? filteredArticles.slice(0, 25)
+    : filteredArticles;
 
   return (
     <section className="py-8 md:py-10">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-          <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground">Trending Now</h2>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-3">
+            <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground">Trending Now</h2>
+          </div>
           
-          {/* Category Filtering Tabs */}
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full md:w-auto">
-            <TabsList className="flex overflow-x-auto no-scrollbar w-full md:w-auto justify-start p-1 bg-muted/60 rounded-xl">
-              {CATEGORY_TABS.map((tab) => (
-                <TabsTrigger
-                  key={tab.id}
-                  value={tab.id}
-                  className="rounded-lg text-xs md:text-sm px-3 py-1.5 font-medium transition-all"
-                >
-                  {tab.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+          {/* Controls: Country Selector + Category Tabs */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+            {/* Country / Region Filter Selector */}
+            <div className="relative flex items-center min-w-[170px]">
+              <Globe className="w-4 h-4 text-muted-foreground absolute left-3 pointer-events-none z-10" />
+              <select
+                value={selectedCountry}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val !== "all") {
+                    router.push(`/country/${val.toLowerCase()}`);
+                  } else {
+                    setSelectedCountry("all");
+                  }
+                }}
+                className="w-full text-xs md:text-sm pl-9 pr-8 py-2 bg-muted/60 hover:bg-muted/80 border border-border/50 rounded-xl font-medium text-foreground cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-accent/50 appearance-none transition-all shadow-2xs"
+              >
+                {COUNTRY_OPTIONS.map((c) => (
+                  <option key={c.code} value={c.code} className="bg-card text-foreground py-1">
+                    {c.code === "all" ? "🌐 All Regions" : c.name}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 text-muted-foreground absolute right-3 pointer-events-none z-10" />
+            </div>
+
+            {/* Category Filtering Tabs */}
+            <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full lg:w-auto">
+              <TabsList className="flex overflow-x-auto no-scrollbar w-full lg:w-auto justify-start p-1 bg-muted/60 rounded-xl">
+                {CATEGORY_TABS.map((tab) => (
+                  <TabsTrigger
+                    key={tab.id}
+                    value={tab.id}
+                    className="rounded-lg text-xs md:text-sm px-3 py-1.5 font-medium transition-all shrink-0"
+                  >
+                    {tab.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+          </div>
         </div>
 
         {/* Grid Display */}
@@ -121,7 +199,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
               <ArticleSkeletonCard key={i} />
             ))}
           </div>
-        ) : filteredArticles.length === 0 ? (
+        ) : displayedArticles.length === 0 ? (
           <div className="py-14 px-4 text-center border border-dashed border-border/70 rounded-2xl bg-muted/20 my-4 flex flex-col items-center justify-center">
             <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3">
               <Sparkles className="w-6 h-6 text-accent animate-pulse" />
@@ -133,7 +211,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
-            {filteredArticles.map((article, index) => (
+            {displayedArticles.map((article, index) => (
               <div
                 key={article.id}
                 className="transition-all duration-300 hover:-translate-y-1"

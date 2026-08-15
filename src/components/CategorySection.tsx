@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ArticleCard } from "./ArticleCard";
 import { ArticleMetadata } from "@/lib/mdx";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 
 interface CategorySectionProps {
@@ -34,10 +34,14 @@ export function CategorySection({ id, title, description, articles: initialArtic
     let query = supabase
       .from('articles')
       .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
-      .order('date', { ascending: false })
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
+      .order('date', { ascending: false });
 
-    if (catLower.includes('social')) {
+    if (catLower.includes('politic')) {
+      query = query.ilike('category', '%Politic%');
+    } else if (catLower.includes('economic') || catLower.includes('finance')) {
+      query = query.or('category.ilike.%Economic%,category.ilike.%Finance%');
+    } else if (catLower.includes('social')) {
       query = query.ilike('category', '%Social%');
     } else if (catLower.includes('tech')) {
       query = query.ilike('category', '%Tech%');
@@ -51,10 +55,9 @@ export function CategorySection({ id, title, description, articles: initialArtic
       query = query.ilike('category', `%${title}%`);
     }
 
-    query.limit(8).then(async ({ data, error }) => {
-      let results: ArticleMetadata[] = [];
+    query.limit(20).then(({ data, error }) => {
       if (!error && data && data.length > 0) {
-        results = (data as SupabaseArticleDoc[]).map((doc) => ({
+        const results: ArticleMetadata[] = (data as SupabaseArticleDoc[]).map((doc) => ({
           id: doc.slug,
           title: doc.title,
           description: doc.summary || doc.meta_description || '',
@@ -68,48 +71,38 @@ export function CategorySection({ id, title, description, articles: initialArtic
           metaDescription: doc.meta_description,
           keywords: doc.keywords,
         }));
-      }
-
-      if (results.length < 8 && supabase) {
-        const { data: allData } = await supabase
-          .from('articles')
-          .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
-          .order('date', { ascending: false })
-          .order('created_at', { ascending: false })
-          .limit(20);
-
-        if (allData) {
-          const existingSlugs = new Set(results.map(r => r.id));
-          for (const doc of allData) {
-            if (results.length >= 8) break;
-            if (!existingSlugs.has(doc.slug)) {
-              results.push({
-                id: doc.slug,
-                title: doc.title,
-                description: doc.summary || doc.meta_description || '',
-                date: formatDateDisplay(doc.date),
-                author: doc.author || 'WhyThisBuzz Desk',
-                category: doc.category,
-                imageUrl: doc.image_url || '',
-                readTime: doc.read_time || '3 min read',
-                summary: doc.summary || '',
-                seoTitle: doc.seo_title,
-                metaDescription: doc.meta_description,
-                keywords: doc.keywords,
-              });
-              existingSlugs.add(doc.slug);
-            }
-          }
-        }
-      }
-
-      if (results.length > 0) {
-        setArticles(results.slice(0, 8));
+        setArticles(results);
+      } else {
+        setArticles([]);
       }
     });
   }, [title]);
 
-  if (!articles || articles.length === 0) return null;
+  if (!articles || articles.length === 0) {
+    return (
+      <section id={id} className="scroll-mt-10 py-10 border-t border-border">
+        <div className="container">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground mb-2">{title}</h2>
+              <p className="text-muted-foreground max-w-3xl md:max-w-4xl">{description}</p>
+            </div>
+          </div>
+
+          <div className="py-12 px-4 text-center border border-dashed border-border/70 rounded-2xl bg-muted/20 my-4 flex flex-col items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3">
+              <Sparkles className="w-6 h-6 text-accent animate-pulse" />
+            </div>
+            <h3 className="text-lg font-serif font-semibold text-foreground">Keep looking, we will get it soon!</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-md mx-auto">
+              Our automated AI news desk is monitoring live global trends for {title}. Fresh breaking stories will be published automatically in the next scheduled run.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const displayArticles = articles.slice(0, 8);
   const targetUrl = viewAllUrl || `/category/${id}`;
 
@@ -119,7 +112,7 @@ export function CategorySection({ id, title, description, articles: initialArtic
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
             <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground mb-2">{title}</h2>
-            <p className="text-muted-foreground max-w-xl">{description}</p>
+            <p className="text-muted-foreground max-w-3xl md:max-w-4xl">{description}</p>
           </div>
           <a
             href={targetUrl}

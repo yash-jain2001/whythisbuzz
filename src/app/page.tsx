@@ -81,7 +81,7 @@ export default async function Home() {
         <CategorySection
           id="movies"
           title="Movies & Entertainment"
-          description="Box office trends, industry drama, and everything cinema - explained without the hype."
+          description="Box office trends, industry drama, and cinema news explained without the hype."
           articles={moviesAndEntertainmentArticles}
         />
 
