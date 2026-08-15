@@ -4,6 +4,8 @@ import Script from "next/script"; // Added import for Script
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import PostHogProvider from "@/components/PostHogProvider";
+import { OneSignalInit } from "@/components/OneSignalInit";
+import { NotificationBell } from "@/components/NotificationBell";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -162,28 +164,8 @@ export default async function RootLayout({
           src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
           strategy="afterInteractive"
         />
-        <Script id="onesignal-init" strategy="afterInteractive">
-          {`
-            window.OneSignalDeferred = window.OneSignalDeferred || [];
-            OneSignalDeferred.push(async function(OneSignal) {
-              try {
-                await OneSignal.init({
-                  appId: "fd795284-7bb7-48af-b19e-284270c5168e",
-                  allowLocalhostAsSecureOrigin: true,
-                  serviceWorkerPath: "/OneSignalSDKWorker.js",
-                  serviceWorkerParam: { scope: "/" },
-                });
-                if (OneSignal.Notifications && typeof OneSignal.Notifications.requestPermission === 'function') {
-                  await OneSignal.Notifications.requestPermission();
-                } else if (OneSignal.Slidedown) {
-                  await OneSignal.Slidedown.promptPush();
-                }
-              } catch (e) {
-                console.log('OneSignal init error:', e);
-              }
-            });
-          `}
-        </Script>
+        <OneSignalInit />
+        <NotificationBell />
 
         {/* Google AdSense Script */}
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (

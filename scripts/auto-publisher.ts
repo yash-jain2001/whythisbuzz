@@ -5,8 +5,9 @@ import Parser from 'rss-parser';
 import * as cheerio from 'cheerio';
 import slugify from 'slugify';
 import { execSync } from 'child_process';
-import dotenv from 'dotenv';
 import crypto from 'crypto';
+import dotenv from 'dotenv';
+import { getCountryForArticle } from '../src/lib/country-utils';
 
 dotenv.config();
 
@@ -37,6 +38,41 @@ async function postToTwitter(title: string, summary: string, slug: string) {
     console.log(`🐦 Successfully posted automated tweet on X for "${title}" (ID: ${tweet.data.id})`);
   } catch (err: any) {
     console.error(`⚠️ Failed to post tweet for "${title}":`, err?.message || err);
+  }
+}
+
+async function sendOneSignalPushNotification(title: string, summary: string, slug: string, imageUrl: string) {
+  const appId = "fd795284-7bb7-48af-b19e-284270c5168e";
+  const restApiKey = process.env.ONESIGNAL_REST_API_KEY;
+
+  if (!restApiKey) {
+    console.log(`ℹ️ ONESIGNAL_REST_API_KEY not configured in .env. Push notification ready for App ID: ${appId}`);
+    return;
+  }
+
+  try {
+    const articleUrl = `https://whythisbuzz.com/article/${slug}`;
+    const response = await fetch("https://onesignal.com/api/v1/notifications", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        "Authorization": `Basic ${restApiKey}`,
+      },
+      body: JSON.stringify({
+        app_id: appId,
+        included_segments: ["All"],
+        headings: { en: `⚡ Breaking: ${title}` },
+        contents: { en: summary },
+        url: articleUrl,
+        chrome_web_image: imageUrl,
+        big_picture: imageUrl,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(`🔔 OneSignal Web Push notification sent for "${title}":`, data);
+  } catch (err: any) {
+    console.error(`⚠️ Failed to send OneSignal push for "${title}":`, err?.message || err);
   }
 }
 
@@ -469,13 +505,23 @@ async function main() {
 
   console.log(`🔍 Total unique candidate trends collected across 28 markets: ${candidates.length}`);
 
-  // Equal Ratio Selection: Target 2 articles per category for all 7 categories = 14 articles
+  // Equal Ratio Selection: Target 2 articles per category across diverse country markets
   const selectedTrends: TrendCandidate[] = [];
   const TARGET_PER_CATEGORY = 2;
+  const regionCounts: Record<string, number> = {};
 
   for (const cat of CORE_CATEGORIES) {
     const catCandidates = candidates.filter(c => c.assignedCategory === cat).sort((a, b) => b.traffic - a.traffic);
-    const selectedForCat = catCandidates.slice(0, TARGET_PER_CATEGORY);
+    const selectedForCat: TrendCandidate[] = [];
+
+    for (const cand of catCandidates) {
+      if (selectedForCat.length >= TARGET_PER_CATEGORY) break;
+      const countForReg = regionCounts[cand.region] || 0;
+      if (countForReg < MAX_PER_REGION) {
+        selectedForCat.push(cand);
+        regionCounts[cand.region] = countForReg + 1;
+      }
+    }
 
     // If Google Trends didn't yield 2 items for this category, fetch Google News Topic RSS Feed for this category!
     if (selectedForCat.length < TARGET_PER_CATEGORY && categoryTopicFeeds[cat]) {
@@ -625,11 +671,25 @@ ${articleText}
       const articleTitle = titleMatch ? titleMatch[1].trim() : selectedTrend;
       const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
       
+      const bodyContent = output.slice(frontmatterMatch[0].length).trim();
+      const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
+      const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
+      const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
+      const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
+      const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
+      const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
+      const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
+      const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
+
       const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media", "Politics", "Economics"];
       
       // Smart Category Normalizer to prevent political/economic articles defaulting to World Affairs
       const cLower = category.toLowerCase();
-      if (cLower.includes('politic') || cLower.includes('election') || cLower.includes('government') || cLower.includes('diplomacy') || cLower.includes('law') || cLower.includes('senate') || cLower.includes('congress') || cLower.includes('minister') || cLower.includes('president')) {
+      const tLower = (articleTitle + " " + (summaryMatch ? summaryMatch[1] : "")).toLowerCase();
+
+      if (tLower.includes('prayer') || tLower.includes('isha') || tLower.includes('namaz') || tLower.includes('ramadan') || tLower.includes('astronomy') || tLower.includes('sunset') || tLower.includes('sunrise') || tLower.includes('weather') || tLower.includes('disaster') || tLower.includes('storm')) {
+        category = "World Affairs";
+      } else if (cLower.includes('politic') || cLower.includes('election') || cLower.includes('government') || cLower.includes('diplomacy') || cLower.includes('law') || cLower.includes('senate') || cLower.includes('congress') || cLower.includes('minister') || cLower.includes('president')) {
         category = "Politics";
       } else if (cLower.includes('economic') || cLower.includes('finance') || cLower.includes('market') || cLower.includes('bank') || cLower.includes('business') || cLower.includes('stock') || cLower.includes('trade') || cLower.includes('inflation')) {
         category = "Economics";
@@ -647,25 +707,14 @@ ${articleText}
         category = "World Affairs";
       }
 
-      if (!validCategories.includes(category)) {
-        category = "World Affairs";
-      }
-
-      const bodyContent = output.slice(frontmatterMatch[0].length).trim();
-      const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
-      const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
-      const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
-      const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
-      const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
-      const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
-      const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
-      const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
-
       const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
       const fallbackHDImage = CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES['General'];
       const finalImage = (parsedImg && parsedImg.startsWith('http')) 
         ? parsedImg 
         : (imageUrl && imageUrl.startsWith('http') ? imageUrl : fallbackHDImage);
+
+      const detectedCountryObj = getCountryForArticle(trend.region, articleTitle, summaryMatch ? summaryMatch[1] : '');
+      const finalCountryCode = detectedCountryObj ? detectedCountryObj.code : (trend.region || 'US');
 
       const { error: sbError } = await supabase.from('articles').upsert({
         slug,
@@ -680,6 +729,7 @@ ${articleText}
         seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
         meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
         keywords: keywordsMatch ? keywordsMatch[1] : undefined,
+        country: finalCountryCode,
       }, { onConflict: 'slug' });
 
       if (sbError) {
@@ -690,6 +740,9 @@ ${articleText}
         console.log(`🚀 Successfully published "${articleTitle}" (${slug}) directly to Supabase DB!`);
 
         await postToTwitter(articleTitle, summaryMatch ? summaryMatch[1] : '', slug);
+
+        const pushImage = Array.isArray(finalImage) ? finalImage[0] : finalImage;
+        await sendOneSignalPushNotification(articleTitle, summaryMatch ? summaryMatch[1] : '', slug, pushImage);
 
         await pingIndexNow(slug);
 

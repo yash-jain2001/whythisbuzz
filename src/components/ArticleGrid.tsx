@@ -78,7 +78,7 @@ function shuffleArray<T>(array: T[]): T[] {
 
 export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
   const router = useRouter();
-  const [allArticles, setAllArticles] = useState<ArticleMetadata[]>(() => shuffleArray(initialArticles));
+  const [allArticles, setAllArticles] = useState<ArticleMetadata[]>(() => shuffleArray(initialArticles.slice(0, 25)));
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedCountry, setSelectedCountry] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
