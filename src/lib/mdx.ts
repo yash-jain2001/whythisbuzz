@@ -210,7 +210,7 @@ export async function getRelatedArticles(currentId: string, category?: string, l
     return allMeta.slice(0, limit);
 }
 
-export async function getArticlesByCategory(category: string, limit: number = 50): Promise<ArticleMetadata[]> {
+export async function getArticlesByCategory(category: string, limit: number = 1000): Promise<ArticleMetadata[]> {
     if (isSupabaseConfigured()) {
         const supabaseCategoryArticles = await getSupabaseArticlesByCategory(category, limit);
         if (supabaseCategoryArticles.length > 0) return supabaseCategoryArticles;
@@ -228,12 +228,15 @@ export async function getArticlesByCategory(category: string, limit: number = 50
 }
 
 export function getAllCategories(): string[] {
+    const defaultCategories = ['Sports', 'Entertainment', 'Technology', 'World Affairs', 'Movies', 'Social Media', 'Politics', 'Economics'];
     if (!fs.existsSync(contentDirectory)) {
-        return ['Sports', 'Entertainment', 'Technology', 'World Affairs', 'Movies', 'Social-Media'];
+        return defaultCategories;
     }
-    const categories = fs
+    const localCategories = fs
         .readdirSync(contentDirectory, { withFileTypes: true })
         .filter((dirent) => dirent.isDirectory())
         .map((dirent) => dirent.name);
-    return categories.length > 0 ? categories : ['Sports', 'Entertainment', 'Technology', 'World Affairs', 'Movies', 'Social-Media'];
+    
+    const set = new Set([...defaultCategories, ...localCategories]);
+    return Array.from(set);
 }

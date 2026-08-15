@@ -1,13 +1,9 @@
 import { Metadata } from 'next';
 import { getArticlesByCategory, getAllCategories } from '@/lib/mdx';
-import { proxifyImage } from '@/lib/utils';
-
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { Clock } from 'lucide-react';
+import { CategoryPageClient } from './CategoryPageClient';
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -59,17 +55,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function CategoryPage({ params }: PageProps) {
     const { slug } = await params;
 
-    // Convert slug to category name (e.g., "social-media" -> "Social-Media")
+    const categoryMap: Record<string, string> = {
+        'sports': 'Sports',
+        'world-affairs': 'World Affairs',
+        'politics': 'Politics',
+        'economics': 'Economics',
+        'technology': 'Technology',
+        'social-media': 'Social Media',
+        'movies': 'Movies',
+        'entertainment': 'Entertainment',
+        'movies-entertainment': 'Movies & Entertainment'
+    };
+
     const categories = getAllCategories();
-    const category = categories.find(
-        cat => cat.toLowerCase().replace(/\s+/g, '-') === slug
+    const matchedCategory = categories.find(
+        cat => cat.toLowerCase().replace(/\s+/g, '-') === slug.toLowerCase()
     );
 
-    if (!category) {
-        notFound();
-    }
+    const category = matchedCategory || categoryMap[slug.toLowerCase()] || slug
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
 
-    const articles = await getArticlesByCategory(category);
+    const articles = await getArticlesByCategory(category, 1000);
 
     // Generate structured data
     const { generateBreadcrumbSchema, generateCollectionPageSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');
@@ -101,66 +109,17 @@ export default async function CategoryPage({ params }: PageProps) {
                         />
 
                         {/* Category Header */}
-                        <div className="mb-12">
-                            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                        <div className="mb-8">
+                            <h1 className="text-4xl md:text-5xl font-bold mb-2">
                                 {category}
                             </h1>
-                            <p className="text-lg text-muted-foreground">
-                                Explore {articles.length} article{articles.length !== 1 ? 's' : ''} in {category}
+                            <p className="text-base sm:text-lg text-muted-foreground">
+                                Explore all breaking news and trending topics in {category}.
                             </p>
                         </div>
 
-                        {/* Articles Grid */}
-                        {articles.length === 0 ? (
-                            <div className="text-center py-12">
-                                <p className="text-muted-foreground text-lg">
-                                    No articles found in this category yet.
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {articles.map((article) => (
-                                    <a
-                                        key={article.id}
-                                        href={`/article/${article.id}`}
-                                        className="group block"
-                                    >
-                                        <article className="h-full flex flex-col border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                                            {/* Image */}
-                                            <div className="relative aspect-video overflow-hidden bg-muted">
-                                                <Image
-                                                    src={proxifyImage(article.imageUrl)}
-                                                    alt={article.title}
-                                                    fill
-                                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                                />
-                                            </div>
-
-                                            {/* Content */}
-                                            <div className="flex-1 p-6">
-                                                <h2 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                                                    {article.title}
-                                                </h2>
-                                                <p className="text-muted-foreground mb-4 line-clamp-3">
-                                                    {article.summary}
-                                                </p>
-
-                                                {/* Meta */}
-                                                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                                    <time dateTime={article.date}>
-                                                        {article.date}
-                                                    </time>
-                                                    <span className="flex items-center gap-1">
-                                                        <Clock className="w-4 h-4" />
-                                                        {article.readTime}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </a>
-                                ))}
-                            </div>
-                        )}
+                        {/* Articles Grid & 10-Article Pagination */}
+                        <CategoryPageClient category={category} slug={slug} initialArticles={articles} />
                     </div>
                 </main>
 

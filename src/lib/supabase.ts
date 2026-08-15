@@ -176,24 +176,11 @@ export async function getSupabaseArticlesByCategory(category: string, limit: num
 
         const { data, error } = await query.limit(limit);
 
-        let results: ArticleMetadata[] = [];
         if (!error && data && data.length > 0) {
-            results = data.map(docToMetadata);
+            return data.map(docToMetadata);
         }
 
-        if (results.length < limit) {
-            const all = await getSupabaseArticles(50);
-            const existingSlugs = new Set(results.map(r => r.id));
-            for (const item of all) {
-                if (results.length >= limit) break;
-                if (!existingSlugs.has(item.metadata.id)) {
-                    results.push(item.metadata);
-                    existingSlugs.add(item.metadata.id);
-                }
-            }
-        }
-
-        return results.slice(0, limit);
+        return [];
     } catch {
         return [];
     }
