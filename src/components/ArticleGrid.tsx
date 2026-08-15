@@ -88,7 +88,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
 
     supabase
       .from('articles')
-      .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at, geo')
+      .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
       .order('created_at', { ascending: false })
       .order('date', { ascending: false })
       .limit(1000)
@@ -107,7 +107,6 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             seoTitle: doc.seo_title,
             metaDescription: doc.meta_description,
             keywords: doc.keywords,
-            country: doc.geo,
             trendTime: getRelativeTrendTime(doc.date, doc.created_at),
           }));
           // Prioritize top 40 newest fresh articles for Trending Now and shuffle among them

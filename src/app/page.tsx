@@ -7,6 +7,9 @@ import { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "WhyThisBuzz - Trending News, Digital Culture & Tech Explained",
   description: "Your daily guide to the internet. We break down complex news, pop culture drama, tech innovations, and global affairs into easy-to-understand stories.",
