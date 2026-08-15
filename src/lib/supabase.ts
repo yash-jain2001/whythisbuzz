@@ -89,11 +89,11 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
         // Query lightweight fields with limit and indexed created_at sorting to prevent statement timeouts
         const fetchLimit = Math.max(limit, 100);
         const { data, error } = await supabase
-            .from('articles')
-            .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
-            .order('date', { ascending: false })
-            .order('created_at', { ascending: false })
-            .limit(fetchLimit);
+          .from('articles')
+          .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
+          .order('created_at', { ascending: false })
+          .order('date', { ascending: false })
+          .limit(fetchLimit);
 
         if (error || !data) {
             console.warn('⚠️ Supabase fetch warning:', error?.message);
@@ -141,6 +141,7 @@ function docToMetadata(doc: SupabaseArticleDoc): ArticleMetadata {
         seoTitle: doc.seo_title,
         metaDescription: doc.meta_description,
         keywords: doc.keywords,
+        trendTime: getRelativeTrendTime(doc.date, doc.created_at),
     } as ArticleMetadata;
 }
 
@@ -152,10 +153,14 @@ export async function getSupabaseArticlesByCategory(category: string, limit: num
         let query = supabase
             .from('articles')
             .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
-            .order('date', { ascending: false })
-            .order('created_at', { ascending: false });
+            .order('created_at', { ascending: false })
+            .order('date', { ascending: false });
 
-        if (catLower.includes('social')) {
+        if (catLower.includes('politic')) {
+            query = query.ilike('category', '%Politic%');
+        } else if (catLower.includes('economic') || catLower.includes('finance')) {
+            query = query.or('category.ilike.%Economic%,category.ilike.%Finance%');
+        } else if (catLower.includes('social')) {
             query = query.ilike('category', '%Social%');
         } else if (catLower.includes('tech')) {
             query = query.ilike('category', '%Tech%');

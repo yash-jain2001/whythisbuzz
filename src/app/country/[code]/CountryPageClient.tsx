@@ -63,8 +63,8 @@ export function CountryPageClient({ countryCode, countryName, initialArticles }:
 
           // Sort strictly by newest creation time / date descending (newest trends first)
           matchedDocs.sort((a, b) => {
-            const timeA = new Date(a.created_at || a.date).getTime();
-            const timeB = new Date(b.created_at || b.date).getTime();
+            const timeA = a.created_at ? new Date(a.created_at).getTime() : (a.date ? new Date(a.date).getTime() : 0);
+            const timeB = b.created_at ? new Date(b.created_at).getTime() : (b.date ? new Date(b.date).getTime() : 0);
             return timeB - timeA;
           });
 

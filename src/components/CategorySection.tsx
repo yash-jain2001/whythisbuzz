@@ -39,9 +39,9 @@ export function CategorySection({ id, title, description, articles: initialArtic
       .order('date', { ascending: false });
 
     if (catLower.includes('politic')) {
-      query = query.or('category.ilike.%Politic%,title.ilike.%election%,title.ilike.%government%,title.ilike.%policy%,title.ilike.%president%,title.ilike.%minister%,title.ilike.%strategy%,summary.ilike.%politic%');
+      query = query.ilike('category', '%Politic%');
     } else if (catLower.includes('economic') || catLower.includes('finance')) {
-      query = query.or('category.ilike.%Economic%,category.ilike.%Finance%,title.ilike.%market%,title.ilike.%bank%,title.ilike.%inflation%,title.ilike.%stock%,title.ilike.%portfolio%');
+      query = query.or('category.ilike.%Economic%,category.ilike.%Finance%');
     } else if (catLower.includes('social')) {
       query = query.ilike('category', '%Social%');
     } else if (catLower.includes('tech')) {
@@ -56,7 +56,7 @@ export function CategorySection({ id, title, description, articles: initialArtic
       query = query.ilike('category', `%${title}%`);
     }
 
-    query.limit(20).then(({ data, error }) => {
+    query.limit(8).then(({ data, error }) => {
       if (!error && data && data.length > 0) {
         const results: ArticleMetadata[] = (data as SupabaseArticleDoc[]).map((doc) => ({
           id: doc.slug,

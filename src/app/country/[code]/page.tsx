@@ -57,6 +57,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
       return c.code.toUpperCase() === upperCode;
     });
 
+  // Sort countryMdxArticles strictly by recency timestamp descending
+  countryMdxArticles.sort((a, b) => {
+    const timeA = new Date(a.date).getTime();
+    const timeB = new Date(b.date).getTime();
+    return timeB - timeA;
+  });
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
