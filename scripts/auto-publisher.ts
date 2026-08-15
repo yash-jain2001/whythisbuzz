@@ -307,8 +307,8 @@ async function main() {
   const publishedSlugs = await getPublishedSlugs();
   console.log(`🌐 Supabase DB currently contains ${publishedSlugs.size} articles.`);
 
-  const TOTAL_TARGET = 30;
-  const MAX_PER_REGION = 4;
+  const TOTAL_TARGET = 15;
+  const MAX_PER_REGION = 3;
 
   console.log(`📡 Fetching Google Trends RSS feeds from ${regions.length} global markets...`);
 
