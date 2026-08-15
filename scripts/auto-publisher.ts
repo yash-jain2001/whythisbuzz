@@ -321,7 +321,51 @@ async function main() {
     region: string;
     traffic: number;
     newsLink: string;
+    assignedCategory: string;
   }
+
+  const CORE_CATEGORIES = [
+    "Sports",
+    "Entertainment",
+    "Technology",
+    "Social-Media",
+    "Politics",
+    "Economics",
+    "World Affairs"
+  ];
+
+  function detectCategory(title: string): string {
+    const text = title.toLowerCase();
+    if (text.includes('election') || text.includes('biden') || text.includes('trump') || text.includes('starmer') || text.includes('politic') || text.includes('parliament') || text.includes('senate') || text.includes('congress') || text.includes('minister') || text.includes('president') || text.includes('government') || text.includes('law') || text.includes('court') || text.includes('modi') || text.includes('sues')) {
+      return "Politics";
+    }
+    if (text.includes('stock') || text.includes('market') || text.includes('bank') || text.includes('fed') || text.includes('inflation') || text.includes('trade') || text.includes('economy') || text.includes('economic') || text.includes('finance') || text.includes('business') || text.includes('crypto') || text.includes('binance') || text.includes('bitcoin') || text.includes('earnings') || text.includes('pension')) {
+      return "Economics";
+    }
+    if (text.includes('ai') || text.includes('apple') || text.includes('google') || text.includes('microsoft') || text.includes('tech') || text.includes('phone') || text.includes('app') || text.includes('software') || text.includes('cyber') || text.includes('nvidia') || text.includes('samsung') || text.includes('telecom')) {
+      return "Technology";
+    }
+    if (text.includes('tiktok') || text.includes('instagram') || text.includes('youtube') || text.includes('x.com') || text.includes('viral') || text.includes('influencer') || text.includes('subscriber') || text.includes('streamer') || text.includes('creator')) {
+      return "Social-Media";
+    }
+    if (text.includes('vs') || text.includes('fc') || text.includes('cup') || text.includes('league') || text.includes('match') || text.includes('win') || text.includes('score') || text.includes('player') || text.includes('coach') || text.includes('race') || text.includes('olympics') || text.includes('nba') || text.includes('nfl') || text.includes('cricket') || text.includes('football') || text.includes('bayern')) {
+      return "Sports";
+    }
+    if (text.includes('movie') || text.includes('film') || text.includes('actor') || text.includes('actress') || text.includes('hollywood') || text.includes('marvel') || text.includes('x-men') || text.includes('trailer') || text.includes('star') || text.includes('show') || text.includes('season') || text.includes('episode') || text.includes('music') || text.includes('concert') || text.includes('singer')) {
+      return "Entertainment";
+    }
+    return "World Affairs";
+  }
+
+  const categoryTopicFeeds: Record<string, string> = {
+    "Politics": "https://news.google.com/rss/search?q=politics+election+government+president&hl=en-US&gl=US&ceid=US:en",
+    "Economics": "https://news.google.com/rss/search?q=economy+inflation+stock+markets+bank&hl=en-US&gl=US&ceid=US:en",
+    "Technology": "https://news.google.com/rss/search?q=technology+ai+software+cyber+apple&hl=en-US&gl=US&ceid=US:en",
+    "Sports": "https://news.google.com/rss/search?q=sports+match+championship+league&hl=en-US&gl=US&ceid=US:en",
+    "Entertainment": "https://news.google.com/rss/search?q=entertainment+movies+celebrity+hollywood&hl=en-US&gl=US&ceid=US:en",
+    "Social-Media": "https://news.google.com/rss/search?q=viral+tiktok+instagram+youtube+creator&hl=en-US&gl=US&ceid=US:en",
+    "World Affairs": "https://news.google.com/rss/search?q=world+news+international+diplomacy&hl=en-US&gl=US&ceid=US:en",
+  };
 
   const candidates: TrendCandidate[] = [];
   const seenSlugsInRun = new Set<string>();
@@ -344,6 +388,7 @@ async function main() {
 
         const trafficStr = (item as any).approx_traffic || '';
         const traffic = parseTraffic(trafficStr);
+        const assignedCategory = detectCategory(title);
 
         seenSlugsInRun.add(slugifiedTitle);
         candidates.push({
@@ -352,6 +397,7 @@ async function main() {
           region,
           traffic,
           newsLink,
+          assignedCategory,
         });
       }
     } catch (err: any) {
@@ -361,21 +407,51 @@ async function main() {
 
   console.log(`🔍 Total unique candidate trends collected across 28 markets: ${candidates.length}`);
 
-  candidates.sort((a, b) => b.traffic - a.traffic);
-
+  // Equal Ratio Selection: Target 2 articles per category for all 7 categories = 14 articles
   const selectedTrends: TrendCandidate[] = [];
-  const regionCounts: Record<string, number> = {};
+  const TARGET_PER_CATEGORY = 2;
 
-  for (const candidate of candidates) {
-    if (selectedTrends.length >= TOTAL_TARGET) break;
-    const count = regionCounts[candidate.region] || 0;
-    if (count >= MAX_PER_REGION) continue;
+  for (const cat of CORE_CATEGORIES) {
+    const catCandidates = candidates.filter(c => c.assignedCategory === cat).sort((a, b) => b.traffic - a.traffic);
+    const selectedForCat = catCandidates.slice(0, TARGET_PER_CATEGORY);
 
-    regionCounts[candidate.region] = count + 1;
-    selectedTrends.push(candidate);
+    // If Google Trends didn't yield 2 items for this category, fetch Google News Topic RSS Feed for this category!
+    if (selectedForCat.length < TARGET_PER_CATEGORY && categoryTopicFeeds[cat]) {
+      try {
+        const feed = await parser.parseURL(categoryTopicFeeds[cat]);
+        if (feed.items) {
+          for (const item of feed.items) {
+            if (selectedForCat.length >= TARGET_PER_CATEGORY) break;
+            const title = item.title || '';
+            if (!title) continue;
+            const slugifiedTitle = slugify(title, { lower: true, strict: true });
+            if (publishedSlugs.has(slugifiedTitle) || seenSlugsInRun.has(slugifiedTitle)) continue;
+            const link = item.link || '';
+            if (!link) continue;
+
+            seenSlugsInRun.add(slugifiedTitle);
+            const candidateObj: TrendCandidate = {
+              title,
+              slug: slugifiedTitle,
+              region: 'US',
+              traffic: 50000,
+              newsLink: link,
+              assignedCategory: cat,
+            };
+            selectedForCat.push(candidateObj);
+          }
+        }
+      } catch (err: any) {
+        console.warn(`Could not fetch topic feed for ${cat}:`, err?.message || err);
+      }
+    }
+
+    selectedTrends.push(...selectedForCat);
   }
 
+  // Fill up to 15 if needed from remaining top global trends
   if (selectedTrends.length < TOTAL_TARGET) {
+    candidates.sort((a, b) => b.traffic - a.traffic);
     for (const candidate of candidates) {
       if (selectedTrends.length >= TOTAL_TARGET) break;
       if (!selectedTrends.some(t => t.slug === candidate.slug)) {
@@ -384,8 +460,8 @@ async function main() {
     }
   }
 
-  console.log(`🚀 Selected Top ${selectedTrends.length} Global Trends for this run:`);
-  selectedTrends.forEach((t, i) => console.log(` ${i + 1}. [${t.region}] ${t.title} (${t.traffic.toLocaleString()} searches)`));
+  console.log(`🚀 [Equal Category Ratio] Selected Top ${selectedTrends.length} Global Trends across all 7 Categories:`);
+  selectedTrends.forEach((t, i) => console.log(` ${i + 1}. [${t.assignedCategory}] [${t.region}] ${t.title} (${t.traffic.toLocaleString()} searches)`));
 
   let processedCount = 0;
 
