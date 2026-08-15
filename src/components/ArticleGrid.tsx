@@ -109,8 +109,8 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             keywords: doc.keywords,
             trendTime: getRelativeTrendTime(doc.date, doc.created_at),
           }));
-          // Prioritize top 40 newest fresh articles for Trending Now and shuffle among them
-          const freshNewestArticles = liveArticles.slice(0, 40);
+          // Prioritize top 25 newest fresh articles (15 from latest run + 10 from previous run) and shuffle among them
+          const freshNewestArticles = liveArticles.slice(0, 25);
           setAllArticles(shuffleArray(freshNewestArticles));
         }
         setIsLoading(false);
