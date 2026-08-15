@@ -307,10 +307,11 @@ async function main() {
   const publishedSlugs = await getPublishedSlugs();
   console.log(`🌐 Supabase DB currently contains ${publishedSlugs.size} articles.`);
 
+  // 60 Articles/Day Strategy: 15 articles per run x 4 runs/day (every 6 hours)
   const TOTAL_TARGET = 15;
   const MAX_PER_REGION = 3;
 
-  console.log(`📡 Fetching Google Trends RSS feeds from ${regions.length} global markets...`);
+  console.log(`📡 [60 Articles/Day Strategy] Fetching Google Trends from 28 global markets (Target: 15 top trends/run)...`);
 
   interface TrendCandidate {
     title: string;
