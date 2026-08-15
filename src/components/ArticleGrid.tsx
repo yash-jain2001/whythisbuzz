@@ -109,7 +109,9 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             keywords: doc.keywords,
             country: doc.geo,
           }));
-          setAllArticles(shuffleArray(liveArticles));
+          // Prioritize top 40 newest fresh articles for Trending Now and shuffle among them
+          const freshNewestArticles = liveArticles.slice(0, 40);
+          setAllArticles(shuffleArray(freshNewestArticles));
         }
         setIsLoading(false);
       });
