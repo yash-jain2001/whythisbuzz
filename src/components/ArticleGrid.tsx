@@ -7,7 +7,7 @@ import { ArticleSkeletonCard } from "./ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getCountryForArticle } from "@/lib/country-utils";
+import { getCountryForArticle, getRelativeTrendTime } from "@/lib/country-utils";
 import { Sparkles, Globe, ChevronDown } from "lucide-react";
 
 interface ArticleGridProps {
@@ -108,6 +108,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             metaDescription: doc.meta_description,
             keywords: doc.keywords,
             country: doc.geo,
+            trendTime: getRelativeTrendTime(doc.date, doc.created_at),
           }));
           // Prioritize top 40 newest fresh articles for Trending Now and shuffle among them
           const freshNewestArticles = liveArticles.slice(0, 40);

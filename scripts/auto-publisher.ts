@@ -480,11 +480,11 @@ ${articleText}
 
       const frontmatter = frontmatterMatch[1];
       let category = "World Affairs";
-      const titleMatch = frontmatter.match(/title:\s*"(.*?)"/);
-      const categoryMatch = frontmatter.match(/category:\s*"(.*?)"/);
+      const titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?\s*$/m);
+      const categoryMatch = frontmatter.match(/category:\s*["']?([A-Za-z0-9\s-]+)["']?/m);
       
-      if (categoryMatch) category = categoryMatch[1];
-      const articleTitle = titleMatch ? titleMatch[1] : selectedTrend;
+      if (categoryMatch) category = categoryMatch[1].trim();
+      const articleTitle = titleMatch ? titleMatch[1].trim() : selectedTrend;
       const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
       
       const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media", "Politics", "Economics"];

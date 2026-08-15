@@ -5,6 +5,7 @@ import { ArticleCard } from "./ArticleCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
+import { getRelativeTrendTime } from "@/lib/country-utils";
 
 interface CategorySectionProps {
   id: string;
@@ -38,9 +39,9 @@ export function CategorySection({ id, title, description, articles: initialArtic
       .order('date', { ascending: false });
 
     if (catLower.includes('politic')) {
-      query = query.ilike('category', '%Politic%');
+      query = query.or('category.ilike.%Politic%,title.ilike.%election%,title.ilike.%government%,title.ilike.%policy%,title.ilike.%president%,title.ilike.%minister%,title.ilike.%strategy%,summary.ilike.%politic%');
     } else if (catLower.includes('economic') || catLower.includes('finance')) {
-      query = query.or('category.ilike.%Economic%,category.ilike.%Finance%');
+      query = query.or('category.ilike.%Economic%,category.ilike.%Finance%,title.ilike.%market%,title.ilike.%bank%,title.ilike.%inflation%,title.ilike.%stock%,title.ilike.%portfolio%');
     } else if (catLower.includes('social')) {
       query = query.ilike('category', '%Social%');
     } else if (catLower.includes('tech')) {
@@ -70,6 +71,7 @@ export function CategorySection({ id, title, description, articles: initialArtic
           seoTitle: doc.seo_title,
           metaDescription: doc.meta_description,
           keywords: doc.keywords,
+          trendTime: getRelativeTrendTime(doc.date, doc.created_at),
         }));
         setArticles(results);
       } else {

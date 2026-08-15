@@ -5,7 +5,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { ArticleSkeletonCard } from "@/components/ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
-import { getCountryForArticle } from "@/lib/country-utils";
+import { getCountryForArticle, getRelativeTrendTime } from "@/lib/country-utils";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, FileText, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -75,6 +75,7 @@ export function CountryPageClient({ countryCode, countryName, initialArticles }:
             metaDescription: doc.meta_description,
             keywords: doc.keywords,
             country: doc.geo,
+            trendTime: getRelativeTrendTime(doc.date, doc.created_at),
           }));
 
           setArticles(liveArticles.length > 0 ? liveArticles : initialArticles);
