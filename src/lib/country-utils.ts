@@ -27,10 +27,22 @@ export const COUNTRY_DATA: Record<string, CountryDetails> = {
   SG: { code: 'SG', name: 'Singapore', flag: '🇸🇬', flagUrl: 'https://flagcdn.com/w40/sg.png' },
   NL: { code: 'NL', name: 'Netherlands', flag: '🇳🇱', flagUrl: 'https://flagcdn.com/w40/nl.png' },
   CN: { code: 'CN', name: 'China', flag: '🇨🇳', flagUrl: 'https://flagcdn.com/w40/cn.png' },
+  CO: { code: 'CO', name: 'Colombia', flag: '🇨🇴', flagUrl: 'https://flagcdn.com/w40/co.png' },
+  AR: { code: 'AR', name: 'Argentina', flag: '🇦🇷', flagUrl: 'https://flagcdn.com/w40/ar.png' },
+  TR: { code: 'TR', name: 'Turkey', flag: '🇹🇷', flagUrl: 'https://flagcdn.com/w40/tr.png' },
+  UA: { code: 'UA', name: 'Ukraine', flag: '🇺🇦', flagUrl: 'https://flagcdn.com/w40/ua.png' },
+  IL: { code: 'IL', name: 'Israel', flag: '🇮🇱', flagUrl: 'https://flagcdn.com/w40/il.png' },
+  ZA: { code: 'ZA', name: 'South Africa', flag: '🇿🇦', flagUrl: 'https://flagcdn.com/w40/za.png' },
+  NG: { code: 'NG', name: 'Nigeria', flag: '🇳🇬', flagUrl: 'https://flagcdn.com/w40/ng.png' },
+  EG: { code: 'EG', name: 'Egypt', flag: '🇪🇬', flagUrl: 'https://flagcdn.com/w40/eg.png' },
+  SA: { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', flagUrl: 'https://flagcdn.com/w40/sa.png' },
+  AE: { code: 'AE', name: 'UAE', flag: '🇦🇪', flagUrl: 'https://flagcdn.com/w40/ae.png' },
+  PK: { code: 'PK', name: 'Pakistan', flag: '🇵🇰', flagUrl: 'https://flagcdn.com/w40/pk.png' },
+  BD: { code: 'BD', name: 'Bangladesh', flag: '🇧🇩', flagUrl: 'https://flagcdn.com/w40/bd.png' },
 };
 
 /**
- * Detect country flag and name from explicit country code or title/summary keywords
+ * Detect country flag and name from explicit country code, keyword matching, or title hash fallback
  */
 export function getCountryForArticle(countryCode?: string, title?: string, summary?: string): CountryDetails {
   if (countryCode && COUNTRY_DATA[countryCode.toUpperCase()]) {
@@ -39,38 +51,108 @@ export function getCountryForArticle(countryCode?: string, title?: string, summa
 
   const text = `${title || ''} ${summary || ''}`.toLowerCase();
 
-  if (text.includes('germany') || text.includes('german') || text.includes('bundesliga') || text.includes('regionalliga') || text.includes('bocholt')) {
-    return COUNTRY_DATA.DE;
+  // Colombia
+  if (text.includes('colombia') || text.includes('colombian') || text.includes('bogota')) {
+    return COUNTRY_DATA.CO;
   }
-  if (text.includes('uk') || text.includes('britain') || text.includes('farage') || text.includes('clacton') || text.includes('wolves') || text.includes('blackburn') || text.includes('championship')) {
-    return COUNTRY_DATA.GB;
+  // Argentina
+  if (text.includes('argentina') || text.includes('argentinian') || text.includes('buenos aires') || text.includes('messi')) {
+    return COUNTRY_DATA.AR;
   }
-  if (text.includes('india') || text.includes('bcci') || text.includes('ipl') || text.includes('delhi') || text.includes('mumbai')) {
-    return COUNTRY_DATA.IN;
+  // Turkey
+  if (text.includes('turkey') || text.includes('turkish') || text.includes('istanbul') || text.includes('ankara') || text.includes('galatasaray') || text.includes('süper lig')) {
+    return COUNTRY_DATA.TR;
   }
-  if (text.includes('france') || text.includes('paris') || text.includes('french')) {
-    return COUNTRY_DATA.FR;
+  // Ukraine
+  if (text.includes('ukraine') || text.includes('ukrainian') || text.includes('kyiv')) {
+    return COUNTRY_DATA.UA;
   }
-  if (text.includes('japan') || text.includes('tokyo') || text.includes('japanese')) {
+  // Israel
+  if (text.includes('israel') || text.includes('israeli') || text.includes('tel aviv')) {
+    return COUNTRY_DATA.IL;
+  }
+  // Netherlands
+  if (text.includes('zaandam') || text.includes('amsterdam') || text.includes('dutch') || text.includes('netherlands') || text.includes('rotterdam')) {
+    return COUNTRY_DATA.NL;
+  }
+  // South Korea
+  if (text.includes('korea') || text.includes('seoul') || text.includes('송도') || text.includes('sk뷰') || text.includes('k-pop') || text.includes('hangul') || text.includes('korean')) {
+    return COUNTRY_DATA.KR;
+  }
+  // Japan
+  if (text.includes('japan') || text.includes('tokyo') || text.includes('japanese') || text.includes('sushi') || text.includes('anime') || text.includes('nintendo')) {
     return COUNTRY_DATA.JP;
   }
-  if (text.includes('canada') || text.includes('toronto')) {
-    return COUNTRY_DATA.CA;
+  // United Kingdom
+  if (text.includes('uk') || text.includes('britain') || text.includes('british') || text.includes('london') || text.includes('coventry') || text.includes('farage') || text.includes('clacton') || text.includes('wolves') || text.includes('blackburn') || text.includes('championship') || text.includes('premier league')) {
+    return COUNTRY_DATA.GB;
   }
-  if (text.includes('australia') || text.includes('sydney')) {
-    return COUNTRY_DATA.AU;
+  // Germany
+  if (text.includes('germany') || text.includes('german') || text.includes('bundesliga') || text.includes('regionalliga') || text.includes('bocholt') || text.includes('berlin') || text.includes('munich')) {
+    return COUNTRY_DATA.DE;
   }
-  if (text.includes('spain') || text.includes('la liga') || text.includes('madrid') || text.includes('barcelona')) {
+  // France
+  if (text.includes('france') || text.includes('french') || text.includes('paris') || text.includes('monaco') || text.includes('macron')) {
+    return COUNTRY_DATA.FR;
+  }
+  // Mexico
+  if (text.includes('mexico') || text.includes('mexican') || text.includes('gimnasio') || text.includes('campestre') || text.includes('pesos')) {
+    return COUNTRY_DATA.MX;
+  }
+  // Spain
+  if (text.includes('spain') || text.includes('spanish') || text.includes('madrid') || text.includes('barcelona') || text.includes('la liga')) {
     return COUNTRY_DATA.ES;
   }
-  if (text.includes('italy') || text.includes('atalanta') || text.includes('serie a')) {
+  // Italy
+  if (text.includes('italy') || text.includes('italian') || text.includes('rome') || text.includes('milan') || text.includes('atalanta') || text.includes('serie a')) {
     return COUNTRY_DATA.IT;
   }
-  if (text.includes('brazil') || text.includes('neymar')) {
+  // India
+  if (text.includes('india') || text.includes('indian') || text.includes('bcci') || text.includes('ipl') || text.includes('delhi') || text.includes('mumbai') || text.includes('rupee')) {
+    return COUNTRY_DATA.IN;
+  }
+  // Canada
+  if (text.includes('canada') || text.includes('canadian') || text.includes('toronto') || text.includes('vancouver')) {
+    return COUNTRY_DATA.CA;
+  }
+  // Australia
+  if (text.includes('australia') || text.includes('australian') || text.includes('sydney') || text.includes('melbourne')) {
+    return COUNTRY_DATA.AU;
+  }
+  // Brazil
+  if (text.includes('brazil') || text.includes('brazilian') || text.includes('neymar') || text.includes('rio')) {
     return COUNTRY_DATA.BR;
   }
+  // Singapore
+  if (text.includes('singapore') || text.includes('singaporean')) {
+    return COUNTRY_DATA.SG;
+  }
+  // China
+  if (text.includes('china') || text.includes('chinese') || text.includes('beijing') || text.includes('shanghai')) {
+    return COUNTRY_DATA.CN;
+  }
+  // Saudi Arabia
+  if (text.includes('saudi') || text.includes('riyadh') || text.includes('al nassr')) {
+    return COUNTRY_DATA.SA;
+  }
+  // UAE
+  if (text.includes('uae') || text.includes('dubai') || text.includes('abu dhabi')) {
+    return COUNTRY_DATA.AE;
+  }
+  // United States explicit keywords
+  if (text.includes('beaufort') || text.includes('schd') || text.includes('miami') || text.includes('dolphins') || text.includes('nfl') || text.includes('nba') || text.includes('pixel') || text.includes('us ') || text.includes('usa') || text.includes('america')) {
+    return COUNTRY_DATA.US;
+  }
 
-  return COUNTRY_DATA.US;
+  // Deterministic fallback based on title string hash to balance flags across all countries
+  const countryKeys = Object.keys(COUNTRY_DATA);
+  const hashString = title || summary || 'WhyThisBuzz';
+  let hash = 0;
+  for (let i = 0; i < hashString.length; i++) {
+    hash = (hash * 31 + hashString.charCodeAt(i)) >>> 0;
+  }
+  const selectedCode = countryKeys[hash % countryKeys.length];
+  return COUNTRY_DATA[selectedCode];
 }
 
 /**

@@ -291,62 +291,121 @@ async function pingIndexNow(articleSlug: string): Promise<void> {
   }
 }
 
+function parseTraffic(trafficStr?: string): number {
+  if (!trafficStr) return 10000;
+  const cleaned = String(trafficStr).replace(/[^0-9]/g, '');
+  const val = parseInt(cleaned, 10);
+  return isNaN(val) ? 10000 : val;
+}
+
 async function main() {
-  const regions = ['US', 'GB', 'DE', 'IN', 'CA', 'AU', 'FR', 'JP', 'BR', 'ES', 'IT', 'MX', 'KR', 'SG', 'NL', 'CN'];
+  const regions = [
+    'US', 'GB', 'IN', 'DE', 'CA', 'AU', 'FR', 'JP', 'BR', 'ES', 
+    'IT', 'MX', 'KR', 'NL', 'CO', 'AR', 'TR', 'UA', 'IL', 'ZA', 
+    'NG', 'EG', 'SA', 'AE', 'PK', 'BD', 'SG', 'CN'
+  ];
   const publishedSlugs = await getPublishedSlugs();
   console.log(`🌐 Supabase DB currently contains ${publishedSlugs.size} articles.`);
 
-  const TARGET_PER_REGION = 2;
+  const TOTAL_TARGET = 30;
+  const MAX_PER_REGION = 4;
+
+  console.log(`📡 Fetching Google Trends RSS feeds from ${regions.length} global markets...`);
+
+  interface TrendCandidate {
+    title: string;
+    slug: string;
+    region: string;
+    traffic: number;
+    newsLink: string;
+  }
+
+  const candidates: TrendCandidate[] = [];
+  const seenSlugsInRun = new Set<string>();
 
   for (const region of regions) {
-    console.log(`\n--- Processing Region: ${region} ---`);
-    let feed;
     try {
-      feed = await parser.parseURL(`https://trends.google.com/trending/rss?geo=${region}`);
-    } catch (error) {
-      console.error(`Failed to fetch Google Trends RSS for ${region}:`, error);
-      continue;
+      const feed = await parser.parseURL(`https://trends.google.com/trending/rss?geo=${region}`);
+      if (!feed.items || feed.items.length === 0) continue;
+
+      for (const item of feed.items) {
+        const title = item.title || '';
+        if (!title) continue;
+        const slugifiedTitle = slugify(title, { lower: true, strict: true });
+
+        if (publishedSlugs.has(slugifiedTitle) || seenSlugsInRun.has(slugifiedTitle)) continue;
+        if (!item.news_item || item.news_item.length === 0) continue;
+
+        const newsLink = item.news_item[0]['ht:news_item_url']?.[0];
+        if (!newsLink) continue;
+
+        const trafficStr = (item as any).approx_traffic || '';
+        const traffic = parseTraffic(trafficStr);
+
+        seenSlugsInRun.add(slugifiedTitle);
+        candidates.push({
+          title,
+          slug: slugifiedTitle,
+          region,
+          traffic,
+          newsLink,
+        });
+      }
+    } catch (err: any) {
+      console.warn(`Could not fetch RSS feed for ${region}:`, err?.message || err);
+    }
+  }
+
+  console.log(`🔍 Total unique candidate trends collected across 28 markets: ${candidates.length}`);
+
+  candidates.sort((a, b) => b.traffic - a.traffic);
+
+  const selectedTrends: TrendCandidate[] = [];
+  const regionCounts: Record<string, number> = {};
+
+  for (const candidate of candidates) {
+    if (selectedTrends.length >= TOTAL_TARGET) break;
+    const count = regionCounts[candidate.region] || 0;
+    if (count >= MAX_PER_REGION) continue;
+
+    regionCounts[candidate.region] = count + 1;
+    selectedTrends.push(candidate);
+  }
+
+  if (selectedTrends.length < TOTAL_TARGET) {
+    for (const candidate of candidates) {
+      if (selectedTrends.length >= TOTAL_TARGET) break;
+      if (!selectedTrends.some(t => t.slug === candidate.slug)) {
+        selectedTrends.push(candidate);
+      }
+    }
+  }
+
+  console.log(`🚀 Selected Top ${selectedTrends.length} Global Trends for this run:`);
+  selectedTrends.forEach((t, i) => console.log(` ${i + 1}. [${t.region}] ${t.title} (${t.traffic.toLocaleString()} searches)`));
+
+  let processedCount = 0;
+
+  for (const trend of selectedTrends) {
+    processedCount++;
+    const { title, region, newsLink } = trend;
+    console.log(`\n--- Processing Trend (${processedCount}/${selectedTrends.length}) [${region}]: "${title}" ---`);
+    console.log(`Fetching news source: ${newsLink}`);
+    
+    const { text: scrapedText, imageUrl } = await scrapeArticleData(newsLink);
+    let text = scrapedText;
+    if (text.length <= 150) {
+      text = `Headline trend: ${title}. Provide a full in-depth news analysis explaining what happened, key background details, and why this matters to the public.`;
     }
 
-    if (!feed.items || feed.items.length === 0) {
-      console.log(`No trending items found for ${region}.`);
-      continue;
-    }
+    const defaultBrandThumbnail = "/images/default-thumbnail.png";
+    const selectedTrend = title;
+    const articleText = text;
+    const articleImage = imageUrl || defaultBrandThumbnail;
 
-    let regionProcessed = 0;
+    console.log(`Generating article with Gemini...`);
 
-    for (const item of feed.items) {
-      if (regionProcessed >= TARGET_PER_REGION) break;
-
-      const title = item.title || 'Unknown';
-      const slugifiedTitle = slugify(title, { lower: true, strict: true });
-
-      if (publishedSlugs.has(slugifiedTitle)) {
-        console.log(`Skipping already published trend: ${title}`);
-        continue;
-      }
-
-      if (!item.news_item || item.news_item.length === 0) continue;
-      
-      const newsLink = item.news_item[0]['ht:news_item_url'][0];
-      console.log(`Analyzing trend (${regionProcessed + 1}/${TARGET_PER_REGION} for ${region}): ${title} - fetching ${newsLink}`);
-      
-      const { text: scrapedText, imageUrl } = await scrapeArticleData(newsLink);
-      let text = scrapedText;
-      if (text.length <= 150) {
-        text = `Headline trend: ${title}. Provide a full in-depth news analysis explaining what happened, key background details, and why this matters to the public.`;
-      }
-
-      const defaultBrandThumbnail = "/images/default-thumbnail.png";
-
-      const selectedTrend = title;
-      const articleText = text;
-      const articleImage = imageUrl || defaultBrandThumbnail;
-
-      console.log(`Selected trend for ${region}: ${selectedTrend}`);
-      console.log(`Generating article with Gemini...`);
-
-      const prompt = `
+    const prompt = `
 You are a top-tier journalist and Chief Editor for a modern digital news site called "WhyThisBuzz".
 Your writing style is highly engaging, clear, analytical, and optimized for **Google Discover feeds**.
 
@@ -400,85 +459,81 @@ Raw Scraped Text:
 ${articleText}
 `;
 
-      try {
-        let output = await generateWithRetry(prompt);
-        
-        if (output.startsWith('```mdx')) output = output.replace(/^```mdx\n/, '');
-        else if (output.startsWith('```markdown')) output = output.replace(/^```markdown\n/, '');
-        else if (output.startsWith('```')) output = output.replace(/^```\n/, '');
-        if (output.endsWith('```')) output = output.replace(/\n```$/, '');
+    try {
+      let output = await generateWithRetry(prompt);
+      
+      if (output.startsWith('```mdx')) output = output.replace(/^```mdx\n/, '');
+      else if (output.startsWith('```markdown')) output = output.replace(/^```markdown\n/, '');
+      else if (output.startsWith('```')) output = output.replace(/^```\n/, '');
+      if (output.endsWith('```')) output = output.replace(/\n```$/, '');
 
-        const frontmatterMatch = output.match(/---\n([\s\S]*?)\n---/);
-        if (!frontmatterMatch) {
-          console.error(`Could not parse frontmatter for ${region} article.`);
-          continue;
-        }
-
-        const frontmatter = frontmatterMatch[1];
-        let category = "World Affairs";
-        const titleMatch = frontmatter.match(/title:\s*"(.*?)"/);
-        const categoryMatch = frontmatter.match(/category:\s*"(.*?)"/);
-        
-        if (categoryMatch) category = categoryMatch[1];
-        const articleTitle = titleMatch ? titleMatch[1] : selectedTrend;
-        const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
-        
-        const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media"];
-        if (!validCategories.includes(category)) {
-          category = "World Affairs";
-        }
-
-        const bodyContent = output.slice(frontmatterMatch[0].length).trim();
-        const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
-        const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
-        const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
-        const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
-        const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
-        const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
-        const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
-        const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
-
-        const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
-        const fallbackHDImage = CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES['General'];
-        const finalImage = (parsedImg && parsedImg.startsWith('http')) 
-          ? parsedImg 
-          : (imageUrl && imageUrl.startsWith('http') ? imageUrl : fallbackHDImage);
-
-        const { error: sbError } = await supabase.from('articles').upsert({
-          slug,
-          title: articleTitle,
-          summary: summaryMatch ? summaryMatch[1] : '',
-          content: bodyContent,
-          category,
-          author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
-          date: parseToISODate(dateMatch ? dateMatch[1] : undefined),
-          read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
-          image_url: finalImage,
-          seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
-          meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
-          keywords: keywordsMatch ? keywordsMatch[1] : undefined,
-        }, { onConflict: 'slug' });
-
-        if (sbError) {
-          console.error(`⚠️ Supabase upload error for ${slug}:`, sbError.message);
-        } else {
-          publishedSlugs.add(slugifiedTitle);
-          publishedSlugs.add(slug);
-          console.log(`🚀 Successfully published "${articleTitle}" (${slug}) directly to Supabase DB!`);
-          regionProcessed++;
-
-          // Automatically tweet out the new article to X (Twitter)
-          await postToTwitter(articleTitle, summaryMatch ? summaryMatch[1] : '', slug);
-
-          // Automatically ping IndexNow (Bing, Copilot, Yahoo, Yandex) for instant indexing
-          await pingIndexNow(slug);
-
-          // Automatically ping Google Indexing API for instant Google indexation
-          await pingGoogleIndexingApi(slug);
-        }
-      } catch (error) {
-        console.error(`Failed to generate or save article for ${region}:`, error);
+      const frontmatterMatch = output.match(/---\n([\s\S]*?)\n---/);
+      if (!frontmatterMatch) {
+        console.error(`Could not parse frontmatter for ${region} article.`);
+        continue;
       }
+
+      const frontmatter = frontmatterMatch[1];
+      let category = "World Affairs";
+      const titleMatch = frontmatter.match(/title:\s*"(.*?)"/);
+      const categoryMatch = frontmatter.match(/category:\s*"(.*?)"/);
+      
+      if (categoryMatch) category = categoryMatch[1];
+      const articleTitle = titleMatch ? titleMatch[1] : selectedTrend;
+      const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
+      
+      const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media"];
+      if (!validCategories.includes(category)) {
+        category = "World Affairs";
+      }
+
+      const bodyContent = output.slice(frontmatterMatch[0].length).trim();
+      const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
+      const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
+      const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
+      const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
+      const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
+      const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
+      const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
+      const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
+
+      const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
+      const fallbackHDImage = CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES['General'];
+      const finalImage = (parsedImg && parsedImg.startsWith('http')) 
+        ? parsedImg 
+        : (imageUrl && imageUrl.startsWith('http') ? imageUrl : fallbackHDImage);
+
+      const { error: sbError } = await supabase.from('articles').upsert({
+        slug,
+        title: articleTitle,
+        summary: summaryMatch ? summaryMatch[1] : '',
+        content: bodyContent,
+        category,
+        author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
+        date: parseToISODate(dateMatch ? dateMatch[1] : undefined),
+        read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
+        image_url: finalImage,
+        seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
+        meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
+        keywords: keywordsMatch ? keywordsMatch[1] : undefined,
+        geo: region,
+      }, { onConflict: 'slug' });
+
+      if (sbError) {
+        console.error(`⚠️ Supabase upload error for ${slug}:`, sbError.message);
+      } else {
+        publishedSlugs.add(trend.slug);
+        publishedSlugs.add(slug);
+        console.log(`🚀 Successfully published "${articleTitle}" (${slug}) directly to Supabase DB!`);
+
+        await postToTwitter(articleTitle, summaryMatch ? summaryMatch[1] : '', slug);
+
+        await pingIndexNow(slug);
+
+        await pingGoogleIndexingApi(slug);
+      }
+    } catch (error) {
+      console.error(`Error generating article for ${region} trend "${selectedTrend}":`, error);
     }
   }
 
