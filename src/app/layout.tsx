@@ -89,7 +89,7 @@ export default async function RootLayout({
   const navigationSchema = generateSiteNavigationSchema();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Performance Resource Hints */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
