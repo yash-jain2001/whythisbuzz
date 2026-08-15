@@ -6,6 +6,7 @@ import { ArticleSkeletonCard } from "./ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Sparkles } from "lucide-react";
 
 interface ArticleGridProps {
   articles: ArticleMetadata[];
@@ -86,7 +87,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
     if (selectedCategory === "politics") return catLower.includes("politic");
     if (selectedCategory === "economics") return catLower.includes("economic") || catLower.includes("finance");
     if (selectedCategory === "tech") return catLower.includes("tech");
-    if (selectedCategory === "social") return catLower.includes("social");
+    if (selectedCategory === "social") return catLower.includes("social") || catLower.includes("media") || catLower.includes("viral") || catLower.includes("internet");
     if (selectedCategory === "movies") return catLower.includes("movie") || catLower.includes("entertain");
     return true;
   }).slice(0, 20);
@@ -120,13 +121,25 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
               <ArticleSkeletonCard key={i} />
             ))}
           </div>
+        ) : filteredArticles.length === 0 ? (
+          <div className="py-14 px-4 text-center border border-dashed border-border/70 rounded-2xl bg-muted/20 my-4 flex flex-col items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3">
+              <Sparkles className="w-6 h-6 text-accent animate-pulse" />
+            </div>
+            <h3 className="text-lg font-serif font-semibold text-foreground">Keep looking, we will get it soon!</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-md mx-auto">
+              Our automated AI news engine is monitoring live global trends 24/7. Fresh breaking stories for this category will be published automatically in the next scheduled run.
+            </p>
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
             {filteredArticles.map((article, index) => (
               <div
                 key={article.id}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  animationDelay: `${(index % 5) * 50}ms`
+                }}
               >
                 <ArticleCard article={article} />
               </div>
