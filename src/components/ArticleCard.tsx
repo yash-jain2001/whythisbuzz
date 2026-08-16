@@ -23,7 +23,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
 
   const imageSrc = (failedUrl === targetSrc) ? DEFAULT_THUMBNAIL : targetSrc;
 
-  const countryInfo = getCountryForArticle(article.country);
+  const countryInfo = getCountryForArticle(article.country, article.title, article.summary);
   const trendOriginTime = article.trendTime || getRelativeTrendTime(article.date);
 
   const handleImageError = () => {

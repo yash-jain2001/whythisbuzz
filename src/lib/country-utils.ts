@@ -47,16 +47,8 @@ export const COUNTRY_DATA: Record<string, CountryDetails> = {
  * Detect country flag and name strictly from explicit country code (e.g. 'US', 'IN', 'GB', 'DE')
  * Default fallback is US (United States / Global)
  */
-export function getCountryForArticle(countryCode?: string): CountryDetails {
-  if (countryCode && typeof countryCode === 'string') {
-    const cleanCode = countryCode.trim().toUpperCase();
-    if (COUNTRY_DATA[cleanCode]) {
-      return COUNTRY_DATA[cleanCode];
-    }
-  }
-
-  // Fallback default: US (United States / Global)
-  return COUNTRY_DATA.US;
+export function getCountryForArticle(countryCode?: string, title?: string, summary?: string): CountryDetails {
+  return detectCountryFromText(countryCode, title, summary);
 }
 
 export function detectCountryFromText(countryCode?: string, title?: string, summary?: string): CountryDetails {
