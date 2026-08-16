@@ -425,6 +425,7 @@ async function main() {
     traffic: number;
     newsLink: string;
     assignedCategory: string;
+    trendImage?: string;
   }
 
   const CORE_CATEGORIES = [
@@ -497,8 +498,10 @@ async function main() {
         if (publishedSlugs.has(slugifiedTitle) || seenSlugsInRun.has(slugifiedTitle)) continue;
         if (!item.news_item || item.news_item.length === 0) continue;
 
-        const newsLink = item.news_item[0]['ht:news_item_url']?.[0];
+        const newsItem = item.news_item[0];
+        const newsLink = newsItem['ht:news_item_url']?.[0];
         if (!newsLink) continue;
+        const trendImage = newsItem['ht:news_item_picture']?.[0] || '';
 
         const trafficStr = (item as any).approx_traffic || '';
         const traffic = parseTraffic(trafficStr);
@@ -512,6 +515,7 @@ async function main() {
           traffic,
           newsLink,
           assignedCategory,
+          trendImage,
         });
       }
     } catch (err: any) {
@@ -577,17 +581,32 @@ async function main() {
   }
 
   console.log(`🚀 [Category-Driven Publisher] Selected Top ${selectedTrends.length} Global Trends across all 7 Categories:`);
-  selectedTrends.forEach((t, i) => console.log(` ${i + 1}. [${t.assignedCategory}] [${t.region}] ${t.title} (${t.traffic.toLocaleString()} searches)`));
+  selectedTrends.forEach((t, i) => console.log(` ${i + 1}. [${t.assignedCategory}] [${t.region}] ${t.title} (${t.traffic.toLocaleString()} searches) ${t.trendImage ? '🖼️ [Has Image]' : '⚠️ [No Image]'}`));
 
   let processedCount = 0;
+  let noImageCount = 0;
+  const MAX_NO_IMAGE_CAP = Math.floor(TOTAL_TARGET * 0.25); // Max 25% fallback limit (at most 3 articles without images)
 
   for (const trend of selectedTrends) {
-    processedCount++;
     const { title, region, newsLink } = trend;
-    console.log(`\n--- Processing Trend (${processedCount}/${selectedTrends.length}) [${region}]: "${title}" ---`);
-    console.log(`Fetching news source: ${newsLink}`);
     
     const { text: scrapedText, imageUrl } = await scrapeArticleData(newsLink);
+    const candidateImage = imageUrl || trend.trendImage || '';
+    const hasOriginImage = Boolean(candidateImage && candidateImage.startsWith('http'));
+
+    if (!hasOriginImage && noImageCount >= MAX_NO_IMAGE_CAP) {
+      console.log(`⚠️ [Quality Control] Skipping trend "${title}" (No origin image and max 25% no-image cap reached).`);
+      continue;
+    }
+
+    if (!hasOriginImage) {
+      noImageCount++;
+    }
+
+    processedCount++;
+    console.log(`\n--- Processing Trend (${processedCount}/${TOTAL_TARGET}) [${region}]: "${title}" ---`);
+    console.log(`Fetching news source: ${newsLink}`);
+    
     let text = scrapedText;
     if (text.length <= 150) {
       text = `Headline trend: ${title}. Provide a full in-depth news analysis explaining what happened, key background details, and why this matters to the public.`;
