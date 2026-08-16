@@ -691,29 +691,8 @@ ${articleText}
 
       const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media", "Politics", "Economics"];
       
-      // Smart Category Normalizer to prevent political/economic articles defaulting to World Affairs
-      const cLower = category.toLowerCase();
-      const tLower = (articleTitle + " " + (summaryMatch ? summaryMatch[1] : "")).toLowerCase();
-
-      if (tLower.includes('prayer') || tLower.includes('isha') || tLower.includes('namaz') || tLower.includes('ramadan') || tLower.includes('astronomy') || tLower.includes('sunset') || tLower.includes('sunrise') || tLower.includes('weather') || tLower.includes('disaster') || tLower.includes('storm')) {
-        category = "World Affairs";
-      } else if (cLower.includes('politic') || cLower.includes('election') || cLower.includes('government') || cLower.includes('diplomacy') || cLower.includes('law') || cLower.includes('senate') || cLower.includes('congress') || cLower.includes('minister') || cLower.includes('president')) {
-        category = "Politics";
-      } else if (cLower.includes('economic') || cLower.includes('finance') || cLower.includes('market') || cLower.includes('bank') || cLower.includes('business') || cLower.includes('stock') || cLower.includes('trade') || cLower.includes('inflation')) {
-        category = "Economics";
-      } else if (cLower.includes('social') || cLower.includes('viral') || cLower.includes('media') || cLower.includes('tiktok') || cLower.includes('instagram')) {
-        category = "Social-Media";
-      } else if (cLower.includes('tech') || cLower.includes('ai') || cLower.includes('software') || cLower.includes('apple') || cLower.includes('google')) {
-        category = "Technology";
-      } else if (cLower.includes('sport') || cLower.includes('game') || cLower.includes('match') || cLower.includes('league')) {
-        category = "Sports";
-      } else if (cLower.includes('movie') || cLower.includes('cinema') || cLower.includes('film') || cLower.includes('box office')) {
-        category = "Movies";
-      } else if (cLower.includes('entertain') || cLower.includes('celebrity') || cLower.includes('pop')) {
-        category = "Entertainment";
-      } else if (cLower.includes('world') || cLower.includes('global') || cLower.includes('international')) {
-        category = "World Affairs";
-      }
+      // Strictly assign the category directly from the origin trend source
+      category = trend.assignedCategory || category || 'World Affairs';
 
       const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
       const finalImage = (parsedImg && parsedImg.startsWith('http')) 
