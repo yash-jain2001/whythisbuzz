@@ -66,14 +66,14 @@ export function CategorySection({ id, title, description, articles: initialArtic
           description: doc.summary || doc.meta_description || '',
           date: formatDateDisplay(doc.date),
           author: doc.author || 'WhyThisBuzz Desk',
-          category: normalizeCategory(doc.title, doc.summary, doc.category),
+          category: title,
           imageUrl: doc.image_url || '',
           readTime: doc.read_time || '3 min read',
           summary: doc.summary || '',
           seoTitle: doc.seo_title,
           metaDescription: doc.meta_description,
           keywords: doc.keywords,
-          country: (doc.country || 'US').toUpperCase(),
+          country: (doc.country || 'GLOBAL').toUpperCase(),
           trendTime: getRelativeTrendTime(doc.date, doc.created_at),
         }));
         setArticles(results);

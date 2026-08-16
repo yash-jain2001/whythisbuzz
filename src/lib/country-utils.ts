@@ -71,53 +71,53 @@ export function getRelativeTrendTime(dateStr?: string, createdAt?: string): stri
  * Smart Category Normalizer using strict word boundary matching & prioritized category hierarchy
  */
 export function normalizeCategory(title?: string, summary?: string, rawCategory?: string): string {
+  // If rawCategory is already a clean valid canonical category, trust it!
+  if (rawCategory && typeof rawCategory === 'string') {
+    const rLower = rawCategory.trim().toLowerCase();
+    if (rLower === 'sports' || rLower.includes('sport')) return 'Sports';
+    if (rLower === 'entertainment' || rLower === 'movies' || rLower.includes('entertain') || rLower.includes('movie')) return 'Entertainment';
+    if (rLower === 'politics' || rLower.includes('politic')) return 'Politics';
+    if (rLower === 'economics' || rLower.includes('economic') || rLower.includes('finance')) return 'Economics';
+    if (rLower === 'technology' || rLower.includes('tech')) return 'Technology';
+    if (rLower === 'social-media' || rLower === 'social media' || rLower.includes('social')) return 'Social-Media';
+    if (rLower === 'world affairs' || rLower === 'world-affairs' || rLower.includes('world')) return 'World Affairs';
+  }
+
   const text = `${title || ''} ${summary || ''}`.toLowerCase();
 
-  // 1. Economics & Business (Check FIRST so Inflation & Central Bank Rate Cuts never get misclassified as Sports)
-  if (/\b(inflation|central bank|central banks|interest rate|interest rates|rate cut|rate cuts|stock|stocks|market|markets|fed|federal reserve|banking|finance|economic|economy|crypto|bitcoin|binance|wall street|earnings|pension)\b/i.test(text)) {
+  // 1. Sports (Check transfer market, clubs, matches, leagues FIRST to avoid economics false matches)
+  if (/\b(transfer market|club|clubs|manager|midfielder|winger|striker|vs|versus|cricket|football|soccer|basketball|nba|nfl|ipl|bcci|fifa|uefa|olympics|f1|formula 1|wimbledon|tennis|golf|marathon|stadium|championship|tournament|league|atlé|atlético|real madrid|barcelona|manchester|liverpool|arsenal|chelsea|tottenham|bayern|juventus|inter milan)\b/i.test(text)) {
+    return 'Sports';
+  }
+
+  // 2. Economics & Business
+  if (/\b(inflation|central bank|central banks|interest rate|interest rates|rate cut|rate cuts|stock market|stocks|crypto|bitcoin|binance|wall street|earnings|pension|gdp|recession|financial|banking|central bank)\b/i.test(text)) {
     return 'Economics';
   }
 
-  // 2. Entertainment & Movies (Check SECOND so Actors, Movies & TV Shows like Deborah Mailman, Lioness, Bollywood never get misclassified)
-  if (/\b(acting|actor|actress|deborah mailman|logies|movie|movies|film|films|cinema|hollywood|bollywood|trailer|episode|season|show|shows|music|singer|singers|concert|oscar|oscars|grammy|filmfare|vimal|elaichi|surrogate|celebrity|celebrities|box office|netflix|hbo|disney|paramount)\b/i.test(text)) {
+  // 3. Technology & AI
+  if (/\b(ai video|ai model|artificial intelligence|generative ai|software|cybersecurity|semiconductor|chipmaker|smartphone|hardware|developer|cloud computing|operating system|open source|apple|alibaba|microsoft|nvidia|google ai|chatgpt)\b/i.test(text)) {
+    return 'Technology';
+  }
+
+  // 4. Entertainment & Movies
+  if (/\b(acting|actor|actress|deborah mailman|logies|movie|movies|film|films|cinema|hollywood|bollywood|trailer|episode|season|show|shows|music|singer|singers|concert|oscar|oscars|grammy|filmfare|vimal|elaichi|celebrity|celebrities|box office|netflix|hbo|disney|paramount|twitch|streamer)\b/i.test(text)) {
     return 'Entertainment';
   }
 
-  // 3. World Affairs / Weather & Disasters (Check THIRD so Severe Weather Alerts never get misclassified as Sports)
-  if (/\b(severe weather|meteorological|meteorology|weather alert|weather alerts|storm|storms|cyclone|typhoon|hurricane|tsunami|flood|floods|earthquake|disaster|disasters|diplomacy|astronomy|isha prayer|namaz|ramadan)\b/i.test(text)) {
-    return 'World Affairs';
-  }
-
-  // 4. Politics
+  // 5. Politics
   if (/\b(election|elections|biden|trump|starmer|politic|politics|political|parliament|senate|congress|minister|president|government|lawsuit|supreme court|modi|putin)\b/i.test(text)) {
     return 'Politics';
   }
 
-  // 5. Technology
-  if (/\b(ai|artificial intelligence|software|cyber|semiconductor|chipmaker|smartphone|hardware|developer|cloud computing|operating system|open source)\b/i.test(text)) {
-    return 'Technology';
-  }
-
   // 6. Social Media
-  if (/\b(tiktok|instagram|youtube|x\.com|viral|influencer|streamer|creator)\b/i.test(text)) {
+  if (/\b(tiktok|instagram|youtube|x\.com|viral|influencer|creator|social media)\b/i.test(text)) {
     return 'Social-Media';
   }
 
-  // 7. Sports (Strict word boundary checks for vs, match, player, league, etc. to prevent false positive matches)
-  if (/\b(vs|versus|cricket|football|soccer|basketball|nba|nfl|ipl|bcci|fifa|uefa|olympics|f1|formula 1|wimbledon|tennis|golf|marathon|stadium|championship|tournament|league|bayern|tottenham|arsenal|chelsea|real madrid|barcelona)\b/i.test(text)) {
-    return 'Sports';
-  }
-
-  // Fallback to rawCategory if provided by feed
-  if (rawCategory) {
-    const rLower = rawCategory.toLowerCase();
-    if (rLower.includes('sport')) return 'Sports';
-    if (rLower.includes('entertain') || rLower.includes('movie')) return 'Entertainment';
-    if (rLower.includes('politic')) return 'Politics';
-    if (rLower.includes('economic') || rLower.includes('finance')) return 'Economics';
-    if (rLower.includes('social')) return 'Social-Media';
-    if (rLower.includes('tech')) return 'Technology';
-    if (rLower.includes('world')) return 'World Affairs';
+  // 7. World Affairs / Weather & Disasters
+  if (/\b(severe weather|meteorological|meteorology|weather alert|weather alerts|storm|storms|cyclone|typhoon|hurricane|tsunami|flood|floods|earthquake|disaster|disasters|diplomacy|astronomy|gaza|israel|ukraine|war|un)\b/i.test(text)) {
+    return 'World Affairs';
   }
 
   return 'World Affairs';
