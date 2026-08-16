@@ -7,7 +7,7 @@ import slugify from 'slugify';
 import { execSync } from 'child_process';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
-import { detectCountryFromText } from '../src/lib/country-utils';
+import { getCountryForArticle } from '../src/lib/country-utils';
 
 dotenv.config();
 
@@ -512,25 +512,15 @@ async function main() {
     }
   }
 
-  console.log(`🔍 Total unique candidate trends collected across 28 markets: ${candidates.length}`);
+  console.log(`🔍 Total unique candidate trends collected globally: ${candidates.length}`);
 
-  // Equal Ratio Selection: Target 2 articles per category across diverse country markets
+  // Pure Category-Driven Strategy: Select top trending topics per category without regional caps
   const selectedTrends: TrendCandidate[] = [];
   const TARGET_PER_CATEGORY = 2;
-  const regionCounts: Record<string, number> = {};
 
   for (const cat of CORE_CATEGORIES) {
     const catCandidates = candidates.filter(c => c.assignedCategory === cat).sort((a, b) => b.traffic - a.traffic);
-    const selectedForCat: TrendCandidate[] = [];
-
-    for (const cand of catCandidates) {
-      if (selectedForCat.length >= TARGET_PER_CATEGORY) break;
-      const countForReg = regionCounts[cand.region] || 0;
-      if (countForReg < MAX_PER_REGION) {
-        selectedForCat.push(cand);
-        regionCounts[cand.region] = countForReg + 1;
-      }
-    }
+    const selectedForCat: TrendCandidate[] = catCandidates.slice(0, TARGET_PER_CATEGORY);
 
     // If Google Trends didn't yield 2 items for this category, fetch Google News Topic RSS Feed for this category!
     if (selectedForCat.length < TARGET_PER_CATEGORY && categoryTopicFeeds[cat]) {
@@ -566,18 +556,20 @@ async function main() {
     selectedTrends.push(...selectedForCat);
   }
 
-  // Fill up to 15 if needed from remaining top global trends
+  // Fill up to 15 if needed from remaining top global trends sorted strictly by traffic
   if (selectedTrends.length < TOTAL_TARGET) {
-    candidates.sort((a, b) => b.traffic - a.traffic);
-    for (const candidate of candidates) {
+    const selectedSlugs = new Set(selectedTrends.map(s => s.slug));
+    const remaining = candidates
+      .filter(c => !selectedSlugs.has(c.slug))
+      .sort((a, b) => b.traffic - a.traffic);
+
+    for (const cand of remaining) {
       if (selectedTrends.length >= TOTAL_TARGET) break;
-      if (!selectedTrends.some(t => t.slug === candidate.slug)) {
-        selectedTrends.push(candidate);
-      }
+      selectedTrends.push(cand);
     }
   }
 
-  console.log(`🚀 [Equal Category Ratio] Selected Top ${selectedTrends.length} Global Trends across all 7 Categories:`);
+  console.log(`🚀 [Category-Driven Publisher] Selected Top ${selectedTrends.length} Global Trends across all 7 Categories:`);
   selectedTrends.forEach((t, i) => console.log(` ${i + 1}. [${t.assignedCategory}] [${t.region}] ${t.title} (${t.traffic.toLocaleString()} searches)`));
 
   let processedCount = 0;
@@ -722,8 +714,8 @@ ${articleText}
         ? parsedImg 
         : (imageUrl && imageUrl.startsWith('http') ? imageUrl : fallbackHDImage);
 
-      const detectedCountryObj = detectCountryFromText(trend.region, articleTitle, summaryMatch ? summaryMatch[1] : '');
-      const finalCountryCode = detectedCountryObj ? detectedCountryObj.code : (trend.region || 'US');
+      const detectedCountryObj = getCountryForArticle(trend.region);
+      const finalCountryCode = detectedCountryObj.code;
 
       const { error: sbError } = await supabase.from('articles').upsert({
         slug,
