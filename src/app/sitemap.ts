@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://whythisbuzz.com';
-    const articles = await getAllArticles();
+    const articles = await getAllArticles(2000);
     const currentDate = new Date();
 
     // Calculate if article is recent (within last 7 days)
@@ -24,21 +24,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     // Category URLs
-    const categories = ['Movies', 'Entertainment', 'Sports', 'Social Media', 'Technology', 'World Affairs', 'Politics', 'Economics'];
+    const categories = ['Movies', 'Entertainment', 'Sports', 'Social Media', 'Technology', 'World Affairs'];
     const categoryUrls = categories.map((category) => ({
         url: `${baseUrl}/category/${category.toLowerCase().replace(/\s+/g, '-')}`,
         lastModified: currentDate,
         changeFrequency: 'daily' as const,
         priority: 0.9,
-    }));
-
-    // Country URLs
-    const countries = ['us', 'gb', 'in', 'de', 'ca', 'au', 'fr', 'jp', 'br', 'es', 'it', 'mx', 'kr', 'nl', 'co', 'ar', 'tr', 'ua', 'il', 'za', 'ng', 'eg', 'sa', 'ae', 'pk', 'bd', 'sg', 'cn'];
-    const countryUrls = countries.map((code) => ({
-        url: `${baseUrl}/country/${code}`,
-        lastModified: currentDate,
-        changeFrequency: 'daily' as const,
-        priority: 0.85,
     }));
 
     // Static pages
@@ -66,7 +57,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 1.0,
         },
         ...categoryUrls,
-        ...countryUrls,
         ...articleUrls,
         ...staticUrls,
     ];
