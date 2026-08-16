@@ -15,7 +15,16 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
-  const isBadImage = !article.imageUrl || article.imageUrl.trim() === "" || article.imageUrl.includes('placeholder') || article.imageUrl.includes('photo-1611162617474-5b21e879e113');
+  const isBadImage = !article.imageUrl || 
+    article.imageUrl.trim() === "" || 
+    article.imageUrl.includes('placeholder') || 
+    article.imageUrl.includes('photo-1611162617474-5b21e879e113') ||
+    article.imageUrl.includes('photo-1540910419892-4a36d2c3266c') ||
+    article.imageUrl.includes('photo-1518770660439') ||
+    article.imageUrl.includes('photo-1611974789855') ||
+    article.imageUrl.includes('photo-1529107386315') ||
+    article.imageUrl.includes('photo-1514525253161') ||
+    article.imageUrl.includes('photo-1461896836934');
   const targetSrc = isBadImage ? DEFAULT_THUMBNAIL : (proxifyImage(article.imageUrl) || DEFAULT_THUMBNAIL);
   
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
