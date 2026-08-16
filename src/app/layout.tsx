@@ -24,15 +24,15 @@ export const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://whythisbuzz.com'),
   title: {
-    default: "WhyThisBuzz - Trending News Explained",
-    template: "%s | WhyThisBuzz",
+    default: "Why This Buzz - Trending News Explained | WhyThisBuzz",
+    template: "%s | Why This Buzz",
   },
-  description: "WhyThisBuzz explains why trending topics are buzzing — clear, in-depth news on Sports, Entertainment, Technology, and World Affairs. Fresh stories published daily.",
-  keywords: ["trending news explained", "why is this trending", "digital culture", "technology news", "entertainment news", "sports news", "world affairs", "WhyThisBuzz"],
+  description: "Why This Buzz (WhyThisBuzz) explains why trending topics are buzzing — clear, in-depth news on Sports, Entertainment, Technology, and World Affairs. Fresh stories published daily.",
+  keywords: ["Why This Buzz", "WhyThisBuzz", "why this buzz news", "trending news explained", "why is this trending", "digital culture", "technology news", "entertainment news", "sports news", "world affairs"],
   manifest: "/manifest.json",
-  authors: [{ name: "WhyThisBuzz Editorial Team" }],
-  creator: "WhyThisBuzz",
-  publisher: "WhyThisBuzz",
+  authors: [{ name: "Why This Buzz Editorial Team" }],
+  creator: "Why This Buzz",
+  publisher: "Why This Buzz",
   alternates: {
     canonical: '/',
   },

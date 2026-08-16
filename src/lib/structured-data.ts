@@ -10,8 +10,9 @@ const SITE_LOGO = `${SITE_URL}/images/logo.png`;
 export function generateOrganizationSchema() {
     return {
         '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: SITE_NAME,
+        '@type': 'NewsMediaOrganization',
+        name: 'Why This Buzz',
+        alternateName: ['WhyThisBuzz', 'Why This Buzz News', 'whythisbuzz'],
         url: SITE_URL,
         logo: {
             '@type': 'ImageObject',
@@ -38,9 +39,10 @@ export function generateWebsiteSchema() {
     return {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: SITE_NAME,
+        name: 'Why This Buzz',
+        alternateName: ['WhyThisBuzz', 'Why This Buzz News', 'whythisbuzz'],
         url: SITE_URL,
-        description: 'Clear explanations of trending topics in technology, movies, entertainment, and digital culture.',
+        description: 'Clear explanations of trending topics in technology, movies, entertainment, sports, and digital culture.',
         publisher: generateOrganizationSchema(),
         potentialAction: {
             '@type': 'SearchAction',
