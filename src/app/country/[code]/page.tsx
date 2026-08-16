@@ -16,10 +16,7 @@ interface CountryPageProps {
 }
 
 export async function generateStaticParams() {
-  const codes = Object.keys(COUNTRY_DATA).map(code => ({
-    code: code.toLowerCase(),
-  }));
-  return codes;
+  return [{ code: 'global' }];
 }
 
 export async function generateMetadata({ params }: CountryPageProps): Promise<Metadata> {

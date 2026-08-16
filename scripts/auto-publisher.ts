@@ -178,8 +178,24 @@ const CATEGORY_FALLBACK_IMAGES: Record<string, string[]> = {
   ],
 };
 
-async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl: string }> {
+async function scrapeArticleData(url: string, preferredImage?: string): Promise<{ text: string; imageUrl: string }> {
   try {
+    const isGooglePlaceholder = (urlStr: string) => {
+      const lower = urlStr.toLowerCase();
+      return lower.includes('googleusercontent.com') ||
+             lower.includes('gstatic.com') ||
+             lower.includes('google.com/news') ||
+             lower.includes('news.google.com') ||
+             lower.includes('placeholder') ||
+             lower.includes('default-logo') ||
+             lower.includes('favicon');
+    };
+
+    let imageUrl = '';
+    if (preferredImage && preferredImage.startsWith('http') && !isGooglePlaceholder(preferredImage)) {
+      imageUrl = preferredImage;
+    }
+
     const response = await fetch(url, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -198,23 +214,14 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
       }
     });
 
-    let imageUrl = $('meta[property="og:image:secure_url"]').attr('content') ||
-                    $('meta[property="og:image"]').attr('content') || 
-                    $('meta[name="twitter:image:src"]').attr('content') ||
-                    $('meta[name="twitter:image"]').attr('content') ||
-                    $('meta[name="image"]').attr('content') ||
-                    $('link[rel="image_src"]').attr('href') || '';
-
-    const isGooglePlaceholder = (urlStr: string) => {
-      const lower = urlStr.toLowerCase();
-      return lower.includes('googleusercontent.com') ||
-             lower.includes('gstatic.com') ||
-             lower.includes('google.com/news') ||
-             lower.includes('news.google.com') ||
-             lower.includes('placeholder') ||
-             lower.includes('default-logo') ||
-             lower.includes('favicon');
-    };
+    if (!imageUrl) {
+      imageUrl = $('meta[property="og:image:secure_url"]').attr('content') ||
+                 $('meta[property="og:image"]').attr('content') || 
+                 $('meta[name="twitter:image:src"]').attr('content') ||
+                 $('meta[name="twitter:image"]').attr('content') ||
+                 $('meta[name="image"]').attr('content') ||
+                 $('link[rel="image_src"]').attr('href') || '';
+    }
 
     if (imageUrl && isGooglePlaceholder(imageUrl)) {
       imageUrl = '';
@@ -247,7 +254,7 @@ async function scrapeArticleData(url: string): Promise<{ text: string; imageUrl:
     return { text: text.trim(), imageUrl };
   } catch (error) {
     console.error(`Error scraping ${url}:`, error);
-    return { text: '', imageUrl: '' };
+    return { text: '', imageUrl: preferredImage || '' };
   }
 }
 
@@ -709,10 +716,9 @@ ${articleText}
       }
 
       const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
-      const fallbackHDImage = CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES['General'];
       const finalImage = (parsedImg && parsedImg.startsWith('http')) 
         ? parsedImg 
-        : (imageUrl && imageUrl.startsWith('http') ? imageUrl : fallbackHDImage);
+        : (imageUrl && imageUrl.startsWith('http') ? imageUrl : '/images/placeholder.svg');
 
       const detectedCountryObj = getCountryForArticle(trend.region);
       const finalCountryCode = detectedCountryObj.code;

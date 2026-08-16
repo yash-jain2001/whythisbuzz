@@ -4,10 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
-import { getCountryForArticle, getRelativeTrendTime, getFlagImageUrl } from "@/lib/country-utils";
+import { getRelativeTrendTime } from "@/lib/country-utils";
 import { TrendingUp, Clock } from "lucide-react";
 
-const DEFAULT_THUMBNAIL = "/images/default-thumbnail.png";
+const DEFAULT_THUMBNAIL = "/images/placeholder.svg";
 
 interface ArticleCardProps {
   article: ArticleMetadata;
@@ -15,7 +15,7 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
-  const isBadImage = !article.imageUrl || article.imageUrl.includes('photo-1611162617474-5b21e879e113') || article.imageUrl.includes('placeholder');
+  const isBadImage = !article.imageUrl || article.imageUrl.trim() === "" || article.imageUrl.includes('placeholder') || article.imageUrl.includes('photo-1611162617474-5b21e879e113');
   const targetSrc = isBadImage ? DEFAULT_THUMBNAIL : (proxifyImage(article.imageUrl) || DEFAULT_THUMBNAIL);
   
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
@@ -23,7 +23,6 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
 
   const imageSrc = (failedUrl === targetSrc) ? DEFAULT_THUMBNAIL : targetSrc;
 
-  const countryInfo = getCountryForArticle(article.country);
   const trendOriginTime = article.trendTime || getRelativeTrendTime(article.date);
 
   const handleImageError = () => {
@@ -54,18 +53,6 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
           <div className="flex flex-col gap-1 min-w-0 flex-1">
             <div className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-accent">
               <span>{article.category}</span>
-              <span>•</span>
-              <Link 
-                href={`/country/${countryInfo.code.toLowerCase()}`}
-                className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
-              >
-                <img
-                  src={getFlagImageUrl(countryInfo.code)}
-                  alt={countryInfo.name}
-                  className="w-3.5 h-2.5 object-cover rounded-[2px]"
-                />
-                <span>{countryInfo.name}</span>
-              </Link>
             </div>
             <Link href={`/article/${article.id}`} className="font-serif font-medium text-foreground line-clamp-2 group-hover:text-accent transition-colors">
               {article.title}
@@ -102,19 +89,6 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
 
       {/* Content */}
       <div className="p-4 sm:p-4.5 flex flex-col gap-2 flex-1">
-        {/* Country Origin Indicator */}
-        <Link 
-          href={`/country/${countryInfo.code.toLowerCase()}`}
-          className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-accent transition-colors w-fit group/country z-20"
-        >
-          <img
-            src={getFlagImageUrl(countryInfo.code)}
-            alt={countryInfo.name}
-            className="w-4 h-3 object-cover rounded-[2px] shadow-xs group-hover/country:scale-105 transition-transform"
-          />
-          <span className="uppercase tracking-wider text-[11px] font-sans font-semibold text-muted-foreground/80 group-hover/country:text-accent transition-colors">{countryInfo.name}</span>
-        </Link>
-
         {/* Title Link */}
         <Link href={`/article/${article.id}`}>
           <h3 className="font-serif text-base sm:text-lg font-semibold text-foreground line-clamp-2 group-hover:text-accent transition-colors">

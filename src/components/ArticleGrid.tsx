@@ -1,14 +1,13 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { ArticleCard } from "./ArticleCard";
 import { ArticleSkeletonCard } from "./ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getCountryForArticle, getRelativeTrendTime, normalizeCategory } from "@/lib/country-utils";
-import { Sparkles, Globe, ChevronDown } from "lucide-react";
+import { getRelativeTrendTime, normalizeCategory } from "@/lib/country-utils";
+import { Sparkles } from "lucide-react";
 
 interface ArticleGridProps {
   articles: ArticleMetadata[];
@@ -35,20 +34,6 @@ const CATEGORY_TABS = [
   { id: "movies", label: "Movies & Ent." },
 ];
 
-const COUNTRY_OPTIONS = [
-  { code: "all", name: "All Regions" },
-  { code: "US", name: "🇺🇸 United States" },
-  { code: "IN", name: "🇮🇳 India" },
-  { code: "GB", name: "🇬🇧 United Kingdom" },
-  { code: "CA", name: "🇨🇦 Canada" },
-  { code: "AU", name: "🇦🇺 Australia" },
-  { code: "DE", name: "🇩🇪 Germany" },
-  { code: "FR", name: "🇫🇷 France" },
-  { code: "JP", name: "🇯🇵 Japan" },
-  { code: "KR", name: "🇰🇷 South Korea" },
-  { code: "BR", name: "🇧🇷 Brazil" },
-];
-
 function shuffleArray<T>(array: T[]): T[] {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
@@ -59,10 +44,8 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
-  const router = useRouter();
   const [allArticles, setAllArticles] = useState<ArticleMetadata[]>(() => shuffleArray(initialArticles.slice(0, 25)));
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedCountry, setSelectedCountry] = useState("all");
   const [isLoading, setIsLoading] = useState<boolean>(!initialArticles || initialArticles.length === 0);
 
   useEffect(() => {
@@ -89,7 +72,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             seoTitle: doc.seo_title,
             metaDescription: doc.meta_description,
             keywords: doc.keywords,
-            country: (doc.country || 'US').toUpperCase(),
+            country: (doc.country || 'GLOBAL').toUpperCase(),
             trendTime: getRelativeTrendTime(doc.date, doc.created_at),
           }));
           // Prioritize top 25 newest fresh articles (15 from latest run + 10 from previous run) and shuffle among them
@@ -101,7 +84,6 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
   }, []);
 
   const filteredArticles = allArticles.filter((article) => {
-    // 1. Category Filter
     if (selectedCategory !== "all") {
       const catLower = article.category.toLowerCase();
       if (selectedCategory === "sports" && !catLower.includes("sport")) return false;
@@ -113,16 +95,10 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
       if (selectedCategory === "movies" && !catLower.includes("movie") && !catLower.includes("entertain")) return false;
     }
 
-    // 2. Country / Region Filter
-    if (selectedCountry !== "all") {
-      const countryInfo = getCountryForArticle(article.country);
-      if (countryInfo.code !== selectedCountry) return false;
-    }
-
     return true;
   });
 
-  const displayedArticles = (selectedCategory === "all" && selectedCountry === "all")
+  const displayedArticles = selectedCategory === "all"
     ? filteredArticles.slice(0, 25)
     : filteredArticles;
 
@@ -134,33 +110,8 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground">Trending Now</h2>
           </div>
           
-          {/* Controls: Country Selector + Category Tabs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
-            {/* Country / Region Filter Selector */}
-            <div className="relative flex items-center min-w-[170px]">
-              <Globe className="w-4 h-4 text-muted-foreground absolute left-3 pointer-events-none z-10" />
-              <select
-                value={selectedCountry}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  if (val !== "all") {
-                    router.push(`/country/${val.toLowerCase()}`);
-                  } else {
-                    setSelectedCountry("all");
-                  }
-                }}
-                className="w-full text-xs md:text-sm pl-9 pr-8 py-2 bg-muted/60 hover:bg-muted/80 border border-border/50 rounded-xl font-medium text-foreground cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-accent/50 appearance-none transition-all shadow-2xs"
-              >
-                {COUNTRY_OPTIONS.map((c) => (
-                  <option key={c.code} value={c.code} className="bg-card text-foreground py-1">
-                    {c.code === "all" ? "🌐 All Regions" : c.name}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="w-4 h-4 text-muted-foreground absolute right-3 pointer-events-none z-10" />
-            </div>
-
-            {/* Category Filtering Tabs */}
+          {/* Controls: Category Tabs */}
+          <div className="flex items-center w-full lg:w-auto">
             <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full lg:w-auto">
               <TabsList className="flex overflow-x-auto no-scrollbar w-full lg:w-auto justify-start p-1 bg-muted/60 rounded-xl">
                 {CATEGORY_TABS.map((tab) => (
