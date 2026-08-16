@@ -8,7 +8,6 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { Clock, Calendar, Link as LinkIcon, Bookmark } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
-import Image from "next/image";
 import { proxifyImage } from "@/lib/utils";
 import { AdBanner } from "@/components/AdBanner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -18,8 +17,16 @@ interface ArticleViewProps {
     relatedArticles: ArticleMetadata[];
 }
 
+const DEFAULT_THUMBNAIL = "/images/default-thumbnail.png";
+
 export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
     const [readProgress, setReadProgress] = useState(0);
+
+    const isBadImage = !article.imageUrl || article.imageUrl.includes('photo-1611162617474-5b21e879e113') || article.imageUrl.includes('placeholder');
+    const targetSrc = isBadImage ? DEFAULT_THUMBNAIL : (proxifyImage(article.imageUrl) || DEFAULT_THUMBNAIL);
+    const [failedUrl, setFailedUrl] = useState<string | null>(null);
+
+    const imageSrc = (failedUrl === targetSrc) ? DEFAULT_THUMBNAIL : targetSrc;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -109,11 +116,11 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     {/* Featured Image */}
                     <div className="max-w-4xl mx-auto mb-12">
                         <div className="relative flex w-full aspect-[16/9] md:aspect-[2/1] max-h-[60vh] rounded-xl overflow-hidden bg-muted/20">
-                            <Image
-                                src={proxifyImage(article.imageUrl)}
-                                alt={article.title}
-                                fill
-                                className="object-cover"
+                            <img
+                                src={imageSrc}
+                                alt=""
+                                className="w-full h-full object-cover"
+                                onError={() => setFailedUrl(targetSrc)}
                             />
                         </div>
                     </div>

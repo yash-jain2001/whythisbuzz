@@ -57,7 +57,7 @@ export function CountryPageClient({ countryCode, countryName, initialArticles }:
       .then(({ data, error }) => {
         if (!error && data && data.length > 0) {
           const matchedDocs = (data as SupabaseArticleDoc[]).filter((doc) => {
-            const countryInfo = getCountryForArticle(doc.geo, doc.title, doc.summary);
+            const countryInfo = getCountryForArticle(doc.country || doc.geo);
             return countryInfo.code.toUpperCase() === countryCode.toUpperCase();
           });
 

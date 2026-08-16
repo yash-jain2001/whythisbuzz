@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { ArticleCard } from "./ArticleCard";
+import { ArticleSkeletonCard } from "./ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
-import { getRelativeTrendTime } from "@/lib/country-utils";
+import { getRelativeTrendTime, normalizeCategory } from "@/lib/country-utils";
 
 interface CategorySectionProps {
   id: string;
@@ -27,6 +28,7 @@ function formatDateDisplay(dateStr: string): string {
 
 export function CategorySection({ id, title, description, articles: initialArticles, viewAllUrl }: CategorySectionProps) {
   const [articles, setArticles] = useState<ArticleMetadata[]>(initialArticles);
+  const [isLoading, setIsLoading] = useState<boolean>(!initialArticles || initialArticles.length === 0);
 
   useEffect(() => {
     if (!supabase) return;
@@ -34,7 +36,7 @@ export function CategorySection({ id, title, description, articles: initialArtic
     const catLower = title.toLowerCase().replace(/[-_]/g, ' ').trim();
     let query = supabase
       .from('articles')
-      .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at')
+      .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at, country')
       .order('created_at', { ascending: false })
       .order('date', { ascending: false });
 
@@ -64,49 +66,26 @@ export function CategorySection({ id, title, description, articles: initialArtic
           description: doc.summary || doc.meta_description || '',
           date: formatDateDisplay(doc.date),
           author: doc.author || 'WhyThisBuzz Desk',
-          category: doc.category,
+          category: normalizeCategory(doc.title, doc.summary, doc.category),
           imageUrl: doc.image_url || '',
           readTime: doc.read_time || '3 min read',
           summary: doc.summary || '',
           seoTitle: doc.seo_title,
           metaDescription: doc.meta_description,
           keywords: doc.keywords,
+          country: (doc.country || 'US').toUpperCase(),
           trendTime: getRelativeTrendTime(doc.date, doc.created_at),
         }));
         setArticles(results);
-      } else {
+      } else if (!initialArticles || initialArticles.length === 0) {
         setArticles([]);
       }
+      setIsLoading(false);
     });
-  }, [title]);
+  }, [title, initialArticles]);
 
-  if (!articles || articles.length === 0) {
-    return (
-      <section id={id} className="scroll-mt-10 py-10 border-t border-border">
-        <div className="container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
-            <div>
-              <h2 className="text-3xl font-serif font-bold tracking-tight text-foreground mb-2">{title}</h2>
-              <p className="text-muted-foreground max-w-3xl md:max-w-4xl">{description}</p>
-            </div>
-          </div>
-
-          <div className="py-12 px-4 text-center border border-dashed border-border/70 rounded-2xl bg-muted/20 my-4 flex flex-col items-center justify-center">
-            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3">
-              <Sparkles className="w-6 h-6 text-accent animate-pulse" />
-            </div>
-            <h3 className="text-lg font-serif font-semibold text-foreground">Keep looking, we will get it soon!</h3>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-md mx-auto">
-              Our automated AI news desk is monitoring live global trends for {title}. Fresh breaking stories will be published automatically in the next scheduled run.
-            </p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  const displayArticles = articles.slice(0, 8);
   const targetUrl = viewAllUrl || `/category/${id}`;
+  const displayArticles = articles.slice(0, 8);
 
   return (
     <section id={id} className="scroll-mt-10 py-10 border-t border-border">
@@ -125,17 +104,35 @@ export function CategorySection({ id, title, description, articles: initialArtic
           </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-          {displayArticles.map((article, index) => (
-            <div
-              key={article.id}
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <ArticleCard article={article} />
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <ArticleSkeletonCard key={i} />
+            ))}
+          </div>
+        ) : articles.length === 0 ? (
+          <div className="py-12 px-4 text-center border border-dashed border-border/70 rounded-2xl bg-muted/20 my-4 flex flex-col items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-3">
+              <Sparkles className="w-6 h-6 text-accent animate-pulse" />
             </div>
-          ))}
-        </div>
+            <h3 className="text-lg font-serif font-semibold text-foreground">Keep looking, we will get it soon!</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-md mx-auto">
+              Our automated AI news desk is monitoring live global trends for {title}. Fresh breaking stories will be published automatically in the next scheduled run.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            {displayArticles.map((article, index) => (
+              <div
+                key={article.id}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <ArticleCard article={article} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

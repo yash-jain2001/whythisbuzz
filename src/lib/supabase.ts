@@ -42,11 +42,12 @@ function formatDateDisplay(dateStr: string): string {
     return dateStr;
 }
 
-import { getCountryForArticle, getRelativeTrendTime } from './country-utils';
+import { getCountryForArticle, getRelativeTrendTime, normalizeCategory } from './country-utils';
 
 function docToArticle(doc: SupabaseArticleDoc): Article {
-    const country = getCountryForArticle(doc.geo || doc.country, doc.title, doc.summary);
+    const country = getCountryForArticle(doc.country);
     const trendTime = getRelativeTrendTime(doc.date, doc.created_at);
+    const category = normalizeCategory(doc.title, doc.summary, doc.category);
 
     return {
         metadata: {
@@ -55,7 +56,7 @@ function docToArticle(doc: SupabaseArticleDoc): Article {
             description: doc.summary || doc.meta_description || '',
             date: formatDateDisplay(doc.date),
             author: doc.author || 'WhyThisBuzz Desk',
-            category: doc.category,
+            category: category,
             imageUrl: doc.image_url || '',
             readTime: doc.read_time || '3 min read',
             summary: doc.summary || '',
@@ -90,7 +91,7 @@ export async function getSupabaseArticles(limit: number = 50): Promise<Article[]
         const fetchLimit = Math.max(limit, 100);
         const { data, error } = await supabase
           .from('articles')
-          .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
+          .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at, country')
           .order('created_at', { ascending: false })
           .order('date', { ascending: false })
           .limit(fetchLimit);

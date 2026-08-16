@@ -60,6 +60,7 @@ export default function NotFound() {
                                 seoTitle: doc.seo_title,
                                 metaDescription: doc.meta_description,
                                 keywords: doc.keywords,
+                                country: (doc.country || 'US').toUpperCase(),
                             };
 
                             const htmlContent = renderMarkdown(doc.content || '');
@@ -72,7 +73,7 @@ export default function NotFound() {
                             let related: ArticleMetadata[] = [];
                             const { data: relData } = await supabase
                                 .from('articles')
-                                .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords')
+                                .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, country')
                                 .neq('slug', cleanSlug)
                                 .limit(3);
 
@@ -87,6 +88,7 @@ export default function NotFound() {
                                     imageUrl: d.image_url || '/images/default-thumbnail.png',
                                     readTime: d.read_time || '3 min read',
                                     summary: d.summary || '',
+                                    country: (d.country || 'US').toUpperCase(),
                                 } as ArticleMetadata));
                             }
 

@@ -53,7 +53,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
   const countryMdxArticles = allMdx
     .map(a => a.metadata)
     .filter(a => {
-      const c = getCountryForArticle(a.country, a.title, a.summary);
+      const c = getCountryForArticle(a.country);
       return c.code.toUpperCase() === upperCode;
     });
 

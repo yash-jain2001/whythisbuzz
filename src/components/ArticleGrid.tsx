@@ -7,7 +7,7 @@ import { ArticleSkeletonCard } from "./ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
 import { supabase, SupabaseArticleDoc } from "@/lib/supabase";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getCountryForArticle, getRelativeTrendTime } from "@/lib/country-utils";
+import { getCountryForArticle, getRelativeTrendTime, normalizeCategory } from "@/lib/country-utils";
 import { Sparkles, Globe, ChevronDown } from "lucide-react";
 
 interface ArticleGridProps {
@@ -81,14 +81,14 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
   const [allArticles, setAllArticles] = useState<ArticleMetadata[]>(() => shuffleArray(initialArticles.slice(0, 25)));
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedCountry, setSelectedCountry] = useState("all");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(!initialArticles || initialArticles.length === 0);
 
   useEffect(() => {
     if (!supabase) return;
 
     supabase
       .from('articles')
-      .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
+      .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at, country')
       .order('created_at', { ascending: false })
       .order('date', { ascending: false })
       .limit(1000)
@@ -100,13 +100,14 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
             description: doc.summary || doc.meta_description || '',
             date: formatDateDisplay(doc.date),
             author: doc.author || 'WhyThisBuzz Desk',
-            category: doc.category,
+            category: normalizeCategory(doc.title, doc.summary, doc.category),
             imageUrl: doc.image_url || '',
             readTime: doc.read_time || '3 min read',
             summary: doc.summary || '',
             seoTitle: doc.seo_title,
             metaDescription: doc.meta_description,
             keywords: doc.keywords,
+            country: (doc.country || 'US').toUpperCase(),
             trendTime: getRelativeTrendTime(doc.date, doc.created_at),
           }));
           // Prioritize top 25 newest fresh articles (15 from latest run + 10 from previous run) and shuffle among them
@@ -132,7 +133,7 @@ export function ArticleGrid({ articles: initialArticles }: ArticleGridProps) {
 
     // 2. Country / Region Filter
     if (selectedCountry !== "all") {
-      const countryInfo = getCountryForArticle(article.country, article.title, article.summary);
+      const countryInfo = getCountryForArticle(article.country);
       if (countryInfo.code !== selectedCountry) return false;
     }
 

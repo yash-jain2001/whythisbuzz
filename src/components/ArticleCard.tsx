@@ -19,26 +19,36 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
   const targetSrc = isBadImage ? DEFAULT_THUMBNAIL : (proxifyImage(article.imageUrl) || DEFAULT_THUMBNAIL);
   
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const imageSrc = (failedUrl === targetSrc) ? DEFAULT_THUMBNAIL : targetSrc;
 
-  const countryInfo = getCountryForArticle(article.country, article.title, article.summary);
+  const countryInfo = getCountryForArticle(article.country);
   const trendOriginTime = article.trendTime || getRelativeTrendTime(article.date);
 
   const handleImageError = () => {
     setFailedUrl(targetSrc);
+    setIsLoaded(true);
+  };
+
+  const handleImageLoad = () => {
+    setIsLoaded(true);
   };
 
   if (variant === "compact") {
     return (
       <a href={`/article/${article.id}`} className="group block">
         <article className="flex gap-4 py-4 border-b border-border/50 last:border-0">
-          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-muted relative">
+          <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-muted relative shimmer-wave">
+            {!isLoaded && (
+              <div className="absolute inset-0 bg-muted shimmer-wave z-10" />
+            )}
             <img
               src={imageSrc}
               alt=""
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              onLoad={handleImageLoad}
               onError={handleImageError}
+              className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             />
           </div>
           <div className="flex flex-col gap-1 min-w-0 flex-1">
@@ -73,13 +83,17 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
       <article className="h-full bg-card rounded-xl overflow-hidden shadow-editorial card-hover flex flex-col">
         {/* Image */}
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+          {!isLoaded && (
+            <div className="absolute inset-0 bg-muted shimmer-wave z-10" />
+          )}
           <img
             src={imageSrc}
             alt=""
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onLoad={handleImageLoad}
             onError={handleImageError}
+            className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
-          <div className="absolute top-3 left-3 z-10">
+          <div className="absolute top-3 left-3 z-20">
             <span className="category-tag">{article.category}</span>
           </div>
         </div>

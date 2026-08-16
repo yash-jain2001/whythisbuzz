@@ -7,7 +7,7 @@ import slugify from 'slugify';
 import { execSync } from 'child_process';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
-import { getCountryForArticle } from '../src/lib/country-utils';
+import { detectCountryFromText } from '../src/lib/country-utils';
 
 dotenv.config();
 
@@ -434,23 +434,34 @@ async function main() {
 
   function detectCategory(title: string): string {
     const text = title.toLowerCase();
-    if (text.includes('election') || text.includes('biden') || text.includes('trump') || text.includes('starmer') || text.includes('politic') || text.includes('parliament') || text.includes('senate') || text.includes('congress') || text.includes('minister') || text.includes('president') || text.includes('government') || text.includes('law') || text.includes('court') || text.includes('modi') || text.includes('sues')) {
-      return "Politics";
-    }
-    if (text.includes('stock') || text.includes('market') || text.includes('bank') || text.includes('fed') || text.includes('inflation') || text.includes('trade') || text.includes('economy') || text.includes('economic') || text.includes('finance') || text.includes('business') || text.includes('crypto') || text.includes('binance') || text.includes('bitcoin') || text.includes('earnings') || text.includes('pension')) {
+    
+    // 1. Economics (Inflation, Central Banks, Rates, Markets)
+    if (/\b(inflation|central bank|central banks|interest rate|interest rates|rate cut|rate cuts|stock|stocks|market|markets|fed|federal reserve|banking|finance|economic|economy|crypto|bitcoin|binance|wall street|earnings|pension)\b/i.test(text)) {
       return "Economics";
     }
-    if (text.includes('ai') || text.includes('apple') || text.includes('google') || text.includes('microsoft') || text.includes('tech') || text.includes('phone') || text.includes('app') || text.includes('software') || text.includes('cyber') || text.includes('nvidia') || text.includes('samsung') || text.includes('telecom')) {
+    // 2. Entertainment & Movies (Actors, Movies, Logies, Shows)
+    if (/\b(acting|actor|actress|deborah mailman|logies|movie|movies|film|films|cinema|hollywood|bollywood|trailer|episode|season|show|shows|music|singer|singers|concert|oscar|oscars|grammy|filmfare|vimal|elaichi|surrogate|celebrity|celebrities|box office|netflix|hbo|disney|paramount)\b/i.test(text)) {
+      return "Entertainment";
+    }
+    // 3. World Affairs / Weather & Disasters
+    if (/\b(severe weather|meteorological|meteorology|weather alert|weather alerts|storm|storms|cyclone|typhoon|hurricane|tsunami|flood|floods|earthquake|disaster|disasters|diplomacy|astronomy|isha prayer|namaz|ramadan)\b/i.test(text)) {
+      return "World Affairs";
+    }
+    // 4. Politics
+    if (/\b(election|elections|biden|trump|starmer|politic|politics|political|parliament|senate|congress|minister|president|government|lawsuit|supreme court|modi|putin)\b/i.test(text)) {
+      return "Politics";
+    }
+    // 5. Technology
+    if (/\b(ai|artificial intelligence|software|cyber|semiconductor|chipmaker|smartphone|hardware|developer|cloud computing|operating system|open source)\b/i.test(text)) {
       return "Technology";
     }
-    if (text.includes('tiktok') || text.includes('instagram') || text.includes('youtube') || text.includes('x.com') || text.includes('viral') || text.includes('influencer') || text.includes('subscriber') || text.includes('streamer') || text.includes('creator')) {
+    // 6. Social Media
+    if (/\b(tiktok|instagram|youtube|x\.com|viral|influencer|streamer|creator)\b/i.test(text)) {
       return "Social-Media";
     }
-    if (text.includes('vs') || text.includes('fc') || text.includes('cup') || text.includes('league') || text.includes('match') || text.includes('win') || text.includes('score') || text.includes('player') || text.includes('coach') || text.includes('race') || text.includes('olympics') || text.includes('nba') || text.includes('nfl') || text.includes('cricket') || text.includes('football') || text.includes('bayern')) {
+    // 7. Sports (Strict word boundaries for vs, match, player, etc.)
+    if (/\b(vs|versus|cricket|football|soccer|basketball|nba|nfl|ipl|bcci|fifa|uefa|olympics|f1|formula 1|wimbledon|tennis|golf|marathon|stadium|championship|tournament|league|bayern|tottenham|arsenal|chelsea|real madrid|barcelona)\b/i.test(text)) {
       return "Sports";
-    }
-    if (text.includes('movie') || text.includes('film') || text.includes('actor') || text.includes('actress') || text.includes('hollywood') || text.includes('marvel') || text.includes('x-men') || text.includes('trailer') || text.includes('star') || text.includes('show') || text.includes('season') || text.includes('episode') || text.includes('music') || text.includes('concert') || text.includes('singer')) {
-      return "Entertainment";
     }
     return "World Affairs";
   }
@@ -713,7 +724,7 @@ ${articleText}
         ? parsedImg 
         : (imageUrl && imageUrl.startsWith('http') ? imageUrl : fallbackHDImage);
 
-      const detectedCountryObj = getCountryForArticle(trend.region, articleTitle, summaryMatch ? summaryMatch[1] : '');
+      const detectedCountryObj = detectCountryFromText(trend.region, articleTitle, summaryMatch ? summaryMatch[1] : '');
       const finalCountryCode = detectedCountryObj ? detectedCountryObj.code : (trend.region || 'US');
 
       const { error: sbError } = await supabase.from('articles').upsert({
