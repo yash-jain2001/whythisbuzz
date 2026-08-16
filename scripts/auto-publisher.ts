@@ -400,9 +400,7 @@ function parseTraffic(trafficStr?: string): number {
 
 async function main() {
   const regions = [
-    'US', 'GB', 'IN', 'DE', 'CA', 'AU', 'FR', 'JP', 'BR', 'ES', 
-    'IT', 'MX', 'KR', 'NL', 'CO', 'AR', 'TR', 'UA', 'IL', 'ZA', 
-    'NG', 'EG', 'SA', 'AE', 'PK', 'BD', 'SG', 'CN'
+    'US', 'IN', 'GB', 'CA', 'AU', 'DE', 'FR', 'JP', 'KR', 'BR'
   ];
   const publishedSlugs = await getPublishedSlugs();
   console.log(`🌐 Supabase DB currently contains ${publishedSlugs.size} articles.`);
@@ -411,7 +409,7 @@ async function main() {
   const TOTAL_TARGET = 15;
   const MAX_PER_REGION = 3;
 
-  console.log(`📡 [60 Articles/Day Strategy] Fetching Google Trends from 28 global markets (Target: 15 top trends/run)...`);
+  console.log(`📡 [60 Articles/Day Strategy] Fetching Google Trends from 10 major global markets (Target: 15 top trends/run)...`);
 
   interface TrendCandidate {
     title: string;
