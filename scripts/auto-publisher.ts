@@ -330,12 +330,12 @@ async function getGoogleAccessToken(email: string, privateKey: string): Promise<
 }
 
 async function pingGoogleIndexingApi(articleSlug: string): Promise<void> {
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
+  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_CLIENT_EMAIL;
+  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || process.env.GOOGLE_PRIVATE_KEY;
   const articleUrl = `https://whythisbuzz.com/article/${articleSlug}`;
 
   if (!email || !privateKey) {
-    console.log(`ℹ️ [Google Indexing API] GOOGLE_SERVICE_ACCOUNT_EMAIL or GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY not configured in .env. Skipping Google Indexing API ping.`);
+    console.log(`ℹ️ [Google Indexing API] GOOGLE_CLIENT_EMAIL / GOOGLE_PRIVATE_KEY not configured. Skipping Google Indexing API ping.`);
     return;
   }
 

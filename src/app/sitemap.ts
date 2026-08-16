@@ -18,9 +18,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Article URLs with dynamic priorities
     const articleUrls = articles.map((article) => ({
         url: `${baseUrl}/article/${article.metadata.id}`,
-        lastModified: new Date(article.metadata.date),
-        changeFrequency: isRecent(article.metadata.date) ? 'daily' as const : 'weekly' as const,
-        priority: isRecent(article.metadata.date) ? 0.9 : 0.8,
+        lastModified: isRecent(article.metadata.date) ? new Date(article.metadata.date) : currentDate,
+        changeFrequency: 'daily' as const,
+        priority: isRecent(article.metadata.date) ? 0.9 : 0.7,
     }));
 
     // Category URLs
