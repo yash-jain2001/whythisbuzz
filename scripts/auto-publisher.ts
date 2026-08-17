@@ -567,27 +567,26 @@ async function main() {
     selectedTrends.push(...selectedForCat);
   }
 
-  // Fill up to 15 if needed from remaining top global trends sorted strictly by traffic
-  if (selectedTrends.length < TOTAL_TARGET) {
-    const selectedSlugs = new Set(selectedTrends.map(s => s.slug));
-    const remaining = candidates
-      .filter(c => !selectedSlugs.has(c.slug))
-      .sort((a, b) => b.traffic - a.traffic);
+  // Fill candidate pool up to 30 to provide ample backup candidates if any no-image trends are skipped
+  const selectedSlugs = new Set(selectedTrends.map(s => s.slug));
+  const remaining = candidates
+    .filter(c => !selectedSlugs.has(c.slug))
+    .sort((a, b) => b.traffic - a.traffic);
 
-    for (const cand of remaining) {
-      if (selectedTrends.length >= TOTAL_TARGET) break;
-      selectedTrends.push(cand);
-    }
+  for (const cand of remaining) {
+    if (selectedTrends.length >= 30) break;
+    selectedTrends.push(cand);
   }
 
-  console.log(`🚀 [Category-Driven Publisher] Selected Top ${selectedTrends.length} Global Trends across all 7 Categories:`);
-  selectedTrends.forEach((t, i) => console.log(` ${i + 1}. [${t.assignedCategory}] [${t.region}] ${t.title} (${t.traffic.toLocaleString()} searches) ${t.trendImage ? '🖼️ [Has Image]' : '⚠️ [No Image]'}`));
+  console.log(`🚀 [Category-Driven Publisher] Candidate pool prepared with ${selectedTrends.length} Global Trends across all 7 Categories:`);
 
   let processedCount = 0;
   let noImageCount = 0;
-  const MAX_NO_IMAGE_CAP = Math.floor(TOTAL_TARGET * 0.25); // Max 25% fallback limit (at most 3 articles without images)
+  const MAX_NO_IMAGE_CAP = Math.floor(TOTAL_TARGET * 0.25); // Max 25% fallback limit (at most 3 articles without images out of 15)
 
   for (const trend of selectedTrends) {
+    if (processedCount >= TOTAL_TARGET) break;
+
     const { title, region, newsLink } = trend;
     
     const { text: scrapedText, imageUrl } = await scrapeArticleData(newsLink);

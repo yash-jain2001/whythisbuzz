@@ -1,5 +1,509 @@
 [
   {
+    "id": "why-rory-mcilroy-feels-lost-right-now-in-the-fedex-cup-playoffs",
+    "title": "Why Rory McIlroy Feels Lost Right Now in the FedEx Cup Playoffs",
+    "summary": "After finishing 25 strokes behind winner Scottie Scheffler at the St Jude Championship, Rory McIlroy admits he has major work to do before the next playoff event.",
+    "category": "World Affairs",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/78e7/live/5f20d3f0-99c5-11f1-b885-e3bffd46cc19.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "inside-taylor-swifts-london-night-out-what-you-need-to-know",
+    "title": "Inside Taylor Swift’s London Night Out: What You Need to Know",
+    "summary": "Fresh off her star-studded wedding to Travis Kelce, Taylor Swift stepped out in London for a stylish girls' night, debuting a chic shorter hairstyle.",
+    "category": "World Affairs",
+    "imageUrl": "https://pagesix.com/wp-content/uploads/sites/3/2026/08/137291941.jpg?quality=75&strip=all&w=1200",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-trump-unexpectedly-slashes-us-south-korea-military-drills",
+    "title": "Why Trump Unexpectedly Slashes US-South Korea Military Drills",
+    "summary": "US President Donald Trump has ordered a major scaling back of joint military exercises with South Korea, citing massive costs and shifting geopolitical priorities.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.tagesschau.de/image/07ef11ab-be28-4de8-8822-810d81af280c/AAABoA1PEl8/AAABnSSvrFg/16x9-big/donald-trump-896.jpg?width=1200",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-apple-is-fast-tracking-security-updates-right-now",
+    "title": "Why Apple is Fast-Tracking Security Updates Right Now",
+    "summary": "Apple is accelerating its software update cycle to defend user devices against increasingly sophisticated AI-driven cyber attacks. Here is what you need to know.",
+    "category": "Technology",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "how-alibaba-unexpectedly-rescued-apples-ai-ambitions-in-china",
+    "title": "How Alibaba Unexpectedly Rescued Apple's AI Ambitions in China",
+    "summary": "Apple faces strict AI hurdles in China, but a surprise partnership with Alibaba's custom AI model might finally bring Apple Intelligence to millions.",
+    "category": "Technology",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "inside-club-tijuana-vs-cruz-azul-what-you-need-to-know",
+    "title": "Inside Club Tijuana vs Cruz Azul: What You Need to Know",
+    "summary": "As Liga MX giants Cruz Azul head to the border to face Club Tijuana, a high-octane tactical battle awaits. Here is why this clash is redefining the Mexican soccer landscape.",
+    "category": "Sports",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-india-vs-sri-lanka-is-captivating-fans-right-now",
+    "title": "Why India vs Sri Lanka is Captivating Fans Right Now",
+    "summary": "Dive deep into the intense cricket rivalry between India and Sri Lanka, exploring recent showdowns, historical clashes, and why this matchup still dominates headlines.",
+    "category": "Sports",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "4 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-rodris-shock-move-to-fc-barcelona-is-happening-now",
+    "title": "Why Rodri's Shock Move to FC Barcelona is Happening Now",
+    "summary": "Manchester City and FC Barcelona have reportedly reached a breakthrough agreement for midfielder Rodri, shaking up European football ahead of the new season.",
+    "category": "Sports",
+    "imageUrl": "https://img.asmedia.epimg.net/resizer/v2/5SJQRESENJE6RBOQ23P6ZRXRLQ.jpg?auth=43ee3b908abb6aa6851787e37e66096504d7caec7baaf822238818523754237a&width=1200&height=828&smart=true",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-vincents-historic-game-show-run-just-came-to-an-end",
+    "title": "Why Vincent's Historic Game Show Run Just Came to an End",
+    "summary": "After nearly a year of dominating France 2's 'Tout le monde veut prendre sa place', legendary champion Vincent has finally been defeated, walking away with a record-breaking jackpot.",
+    "category": "World Affairs",
+    "imageUrl": "https://focus.huffingtonpost.fr/2026/05/18/12/0/1336/751/1820/1023/75/0/f8e2474_upload-1-se4fsglslcnf-screenshot-2026-05-18-13-43-20.png",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-britain-could-be-struck-by-a-sixth-heatwave-next-month",
+    "title": "Why Britain Could Be Struck by a Sixth Heatwave Next Month",
+    "summary": "Meteorologists warn that record-shattering temperatures could extend deep into September, pushing the UK's infrastructure and NHS to the absolute brink.",
+    "category": "World Affairs",
+    "imageUrl": "https://www.telegraph.co.uk/content/dam/news/2026/08/16/TELEMMGLPICT000497552565_17869037393840_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQf0Rf_Wk3V23H2268P_XkPxc.jpeg?impolicy=OG-Standard",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "how-ai-inspo-unexpectedly-changed-viral-tiktok-creation",
+    "title": "How AI Inspo Unexpectedly Changed Viral TikTok Creation",
+    "summary": "AI Inspo has just released a revolutionary video generator designed to help everyday creators effortlessly churn out viral TikToks and Reels.",
+    "category": "Social-Media",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-vanillamace-is-captivating-the-internet-right-now",
+    "title": "Why Vanillamace is Captivating the Internet Right Now",
+    "summary": "Discover the meteoric rise of Twitch sensation Vanillamace, the mystery behind their real name, and why this creator is taking over social feeds.",
+    "category": "Social-Media",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "how-alibaba-unexpectedly-rescued-apples-ai-future",
+    "title": "How Alibaba Unexpectedly Rescued Apple's AI Future",
+    "summary": "Apple needs a custom AI model to launch Apple Intelligence in China, and tech giant Alibaba has surprisingly stepped in to bridge the gap.",
+    "category": "Technology",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-claude-ai-is-suddenly-dominating-the-tech-world",
+    "title": "Why Claude AI Is Suddenly Dominating the Tech World",
+    "summary": "Discover the breakthrough updates and strategic shifts behind Claude AI's meteoric rise, and what this means for the future of human-computer interaction.",
+    "category": "Technology",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "4 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-husharu-pittalu-is-sparking-massive-family-debates",
+    "title": "Why Husharu Pittalu Is Sparking Massive Family Debates",
+    "summary": "Targeting today's youth culture with a bold blend of adult humor and emotional parenting lessons, 'Husharu Pittalu' is turning heads in theaters.",
+    "category": "Entertainment",
+    "imageUrl": "https://assets.eenadu.net/featureimages/680X310/126145389-680X310.webp",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-disney-is-completely-reimagining-tomorrowland-right-now",
+    "title": "Why Disney Is Completely Reimagining Tomorrowland Right Now",
+    "summary": "Disney has officially announced a massive reimagining of Tomorrowland at Disneyland Resort, bringing a fresh wave of innovation and futuristic optimism to the iconic park.",
+    "category": "Entertainment",
+    "imageUrl": "https://disneyparksblog.com/app/uploads/2026/08/Tomorrowland-768x349.png",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "inside-santos-vs-guadalajara-what-you-need-to-know",
+    "title": "Inside Santos vs Guadalajara: What You Need to Know",
+    "summary": "As Liga MX resumes after the Leagues Cup pause, Guadalajara travels to Torreón to face Santos Laguna in a high-stakes Apertura 2026 clash.",
+    "category": "Sports",
+    "imageUrl": "https://storage.chivasdecorazon.com.mx/2018/noticias/big/41274.jpg?time1786918732",
+    "readTime": "2 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-real-madrids-clash-with-schalke-sparked-outrage",
+    "title": "Why Real Madrid's Clash with Schalke Sparked Outrage",
+    "summary": "Kylian Mbappé avoids a red card after an ugly clash as Real Madrid defeats FC Schalke 04 3-0 in a high-profile test match.",
+    "category": "Sports",
+    "imageUrl": "https://images.bild.de/6a81cf98169e8e32c0aea5a3/1b7532268d346727b55977d4e7a030e3,8cbcf0d3?w=1200",
+    "readTime": "3 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "inside-celebrity-deaths-2026-what-you-need-to-know",
+    "title": "Inside Celebrity Deaths 2026: What You Need to Know",
+    "summary": "Take a thoughtful look back at the beloved icons, trailblazers, and legendary entertainers we have lost in 2026, honoring their remarkable legacies.",
+    "category": "Entertainment",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "4 min read",
+    "date": "2026-08-17"
+  },
+  {
+    "id": "why-rory-mcilroy-feels-lost-right-now-ahead-of-fedex-cup",
+    "title": "Why Rory McIlroy Feels Lost Right Now Ahead of FedEx Cup",
+    "summary": "Discover why Rory McIlroy admits he feels totally lost after a dismal finish at the St Jude Championship, and what it means for his FedEx Cup hopes.",
+    "category": "World Affairs",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/78e7/live/5f20d3f0-99c5-11f1-b885-e3bffd46cc19.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "what-englands-new-nppf-rules-mean-for-your-local-pub",
+    "title": "What England's New NPPF Rules Mean for Your Local Pub",
+    "summary": "England is launching aggressive new planning rules to stop developers from easily converting local pubs. Here is what the NPPF overhaul means for communities and the housing market.",
+    "category": "World Affairs",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/ff85/live/bb0fc5c0-9981-11f1-a4eb-59b79ff5ff4f.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-trump-unexpectedly-slashed-us-south-korea-military-drills",
+    "title": "Why Trump Unexpectedly Slashed US-South Korea Military Drills",
+    "summary": "US President Donald Trump has ordered a major scaling back of joint military exercises with South Korea, citing soaring costs and complicated geopolitical ties.",
+    "category": "World Affairs",
+    "imageUrl": "https://images.tagesschau.de/image/07ef11ab-be28-4de8-8822-810d81af280c/AAABoA1PEl8/AAABnSSvrFg/16x9-big/donald-trust-896.jpg?width=1200",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-vanillamace-is-trending-across-social-media-right-now",
+    "title": "Why Vanillamace is Trending Across Social Media Right Now",
+    "summary": "The mystery surrounding Twitch star Vanillamace has fans scrambling for answers. Here is the truth behind her sudden viral fame and the fascination with her real identity.",
+    "category": "Social-Media",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "the-real-reason-behind-apples-sudden-rush-of-software-updates",
+    "title": "The Real Reason Behind Apple's Sudden Rush of Software Updates",
+    "summary": "As cybercriminals weaponize generative AI, Apple is radically changing its OS update playbook. Here is what this shift means for your device's security.",
+    "category": "Technology",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "how-apple-unexpectedly-partnered-with-alibaba-for-china-ai",
+    "title": "How Apple Unexpectedly Partnered With Alibaba for China AI",
+    "summary": "To bypass Beijing's strict regulatory wall, Apple is reportedly turning to e-commerce giant Alibaba to power its upcoming Apple Intelligence features in China.",
+    "category": "Technology",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "the-real-reason-behind-robert-irwins-logies-spotlight",
+    "title": "The Real Reason Behind Robert Irwin's Logies Spotlight",
+    "summary": "Inside the glittering chaos of the 2026 Logies afterparty as Australia's biggest television stars shut down Sydney until the early morning hours.",
+    "category": "Entertainment",
+    "imageUrl": "https://content.api.news/v3/images/bin/fedeeb4d98dcd32699aec514bd4afbae",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-club-tijuana-vs-cruz-azul-is-captivator-fans-right-now",
+    "title": "Why Club Tijuana vs Cruz Azul is Captivator Fans Right Now",
+    "summary": "Dive deep into the latest Club Tijuana vs Cruz Azul showdown, breaking down the tactical masterclass, turning points, and what this result means for the league.",
+    "category": "Sports",
+    "imageUrl": "/images/placeholder.svg",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-sri-lanka-is-crumbling-against-indias-spin-threat-right-now",
+    "title": "Why Sri Lanka is Crumbling Against India's Spin Threat Right Now",
+    "summary": "India's spinners put on a masterclass on Day 3, leaving Sri Lanka's batting lineup in tatters. Here is how Jadeja, Suthar, and Kuldeep seized absolute control.",
+    "category": "Sports",
+    "imageUrl": "https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/421200/421272.6.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-uniswap-is-quietly-bleeding-on-binance-right-now",
+    "title": "Why Uniswap is Quietly Bleeding on Binance Right Now",
+    "summary": "While retail investors panic-sell Uniswap (UNI) down to critical multi-month lows, Binance trading data reveals that institutional crypto whales are quietly absorbing the selling pressure.",
+    "category": "Economics",
+    "imageUrl": "https://image.blockchain.news:443/features/36A402A3BE66275A008D84DCF65E3009FFC99DBAA087D3186CABD06DC99B995D.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-sterling-point-is-primes-biggest-gen-z-hit-right-now",
+    "title": "Why Sterling Point is Prime's Biggest Gen Z Hit Right Now",
+    "summary": "Discover how Prime Video's breakout original teen drama Sterling Point is rewriting the rules of Gen Z television with natural dialogue and breakout success.",
+    "category": "Entertainment",
+    "imageUrl": "https://helios-i.mashable.com/imagery/articles/05Q2klsjitNhobXuByE9anF/hero-image.fill.size_1200x675.v1786654579.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-atletico-mg-is-shaking-up-the-transfer-market-right-now",
+    "title": "Why Atlético-MG is Shaking Up the Transfer Market Right Now",
+    "summary": "Discover the latest moves inside Atlético-MG as the club secures major reinforcements, addresses potential exits like Alexsander, and eyes new defensive options.",
+    "category": "Sports",
+    "imageUrl": "https://s2-ge.glbimg.com/empCUiylsNdRwxJGCzf-YeRJyoI=/3356x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2026/q/k/oLz29qSfC3xwOUju008Q/55233883271-37f80b5f35-o.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-rodri-is-redefining-midfield-mastery-right-now",
+    "title": "Why Rodri is Redefining Midfield Mastery Right Now",
+    "summary": "Discover how Manchester City and Spain's midfield maestro Rodri continues to dominate world football, shaping the modern game with unmatched intelligence and consistency.",
+    "category": "Sports",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-uberlandias-historic-promotion-changes-everything-now",
+    "title": "Why Uberlândia's Historic Promotion Changes Everything Now",
+    "summary": "After 23 long years away, Uberlândia Esporte Clube secured a stunning promotion to Serie C, proving that their ambitious multi-million-dollar transformation is finally paying off.",
+    "category": "Sports",
+    "imageUrl": "https://s2-ge.glbimg.com/fg2w2_lXDB56Eos-f2q3NfIZCHs=/1920x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2026/L/d/9lI0M7QFaAjekVFFIbfA/jl-tm-2-.jpg",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-the-economy-is-sending-mixed-signals-right-now",
+    "title": "Why the Economy is Sending Mixed Signals Right Now",
+    "summary": "Confused by the current economic landscape? We break down the conflicting data on inflation, employment, and growth to reveal what's really happening.",
+    "category": "Economics",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-stock-markets-are-surging-under-trump-in-2026",
+    "title": "Why Stock Markets Are Surging Under Trump in 2026",
+    "summary": "As the 2026 markets react to the Trump administration's economic policies, investors are scrambling to understand what's driving this massive financial shift.",
+    "category": "Economics",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-the-2026-midterm-elections-are-changing-the-presidency-forever",
+    "title": "Why The 2026 Midterm Elections Are Changing The Presidency Forever",
+    "summary": "Discover how recent allegations of executive interference in the upcoming 2026 midterms are sparking intense national debate over the future of presidential power.",
+    "category": "Politics",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "the-real-reason-behind-trumps-iran-stance-today",
+    "title": "The Real Reason Behind Trump's Iran Stance Today",
+    "summary": "Discover the critical geopolitical shifts and strategic maneuvers driving the latest high-stakes tensions between Washington and Tehran.",
+    "category": "Politics",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-ai-video-generators-are-suddenly-taking-over-tiktok",
+    "title": "Why AI Video Generators Are Suddenly Taking Over TikTok",
+    "summary": "AI Inspo has dropped a game-changing video generator designed to let absolute beginners pump out viral-ready TikToks and Instagram Reels in seconds.",
+    "category": "Technology",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-vanillamace-is-suddenly-taking-over-twitch-right-now",
+    "title": "Why Vanillamace is Suddenly Taking Over Twitch Right Now",
+    "summary": "Uncover the identity of the internet's newest streaming obsession and discover why everyone is talking about Vanillamace.",
+    "category": "Social-Media",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-apple-is-ramping-up-security-updates-right-now",
+    "title": "Why Apple is Ramping Up Security Updates Right Now",
+    "summary": "Apple is accelerating its software update cycle to defend against a new wave of sophisticated, AI-driven cyber threats targeting everyday users.",
+    "category": "Technology",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-apples-china-ai-strategy-relies-on-alibaba",
+    "title": "Why Apple's China AI Strategy Relies on Alibaba",
+    "summary": "Apple is reportedly teaming up with Chinese tech giant Alibaba to build a customized AI model, paving the way for Apple Intelligence in the world's most competitive market.",
+    "category": "Technology",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "inside-hollywood-what-you-need-to-know",
+    "title": "Inside Hollywood: What You Need to Know",
+    "summary": "A seismic shift is underway in the entertainment capital as major studios rethink their strategies, transforming the future of global cinema.",
+    "category": "Movies",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "how-vasco-unexpectedly-reshaped-their-attack-to-face-santos",
+    "title": "How Vasco Unexpectedly Reshaped Their Attack to Face Santos",
+    "summary": "Vasco manager Pedro Emanuel is unleashing a revamped South American frontline featuring debutant Facundo Colidio to counter a star-studded Santos side.",
+    "category": "Sports",
+    "imageUrl": "https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Pedro-Emanuel-Vasco-scaled-aspect-ratio-512-320-3.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "how-psg-unexpectedly-faltered-in-a-chaotic-clash-against-lens",
+    "title": "How PSG Unexpectedly Faltered in a Chaotic Clash Against Lens",
+    "summary": "A star-studded PSG struggled to break down a incredibly resilient Lens side in a match defined by tactical desperation, goalpost drama, and tactical chess.",
+    "category": "Sports",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/5e08/live/008791f0-4235-11f0-835b-310c7b938e84.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-leon-marchand-is-rewriting-swimming-history-right-now",
+    "title": "Why Léon Marchand Is Rewriting Swimming History Right Now",
+    "summary": "Léon Marchand continues his dominant streak by claiming the 400m freestyle European title in record-breaking fashion, shattering a 15-year-old French record.",
+    "category": "Sports",
+    "imageUrl": "https://www.lequipe.fr/_medias/img-photo-jpg/marchand-leon-fra-a-mounic-l-equipe/1500000002554518/0:0,1999:1332-1200-800-75/b6926.jpg",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-pumas-vs-queretaro-is-shaking-up-liga-mx-right-now",
+    "title": "Why Pumas vs Querétaro Is Shaking Up Liga MX Right Now",
+    "summary": "The high-stakes clash between Pumas UNAM and Querétaro delivered tactical drama, crucial points, and a massive shift in the Liga MX playoff race.",
+    "category": "Sports",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-sam-burns-is-making-major-waves-in-golf-right-now",
+    "title": "Why Sam Burns is Making Major Waves in Golf Right Now",
+    "summary": "Discover the latest turning points in Sam Burns' career, his rise through the professional golf ranks, and what makes him a player to watch closely.",
+    "category": "Sports",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-the-2026-stock-market-under-trump-is-shifting-right-now",
+    "title": "Why the 2026 Stock Market Under Trump is Shifting Right Now",
+    "summary": "As the 2026 economic landscape unfolds under the Trump administration, Wall Street is reacting to shifting fiscal policies and market drivers. Here is what investors need to know about the current financial climate.",
+    "category": "Economics",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-the-2026-midterm-elections-are-under-intense-scrutiny",
+    "title": "Why The 2026 Midterm Elections Are Under Intense Scrutiny",
+    "summary": "A new report from the Center for American Progress sheds light on unprecedented executive interference in the upcoming midterms, raising serious questions about the future of governance.",
+    "category": "Politics",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-ai-video-generators-are-suddenly-reshaping-tiktok",
+    "title": "Why AI Video Generators Are Suddenly Reshaping TikTok",
+    "summary": "AI Inspo has just dropped a user-friendly video generator designed to put viral TikTok and Reels creation into the hands of absolute beginners.",
+    "category": "Social-Media",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-vanillamace-is-dominating-twitch-streams-right-now",
+    "title": "Why Vanillamace is Dominating Twitch Streams Right Now",
+    "summary": "The mystery surrounding internet personality Vanillamace has fans searching for answers. Here is the truth behind the viral creator's meteoric rise.",
+    "category": "Social-Media",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "how-billionaire-jaime-gilinski-unexpectedly-stepped-up-for-colombia",
+    "title": "How Billionaire Jaime Gilinski Unexpectedly Stepped Up for Colombia",
+    "summary": "Following a devastating 7.4 magnitude earthquake in Cali, billionaire Jaime Gilinski and his wife Raquel Kardonski have stepped in with a historic 150 billion peso donation.",
+    "category": "Technology",
+    "imageUrl": "https://www.semana.com/resizer/v2/F7AITEIUHVHG7K7O4CPXSVA5ZY.jpg?auth=44884a2cf7480e58650727cf64733d9c7eb95a1982310afbfd454bd186b1d074&smart=true&quality=75&width=1200&height=720",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-this-massive-drone-attack-is-a-major-turning-point",
+    "title": "Why This Massive Drone Attack is a Major Turning Point",
+    "summary": "Ukraine has launched one of its largest drone waves of the war, hitting a massive warehouse near Moscow and signaling a drastic expansion in its deep-strike capabilities.",
+    "category": "Technology",
+    "imageUrl": "https://i.guim.co.uk/img/media/32117ccbd21fa32d8a2eba949e84cad036fc92aa/253_0_2820_2255/master/2820.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=121f2d449227d7e47b73a0ec7b6a7b82",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-coco-2-is-shaping-up-to-be-pixars-biggest-sequel-yet",
+    "title": "Why Coco 2 Is Shaping Up to Be Pixar's Biggest Sequel Yet",
+    "summary": "Disney just dropped major details about Coco 2 at D23, revealing a surprising plot twist, a 2029 release date, and the return of a key villain.",
+    "category": "Movies",
+    "imageUrl": "https://variety.com/wp-content/uploads/2026/08/Image-1.png?w=1200&h=563&crop=1",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-maya-boyd-is-captivating-audiences-everywhere",
+    "title": "Why Maya Boyd is Captivating Audiences Everywhere",
+    "summary": "Discover the meteoric rise of actress Maya Boyd as she takes the entertainment world by storm with unforgettable performances.",
+    "category": "World Affairs",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "3 min read",
+    "date": "2026-08-16"
+  },
+  {
+    "id": "why-australian-cricket-is-facing-a-massive-turning-point",
+    "title": "Why Australian Cricket is Facing a Massive Turning Point",
+    "summary": "Dive into the latest turbulence shaking Australian cricket, exploring the critical factors behind the headlines and what it means for the sport's future.",
+    "category": "Sports",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1200&q=80\"]",
+    "readTime": "4 min read",
+    "date": "2026-08-16"
+  },
+  {
     "id": "why-thailands-shocking-victory-extends-their-historic-streak",
     "title": "Why Thailand's Shocking Victory Extends Their Historic Streak",
     "summary": "Thailand secured a commanding 3-1 first-leg victory over Singapore in the ASEAN Championship semi-finals, extending their dominant winning streak to 11 games.",
@@ -90,19 +594,10 @@
     "date": "2026-08-16"
   },
   {
-    "id": "inside-deborah-mailmans-historic-logie-win-what-you-need-to-know",
-    "title": "Inside Deborah Mailman's Historic Logie Win: What You Need to Know",
-    "summary": "Australian acting icon Deborah Mailman made history at the 2026 Logie Awards, but her incredibly grounded post-win plans are what everyone is talking about.",
-    "category": "Technology",
-    "imageUrl": "https://live-production.wcms.abc-cdn.net.au/97c2b4f30230ce1d0bee88d4ed72fc95?impolicy=wcms_watermark_news&cropH=781&cropW=1389&xPos=0&yPos=12&width=1200&height=485&imformat=generic",
-    "readTime": "3 min read",
-    "date": "2026-08-16"
-  },
-  {
     "id": "inside-marvels-new-x-men-casting-what-you-need-to-know",
     "title": "Inside Marvel’s New X-Men Casting: What You Need to Know",
     "summary": "Marvel Studios just shocked fans at D23 by revealing the star-studded cast for the highly anticipated X-Men reboot. From Adam Driver to Sadie Sink, here is who is playing who.",
-    "category": "Movies",
+    "category": "Entertainment",
     "imageUrl": "https://ichef.bbci.co.uk/news/1024/branded_news/89b0/live/c07efd60-988b-11f1-83ef-33838a09c7c1.jpg",
     "readTime": "3 min read",
     "date": "2026-08-16"
@@ -228,7 +723,7 @@
     "id": "how-marvel-unexpectedly-dropped-its-massive-x-men-cast",
     "title": "How Marvel Unexpectedly Dropped Its Massive X-Men Cast",
     "summary": "Kevin Feige stunned D23 with a star-studded X-Men lineup, featuring Sadie Sink as Jean Grey, Kit Connor as Cyclops, and Adam Driver as the villain.",
-    "category": "Movies",
+    "category": "Entertainment",
     "imageUrl": "https://cdn.marvel.com/content/2x/x-men_cast_card.webp",
     "readTime": "3 min read",
     "date": "2026-08-16"
@@ -299,7 +794,7 @@
   {
     "id": "why-nicaraguas-ortega-just-canceled-future-elections",
     "title": "Why Nicaragua’s Ortega Just Canceled Future Elections",
-    "summary": "President Daniel Ortega has officially declared an end to elections in Nicaragua, locking in a permanent grip on power after two decades.",
+    "summary": "President Daniel Ortega has officially declared an end to elections in Nicaragua, solidifying a permanent grip on power after two decades.",
     "category": "Politics",
     "imageUrl": "[\"https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=1200&q=80\"]",
     "readTime": "3 min read",
@@ -387,11 +882,11 @@
     "date": "2026-08-16"
   },
   {
-    "id": "inside-celebrity-deaths-2026-what-you-need-to-know",
-    "title": "Inside Celebrity Deaths 2026: What You Need to Know",
-    "summary": "Take a reflective look back at the beloved icons, trailblazing artists, and entertainment legends we said goodbye to in 2026.",
-    "category": "Technology",
-    "imageUrl": "[\"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80\"]",
+    "id": "why-binance-is-facing-massive-scrutiny-right-now",
+    "title": "Why Binance is Facing Massive Scrutiny Right Now",
+    "summary": "Discover the driving forces behind the latest regulatory pressures and market shifts hitting the world's leading cryptocurrency exchange.",
+    "category": "Economics",
+    "imageUrl": "[\"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80\",\"https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80\"]",
     "readTime": "4 min read",
     "date": "2026-08-16"
   },
@@ -401,501 +896,6 @@
     "summary": "Discover the precise schedule and factors determining the Isha prayer time across Egypt's major governorates today.",
     "category": "World Affairs",
     "imageUrl": "https://img.youm7.com/large/201810050651195119.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-rahmat-shah-is-making-waves-in-global-sports-right-now",
-    "title": "Why Rahmat Shah is Making Waves in Global Sports Right Now",
-    "summary": "Discover the journey of Rahmat Shah, his latest milestone moments, and why the cricket star is capturing the attention of fans worldwide.",
-    "category": "Sports",
-    "imageUrl": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-trumps-2026-economic-agenda-is-rewriting-wall-street",
-    "title": "Why Trump's 2026 Economic Agenda is Rewriting Wall Street",
-    "summary": "As the 2026 stock market responds to the Trump administration's policy shifts, investors are recalibrating portfolios. Here is what is driving the latest financial trends.",
-    "category": "Economics",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-the-fedex-st-jude-partnership-still-matters-today",
-    "title": "Why the FedEx St. Jude Partnership Still Matters Today",
-    "summary": "Explore the enduring impact of the FedEx St. Jude partnership, tracing its evolution into one of the most powerful corporate alliances in sports and charity.",
-    "category": "Sports",
-    "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-nicaraguas-ortega-is-canceling-elections-right-now",
-    "title": "Why Nicaragua’s Ortega Is Canceling Elections Right Now",
-    "summary": "President Daniel Ortega has officially declared an end to traditional elections in Nicaragua, locking in his authoritarian grip for the foreseeable future.",
-    "category": "Politics",
-    "imageUrl": "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-the-2026-midterm-elections-are-shaping-up-to-be-a-historic-turning-point",
-    "title": "Why The 2026 Midterm Elections Are Shaping Up to Be a Historic Turning Point",
-    "summary": "Discover the critical warning from political watchdogs regarding executive overreach and what unprecedented administration actions mean for the upcoming midterms.",
-    "category": "Politics",
-    "imageUrl": "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-cocktail-2-what-you-need-to-know-about-the-sequel",
-    "title": "Inside Cocktail 2: What You Need to Know About the Sequel",
-    "summary": "Kriti Sanon, Shahid Kapoor, and Rashmika Mandanna lead the spiritual successor to the 2012 hit, hitting streaming platforms this weekend.",
-    "category": "Movies",
-    "imageUrl": "https://img.etimg.com/thumb/msid-133230993,width-1200,height-900,overlay-economictimes/slideshow.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-paris-european-swimming-championships-what-to-know",
-    "title": "Inside the Paris European Swimming Championships: What to Know",
-    "summary": "As Europe's elite swimmers clash in Paris, here is your ultimate guide to the high-stakes schedule, medal hunts, and how to watch the drama unfold live.",
-    "category": "Sports",
-    "imageUrl": "https://www.zdfheute.de/assets/schwimmen-em-102~1280x720?cb=1786552114020",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-jewish-creative-wave-in-hollywood-what-you-need-to-know",
-    "title": "Inside the Jewish Creative Wave in Hollywood: What You Need to Know",
-    "summary": "From the high-stress kitchen of 'The Bear' to the far reaches of the galaxy, Jewish creators and actors are redefining mainstream entertainment.",
-    "category": "Technology",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-werkendam-tragedy-what-you-need-to-know",
-    "title": "Inside the Werkendam Tragedy: What You Need to Know",
-    "summary": "A quiet Brabant town is left in shock after a 52-year-old man was fatally injured. Here is what we know about the sudden arrest of a 41-year-old suspect.",
-    "category": "Technology",
-    "imageUrl": "https://images.cdn.nos.nl/2/3/p/M/g/R/3SzZzypyhmTNuVGKMyA1t5ctNcgAHj4zuzYAEUi/0x0x1024x576-1024x576.webp",
-    "readTime": "2 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "por-dentro-do-clima-em-sc-o-que-voce-precisa-saber",
-    "title": "Por Dentro do Clima em SC: O Que Você Precisa Saber",
-    "summary": "Santa Catarina enfrenta um fim de semana de extremos, com alertas de temporais, queda de granizo e uma virada de calor que pode passar dos 32°C.",
-    "category": "Technology",
-    "imageUrl": "https://www.defesacivil.sc.gov.br/wp-content/uploads/2025/07/Previsao_5dias.jpeg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-rios-weekend-weather-what-you-need-to-know",
-    "title": "Inside Rio's Weekend Weather: What You Need to Know",
-    "summary": "Planning a beach run or locking in indoor plans? Here is how Rio de Janeiro's shifting weekend weather pattern will impact your Saturday and Sunday.",
-    "category": "Technology",
-    "imageUrl": "https://s2-g1.glbimg.com/dhEhDbKf0a0EUHSeztYmBNDg3uQ=/1200x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/w/S/gn7K32QcqGpqTwoFLoFw/previsao-tempo-rio-de-janeiro-20260815-070500.jpeg",
-    "readTime": "2 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-jacui-river-flood-alert-what-you-need-to-know",
-    "title": "Inside the Jacuí River Flood Alert: What You Need to Know",
-    "summary": "The Civil Defense has issued a critical 'very high risk' flood alert for the Jacuí River, putting local communities on high alert.",
-    "category": "Technology",
-    "imageUrl": "https://www.defesacivil.rs.gov.br/upload/recortes/202608/14112029_130742_GD.png",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-european-media-giants-are-aggressively-blocking-bots-right-now",
-    "title": "Why European Media Giants Are Aggressively Blocking Bots Right Now",
-    "summary": "As publishers clash with AI developers, strict firewalls are locking out automated web scrapers. Here is what this aggressive defensive play means for the future of the internet.",
-    "category": "Technology",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-smilla-kolbe-is-dominating-track-conversations-right-now",
-    "title": "Why Smilla Kolbe is Dominating Track Conversations Right Now",
-    "summary": "German middle-distance runner Smilla Kolbe is turning heads with breakout performances on the track. Here is why sports analysts are calling her the next big name to watch.",
-    "category": "Sports",
-    "imageUrl": "https://bilder.deutschlandfunk.de/bc/56/2f/45/bc562f45-e941-4416-8bd9-96fa1c69b5a0/smilla-kolbe-100-1920x1080.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "how-a-cyprus-holiday-unexpectedly-changed-football-culture",
-    "title": "How a Cyprus Holiday Unexpectedly Changed Football Culture",
-    "summary": "Before modern podcasts and viral post-match rants, one radio host's vacation brainstorm birthed a weekly fan ritual that revolutionized sports media.",
-    "category": "Sports",
-    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/5fde/live/2de1ea70-97d3-11f1-b1e0-bbc28f2688df.png",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-romy-and-michele-2-update-what-you-need-to-know",
-    "title": "Inside the Romy and Michele 2 Update: What You Need to Know",
-    "summary": "Lisa Kudrow and Mira Sorvino are officially back for a Romy and Michele sequel. Here is your first look at the cast, plot, and streaming details.",
-    "category": "Movies",
-    "imageUrl": "https://www.hollywoodreporter.com/wp-content/uploads/2025/01/MSDROAN_BV002-H-2025.jpg?w=1200&h=730&crop=1",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "the-real-reason-behind-singapores-container-refund-controversy",
-    "title": "The Real Reason Behind Singapore's Container Refund Controversy",
-    "summary": "Singapore's NEA has cleared the air after a major internet math fail led to wild accusations of missing funds in the country's new recycling scheme.",
-    "category": "Politics",
-    "imageUrl": "https://dam.mediacorp.sg/image/upload/s--vPYZerkY--/c_crop,h_900,w_1600,x_0,y_82/c_fill,g_auto,h_676,w_1200/fl_relative,g_south_east,l_mediacorp:cna:watermark:2021-08:cna,w_0.1/f_auto,q_auto/v1/mediacorp/cna/image/2026/03/18/sya_2531.jpg?itok=AY51clMh",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-ukraines-sudden-august-heatwave-what-you-need-to-know",
-    "title": "Inside Ukraine’s Sudden August Heatwave: What You Need to Know",
-    "summary": "A powerful anticyclone is pushing temperatures toward +33°C, triggering an unprecedented Level III hydrological emergency as major rivers plunge to historic lows.",
-    "category": "Technology",
-    "imageUrl": "https://img.tsn.ua/cached/202/tsn-51cb131e/thumbs/1200x630/fb/7b/775a7953d8b7dbbf955f182ecddd7bfb.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "how-christopher-abbott-unexpectedly-became-marvels-new-professor-x",
-    "title": "How Christopher Abbott Unexpectedly Became Marvel's New Professor X",
-    "summary": "Marvel's official X-Men cast is finally here, featuring Christopher Abbott as Charles Xavier and a shocking villain role for Adam Driver.",
-    "category": "Movies",
-    "imageUrl": "https://cdn.marvel.com/content/2x/marvelstudios_brick_1.webp",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-bayern-vs-stuttgart-what-you-need-to-know",
-    "title": "Inside Bayern vs Stuttgart: What You Need to Know",
-    "summary": "The Bundesliga is back with a blockbuster opening match as Bayern Munich faces VfB Stuttgart. Here is how to watch it free and what's at stake.",
-    "category": "Sports",
-    "imageUrl": "https://img.joyn.de/lido/images/2026/07/05/6dfc7de9-70d8-430c-9cd3-55bd345c560d.jpg/profile:original.webp/%7B%22width%22%3A1920%2C%22rect%22%3A%7B%22x%22%3A0%2C%22y%22%3A313%2C%22width%22%3A6000%2C%22height%22%3A3375%7D%2C%22height%22%3A1080%7D",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-linguizzetta-family-attack-what-you-need-to-know",
-    "title": "Inside the Linguizzetta Family Attack: What You Need to Know",
-    "summary": "A violent ambush on a family of six in Corsica has taken a critical turn. Here is where the investigation stands after a wave of police arrests.",
-    "category": "Technology",
-    "imageUrl": "https://france3-regions.franceinfo.fr/image/cKEZdd4lc2R0FgBfHVD-LcIgNLM/930x620/regions/2026/08/15/6a8010897e304936070294.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "how-vfl-bochum-unexpectedly-silenced-braunschweigs-hype",
-    "title": "How VfL Bochum Unexpectedly Silenced Braunschweig's Hype",
-    "summary": "After Eintracht Braunschweig's crushing 6-1 opening win, VfL Bochum executed a tactical masterclass to secure their first victory of the season.",
-    "category": "Sports",
-    "imageUrl": "https://images.sportschau.de/image/6e5deaa1-87a7-4fec-a262-0b0be335db50/AAABoAFsIs0/AAABnSSvrFg/16x9-big/braunschweig-bochum-118.jpg?width=1200",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-strait-of-hormuz-attack-what-you-need-to-know",
-    "title": "Inside the Strait of Hormuz Attack: What You Need to Know",
-    "summary": "ADNOC confirms a ship attack in the Strait of Hormuz following previous Iranian targeting, sparking urgent international concerns over global energy security and maritime freedom.",
-    "category": "World Affairs",
-    "imageUrl": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_0,w_8185,h_4604,c_crop/w_1920,h_1008,c_fill,q_auto,g_center/t_cnnarabic_watermark_logo_v5/cnnarabic/2026/08/15/images/341582.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-the-national-telecom-regulator-investigation-what-you-need-to-know",
-    "title": "Inside The National Telecom Regulator Investigation: What You Need to Know",
-    "summary": "Egyptian authorities launch a sweeping investigation after citizens discover active mobile lines registered under their names without their knowledge or consent.",
-    "category": "Technology",
-    "imageUrl": "https://www.skynewsarabia.com/images/v1/2026/08/14/1886182/1200/630/1-1886182.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-brisbane-vs-gold-coast-is-turning-into-the-ultimate-afl-showdown",
-    "title": "Why Brisbane vs Gold Coast is Turning Into the Ultimate AFL Showdown",
-    "summary": "As the Brisbane Lions charge toward a historic three-peat, a surging Gold Coast Suns side is looking to crash the party in a high-stakes Saturday twilight QClash.",
-    "category": "Sports",
-    "imageUrl": "https://content.api.news/v3/images/bin/3c8010d02e86ede170d704076596dea1",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "the-real-reason-behind-binances-latest-global-shift",
-    "title": "The Real Reason Behind Binance's Latest Global Shift",
-    "summary": "Discover the driving forces behind Binance's latest strategic moves and what this evolving regulatory landscape means for everyday crypto traders.",
-    "category": "Economics",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-cynthia-klitbo-just-unloaded-on-la-casa-de-los-famosos-star",
-    "title": "Why Cynthia Klitbo Just Unloaded on La Casa de los Famosos Star",
-    "summary": "Cynthia Klitbo didn't hold back as she slammed a fellow contestant on La Casa de los Famosos México, calling out her lack of teamwork and lazy habits.",
-    "category": "Entertainment",
-    "imageUrl": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-malagas-storm-alert-is-skipping-the-capital-city",
-    "title": "Why Málaga's Storm Alert Is Skipping the Capital City",
-    "summary": "Despite yellow storm warnings issued across the province of Málaga, the capital is experiencing a completely different weather pattern. Here is what locals and visitors need to know about this weekend's forecast.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.ecestaticos.com/oMce8JfC7jPeUhfHotHG5o4rLrA=/0x0:0x0/600x315/filters:fill(white):format(jpg):quality(99):watermark(f.elconfidencial.com/file/65c/43d/0ca/65c43d0ca5dbd5ff8f19b44167343db9.png,0,275,1)/f.elconfidencial.com/original/346/906/088/34690608895de2ed047ccb91a794d497.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-kit-connor-and-the-new-x-men-cast-are-breaking-the-internet",
-    "title": "Why Kit Connor and the New X-Men Cast Are Breaking the Internet",
-    "summary": "Marvel just blew the lid off its highly anticipated X-Men reboot, setting a blockbuster release date and introducing a fresh cast that has the entire fandom talking.",
-    "category": "Movies",
-    "imageUrl": "https://cdn.ome.lt/91dSmOpjk9AinhvbGztbnPCCJFA=/1200x630/smart/filters:format(webp)/extras/conteudos/imagem_2026-08-14_211420131.png",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-indias-extreme-august-weather-what-you-need-to-know",
-    "title": "Inside India's Extreme August Weather: What You Need to Know",
-    "summary": "An active monsoon surge is set to bring heavy rains and yellow alerts to northwest India. Here is how it affects key regions like Delhi, Punjab, and Haryana.",
-    "category": "World Affairs",
-    "imageUrl": "https://www.tribuneindia.com/sortd-service/imaginary/v22-01/jpg/large/high?url=dGhldHJpYnVuZS1zb3J0ZC1wcm8tcHJvZC1zb3J0ZC9tZWRpYWJkNGRhMjIwLTk4NjAtMTFmMS1iNmVmLTk1MTQwZTcyYzNlZi5qcGc=",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-marvels-new-x-men-cast-what-you-need-to-know",
-    "title": "Inside Marvel’s New X-Men Cast: What You Need to Know",
-    "summary": "Marvel has finally revealed its highly anticipated X-Men lineup, featuring rising star Maya Boyd as Storm and Adam Driver in a sinister mystery role.",
-    "category": "Movies",
-    "imageUrl": "https://cdn.marvel.com/content/2x/marvelstudios_brick_1.webp",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-this-dana-storm-is-threatening-the-weekend",
-    "title": "Why This DANA Storm is Threatening the Weekend",
-    "summary": "A powerful new DANA is sweeping across the peninsula this weekend, bringing severe storms, large hail, and dangerous winds. Here is where the worst weather will hit.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "the-real-reason-behind-the-2026-mawlid-al-nabi-date-shift",
-    "title": "The Real Reason Behind the 2026 Mawlid Al-Nabi Date Shift",
-    "summary": "Discover how astronomical calculations determine the exact date for Mawlid Al-Nabi in 2026 and what it means for your upcoming official holidays.",
-    "category": "World Affairs",
-    "imageUrl": "https://img.youm7.com/large/202607121135253525_88.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-pokemon-go-is-crashing-right-now",
-    "title": "Why Pokémon GO Is Crashing Right Now",
-    "summary": "Trainers worldwide are facing sudden server disconnects and login errors. Here is what you need to know about the latest outage.",
-    "category": "Technology",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-avengers-doomsday-what-you-need-to-know",
-    "title": "Inside Avengers: Doomsday: What You Need to Know",
-    "summary": "Marvel shook D23 with massive casting surprises, returning MCU legends, and a first look at the ultimate multiverse showdown in Avengers: Doomsday.",
-    "category": "Movies",
-    "imageUrl": "https://cdn.marvel.com/content/2x/avengers-doomsday-d23-2026-poster-trailer-article-card.webp",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-bbva-app-users-are-panicking-over-todays-outage",
-    "title": "Why BBVA App Users Are Panicking Over Today's Outage",
-    "summary": "Cuentahabientes de BBVA reportan severas fallas en la aplicación justo el día de quincena, desatando una ola de quejas en redes sociales.",
-    "category": "Economics",
-    "imageUrl": "https://img.mvsnoticias.com/ahdkdXHmSPLLeQ6WfJPqahVIp_S07zxqFKlpaqgD5BE/rs:fill:1200:630:0/g:fp:0.5:0.5/f:jpg/aHR0cHM6Ly9hc3NldHMubXZzbm90aWNpYXMuY29tL2ltZy8xNzg2NzU2Nzk1OTMxLTlpcGpwZy5qcGc",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-zaandam-what-you-need-to-know-about-the-latest-shift",
-    "title": "Inside Zaandam: What You Need to Know About the Latest Shift",
-    "summary": "Discover the unfolding developments in Zaandam as recent events spark widespread public discussion and reshape local dynamics.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "how-google-unexpectedly-upgraded-the-pixel-11-lineup",
-    "title": "How Google Unexpectedly Upgraded the Pixel 11 Lineup",
-    "summary": "Google has officially unveiled the Pixel 11, Pixel 11 Pro, and Pixel 11 Pro XL, featuring the groundbreaking Tensor G6 chip, a 40% thinner camera bar, and advanced Gemini AI integration.",
-    "category": "Technology",
-    "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Fudge_Sizzle-Grizzly_Thumbnail_2730x1532_3.width-1300.png",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-coventry-vs-monaco-is-captivating-football-fans-right-now",
-    "title": "Why Coventry vs Monaco is Captivating Football Fans Right Now",
-    "summary": "Dive into the fascinating football fixture between Coventry and Monaco, exploring the tactical brilliance, key player matchups, and what this clash means for both clubs.",
-    "category": "Sports",
-    "imageUrl": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-beaufort-county-is-facing-a-brutal-118-degree-heat-wave-right-now",
-    "title": "Why Beaufort County is Facing a Brutal 118-Degree Heat Wave Right Now",
-    "summary": "An extreme heat warning grips Beaufort County as dangerous temperatures and 118-degree heat indexes threaten public safety through the weekend.",
-    "category": "World Affairs",
-    "imageUrl": "https://s.yimg.com/lo/mysterio/api/70edba20ad8541134684adcb10c63e1963776b50553049915d24d5d308b947b3/lightyear_networkapi/resizefill_w1140_h729%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fhilton_head_island_packet_mcclatchy_articles_619%2Fde904b9082f82084232f8e85b8a5a49f.png",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-schds-3percent-yield-beats-high-yield-traps-every-time",
-    "title": "Why SCHD's 3% Yield Beats High-Yield Traps Every Time",
-    "summary": "Discover why chasing high dividend yields often backfires and how SCHD's focus on quality over payout size builds massive long-term wealth.",
-    "category": "World Affairs",
-    "imageUrl": "https://247wallst.com/wp-content/uploads/2024/03/shutterstock-1822415267-huge-licensed-scaled.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-sk-what-you-need-to-know",
-    "title": "Inside 송도 럭스 오션 sk뷰: What You Need to Know",
-    "summary": "Residents of Songdo Luxe Ocean SK VIEW demand safety audits and full reconstruction following alarming structural defects and thousands of unresolved complaints.",
-    "category": "World Affairs",
-    "imageUrl": "https://img6.yna.co.kr/mpic/YH/2026/08/14/MYH20260814006600038_P1.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-miami-dolphins-are-facing-a-massive-preseason-reality-check",
-    "title": "Why Miami Dolphins Are Facing a Massive Preseason Reality Check",
-    "summary": "Following a turbulent week of joint practices, the Miami Dolphins face a high-stakes preseason test against the Washington Commanders that highlights major roster concerns.",
-    "category": "Sports",
-    "imageUrl": "https://img.covers.com/cms/covers/53c631f5-75e3-41ae-b2d6-7c0a78a4ccde.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "the-real-reason-behind-gimnasio-campestre-los-laureles-closure",
-    "title": "The Real Reason Behind Gimnasio Campestre Los Laureles Closure",
-    "summary": "Cundinamarca authorities order the closure and license cancellation of Gimnasio Campestre Los Laureles following the tragic death of student Valeria Afanador.",
-    "category": "World Affairs",
-    "imageUrl": "https://www.infobae.com/resizer/v2/NNB7M2MYTFFGLAIWU6TH52JTRY.jpg?auth=88cabdc3812355b242f1321e5252508032c85979437907d087b5a0e723da3a4c&smart=true&width=1200&height=630&quality=85",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-sushi-is-taking-over-food-culture-right-now",
-    "title": "Why Sushi is Taking Over Food Culture Right Now",
-    "summary": "Discover the cultural shifts and culinary innovations driving the unprecedented global obsession with sushi today.",
-    "category": "World Affairs",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-players-pizza-and-pub-was-targeted-in-shocking-burglary",
-    "title": "Why Players Pizza & Pub Was Targeted in Shocking Burglary",
-    "summary": "Just hours after a devastating fire collapsed its roof, a local Wisconsin pizzeria was hit by a brazen overnight burglary. Here is what we know.",
-    "category": "World Affairs",
-    "imageUrl": "https://gray-wbay-prod.gtv-cdn.com/resizer/v2/CGOJHGK5DJGMVFXPCBXL7EJPEE.png?auth=e8278f165bb2174af11180a771f7a3d64f161909687a6d697783a9ff90a86c9d&width=1200&height=600&smart=true",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "the-real-reason-behind-colombias-devastating-quake-response",
-    "title": "The Real Reason Behind Colombia's Devastating Quake Response",
-    "summary": "As the death toll from a massive 7.4 magnitude earthquake climbs past 280, critical questions emerge over humanitarian aid and rescue operations.",
-    "category": "World Affairs",
-    "imageUrl": "https://e01-phantom-elmundo.uecdn.es/5af96cff4024cff854d0cb33e71f6f22/resize/1200/f/webp/assets/multimedia/imagenes/2026/08/14/17866848045052.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-this-rare-partial-eclipse-is-a-must-see",
-    "title": "Why This Rare Partial Eclipse is a Must-See",
-    "summary": "Get ready for a stunning lunar spectacle as a partial lunar eclipse lights up the Spanish night sky on August 28, completely safe to watch without any special gear.",
-    "category": "Technology",
-    "imageUrl": "https://img.europapress.es/fotoweb/fotonoticia_20260814181155_1200.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-cbvs-new-gender-eligibility-rule-changes-brazilian-volleyball-forever",
-    "title": "Why CBV’s New Gender Eligibility Rule Changes Brazilian Volleyball Forever",
-    "summary": "The Brazilian Volleyball Confederation has adopted the IOC's strict gender eligibility policy, introducing mandatory SRY gene screening that directly impacts transgender star Tifanny Abreu's career.",
-    "category": "Sports",
-    "imageUrl": "https://s2-ge.glbimg.com/_hFFbqFj-R2FBmxNK1BFN3ZVWzE=/4160x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/g/g/CyIsg7QiaZay5U87DWSQ/osascovoleibolclbe-carol-fotografia-30-.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-comiket-108-what-you-need-to-know-about-the-ultra-kaguya-hime-controversy",
-    "title": "Inside Comiket 108: What You Need to Know About the 'Ultra Kaguya-hime!' Controversy",
-    "summary": "Discover why the staff book for the hit Netflix anime 'Ultra Kaguya-hime!' sparked a fierce debate at Comiket 108, leading to a sudden free PDF release.",
-    "category": "Entertainment",
-    "imageUrl": "https://img.kai-you.net/storage/2026/08/3d2e8925-62ca-463c-9bbd-2941bba5e601/jpg/kaguyahime_stuff_zine.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "inside-tennessee-vols-what-you-need-to-know",
-    "title": "Inside Tennessee Vols: What You Need to Know",
-    "summary": "Get the latest inside scoop from the Tennessee Volunteers' fall camp as key players break down expectations ahead of their crucial first scrimmage.",
-    "category": "Sports",
-    "imageUrl": "https://s.yimg.com/lo/mysterio/api/9d8254323885863915b3ee19c9099f84b471604e4282832690b0ebf686822e4a/lightyear_networkapi/resizefill_w912_h513%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennessee_volunteers_on_si_articles_393%2F4aa335ed8b9b42d7b9d0280ac686d983.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-william-salibas-injury-sparked-arsenals-transfer-panic",
-    "title": "Why William Saliba's Injury Sparked Arsenal's Transfer Panic",
-    "summary": "Arsenal are exploring a shock move for Bayer Leverkusen's Jarell Quansah as William Saliba's long-term injury forces an urgent defensive reshuffle.",
-    "category": "Sports",
-    "imageUrl": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/1c9c/live/3cbc6190-97cb-11f1-a927-0dfab640b8c9.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "the-real-reason-behind-the-terrifying-double-quake-tragedy",
-    "title": "The Real Reason Behind The Terrifying Double Quake Tragedy",
-    "summary": "Two teenage brothers who survived a devastating earthquake in Venezuela found themselves caught in another massive tremor just after relocating to Colombia.",
-    "category": "World Affairs",
-    "imageUrl": "https://ichef.bbci.co.uk/news/1024/branded_news/e44e/live/3a710840-979a-11f1-870d-5d08c49babb2.png",
-    "readTime": "4 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-the-toronto-blue-jays-are-surging-right-now-after-deadline-shakeup",
-    "title": "Why The Toronto Blue Jays Are Surging Right Now After Deadline Shakeup",
-    "summary": "Weeks after a major roster overhaul, the Toronto Blue Jays are making a surprising mid-August push. Here is how their new faces are sparking the turnaround.",
-    "category": "Sports",
-    "imageUrl": "https://www.sportsnet.ca/wp-content/uploads/2026/08/jose-soriano-2.jpg",
-    "readTime": "3 min read",
-    "date": "2026-08-15"
-  },
-  {
-    "id": "why-toronto-blue-jays-are-betting-big-on-youth-right-now",
-    "title": "Why Toronto Blue Jays Are Betting Big on Youth Right Now",
-    "summary": "As the Toronto Blue Jays fight to stay alive in the American League Wild Card race, the organization is pivoting toward a bold youth movement that could redefine their roster for years to come.",
-    "category": "Sports",
-    "imageUrl": "https://img.mlbstatic.com/mlb-images/image/upload/t_2x1/t_w1536/mlb/lptbx840f8jkh6677muu.jpg",
     "readTime": "3 min read",
     "date": "2026-08-15"
   }
