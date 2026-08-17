@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/mdx';
 
-export const dynamic = 'force-static';
+export const revalidate = 3600; // Revalidate sitemap every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://whythisbuzz.com';
-    const articles = await getAllArticles(2000);
+    const articles = await getAllArticles(10000);
     const currentDate = new Date();
 
     // Calculate if article is recent (within last 7 days)

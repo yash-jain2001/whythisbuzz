@@ -80,34 +80,53 @@ let cacheTimestamp = 0;
 const CACHE_TTL = 60 * 1000; // 1 minute cache
 
 export async function getSupabaseArticles(limit: number = 50): Promise<Article[]> {
-    if (!supabase) return cachedArticles || [];
+    if (!supabase) return cachedArticles ? cachedArticles.slice(0, limit) : [];
     const now = Date.now();
-    if (cachedArticles && (now - cacheTimestamp < CACHE_TTL)) {
+    
+    // Only return cached articles if the cache contains at least the requested limit
+    if (cachedArticles && cachedArticles.length >= limit && (now - cacheTimestamp < CACHE_TTL)) {
         return cachedArticles.slice(0, limit);
     }
 
     try {
-        // Query lightweight fields with limit and indexed created_at sorting to prevent statement timeouts
-        const fetchLimit = Math.max(limit, 100);
-        const { data, error } = await supabase
-          .from('articles')
-          .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at, country')
-          .order('created_at', { ascending: false })
-          .order('date', { ascending: false })
-          .limit(fetchLimit);
+        const pageSize = 1000;
+        const allDocs: SupabaseArticleDoc[] = [];
+        let page = 0;
 
-        if (error || !data) {
-            console.warn('⚠️ Supabase fetch warning:', error?.message);
-            return cachedArticles || [];
+        while (allDocs.length < limit) {
+            const fetchSize = Math.min(pageSize, limit - allDocs.length);
+            const start = page * pageSize;
+            const end = start + fetchSize - 1;
+
+            const { data, error } = await supabase
+              .from('articles')
+              .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at, country')
+              .order('created_at', { ascending: false })
+              .order('date', { ascending: false })
+              .range(start, end);
+
+            if (error || !data || data.length === 0) break;
+            allDocs.push(...data);
+            if (data.length < fetchSize) break;
+            page++;
         }
 
-        const articles = data.map(docToArticle);
-        cachedArticles = articles;
-        cacheTimestamp = now;
+        if (allDocs.length === 0) {
+            return cachedArticles ? cachedArticles.slice(0, limit) : [];
+        }
+
+        const articles = allDocs.map(docToArticle);
+        
+        // Cache articles array if it is larger or more complete than previous cache
+        if (!cachedArticles || articles.length >= cachedArticles.length) {
+            cachedArticles = articles;
+            cacheTimestamp = now;
+        }
+
         return articles.slice(0, limit);
     } catch (e) {
         console.warn('⚠️ Supabase connection error:', e instanceof Error ? e.message : e);
-        return cachedArticles || [];
+        return cachedArticles ? cachedArticles.slice(0, limit) : [];
     }
 }
 
