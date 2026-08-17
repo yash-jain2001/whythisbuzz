@@ -9,6 +9,7 @@ import { Clock, Calendar, Link as LinkIcon, Bookmark } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 import { proxifyImage } from "@/lib/utils";
+import { getArticleSeoImage } from "@/lib/country-utils";
 import { AdBanner } from "@/components/AdBanner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -17,16 +18,14 @@ interface ArticleViewProps {
     relatedArticles: ArticleMetadata[];
 }
 
-const DEFAULT_THUMBNAIL = "/images/default-thumbnail.png";
-
 export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
     const [readProgress, setReadProgress] = useState(0);
 
-    const isBadImage = !article.imageUrl || article.imageUrl.includes('photo-1611162617474-5b21e879e113') || article.imageUrl.includes('placeholder');
-    const targetSrc = isBadImage ? DEFAULT_THUMBNAIL : (proxifyImage(article.imageUrl) || DEFAULT_THUMBNAIL);
+    const seoImage = getArticleSeoImage(article);
+    const targetSrc = proxifyImage(seoImage) || seoImage;
     const [failedUrl, setFailedUrl] = useState<string | null>(null);
 
-    const imageSrc = (failedUrl === targetSrc) ? DEFAULT_THUMBNAIL : targetSrc;
+    const imageSrc = (failedUrl === targetSrc) ? seoImage : targetSrc;
 
     useEffect(() => {
         const handleScroll = () => {

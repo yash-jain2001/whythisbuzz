@@ -1,4 +1,5 @@
 import { ArticleMetadata } from './mdx';
+import { getArticleSeoImage } from './country-utils';
 
 const SITE_URL = 'https://whythisbuzz.com';
 const SITE_NAME = 'WhyThisBuzz';
@@ -63,7 +64,7 @@ export function generateArticleSchema(
     content: string
 ): object {
     const articleUrl = `${SITE_URL}/article/${article.id}`;
-    const imageUrl = article.imageUrl || `${SITE_URL}/images/default-article.jpg`;
+    const imageUrl = getArticleSeoImage(article);
 
     // Extract first paragraph as description if summary is too short
     const description = article.summary || article.description || 'Read more on WhyThisBuzz';

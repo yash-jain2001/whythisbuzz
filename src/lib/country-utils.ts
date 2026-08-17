@@ -226,3 +226,23 @@ export function getCategoryFallbackBanner(category?: string, seedText?: string):
   const index = Math.abs(hash) % banners.length;
   return banners[index];
 }
+
+export function getArticleSeoImage(article: { imageUrl?: string; category?: string; title?: string }): string {
+  const SITE_URL = 'https://whythisbuzz.com';
+  const rawUrl = article.imageUrl ? article.imageUrl.trim() : '';
+
+  const isBad = !rawUrl ||
+    rawUrl.includes('placeholder') ||
+    rawUrl.includes('default-thumbnail') ||
+    rawUrl.includes('default-article') ||
+    rawUrl.includes('photo-1611162617474-5b21e879e113') ||
+    rawUrl.includes('photo-1540910419892-4a36d2c3266c');
+
+  let resolved = isBad ? getCategoryFallbackBanner(article.category, article.title) : rawUrl;
+
+  if (resolved.startsWith('/')) {
+    resolved = `${SITE_URL}${resolved}`;
+  }
+
+  return resolved;
+}

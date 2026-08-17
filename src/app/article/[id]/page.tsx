@@ -4,6 +4,7 @@ import { renderMarkdown } from '@/lib/markdown';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { ArticleView } from '@/components/ArticleView';
 import { notFound } from 'next/navigation';
+import { getArticleSeoImage } from '@/lib/country-utils';
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -53,6 +54,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         ...keywordsList
     ];
 
+    const seoImage = getArticleSeoImage(article.metadata);
+
     return {
         title: seoTitle,
         description: description,
@@ -70,7 +73,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             description: description,
             images: [
                 {
-                    url: article.metadata.imageUrl,
+                    url: seoImage,
                     width: 1200,
                     height: 630,
                     alt: article.metadata.title,
@@ -88,7 +91,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             card: 'summary_large_image',
             title: article.metadata.title,
             description: description,
-            images: [article.metadata.imageUrl],
+            images: [seoImage],
             creator: '@whythisbuzz',
             site: '@whythisbuzz',
         },
