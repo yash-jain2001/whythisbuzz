@@ -4,10 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArticleMetadata } from "@/lib/mdx";
 import { proxifyImage } from "@/lib/utils";
-import { getRelativeTrendTime } from "@/lib/country-utils";
+import { getRelativeTrendTime, getCategoryFallbackBanner } from "@/lib/country-utils";
 import { TrendingUp, Clock } from "lucide-react";
-
-const DEFAULT_THUMBNAIL = "/images/placeholder.svg";
 
 interface ArticleCardProps {
   article: ArticleMetadata;
@@ -25,12 +23,14 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
     article.imageUrl.includes('photo-1529107386315') ||
     article.imageUrl.includes('photo-1514525253161') ||
     article.imageUrl.includes('photo-1461896836934');
-  const targetSrc = isBadImage ? DEFAULT_THUMBNAIL : (proxifyImage(article.imageUrl) || DEFAULT_THUMBNAIL);
+
+  const categoryFallback = getCategoryFallbackBanner(article.category, article.title);
+  const targetSrc = isBadImage ? categoryFallback : (proxifyImage(article.imageUrl) || categoryFallback);
   
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const imageSrc = (failedUrl === targetSrc) ? DEFAULT_THUMBNAIL : targetSrc;
+  const imageSrc = (failedUrl === targetSrc) ? categoryFallback : targetSrc;
 
   const trendOriginTime = article.trendTime || getRelativeTrendTime(article.date);
 
