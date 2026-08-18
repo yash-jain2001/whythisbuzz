@@ -45,11 +45,11 @@ async function getGoogleAccessToken(email: string, privateKey: string): Promise<
 }
 
 async function submitGoogleIndexing(urls: string[]) {
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
+  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL || process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY || process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
 
   if (!clientEmail || !privateKey) {
-    console.log('ℹ️ GOOGLE_CLIENT_EMAIL or GOOGLE_PRIVATE_KEY not set. Skipping Google Indexing API.');
+    console.log('ℹ️ GOOGLE_CLIENT_EMAIL or GOOGLE_SERVICE_ACCOUNT_EMAIL not set. Skipping Google Indexing API.');
     return;
   }
 
@@ -92,7 +92,7 @@ async function submitGoogleIndexing(urls: string[]) {
 }
 
 async function submitIndexNow(urls: string[]) {
-  const apiKey = '9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c';
+  const apiKey = '6ea9ba6038e2e553b2af64adf7d6fcec09fb0554';
   console.log(`🚀 Submitting ${urls.length} URLs to IndexNow API (Bing, Yandex, Seznam)...`);
 
   try {
@@ -121,10 +121,18 @@ async function main() {
   console.log('🔍 Gathering ALL website URLs from Supabase DB & Static routes...');
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-  const { data: articles, error } = await supabase.from('articles').select('slug');
-
-  if (error) {
-    console.error('Error fetching articles from Supabase:', error.message);
+  const articles: { slug: string }[] = [];
+  let page = 0;
+  const pageSize = 1000;
+  while (true) {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('slug')
+      .range(page * pageSize, (page + 1) * pageSize - 1);
+    if (error || !data || data.length === 0) break;
+    articles.push(...data);
+    if (data.length < pageSize) break;
+    page++;
   }
 
   const articleUrls = (articles || []).map(a => `${SITE_URL}/article/${a.slug}`);

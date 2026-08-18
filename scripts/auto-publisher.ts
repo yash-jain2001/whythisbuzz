@@ -371,7 +371,7 @@ async function pingGoogleIndexingApi(articleSlug: string): Promise<void> {
 
 async function pingIndexNow(articleSlug: string): Promise<void> {
   const host = 'whythisbuzz.com';
-  const key = '9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c';
+  const key = '6ea9ba6038e2e553b2af64adf7d6fcec09fb0554';
   const articleUrl = `https://${host}/article/${articleSlug}`;
 
   try {
