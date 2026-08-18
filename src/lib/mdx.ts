@@ -227,6 +227,23 @@ export async function getArticlesByCategory(category: string, limit: number = 10
         .slice(0, limit);
 }
 
+export async function getArticlesByCategoryPaginated(
+    category: string,
+    page: number = 1,
+    pageSize: number = 24
+) {
+    if (isSupabaseConfigured()) {
+        const { getSupabaseArticlesByCategoryPaginated } = await import('./supabase');
+        return getSupabaseArticlesByCategoryPaginated(category, page, pageSize);
+    }
+    const all = await getArticlesByCategory(category, 1000);
+    const totalCount = all.length;
+    const totalPages = Math.ceil(totalCount / pageSize) || 1;
+    const start = Math.max(0, (page - 1) * pageSize);
+    const articles = all.slice(start, start + pageSize);
+    return { articles, totalCount, totalPages };
+}
+
 export function getAllCategories(): string[] {
     const defaultCategories = ['Sports', 'Entertainment', 'Technology', 'World Affairs', 'Movies', 'Social Media', 'Politics', 'Economics'];
     if (!fs.existsSync(contentDirectory)) {

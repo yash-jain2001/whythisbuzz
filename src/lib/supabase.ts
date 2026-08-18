@@ -206,7 +206,61 @@ export async function getSupabaseArticlesByCategory(category: string, limit: num
     }
 }
 
+export async function getSupabaseArticlesByCategoryPaginated(
+    category: string,
+    page: number = 1,
+    pageSize: number = 24
+): Promise<{ articles: ArticleMetadata[]; totalCount: number; totalPages: number }> {
+    if (!supabase) return { articles: [], totalCount: 0, totalPages: 0 };
+
+    try {
+        const catLower = category.toLowerCase().replace(/[-_]/g, ' ').trim();
+        let query = supabase
+            .from('articles')
+            .select('slug, title, summary, category, date, author, read_time, image_url, seo_title, meta_description, keywords, created_at', { count: 'exact' })
+            .order('created_at', { ascending: false })
+            .order('date', { ascending: false });
+
+        if (catLower.includes('politic')) {
+            query = query.ilike('category', '%Politic%');
+        } else if (catLower.includes('economic') || catLower.includes('finance')) {
+            query = query.or('category.ilike.%Economic%,category.ilike.%Finance%');
+        } else if (catLower.includes('social')) {
+            query = query.ilike('category', '%Social%');
+        } else if (catLower.includes('tech')) {
+            query = query.ilike('category', '%Tech%');
+        } else if (catLower.includes('sport')) {
+            query = query.ilike('category', '%Sport%');
+        } else if (catLower.includes('movie') || catLower.includes('entertain')) {
+            query = query.or('category.ilike.%Movie%,category.ilike.%Entertain%');
+        } else if (catLower.includes('world')) {
+            query = query.ilike('category', '%World%');
+        } else {
+            query = query.ilike('category', `%${category}%`);
+        }
+
+        const start = Math.max(0, (page - 1) * pageSize);
+        const end = start + pageSize - 1;
+
+        const { data, error, count } = await query.range(start, end);
+
+        if (!error && data) {
+            const totalCount = count || data.length;
+            const totalPages = Math.ceil(totalCount / pageSize);
+            return {
+                articles: data.map(docToMetadata),
+                totalCount,
+                totalPages: totalPages || 1,
+            };
+        }
+
+        return { articles: [], totalCount: 0, totalPages: 0 };
+    } catch {
+        return { articles: [], totalCount: 0, totalPages: 0 };
+    }
+}
+
 export async function getSupabaseArticleSlugs(limit: number = 50): Promise<string[]> {
     const articles = await getSupabaseArticles(limit);
-    return articles.map(a => a.metadata.id);
+    return articles.map((article) => article.metadata.id);
 }
