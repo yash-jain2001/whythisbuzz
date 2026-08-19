@@ -8,6 +8,8 @@ import { execSync } from 'child_process';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
 import { getCountryForArticle } from '../src/lib/country-utils';
+import { classifyArticle } from '../src/lib/article-category';
+import { resolveArticleImage } from '../src/lib/article-image';
 
 dotenv.config();
 
@@ -439,37 +441,7 @@ async function main() {
   ];
 
   function detectCategory(title: string): string {
-    const text = title.toLowerCase();
-    
-    // 1. Economics (Inflation, Central Banks, Rates, Markets)
-    if (/\b(inflation|central bank|central banks|interest rate|interest rates|rate cut|rate cuts|stock|stocks|market|markets|fed|federal reserve|banking|finance|economic|economy|crypto|bitcoin|binance|wall street|earnings|pension)\b/i.test(text)) {
-      return "Economics";
-    }
-    // 2. Entertainment & Movies (Actors, Movies, Logies, Shows)
-    if (/\b(acting|actor|actress|deborah mailman|logies|movie|movies|film|films|cinema|hollywood|bollywood|trailer|episode|season|show|shows|music|singer|singers|concert|oscar|oscars|grammy|filmfare|vimal|elaichi|surrogate|celebrity|celebrities|box office|netflix|hbo|disney|paramount)\b/i.test(text)) {
-      return "Entertainment";
-    }
-    // 3. World Affairs / Weather & Disasters
-    if (/\b(severe weather|meteorological|meteorology|weather alert|weather alerts|storm|storms|cyclone|typhoon|hurricane|tsunami|flood|floods|earthquake|disaster|disasters|diplomacy|astronomy|isha prayer|namaz|ramadan)\b/i.test(text)) {
-      return "World Affairs";
-    }
-    // 4. Politics
-    if (/\b(election|elections|biden|trump|starmer|politic|politics|political|parliament|senate|congress|minister|president|government|lawsuit|supreme court|modi|putin)\b/i.test(text)) {
-      return "Politics";
-    }
-    // 5. Technology
-    if (/\b(ai|artificial intelligence|software|cyber|semiconductor|chipmaker|smartphone|hardware|developer|cloud computing|operating system|open source)\b/i.test(text)) {
-      return "Technology";
-    }
-    // 6. Social Media
-    if (/\b(tiktok|instagram|youtube|x\.com|viral|influencer|streamer|creator)\b/i.test(text)) {
-      return "Social-Media";
-    }
-    // 7. Sports (Strict word boundaries for vs, match, player, etc.)
-    if (/\b(vs|versus|cricket|football|soccer|basketball|nba|nfl|ipl|bcci|fifa|uefa|olympics|f1|formula 1|wimbledon|tennis|golf|marathon|stadium|championship|tournament|league|bayern|tottenham|arsenal|chelsea|real madrid|barcelona)\b/i.test(text)) {
-      return "Sports";
-    }
-    return "World Affairs";
+    return classifyArticle({ title }).category;
   }
 
   const categoryTopicFeeds: Record<string, string> = {
@@ -707,15 +679,34 @@ ${articleText}
       const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
       const keywordsMatch = frontmatter.match(/keywords:\s*"(.*?)"/);
 
-      const validCategories = ["Sports", "Entertainment", "Technology", "World Affairs", "Movies", "Social-Media", "Politics", "Economics"];
-      
-      // Strictly assign the category directly from the origin trend source
-      category = trend.assignedCategory || category || 'World Affairs';
+      // Classify using complete context (Gemini AI output, full title, summary, and article body)
+      const classification = classifyArticle({
+        title: articleTitle,
+        summary: summaryMatch ? summaryMatch[1] : '',
+        content: bodyContent,
+        geminiCategory: category,
+        sourceCategory: trend.assignedCategory,
+      });
+      category = classification.category;
 
-      const parsedImg = imageUrlMatch ? imageUrlMatch[1] : '';
-      const finalImage = (parsedImg && parsedImg.startsWith('http')) 
-        ? parsedImg 
-        : (imageUrl && imageUrl.startsWith('http') ? imageUrl : '/images/placeholder.svg');
+      const candidateImg = (imageUrlMatch ? imageUrlMatch[1] : '') || imageUrl || '';
+      const imageResult = resolveArticleImage({
+        imageUrl: candidateImg,
+        category: category,
+        title: articleTitle,
+      });
+
+      const finalImage = imageResult.imageUrl;
+
+      console.log(`\n------------------------------------------------------`);
+      console.log(`📰 ARTICLE CLASSIFICATION & IMAGE AUDIT LOG:`);
+      console.log(`- Title: "${articleTitle}"`);
+      console.log(`- Slug: "${slug}"`);
+      console.log(`- Source Category: "${trend.assignedCategory}"`);
+      console.log(`- Gemini Category: "${category}"`);
+      console.log(`- Final Classified Category: "${classification.category}" (Conf: ${classification.confidence}%, Method: ${classification.method})`);
+      console.log(`- Image Resolution: ${imageResult.reason} -> ${finalImage}`);
+      console.log(`------------------------------------------------------\n`);
 
       const detectedCountryObj = getCountryForArticle(trend.region);
       const finalCountryCode = detectedCountryObj.code;
