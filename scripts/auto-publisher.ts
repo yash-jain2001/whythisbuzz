@@ -13,6 +13,51 @@ import { resolveArticleImage } from '../src/lib/article-image';
 
 dotenv.config();
 
+export function calculateCleanBodyWordCount(markdownContent: string): number {
+  if (!markdownContent) return 0;
+  
+  // 1. Remove YAML frontmatter if present
+  let body = markdownContent.replace(/^---[\s\S]*?---\n?/, '');
+  
+  // 2. Remove Markdown / MDX syntax formatting elements
+  body = body
+    // Remove code blocks
+    .replace(/```[\s\S]*?```/g, '')
+    // Remove inline code
+    .replace(/`[^`]*`/g, '')
+    // Remove images: ![alt](url)
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    // Remove links: [text](url) -> replace with text
+    .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+    // Remove headers (#, ##, ###, etc.)
+    .replace(/^#+\s+/gm, '')
+    // Remove blockquotes (> )
+    .replace(/^\s*>\s+/gm, '')
+    // Remove horizontal rules (---, ***, ___)
+    .replace(/^\s*[-*_]{3,}\s*$/gm, '')
+    // Remove bullet points / numbered list markers (- , * , 1. )
+    .replace(/^\s*[\*\-\+]\s+|^\s*\d+\.\s+/gm, '')
+    // Remove bold/italic markers (*, **, _, __)
+    .replace(/[\*_]{1,3}/g, '');
+
+  // 3. Clean up extra whitespace and split words
+  const cleanText = body.trim().replace(/\s+/g, ' ');
+  if (!cleanText) return 0;
+
+  const words = cleanText.split(' ').filter(word => {
+    // Exclude tokens that contain no alphanumeric characters
+    return /[a-zA-Z0-9]/.test(word);
+  });
+
+  return words.length;
+}
+
+export function calculateReadTime(wordCount: number): string {
+  const wordsPerMinute = 225;
+  const minutes = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+  return `${minutes} min read`;
+}
+
 async function postToTwitter(title: string, summary: string, slug: string) {
   const apiKey = process.env.TWITTER_API_KEY;
   const apiSecret = process.env.TWITTER_API_SECRET;
@@ -592,10 +637,24 @@ async function main() {
 
     const prompt = `
 You are a top-tier journalist and Chief Editor for a modern digital news site called "WhyThisBuzz".
-Your writing style is highly engaging, clear, analytical, and optimized for **Google Discover feeds**.
+Your writing style is highly engaging, clear, analytical, scannable, and optimized for **Google Discover feeds**.
 
 I will provide you with the raw scraped text from a trending news article about "${selectedTrend}".
 Your task is to re-write this article completely in your own words, adhering strictly to the "WhyThisBuzz" style.
+
+CRITICAL ARTICLE STYLE & LENGTH REQUIREMENTS:
+- Write a concise, engaging, mobile-friendly news explainer of approximately 350–500 words (ideal target: 400–450 words).
+- Prioritize useful information, scannability, and clarity over length.
+- DO NOT pad the article with repetitive sentences or meaningless filler text.
+- Use 2–4 short, scannable sub-headings when appropriate (e.g. "## What Happened", "## Why It Matters", "## Important Context", "## What's Next").
+- Keep paragraphs short and easy to read on mobile devices.
+- Avoid generic filler or AI boilerplate such as:
+  * "Love it or debate it..."
+  * "Stay tuned to WhyThisBuzz..."
+  * "In today's rapidly changing world..."
+  * "This development has captured global attention..."
+- DO NOT use repetitive AI-style conclusions.
+- DO NOT invent unverified facts not supported by the raw scraped text or public record.
 
 CRITICAL GOOGLE DISCOVER HEADLINE FORMULAS:
 Create a magnetic, high-CTR headline (50-70 characters) tailored for Google Discover recommendations.
@@ -635,7 +694,7 @@ summary: "A 1-2 sentence punchy summary of the article."
 category: "[Choose exactly ONE category from the definitions above]"
 author: "WhyThisBuzz Desk"
 date: "${getFormattedDate()}"
-readTime: "[Estimate, e.g., '3 min read']"
+readTime: "[Will be calculated dynamically based on word count]"
 imageUrl: "${articleImage}"
 seoTitle: "[Your 50-60 character SEO Title]"
 metaDescription: "[Your 150-160 character Meta Description]"
@@ -654,26 +713,103 @@ ${articleText}
       else if (output.startsWith('```')) output = output.replace(/^```\n/, '');
       if (output.endsWith('```')) output = output.replace(/\n```$/, '');
 
-      const frontmatterMatch = output.match(/---\n([\s\S]*?)\n---/);
+      let frontmatterMatch = output.match(/---\n([\s\S]*?)\n---/);
       if (!frontmatterMatch) {
         console.error(`Could not parse frontmatter for ${region} article.`);
         continue;
       }
 
-      const frontmatter = frontmatterMatch[1];
+      let frontmatter = frontmatterMatch[1];
       let category = "World Affairs";
-      const titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?\s*$/m);
+      let titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?\s*$/m);
       const categoryMatch = frontmatter.match(/category:\s*["']?([A-Za-z0-9\s-]+)["']?/m);
       
       if (categoryMatch) category = categoryMatch[1].trim();
-      const articleTitle = titleMatch ? titleMatch[1].trim() : selectedTrend;
-      const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
+      let articleTitle = titleMatch ? titleMatch[1].trim() : selectedTrend;
       
-      const bodyContent = output.slice(frontmatterMatch[0].length).trim();
+      let bodyContent = output.slice(frontmatterMatch[0].length).trim();
+      let cleanWordCount = calculateCleanBodyWordCount(bodyContent);
+      let expansionAttempts = 0;
+      const MAX_EXPANSION_ATTEMPTS = 2;
+
+      console.log(`\n======================================================`);
+      console.log(`🔍 [SHORT-ARTICLE QUALITY CHECK] Article: "${articleTitle}"`);
+      console.log(`- Initial clean body word count: ${cleanWordCount} words`);
+
+      // Content Quality Expansion/Regeneration Loop if under 300 words
+      while (cleanWordCount < 300 && expansionAttempts < MAX_EXPANSION_ATTEMPTS) {
+        expansionAttempts++;
+        const isSeverelyThin = cleanWordCount < 250;
+        
+        if (isSeverelyThin) {
+          console.log(`⚠️ [CONTENT QUALITY] Clean word count (${cleanWordCount} words) is <250 words. Initiating Substantial Regeneration/Expansion Attempt #${expansionAttempts}...`);
+        } else {
+          console.log(`⚠️ [CONTENT QUALITY] Clean word count (${cleanWordCount} words) is in 250-299 word range. Initiating Natural Expansion Attempt #${expansionAttempts}...`);
+        }
+
+        const expansionPrompt = `
+You are the Chief Editor for "WhyThisBuzz".
+The following news explainer draft titled "${articleTitle}" is currently too short (${cleanWordCount} words).
+We require concise, high-quality news explainers of approximately 350–500 words.
+
+Please ${isSeverelyThin ? 'substantially expand and enrich' : 'naturally expand'} this article to approximately 350–450 words by adding:
+1. Important context and background details explaining how this developed.
+2. Specific implications, numbers, or stakeholder impact ("Why It Matters").
+3. A brief "What's Next / Future Outlook" section when relevant.
+
+CRITICAL EXPANSION RULES:
+- Prioritize factual clarity and scannability over length.
+- DO NOT repeat facts or add meaningless filler text.
+- DO NOT use generic boilerplate such as "Stay tuned to WhyThisBuzz..." or "In today's rapidly changing world...".
+- DO NOT invent unverified fake facts not supported by the article source material.
+- Output MUST be a valid MDX file starting immediately with frontmatter enclosed in '---'.
+
+Current Draft to Expand:
+${output}
+`;
+
+        try {
+          let expandedOutput = await generateWithRetry(expansionPrompt);
+          if (expandedOutput.startsWith('```mdx')) expandedOutput = expandedOutput.replace(/^```mdx\n/, '');
+          else if (expandedOutput.startsWith('```markdown')) expandedOutput = expandedOutput.replace(/^```markdown\n/, '');
+          else if (expandedOutput.startsWith('```')) expandedOutput = expandedOutput.replace(/^```\n/, '');
+          if (expandedOutput.endsWith('```')) expandedOutput = expandedOutput.replace(/\n```$/, '');
+
+          const expandedFmMatch = expandedOutput.match(/---\n([\s\S]*?)\n---/);
+          if (expandedFmMatch) {
+            output = expandedOutput;
+            frontmatterMatch = expandedFmMatch;
+            frontmatter = frontmatterMatch[1];
+            bodyContent = output.slice(frontmatterMatch[0].length).trim();
+            cleanWordCount = calculateCleanBodyWordCount(bodyContent);
+            console.log(`- Expansion attempt #${expansionAttempts} result: ${cleanWordCount} clean words.`);
+          }
+        } catch (expErr) {
+          console.error(`⚠️ Expansion attempt #${expansionAttempts} failed:`, expErr);
+        }
+      }
+
+      if (cleanWordCount < 300) {
+        console.warn(`❌ [QUALITY REJECTED] "${articleTitle}" failed quality gate after ${expansionAttempts} expansion attempts (${cleanWordCount} words < 300 words minimum). SKIPPING PUBLICATION.`);
+        console.log(`======================================================\n`);
+        continue; // Skip DB upload, Twitter, OneSignal, IndexNow
+      }
+
+      const finalReadTime = calculateReadTime(cleanWordCount);
+      if (cleanWordCount > 550) {
+        console.log(`ℹ️ [LONG_ARTICLE_REVIEW] "${articleTitle}" - ${cleanWordCount} words (${finalReadTime}). Kept (useful extended content). Status: PASS`);
+      } else {
+        console.log(`✅ [SHORT-ARTICLE PASSED] "${articleTitle}" - Final clean word count: ${cleanWordCount} words (${finalReadTime}). Status: PASS`);
+      }
+      console.log(`======================================================\n`);
+
+      titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?\s*$/m);
+      articleTitle = titleMatch ? titleMatch[1].trim() : selectedTrend;
+      const slug = slugify(articleTitle, { lower: true, strict: true, remove: /[*+~.()'"!:@]/g });
+
       const summaryMatch = frontmatter.match(/summary:\s*"(.*?)"/);
       const authorMatch = frontmatter.match(/author:\s*"(.*?)"/);
       const dateMatch = frontmatter.match(/date:\s*"(.*?)"/);
-      const readTimeMatch = frontmatter.match(/readTime:\s*"(.*?)"/);
       const imageUrlMatch = frontmatter.match(/imageUrl:\s*"(.*?)"/);
       const seoTitleMatch = frontmatter.match(/seoTitle:\s*"(.*?)"/);
       const metaDescriptionMatch = frontmatter.match(/metaDescription:\s*"(.*?)"/);
@@ -719,7 +855,7 @@ ${articleText}
         category,
         author: authorMatch ? authorMatch[1] : 'WhyThisBuzz Desk',
         date: parseToISODate(dateMatch ? dateMatch[1] : undefined),
-        read_time: readTimeMatch ? readTimeMatch[1] : '3 min read',
+        read_time: finalReadTime,
         image_url: finalImage,
         seo_title: seoTitleMatch ? seoTitleMatch[1] : undefined,
         meta_description: metaDescriptionMatch ? metaDescriptionMatch[1] : undefined,
@@ -757,4 +893,7 @@ ${articleText}
   }
 }
 
-main().catch(console.error);
+const isMainScript = process.argv[1] && (process.argv[1].endsWith('auto-publisher.ts') || process.argv[1].endsWith('auto-publisher.js'));
+if (isMainScript) {
+  main().catch(console.error);
+}

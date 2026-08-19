@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ArticleSkeletonCard } from "@/components/ArticleSkeletonCard";
 import { ArticleMetadata } from "@/lib/mdx";
@@ -26,16 +28,20 @@ function formatDateDisplay(dateStr: string): string {
   return dateStr;
 }
 
-export function CategoryPageClient({ category, initialArticles }: CategoryPageClientProps) {
-  const [articles, setArticles] = useState<ArticleMetadata[]>(initialArticles);
-  const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+function CategoryPageContent({ category, slug, initialArticles }: CategoryPageClientProps) {
+  const [articles, setArticles] = useState<ArticleMetadata[]>(initialArticles || []);
+  const [isLoading, setIsLoading] = useState<boolean>(!initialArticles || initialArticles.length === 0);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const searchParams = useSearchParams();
+  const pageParam = searchParams.get('page');
+  const parsedPage = pageParam ? parseInt(pageParam, 10) : 1;
+  const currentPage = isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
 
   useEffect(() => {
     if (!supabase) {
-      const timer = setTimeout(() => setIsLoading(false), 0);
-      return () => clearTimeout(timer);
+      setIsLoading(false);
+      return;
     }
 
     const catLower = category.toLowerCase().replace(/[-_]/g, ' ').trim();
@@ -84,73 +90,19 @@ export function CategoryPageClient({ category, initialArticles }: CategoryPageCl
         }));
 
         setArticles(liveArticles);
-        setIsLoading(false);
-      } else {
-        const client = supabase;
-        if (!client) {
-          setIsLoading(false);
-          return;
-        }
-        // Resilient Fallback: Query all articles and filter by category matching
-        client
-          .from('articles')
-          .select('slug, title, summary, category, author, date, read_time, image_url, seo_title, meta_description, keywords, created_at')
-          .order('created_at', { ascending: false })
-          .limit(1000)
-          .then(({ data: fallbackData }) => {
-            if (fallbackData && fallbackData.length > 0) {
-              const matched = fallbackData.filter((doc) => {
-                const c = (doc.category || '').toLowerCase();
-                if (catLower.includes('politic')) return c.includes('politic');
-                if (catLower.includes('economic') || catLower.includes('finance')) return c.includes('economic') || c.includes('finance');
-                if (catLower.includes('social')) return c.includes('social');
-                if (catLower.includes('tech')) return c.includes('tech');
-                if (catLower.includes('sport')) return c.includes('sport');
-                if (catLower.includes('movie') || catLower.includes('entertain')) return c.includes('movie') || c.includes('entertain');
-                if (catLower.includes('world')) return c.includes('world');
-                return c.includes(catLower);
-              });
-
-              if (matched.length > 0) {
-                const liveArticles: ArticleMetadata[] = matched.map((doc) => ({
-                  id: doc.slug,
-                  title: doc.title,
-                  description: doc.summary || doc.meta_description || '',
-                  date: formatDateDisplay(doc.date),
-                  author: doc.author || 'WhyThisBuzz Desk',
-                  category: doc.category,
-                  imageUrl: doc.image_url || '',
-                  readTime: doc.read_time || '3 min read',
-                  summary: doc.summary || '',
-                  seoTitle: doc.seo_title,
-                  metaDescription: doc.meta_description,
-                  keywords: doc.keywords,
-                  trendTime: getRelativeTrendTime(doc.date, doc.created_at),
-                }));
-                setArticles(liveArticles);
-              } else if (initialArticles.length > 0) {
-                setArticles(initialArticles);
-              }
-            } else if (initialArticles.length > 0) {
-              setArticles(initialArticles);
-            }
-            setIsLoading(false);
-          });
       }
+      setIsLoading(false);
     });
-  }, [category, initialArticles]);
+  }, [category]);
 
   const totalPages = Math.max(1, Math.ceil(articles.length / ITEMS_PER_PAGE));
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const validCurrentPage = Math.min(currentPage, totalPages);
+  const startIndex = (validCurrentPage - 1) * ITEMS_PER_PAGE;
   const displayedArticles = articles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  const handlePageChange = (newPage: number) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      setCurrentPage(newPage);
-      if (sectionRef.current) {
-        sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
+  const getPageUrl = (pageNum: number) => {
+    if (pageNum <= 1) return `/category/${slug}`;
+    return `/category/${slug}?page=${pageNum}`;
   };
 
   return (
@@ -163,7 +115,7 @@ export function CategoryPageClient({ category, initialArticles }: CategoryPageCl
         </div>
       </div>
 
-      {/* Grid Display - 4 columns on desktop */}
+      {/* Grid Display */}
       {isLoading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -196,7 +148,7 @@ export function CategoryPageClient({ category, initialArticles }: CategoryPageCl
             ))}
           </div>
 
-          {/* 10-Article Pagination Controls */}
+          {/* Crawlable HTML Link Pagination Controls */}
           {totalPages > 1 && (
             <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border/50 mt-8">
               <p className="text-xs sm:text-sm text-muted-foreground font-medium">
@@ -206,46 +158,75 @@ export function CategoryPageClient({ category, initialArticles }: CategoryPageCl
               </p>
 
               <div className="flex items-center gap-1.5 flex-wrap justify-center">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="px-3 py-1.5 rounded-lg border border-border/60 text-xs sm:text-sm font-medium transition-all flex items-center gap-1 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-muted cursor-pointer"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  <span>Prev</span>
-                </button>
+                {/* Previous Button Link */}
+                {validCurrentPage > 1 ? (
+                  <Link
+                    href={getPageUrl(validCurrentPage - 1)}
+                    className="px-3 py-1.5 rounded-lg border border-border/60 text-xs sm:text-sm font-medium transition-all flex items-center gap-1 hover:bg-muted text-foreground"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>Prev</span>
+                  </Link>
+                ) : (
+                  <span className="px-3 py-1.5 rounded-lg border border-border/60 text-xs sm:text-sm font-medium opacity-40 cursor-not-allowed flex items-center gap-1 text-muted-foreground">
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>Prev</span>
+                  </span>
+                )}
 
+                {/* Page Number Links */}
                 {Array.from({ length: totalPages }).map((_, i) => {
                   const pageNum = i + 1;
-                  const isActive = pageNum === currentPage;
+                  const isActive = pageNum === validCurrentPage;
                   return (
-                    <button
+                    <Link
                       key={pageNum}
-                      onClick={() => handlePageChange(pageNum)}
-                      className={`w-8 h-8 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer ${
+                      href={getPageUrl(pageNum)}
+                      className={`w-8 h-8 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center justify-center ${
                         isActive
                           ? "bg-accent text-accent-foreground shadow-xs font-bold"
-                          : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                          : "hover:bg-muted text-muted-foreground hover:text-foreground border border-border/40"
                       }`}
                     >
                       {pageNum}
-                    </button>
+                    </Link>
                   );
                 })}
 
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className="px-3 py-1.5 rounded-lg border border-border/60 text-xs sm:text-sm font-medium transition-all flex items-center gap-1 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-muted cursor-pointer"
-                >
-                  <span>Next</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                {/* Next Button Link */}
+                {validCurrentPage < totalPages ? (
+                  <Link
+                    href={getPageUrl(validCurrentPage + 1)}
+                    className="px-3 py-1.5 rounded-lg border border-border/60 text-xs sm:text-sm font-medium transition-all flex items-center gap-1 hover:bg-muted text-foreground"
+                  >
+                    <span>Next</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                ) : (
+                  <span className="px-3 py-1.5 rounded-lg border border-border/60 text-xs sm:text-sm font-medium opacity-40 cursor-not-allowed flex items-center gap-1 text-muted-foreground">
+                    <span>Next</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </span>
+                )}
               </div>
             </div>
           )}
         </>
       )}
     </section>
+  );
+}
+
+export function CategoryPageClient(props: CategoryPageClientProps) {
+  return (
+    <Suspense fallback={
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <ArticleSkeletonCard key={i} />
+        ))}
+      </div>
+    }>
+      <CategoryPageContent {...props} />
+    </Suspense>
   );
 }

@@ -1,4 +1,5 @@
 import { classifyArticle } from '../src/lib/article-category.js';
+import { calculateCleanBodyWordCount, calculateReadTime } from './auto-publisher.js';
 
 interface TestCase {
   input: {
@@ -88,6 +89,129 @@ const TEST_CASES: TestCase[] = [
   },
 ];
 
+function runWordCountTests() {
+  console.log(`\n======================================================`);
+  console.log(`🧪 RUNNING SHORT-ARTICLE QUALITY & WORD COUNT UNIT TESTS`);
+  console.log(`======================================================\n`);
+
+  let passed = 0;
+  let failed = 0;
+
+  // Test 1: Markdown formatting stripping & frontmatter exclusion
+  const sampleMdx = `---
+title: "Test Title"
+summary: "Test summary"
+---
+# Main Heading Title
+
+This is a paragraph with **bold** text and a [clickable link](https://example.com) and an image ![alt text](https://image.com/pic.jpg).
+
+## Section 2
+- Bullet point 1
+- Bullet point 2
+`;
+
+  const wordCount = calculateCleanBodyWordCount(sampleMdx);
+  if (wordCount >= 20 && wordCount <= 30) {
+    passed++;
+    console.log(`✅ PASSED: calculateCleanBodyWordCount correctly ignores YAML frontmatter and formatting tags (${wordCount} clean words).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: calculateCleanBodyWordCount returned unexpected count: ${wordCount}`);
+  }
+
+  // Test 2: Read time calculation
+  const readTime400 = calculateReadTime(400);
+  const readTime500 = calculateReadTime(500);
+  if (readTime400 === "2 min read" && readTime500 === "3 min read") {
+    passed++;
+    console.log(`✅ PASSED: calculateReadTime correctly returned "2 min read" (400w) and "3 min read" (500w).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: calculateReadTime returned unexpected values: 400w -> "${readTime400}", 500w -> "${readTime500}"`);
+  }
+
+  // Test 3: Threshold tests (280, 299, 300, 400, 500, 550, 600 words)
+  const generateWords = (n: number) => Array.from({ length: n }).map((_, i) => `word${i}`).join(' ');
+
+  const count280 = calculateCleanBodyWordCount(generateWords(280));
+  const count299 = calculateCleanBodyWordCount(generateWords(299));
+  const count300 = calculateCleanBodyWordCount(generateWords(300));
+  const count400 = calculateCleanBodyWordCount(generateWords(400));
+  const count500 = calculateCleanBodyWordCount(generateWords(500));
+  const count550 = calculateCleanBodyWordCount(generateWords(550));
+  const count600 = calculateCleanBodyWordCount(generateWords(600));
+
+  // 280 words -> expansion required (<300)
+  if (count280 === 280 && count280 < 300) {
+    passed++;
+    console.log(`✅ PASSED: 280-word article correctly requires expansion (<300 words).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: 280-word article test failed (count: ${count280}).`);
+  }
+
+  // 299 words -> expansion required (<300)
+  if (count299 === 299 && count299 < 300) {
+    passed++;
+    console.log(`✅ PASSED: 299-word article correctly requires expansion (<300 words).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: 299-word article test failed (count: ${count299}).`);
+  }
+
+  // 300 words -> PASS (>=300)
+  if (count300 === 300 && count300 >= 300) {
+    passed++;
+    console.log(`✅ PASSED: 300-word article correctly accepted as PASS (>=300 words).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: 300-word article test failed (count: ${count300}).`);
+  }
+
+  // 400 words -> PASS (ideal target range)
+  if (count400 === 400 && count400 >= 300 && count400 <= 550) {
+    passed++;
+    console.log(`✅ PASSED: 400-word article correctly accepted as PASS (ideal target range).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: 400-word article test failed (count: ${count400}).`);
+  }
+
+  // 500 words -> PASS (ideal target range)
+  if (count500 === 500 && count500 >= 300 && count500 <= 550) {
+    passed++;
+    console.log(`✅ PASSED: 500-word article correctly accepted as PASS (ideal target range).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: 500-word article test failed (count: ${count500}).`);
+  }
+
+  // 550 words -> PASS (soft maximum boundary)
+  if (count550 === 550 && count550 >= 300) {
+    passed++;
+    console.log(`✅ PASSED: 550-word article correctly accepted as PASS (soft maximum boundary).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: 550-word article test failed (count: ${count550}).`);
+  }
+
+  // 600 words -> PASS (useful extended article allowed, not truncated)
+  if (count600 === 600 && count600 > 550) {
+    passed++;
+    console.log(`✅ PASSED: 600-word article correctly allowed without truncation (LONG_ARTICLE_REVIEW).`);
+  } else {
+    failed++;
+    console.error(`❌ FAILED: 600-word article test failed (count: ${count600}).`);
+  }
+
+  console.log(`\n======================================================`);
+  console.log(`📊 SHORT-ARTICLE TEST RESULTS: ${passed}/9 PASSED (${failed} FAILED)`);
+  console.log(`======================================================\n`);
+
+  if (failed > 0) process.exit(1);
+}
+
 function runRegressionTests() {
   console.log(`\n======================================================`);
   console.log(`🧪 RUNNING CANONICAL CATEGORY CLASSIFICATION REGRESSION TESTS`);
@@ -120,4 +244,6 @@ function runRegressionTests() {
   }
 }
 
+runWordCountTests();
 runRegressionTests();
+

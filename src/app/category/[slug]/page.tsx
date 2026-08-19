@@ -118,7 +118,7 @@ export default async function CategoryPage({ params }: PageProps) {
                             </p>
                         </div>
 
-                        {/* Articles Grid & 10-Article Pagination */}
+                        {/* Articles Grid & 10-Article Crawlable Pagination */}
                         <CategoryPageClient category={category} slug={slug} initialArticles={articles} />
                     </div>
                 </main>
