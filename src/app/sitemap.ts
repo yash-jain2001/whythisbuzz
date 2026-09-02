@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     // Category URLs
-    const categories = ['Movies', 'Entertainment', 'Sports', 'Social Media', 'Technology', 'World Affairs'];
+    const categories = ['Sports', 'World Affairs', 'Politics', 'Economics', 'Technology', 'Social Media', 'Movies', 'Entertainment'];
     const categoryUrls = categories.map((category) => ({
         url: `${baseUrl}/category/${category.toLowerCase().replace(/\s+/g, '-')}`,
         lastModified: currentDate,
@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: '/terms', priority: 0.4 },
         { path: '/disclaimer', priority: 0.4 },
         { path: '/cookies', priority: 0.4 },
+        { path: '/trending', priority: 0.8 },
     ];
 
     const staticUrls = staticPages.map((page) => ({

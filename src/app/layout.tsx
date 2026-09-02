@@ -97,6 +97,8 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         {/* LLM Discovery */}
         <link rel="llms" href="https://whythisbuzz.com/llms.txt" />
+        {/* RSS Feed Autodiscovery */}
+        <link rel="alternate" type="application/rss+xml" title="WhyThisBuzz RSS Feed" href="https://whythisbuzz.com/feed.xml" />
 
         {/* Google AdSense Script */}
         <script

@@ -100,8 +100,8 @@ export function generateArticleSchema(
                 height: 60,
             },
         },
-        datePublished: new Date(article.date).toISOString(),
-        dateModified: new Date(article.date).toISOString(), // Will be updated when lastModified is added
+        datePublished: (!isNaN(new Date(article.date).getTime()) ? new Date(article.date) : new Date()).toISOString(),
+        dateModified: (!isNaN(new Date(article.date).getTime()) ? new Date(article.date) : new Date()).toISOString(),
         mainEntityOfPage: {
             '@type': 'WebPage',
             '@id': articleUrl,
