@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/mdx';
+import { MAX_STATIC_ARTICLES } from '@/lib/indexing';
 
 // Cloudflare Pages serves the exported sitemap file. This must be explicit
 // because the site uses Next.js `output: 'export'`.
@@ -7,7 +8,10 @@ export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://whythisbuzz.com';
-    const articles = await getAllArticles(10000);
+    // List only pages generated in this static deployment. Publishing more
+    // URLs than Cloudflare Pages can host causes 4xx sitemap entries and
+    // eventually makes the deployment fail its 20,000-file limit.
+    const articles = await getAllArticles(MAX_STATIC_ARTICLES);
 
     // The sitemap is generated as part of the static export.  This means it
     // can only advertise pages generated in the same deployment.
