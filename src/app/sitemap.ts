@@ -6,7 +6,7 @@ import { MAX_STATIC_ARTICLES } from '@/lib/indexing';
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://whythisbuzz.com';
+    const baseUrl = 'https://www.whythisbuzz.com';
     // Fetch all published articles to include every single article in Google Search Console
     const articles = await getAllArticles(MAX_STATIC_ARTICLES);
 
