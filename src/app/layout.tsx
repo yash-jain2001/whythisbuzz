@@ -22,7 +22,7 @@ export const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://whythisbuzz.com'),
+  metadataBase: new URL('https://www.whythisbuzz.com'),
   title: {
     default: "Why This Buzz - Trending News Explained | WhyThisBuzz",
     template: "%s | Why This Buzz",
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://whythisbuzz.com",
+    url: "https://www.whythisbuzz.com",
     siteName: "WhyThisBuzz",
     title: "WhyThisBuzz - Trending News Explained",
     description: "WhyThisBuzz explains why trending topics are buzzing — clear, in-depth news on Sports, Entertainment, Technology, and World Affairs.",
     images: [
       {
-        url: "https://whythisbuzz.com/images/og-image.jpg",
+        url: "https://www.whythisbuzz.com/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "WhyThisBuzz - Trending News Explained",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     creator: "@whythisbuzz",
     title: "WhyThisBuzz - Trending News Explained",
     description: "Clear, in-depth explanations of why trending topics are buzzing. Fresh stories on Sports, Entertainment, Tech & more.",
-    images: ["https://whythisbuzz.com/images/og-image.jpg"],
+    images: ["https://www.whythisbuzz.com/images/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -96,9 +96,9 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         {/* LLM Discovery */}
-        <link rel="llms" href="https://whythisbuzz.com/llms.txt" />
+        <link rel="llms" href="https://www.whythisbuzz.com/llms.txt" />
         {/* RSS Feed Autodiscovery */}
-        <link rel="alternate" type="application/rss+xml" title="WhyThisBuzz RSS Feed" href="https://whythisbuzz.com/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="WhyThisBuzz RSS Feed" href="https://www.whythisbuzz.com/feed.xml" />
 
         {/* Google AdSense Script */}
         <script
