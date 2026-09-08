@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 
-    const categoryUrl = `https://whythisbuzz.com/category/${slug}`;
+    const categoryUrl = `https://www.whythisbuzz.com/category/${slug}`;
     const description = `Explore all ${categoryName} articles on WhyThisBuzz. Stay updated with the latest trends, news, and insights.`;
 
     return {
