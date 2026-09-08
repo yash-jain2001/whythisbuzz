@@ -12,16 +12,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // The sitemap is generated as part of the static export.  This means it
     // can only advertise pages generated in the same deployment.
+    const now = new Date();
     const articleUrls = articles.map((article) => {
         const lastModified = new Date(article.metadata.date);
+        
+        // Check if the article was published in the last 60 days
+        const isRecent = !Number.isNaN(lastModified.getTime()) && 
+            (now.getTime() - lastModified.getTime()) < (60 * 24 * 60 * 60 * 1000);
 
         return {
             url: `${baseUrl}/article/${article.metadata.id}`,
             // Do not claim that every article changed on every deployment.
             // Google treats lastmod as a trust signal, so omit invalid dates.
             ...(Number.isNaN(lastModified.getTime()) ? {} : { lastModified }),
-            changeFrequency: 'daily' as const,
-            priority: 0.7,
+            changeFrequency: (isRecent ? 'hourly' : 'monthly') as const,
+            priority: isRecent ? 1.0 : 0.5,
         };
     });
 
