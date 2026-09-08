@@ -1,6 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/mdx';
 
+// Cloudflare Pages serves the exported sitemap file. This must be explicit
+// because the site uses Next.js `output: 'export'`.
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://whythisbuzz.com';
     const articles = await getAllArticles(10000);
