@@ -243,12 +243,23 @@ async function scrapeArticleData(url: string, preferredImage?: string): Promise<
       imageUrl = preferredImage;
     }
 
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-      }
-    });
-    const html = await response.text();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+    let html = '';
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+      });
+      html = await response.text();
+    } catch (fetchErr) {
+      // Scrape timed out or failed; fallback gracefully to headline
+    } finally {
+      clearTimeout(timeoutId);
+    }
     const $ = cheerio.load(html);
 
     $('script, style, nav, footer, iframe, header, noscript, .ad, .advertisement').remove();
@@ -597,30 +608,40 @@ async function main() {
 
   console.log(`🚀 [Category-Driven Publisher] Candidate pool prepared with ${selectedTrends.length} Global Trends across all 7 Categories:`);
 
-  let processedCount = 0;
+  const targetTrendsToProcess: TrendCandidate[] = [];
   let noImageCount = 0;
   const MAX_NO_IMAGE_CAP = Math.floor(TOTAL_TARGET * 0.25); // Max 25% fallback limit (at most 3 articles without images out of 15)
 
   for (const trend of selectedTrends) {
-    if (processedCount >= TOTAL_TARGET) break;
+    if (targetTrendsToProcess.length >= TOTAL_TARGET) break;
 
-    const { title, region, newsLink } = trend;
-    
-    const { text: scrapedText, imageUrl } = await scrapeArticleData(newsLink);
-    const candidateImage = imageUrl || trend.trendImage || '';
+    const candidateImage = trend.trendImage || '';
     const hasOriginImage = Boolean(candidateImage && candidateImage.startsWith('http'));
 
     if (!hasOriginImage && noImageCount >= MAX_NO_IMAGE_CAP) {
-      console.log(`⚠️ [Quality Control] Skipping trend "${title}" (No origin image and max 25% no-image cap reached).`);
+      console.log(`⚠️ [Quality Control] Skipping trend "${trend.title}" (No origin image and max 25% no-image cap reached).`);
       continue;
     }
 
     if (!hasOriginImage) {
       noImageCount++;
     }
+    targetTrendsToProcess.push(trend);
+  }
 
-    processedCount++;
-    console.log(`\n--- Processing Trend (${processedCount}/${TOTAL_TARGET}) [${region}]: "${title}" ---`);
+  console.log(`⚡ Processing ${targetTrendsToProcess.length} target trends in parallel batches of 3...`);
+
+  const CONCURRENCY = 3;
+  for (let i = 0; i < targetTrendsToProcess.length; i += CONCURRENCY) {
+    const batch = targetTrendsToProcess.slice(i, i + CONCURRENCY);
+    console.log(`\n--- Processing Parallel Batch ${Math.floor(i / CONCURRENCY) + 1}/${Math.ceil(targetTrendsToProcess.length / CONCURRENCY)} (${batch.length} items) ---`);
+    await Promise.all(
+      batch.map(async (trend) => {
+        const { title, region, newsLink } = trend;
+        try {
+          const { text: scrapedText, imageUrl } = await scrapeArticleData(newsLink);
+
+    console.log(`\n--- Processing Trend [${region}]: "${title}" ---`);
     console.log(`Fetching news source: ${newsLink}`);
     
     let text = scrapedText;
@@ -705,7 +726,6 @@ Raw Scraped Text:
 ${articleText}
 `;
 
-    try {
       let output = await generateWithRetry(prompt);
       
       if (output.startsWith('```mdx')) output = output.replace(/^```mdx\n/, '');
@@ -716,7 +736,7 @@ ${articleText}
       let frontmatterMatch = output.match(/---\n([\s\S]*?)\n---/);
       if (!frontmatterMatch) {
         console.error(`Could not parse frontmatter for ${region} article.`);
-        continue;
+        return;
       }
 
       let frontmatter = frontmatterMatch[1];
@@ -792,7 +812,7 @@ ${output}
       if (cleanWordCount < 300) {
         console.warn(`❌ [QUALITY REJECTED] "${articleTitle}" failed quality gate after ${expansionAttempts} expansion attempts (${cleanWordCount} words < 300 words minimum). SKIPPING PUBLICATION.`);
         console.log(`======================================================\n`);
-        continue; // Skip DB upload, Twitter, OneSignal, IndexNow
+        return; // Skip DB upload, Twitter, OneSignal, IndexNow
       }
 
       const finalReadTime = calculateReadTime(cleanWordCount);
@@ -880,9 +900,10 @@ ${output}
         await pingGoogleIndexingApi(slug);
       }
     } catch (error) {
-      console.error(`Error generating article for ${region} trend "${selectedTrend}":`, error);
+      console.error(`Error generating article for ${region} trend "${title}":`, error);
     }
-  }
+  }));
+}
 
   console.log("✅ All articles processed and saved directly to Supabase DB!");
   try {
