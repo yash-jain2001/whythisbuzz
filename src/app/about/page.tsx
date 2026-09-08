@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: "About WhyThisBuzz - Trending News Explained",
     description: "Learn about WhyThisBuzz, your source for clear, unbiased explanations of viral trends, controversies, and digital culture.",
     keywords: ["about WhyThisBuzz", "trending news explainer", "digital culture news", "viral trends explained"],
-    alternates: { canonical: 'https://whythisbuzz.com/about' },
+    alternates: { canonical: 'https://www.whythisbuzz.com/about' },
     openGraph: {
         type: "website",
         url: "https://whythisbuzz.com/about",
