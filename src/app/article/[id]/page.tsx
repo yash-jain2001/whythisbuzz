@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         };
     }
 
-    const articleUrl = `https://whythisbuzz.com/article/${article.metadata.id}`;
+    const articleUrl = `https://www.whythisbuzz.com/article/${article.metadata.id}`;
     
     // Explicitly use the generated SEO description if available, fallback to the article summary
     const description = article.metadata.metaDescription || article.metadata.summary;
