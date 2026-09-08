@@ -2,15 +2,12 @@ import { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/mdx';
 import { MAX_STATIC_ARTICLES } from '@/lib/indexing';
 
-// Cloudflare Pages serves the exported sitemap file. This must be explicit
-// because the site uses Next.js `output: 'export'`.
-export const dynamic = 'force-static';
+// Revalidate sitemap every hour to automatically pick up new Supabase articles
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://whythisbuzz.com';
-    // List only pages generated in this static deployment. Publishing more
-    // URLs than Cloudflare Pages can host causes 4xx sitemap entries and
-    // eventually makes the deployment fail its 20,000-file limit.
+    // Fetch all published articles to include every single article in Google Search Console
     const articles = await getAllArticles(MAX_STATIC_ARTICLES);
 
     // The sitemap is generated as part of the static export.  This means it

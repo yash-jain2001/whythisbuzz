@@ -5,19 +5,15 @@ import { MarkdownContent } from '@/components/MarkdownContent';
 import { ArticleView } from '@/components/ArticleView';
 import { notFound } from 'next/navigation';
 import { getArticleSeoImage } from '@/lib/country-utils';
-import { MAX_STATIC_ARTICLES } from '@/lib/indexing';
 
 interface PageProps {
     params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {
-    // This must stay in sync with the sitemap.  With `output: 'export'`, a
-    // slug that is present in the sitemap but absent here is not a live HTML
-    // page on Cloudflare Pages and can be reported by Google as a 4xx URL.
-    // Keep this aligned with the sitemap and below Cloudflare Pages' 20,000
-    // file deployment limit.
-    const slugs = await getArticleSlugs(MAX_STATIC_ARTICLES);
+    // Pre-build top 500 articles at build time for instant loading,
+    // while remaining/new articles are dynamically rendered on-demand (ISR/SSR).
+    const slugs = await getArticleSlugs(500);
     return slugs.map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
     }));

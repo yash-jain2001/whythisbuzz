@@ -6,4 +6,4 @@
  * This value must be used by both the static article route and the sitemap:
  * never advertise a URL that has not been exported in the same deployment.
  */
-export const MAX_STATIC_ARTICLES = 1800;
+export const MAX_STATIC_ARTICLES = 10000;
