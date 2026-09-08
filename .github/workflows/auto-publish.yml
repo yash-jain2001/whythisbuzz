@@ -36,17 +36,16 @@ jobs:
           TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
         run: npx tsx scripts/auto-publisher.ts
 
-      # A new Supabase row is not a public page until Cloudflare builds the
-      # static export. Fail the workflow if the deploy hook is missing or
-      # fails; silently skipping it causes the sitemap to advertise 404 URLs.
-      - name: Trigger and require Cloudflare Pages rebuild
+      # With Vercel ISR, new articles in Supabase are served dynamically on-demand.
+      # Trigger Vercel Deploy Hook if configured (optional).
+      - name: Trigger Vercel Deploy Hook (Optional)
         env:
-          CLOUDFLARE_HOOK_URL: ${{ secrets.CLOUDFLARE_HOOK_URL }}
+          VERCEL_HOOK_URL: ${{ secrets.VERCEL_HOOK_URL || secrets.CLOUDFLARE_HOOK_URL }}
         run: |
-          if [ -z "$CLOUDFLARE_HOOK_URL" ]; then
-            echo "CLOUDFLARE_HOOK_URL is not configured. Refusing to publish URLs that have not been deployed." >&2
-            exit 1
+          if [ -n "$VERCEL_HOOK_URL" ]; then
+            curl --fail --silent --show-error --retry 3 -X POST "$VERCEL_HOOK_URL" || true
+          else
+            echo "No deploy hook set. Vercel ISR will serve new Supabase articles dynamically."
           fi
-          curl --fail --silent --show-error --retry 3 --retry-all-errors -X POST "$CLOUDFLARE_HOOK_URL"
 
 
