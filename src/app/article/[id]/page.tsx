@@ -11,7 +11,11 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-    const slugs = await getArticleSlugs(2000);
+    // This must stay in sync with the sitemap.  With `output: 'export'`, a
+    // slug that is present in the sitemap but absent here is not a live HTML
+    // page on Cloudflare Pages and can be reported by Google as a 4xx URL.
+    // Fetch every published article rather than an arbitrary subset.
+    const slugs = await getArticleSlugs(10000);
     return slugs.map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
     }));

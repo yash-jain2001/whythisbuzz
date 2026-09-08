@@ -36,19 +36,17 @@ jobs:
           TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
         run: npx tsx scripts/auto-publisher.ts
 
-      - name: Run Full Website Re-Indexer
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
-          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-        run: npx tsx scripts/reindex-all.ts
-
-      - name: Trigger Cloudflare Pages Rebuild
-        if: env.CLOUDFLARE_HOOK_URL != ''
+      # A new Supabase row is not a public page until Cloudflare builds the
+      # static export. Fail the workflow if the deploy hook is missing or
+      # fails; silently skipping it causes the sitemap to advertise 404 URLs.
+      - name: Trigger and require Cloudflare Pages rebuild
         env:
           CLOUDFLARE_HOOK_URL: ${{ secrets.CLOUDFLARE_HOOK_URL }}
-        run: curl -X POST "$CLOUDFLARE_HOOK_URL"
+        run: |
+          if [ -z "$CLOUDFLARE_HOOK_URL" ]; then
+            echo "CLOUDFLARE_HOOK_URL is not configured. Refusing to publish URLs that have not been deployed." >&2
+            exit 1
+          fi
+          curl --fail --silent --show-error --retry 3 --retry-all-errors -X POST "$CLOUDFLARE_HOOK_URL"
 
 

@@ -1,33 +1,29 @@
 import { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/mdx';
 
-export const revalidate = 3600; // Revalidate sitemap every hour
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://whythisbuzz.com';
     const articles = await getAllArticles(10000);
-    const currentDate = new Date();
 
-    // Calculate if article is recent (within last 7 days)
-    const isRecent = (dateStr: string) => {
-        const articleDate = new Date(dateStr);
-        const daysDiff = Math.floor((currentDate.getTime() - articleDate.getTime()) / (1000 * 60 * 60 * 24));
-        return daysDiff <= 7;
-    };
+    // The sitemap is generated as part of the static export.  This means it
+    // can only advertise pages generated in the same deployment.
+    const articleUrls = articles.map((article) => {
+        const lastModified = new Date(article.metadata.date);
 
-    // Article URLs with dynamic priorities
-    const articleUrls = articles.map((article) => ({
-        url: `${baseUrl}/article/${article.metadata.id}`,
-        lastModified: isRecent(article.metadata.date) ? new Date(article.metadata.date) : currentDate,
-        changeFrequency: 'daily' as const,
-        priority: isRecent(article.metadata.date) ? 0.9 : 0.7,
-    }));
+        return {
+            url: `${baseUrl}/article/${article.metadata.id}`,
+            // Do not claim that every article changed on every deployment.
+            // Google treats lastmod as a trust signal, so omit invalid dates.
+            ...(Number.isNaN(lastModified.getTime()) ? {} : { lastModified }),
+            changeFrequency: 'daily' as const,
+            priority: 0.7,
+        };
+    });
 
     // Category URLs
     const categories = ['Sports', 'World Affairs', 'Politics', 'Economics', 'Technology', 'Social Media', 'Movies', 'Entertainment'];
     const categoryUrls = categories.map((category) => ({
         url: `${baseUrl}/category/${category.toLowerCase().replace(/\s+/g, '-')}`,
-        lastModified: currentDate,
         changeFrequency: 'daily' as const,
         priority: 0.9,
     }));
@@ -45,7 +41,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const staticUrls = staticPages.map((page) => ({
         url: `${baseUrl}${page.path}`,
-        lastModified: currentDate,
         changeFrequency: 'monthly' as const,
         priority: page.priority,
     }));
@@ -53,7 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return [
         {
             url: baseUrl,
-            lastModified: currentDate,
             changeFrequency: 'daily',
             priority: 1.0,
         },

@@ -6,6 +6,7 @@
     "dev": "next dev -p 3005",
     "prebuild": "node scripts/generate-search-data.mjs",
     "build": "next build",
+    "postbuild": "node scripts/verify-static-export.mjs",
     "migrate:supabase": "node scripts/migrate-to-supabase.mjs",
     "publish": "npx tsx scripts/auto-publisher.ts",
     "start": "next start",
