@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     alternates: { canonical: 'https://www.whythisbuzz.com/contact' },
     openGraph: {
         type: "website",
-        url: "https://whythisbuzz.com/contact",
+        url: "https://www.whythisbuzz.com/contact",
         siteName: "WhyThisBuzz",
         title: "Contact WhyThisBuzz",
         description: "Get in touch with the WhyThisBuzz team. Feedback, questions, or story suggestions welcome.",
-        images: [{ url: "https://whythisbuzz.com/images/og-image.jpg", width: 1200, height: 630, alt: "Contact WhyThisBuzz" }],
+        images: [{ url: "https://www.whythisbuzz.com/images/og-image.jpg", width: 1200, height: 630, alt: "Contact WhyThisBuzz" }],
     },
     twitter: { card: "summary", site: "@whythisbuzz", title: "Contact WhyThisBuzz" },
     robots: { index: true, follow: true },

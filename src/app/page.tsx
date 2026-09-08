@@ -11,10 +11,13 @@ export const metadata: Metadata = {
   title: "WhyThisBuzz - Trending News, Digital Culture & Tech Explained",
   description: "Your daily guide to the internet. We break down complex news, pop culture drama, tech innovations, and global affairs into easy-to-understand stories.",
   keywords: ["trending news", "digital culture", "technology explained", "pop culture", "world affairs", "WhyThisBuzz"],
+  alternates: {
+    canonical: 'https://www.whythisbuzz.com/',
+  },
   openGraph: {
     title: "WhyThisBuzz - Trending News, Digital Culture & Tech Explained",
     description: "Your daily guide to the internet. We break down complex news, pop culture drama, tech innovations, and global affairs into easy-to-understand stories.",
-    url: "https://whythisbuzz.com",
+    url: "https://www.whythisbuzz.com",
     siteName: "WhyThisBuzz",
     type: "website",
   },

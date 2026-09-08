@@ -159,7 +159,7 @@ export function generateImageAlt(title: string, context?: string): string {
  * @param path - The page path
  * @param baseUrl - The base URL (default: whythisbuzz.com)
  */
-export function generateCanonicalUrl(path: string, baseUrl: string = 'https://whythisbuzz.com'): string {
+export function generateCanonicalUrl(path: string, baseUrl: string = 'https://www.whythisbuzz.com'): string {
     // Remove trailing slash from baseUrl if present
     const cleanBase = baseUrl.replace(/\/$/, '');
     // Ensure path starts with /

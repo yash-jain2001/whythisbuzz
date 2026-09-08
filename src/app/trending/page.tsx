@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   description: 'Explore all trending news, viral stories, technology breakthroughs, and global affairs on WhyThisBuzz.',
   keywords: ['trending news', 'viral news', 'digital culture', 'WhyThisBuzz', 'technology', 'world affairs'],
   alternates: {
-    canonical: 'https://whythisbuzz.com/trending',
+    canonical: 'https://www.whythisbuzz.com/trending',
   },
   openGraph: {
     type: 'website',
-    url: 'https://whythisbuzz.com/trending',
+    url: 'https://www.whythisbuzz.com/trending',
     title: 'Trending News & Articles | WhyThisBuzz',
     description: 'Explore all trending news, viral stories, technology breakthroughs, and global affairs on WhyThisBuzz.',
     siteName: 'WhyThisBuzz',
@@ -35,8 +35,8 @@ export default async function TrendingPage() {
 
   const { generateBreadcrumbSchema, generateCollectionPageSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://whythisbuzz.com' },
-    { name: 'Trending Now', url: 'https://whythisbuzz.com/trending' },
+    { name: 'Home', url: 'https://www.whythisbuzz.com' },
+    { name: 'Trending Now', url: 'https://www.whythisbuzz.com/trending' },
   ]);
   const collectionSchema = generateCollectionPageSchema('Trending Now', articles.length);
   const combinedSchema = generateCombinedSchema(breadcrumbSchema, collectionSchema);

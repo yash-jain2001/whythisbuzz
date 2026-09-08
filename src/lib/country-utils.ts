@@ -181,7 +181,7 @@ export function getCategoryFallbackBanner(category?: string, seedText?: string):
 }
 
 export function getArticleSeoImage(article: { imageUrl?: string; category?: string; title?: string }): string {
-  const SITE_URL = 'https://whythisbuzz.com';
+  const SITE_URL = 'https://www.whythisbuzz.com';
   const rawUrl = article.imageUrl ? article.imageUrl.trim() : '';
 
   const isBad = !rawUrl ||

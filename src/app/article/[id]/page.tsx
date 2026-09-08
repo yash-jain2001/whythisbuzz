@@ -127,9 +127,9 @@ export default async function ArticlePage({ params }: PageProps) {
     const title = article.metadata.title || 'Untitled';
 
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://whythisbuzz.com' },
-        { name: category, url: `https://whythisbuzz.com/category/${category.toLowerCase().replace(/\s+/g, '-')}` },
-        { name: title, url: `https://whythisbuzz.com/article/${article.metadata.id}` },
+        { name: 'Home', url: 'https://www.whythisbuzz.com' },
+        { name: category, url: `https://www.whythisbuzz.com/category/${category.toLowerCase().replace(/\s+/g, '-')}` },
+        { name: title, url: `https://www.whythisbuzz.com/article/${article.metadata.id}` },
     ]);
     
     const combinedSchema = generateCombinedSchema(articleSchema, breadcrumbSchema);

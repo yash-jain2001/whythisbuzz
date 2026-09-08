@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             // Do not claim that every article changed on every deployment.
             // Google treats lastmod as a trust signal, so omit invalid dates.
             ...(Number.isNaN(lastModified.getTime()) ? {} : { lastModified }),
-            changeFrequency: (isRecent ? 'hourly' : 'monthly') as const,
+            changeFrequency: isRecent ? ('hourly' as const) : ('monthly' as const),
             priority: isRecent ? 1.0 : 0.5,
         };
     });

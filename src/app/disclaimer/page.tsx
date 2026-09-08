@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: "Disclaimer - WhyThisBuzz",
     description: "Important disclaimers about WhyThisBuzz content and information accuracy.",
     alternates: { canonical: 'https://www.whythisbuzz.com/disclaimer' },
-    openGraph: { type: "website", url: "https://whythisbuzz.com/disclaimer", siteName: "WhyThisBuzz", title: "Disclaimer - WhyThisBuzz" },
+    openGraph: { type: "website", url: "https://www.whythisbuzz.com/disclaimer", siteName: "WhyThisBuzz", title: "Disclaimer - WhyThisBuzz" },
     robots: { index: true, follow: false },
 };
 

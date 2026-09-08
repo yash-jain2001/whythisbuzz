@@ -1,5 +1,5 @@
 export async function onRequest(context: { env?: Record<string, string> }): Promise<Response> {
-    const siteUrl = 'https://whythisbuzz.com';
+    const siteUrl = 'https://www.whythisbuzz.com';
     const siteTitle = 'WhyThisBuzz - Trending News, Digital Culture & Tech Explained';
     const siteDescription = 'Clear explanations of trending topics in technology, movies, entertainment, and digital culture.';
 

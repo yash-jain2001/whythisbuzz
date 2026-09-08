@@ -82,8 +82,8 @@ export default async function CategoryPage({ params }: PageProps) {
     // Generate structured data
     const { generateBreadcrumbSchema, generateCollectionPageSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://whythisbuzz.com' },
-        { name: category, url: `https://whythisbuzz.com/category/${slug}` },
+        { name: 'Home', url: 'https://www.whythisbuzz.com' },
+        { name: category, url: `https://www.whythisbuzz.com/category/${slug}` },
     ]);
     const collectionSchema = generateCollectionPageSchema(category, articles.length);
     const combinedSchema = generateCombinedSchema(breadcrumbSchema, collectionSchema);

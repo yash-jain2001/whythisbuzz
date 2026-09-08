@@ -27,10 +27,13 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
   return {
     title: `${country.name} News & Breaking Trends - WhyThisBuzz`,
     description: `Read all the latest breaking news, viral stories, and trending topics from ${country.name}. Updated continuously from live Google Trends.`,
+    alternates: {
+      canonical: `https://www.whythisbuzz.com/country/${code.toLowerCase()}`,
+    },
     openGraph: {
       title: `${country.name} News & Breaking Trends - WhyThisBuzz`,
       description: `Read all the latest breaking news, viral stories, and trending topics from ${country.name}.`,
-      url: `https://whythisbuzz.com/country/${code.toLowerCase()}`,
+      url: `https://www.whythisbuzz.com/country/${code.toLowerCase()}`,
     },
   };
 }

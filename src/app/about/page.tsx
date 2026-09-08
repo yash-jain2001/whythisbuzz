@@ -9,18 +9,18 @@ export const metadata: Metadata = {
     alternates: { canonical: 'https://www.whythisbuzz.com/about' },
     openGraph: {
         type: "website",
-        url: "https://whythisbuzz.com/about",
+        url: "https://www.whythisbuzz.com/about",
         siteName: "WhyThisBuzz",
         title: "About WhyThisBuzz - Trending News Explained",
         description: "Learn about WhyThisBuzz, your source for clear explanations of viral trends and digital culture.",
-        images: [{ url: "https://whythisbuzz.com/images/og-image.jpg", width: 1200, height: 630, alt: "About WhyThisBuzz" }],
+        images: [{ url: "https://www.whythisbuzz.com/images/og-image.jpg", width: 1200, height: 630, alt: "About WhyThisBuzz" }],
     },
     twitter: {
         card: "summary_large_image",
         site: "@whythisbuzz",
         title: "About WhyThisBuzz",
         description: "Your source for clear explanations of trending news and digital culture.",
-        images: ["https://whythisbuzz.com/images/og-image.jpg"],
+        images: ["https://www.whythisbuzz.com/images/og-image.jpg"],
     },
     robots: { index: true, follow: true },
 };

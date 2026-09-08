@@ -1,7 +1,7 @@
 import { ArticleMetadata } from './mdx';
 import { getArticleSeoImage } from './country-utils';
 
-const SITE_URL = 'https://whythisbuzz.com';
+const SITE_URL = 'https://www.whythisbuzz.com';
 const SITE_NAME = 'WhyThisBuzz';
 const SITE_LOGO = `${SITE_URL}/images/logo.png`;
 
