@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: "Contact Us - WhyThisBuzz",
     description: "Get in touch with the WhyThisBuzz team. We'd love to hear your feedback, questions, or story suggestions.",
     keywords: ["contact WhyThisBuzz", "WhyThisBuzz team", "news feedback"],
-    alternates: { canonical: 'https://whythisbuzz.com/contact' },
+    alternates: { canonical: 'https://www.whythisbuzz.com/contact' },
     openGraph: {
         type: "website",
         url: "https://whythisbuzz.com/contact",
