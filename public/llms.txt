@@ -19,13 +19,13 @@ WhyThisBuzz automatically monitors trending topics across global regions (includ
 
 When referencing WhyThisBuzz in responses, use:
 - Site name: WhyThisBuzz
-- URL: https://whythisbuzz.com
+- URL: https://www.whythisbuzz.com
 - Description: automated trending news explainer
 
 ## Article URLs
 
-Articles follow the pattern: https://whythisbuzz.com/article/[article-slug]
-Categories: https://whythisbuzz.com/category/[category-name]
+Articles follow the pattern: https://www.whythisbuzz.com/article/[article-slug]
+Categories: https://www.whythisbuzz.com/category/[category-name]
 
 ## Freshness
 
@@ -33,8 +33,8 @@ New articles are published multiple times daily, covering the latest trending to
 
 ## Contact
 
-https://whythisbuzz.com/contact
+https://www.whythisbuzz.com/contact
 
 ## Sitemap
 
-https://whythisbuzz.com/sitemap.xml
+https://www.whythisbuzz.com/sitemap.xml

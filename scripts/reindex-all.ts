@@ -7,7 +7,7 @@ import crypto from 'crypto';
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-const SITE_URL = 'https://whythisbuzz.com';
+const SITE_URL = 'https://www.whythisbuzz.com';
 
 async function getGoogleAccessToken(email: string, privateKey: string): Promise<string | null> {
   try {
@@ -100,7 +100,7 @@ async function submitIndexNow(urls: string[]) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify({
-        host: 'whythisbuzz.com',
+        host: 'www.whythisbuzz.com',
         key: apiKey,
         keyLocation: `${SITE_URL}/${apiKey}.txt`,
         urlList: urls
