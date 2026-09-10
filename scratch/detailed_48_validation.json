@@ -1,0 +1,792 @@
+[
+  {
+    "id": "90621cea-6254-445b-97a3-f69d7c8432e4",
+    "slug": "power-play-why-virginias-governor-is-fighting-a-massive-utility-merger",
+    "title": "Power Play: Why Virginia's Governor Is Fighting a Massive Utility Merger",
+    "summary": "Virginia Governor Abigail Spanberger has made an unprecedented move to intervene in a high-stakes utility megamerger, demanding better protections for everyday energy consumers and frontline workers.",
+    "contentSnippet": "In a bold political move that has sent shockwaves through the energy sector, Virginia Governor Abigail Spanberger has officially intervened in a multi-billion-dollar utility megamerger. \n\nGovernors rarely step directly into regulatory battles of this scale. However, Spanberger’s aggressive stance si",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Politics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Politics (governor)",
+      "Body politics signals: governor"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "78368796-970b-4269-8eed-239161d1184a",
+    "slug": "middle-east-meltdown-trumps-claims-oil-price-chaos-and-recession-fears",
+    "title": "Middle East Meltdown: Trump's Claims, Oil Price Chaos, & Recession Fears",
+    "summary": "President Trump's Mideast peace claims clash with Iran's denials amid escalating strikes. We unpack the Strait of Hormuz crisis, oil price chaos, and BlackRock's stark global recession warning.",
+    "contentSnippet": "## Middle East Powder Keg: Trump's Claims, Oil Price Swings, and Global Recession Fears\r\n\r\nThe Middle East is a geopolitical tinderbox, and the world is watching, breath held. While President Donald Trump declared that negotiations to end the Iran war are happening \"now\" and that Tehran \"wants to ma",
+    "currentCategory": "Politics",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (recession)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "3ab4d3fd-aa59-4d51-88c5-0b658d1a03bf",
+    "slug": "lipowitz-reigns-in-slovenia-a-tour-de-france-dark-horse-emerges",
+    "title": "Lipowitz Reigns in Slovenia: A Tour de France Dark Horse Emerges?",
+    "summary": "German cyclist Florian Lipowitz clinched the Queen Stage and overall lead at the Tour of Slovenia, signaling serious form just weeks before the Tour de France. Is the Red Bull-Bora-hansgrohe rider ready to challenge the sport's biggest names?",
+    "contentSnippet": "The world of professional cycling just got a new name to watch, and he’s hitting peak form at precisely the right moment. **Florian Lipowitz**, the 25-year-old German talent from Team Red Bull-Bora-hansgrohe, has just delivered a stunning performance, snatching the Queen Stage and the overall lead a",
+    "currentCategory": "Entertainment",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (tour de france)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "6d6dbd50-e7b6-4a28-883c-8fb88230fbed",
+    "slug": "scooter-shenanigans-nascar-rivals-ryan-blaney-and-chase-elliott-go-viral",
+    "title": "Scooter Shenanigans: NASCAR Rivals Ryan Blaney & Chase Elliott Go Viral",
+    "summary": "NASCAR's fiercest competitors, Ryan Blaney and Chase Elliott, took an unexpected detour this weekend, sharing a comically overloaded scooter ride that's now making waves and proving even rivals can be buddies.",
+    "contentSnippet": "## NASCAR's Unexpected Bromance: Blaney and Elliott's Viral Scooter Ride\r\n\r\nIn the high-octane world of NASCAR, rivalries often dominate the headlines. Fans passionately debate allegiances, and on-track clashes become legendary. But this past weekend, two of the sport's biggest names, **Ryan Blaney*",
+    "currentCategory": "Social-Media",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (nascar)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "12793c97-b23e-4a12-b790-c73da8c78d65",
+    "slug": "kylian-mbappe-french-footballs-troubled-genius-or-political-game-changer",
+    "title": "Kylian Mbappé: French Football's Troubled Genius or Political Game-Changer?",
+    "summary": "From controversial Real Madrid transfer to Euro 2024 disappointment, Kylian Mbappé's star seems troubled on the pitch. Yet, off it, he wields unprecedented power, openly challenging France's far-right and shaping the nation's political landscape.",
+    "contentSnippet": "## Kylian Mbappé: Beyond the Beautiful Game, A Nation Divided\r\n\r\nThe world watches Kylian Mbappé. As the looming **2026 World Cup in the USA, Mexico, and Canada** draws closer, the spotlight on the French football superstar isn't just about his unparalleled talent. It's about the tempest of controve",
+    "currentCategory": "Sports",
+    "proposedCategory": "Politics",
+    "confidence": 85,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Primary Subject Match (150 pts total score)",
+    "signals": [
+      "Primary title subject: Politics (political)",
+      "Body politics signals: parliamentary, presidential"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "7f1ce5a9-2a4b-4592-b6e6-22126dedab0b",
+    "slug": "lindner-unloads-on-merz-germanys-pension-war-heats-up",
+    "title": "Lindner Unloads on Merz: Germany's Pension War Heats Up!",
+    "summary": "Former Finance Minister Christian Lindner ignites a fierce debate, directly challenging Chancellor Friedrich Merz's pension reform claims and predicting major turbulence within the SPD.",
+    "contentSnippet": "Germany's pension reform debate is hitting boiling point, and the gloves are off. Former Finance Minister and FDP leader Christian Lindner has launched a scathing attack on Chancellor Friedrich Merz (CDU), directly questioning his understanding of capital markets and predicting an internal earthquak",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (pension)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "c2da9998-3136-4984-8567-b23377bc16f8",
+    "slug": "snooker-shockwave-judd-trumps-world-no-1-reign-rocked-by-china-open-upset",
+    "title": "Snooker Shockwave: Judd Trump's World No. 1 Reign Rocked by China Open Upset",
+    "summary": "Judd Trump's status as world number one hangs by a thread after a stunning first-round exit at the China Open, signaling a potential seismic shift in snooker's top hierarchy.",
+    "contentSnippet": "## The Shockwave: Judd Trump's China Open Exit and World No. 1 Ranking Crisis\r\n\r\nThe snooker world is buzzing after a seismic upset at the newly reinstated China Open, where world number one Judd Trump suffered a stunning first-round defeat. His loss to Thailand's relatively unheralded Noppon Saengk",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Sports",
+    "confidence": 95,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (200 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (snooker, judd trump)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "018872e5-c0e8-4e69-af18-00ad9dafdc5b",
+    "slug": "spacex-bags-dollar920mmonth-google-deal-an-ai-lifeline-before-ipo",
+    "title": "SpaceX Bags $920M/Month Google Deal: An AI Lifeline Before IPO?",
+    "summary": "Days before its massive IPO, SpaceX has inked a near-billion-dollar monthly deal with Google, providing critical AI compute power to the tech giant while boosting its own AI narrative amid significant xAI challenges.",
+    "contentSnippet": "## Elon Musk's Latest Power Play: SpaceX Lands Near-Billion-Dollar Google AI Deal\r\n\r\nJust as the global financial markets brace for a potentially record-breaking Initial Public Offering (IPO) from SpaceX, Elon Musk's ambitious space venture has pulled a move straight out of the big tech playbook. In",
+    "currentCategory": "Technology",
+    "proposedCategory": "Economics",
+    "confidence": 85,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Primary Subject Match (150 pts total score)",
+    "signals": [
+      "Primary title subject: Economics (ipo)",
+      "Body economics signals: ipo, initial public offering"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "8a8eaaca-db2e-4af8-a81a-0b6968fa05f7",
+    "slug": "why-cambridges-vice-chancellor-just-admitted-to-deep-concerns-over-high-profile-resignation",
+    "title": "Why Cambridge's Vice-Chancellor Just Admitted to Deep Concerns Over High-Profile Resignation",
+    "summary": "Following the sudden resignation of high-profile professor Jason Arday amid plagiarism allegations, Cambridge's Vice-Chancellor has launched an independent investigation into his controversial hiring.",
+    "contentSnippet": "The ivory towers of academia are shaking. Following the sudden departure of Jason Arday from his post as a professor of sociology of education, the University of Cambridge is facing a reckoning. \n\nIn a frank letter to staff, Vice-Chancellor Prof Deborah Prentice admitted that she not only understand",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Politics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Politics (chancellor)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "1bdac501-9dc8-48a9-8c4a-4b8bbe89d353",
+    "slug": "sandp-500-sinks-the-perfect-storm-that-crushed-markets",
+    "title": "S&P 500 Sinks: The Perfect Storm That Crushed Markets",
+    "summary": "The S&P 500 just experienced its lowest close of 2026 after a brutal Friday. A convergence of soaring oil prices, rising bond yields, weak jobs data, and escalating geopolitical tensions created a potent cocktail of market fear, sending stocks spiraling.",
+    "contentSnippet": "## Why the S&P 500 Just Had Its Worst Day of 2026\r\n\r\nIf you glanced at your investment portfolio this past Friday, you likely winced. The S&P 500 (SPY), the benchmark for the broader U.S. stock market, closed at its lowest point of 2026, marking a truly grim end to the trading week. This wasn't just",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (s&p 500)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "052b7d76-a754-465e-a87e-e1a76ca5e929",
+    "slug": "why-marvel-rivals-season-10-is-changing-everything",
+    "title": "Why Marvel Rivals Season 10 is Changing Everything",
+    "summary": "Get ready for major character updates, a fresh map, and the arrival of the God Butcher as Marvel Rivals Season 10 drops on September 11.",
+    "contentSnippet": "## What Happened\n\nNetEase has pulled back the curtain on *Marvel Rivals* Season 10 through the latest edition of Dev Vision. Developers Guangguang and Zhiyong returned to walk players through a massive drop of upcoming content, setting the stage for the next major update launching globally on Septem",
+    "currentCategory": "Technology",
+    "proposedCategory": "Entertainment",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Entertainment\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Entertainment (marvel)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "9ca89fc8-adf5-4af2-8247-56f6a35f7944",
+    "slug": "trumps-iran-pause-how-geopolitics-ignited-bitcoins-wild-ride",
+    "title": "Trump's Iran Pause: How Geopolitics Ignited Bitcoin's Wild Ride",
+    "summary": "President Trump's surprise announcement regarding Iran talks sent Bitcoin prices on a rollercoaster, highlighting crypto's deep ties to global geopolitics and shifting economic tides.",
+    "contentSnippet": "Hold onto your digital wallets, because Thursday delivered a masterclass in market volatility, all thanks to a single social media post from a former U.S. President. Bitcoin, already reeling from a challenging week, took investors on a rapid-fire rollercoaster, proving once again that in the world o",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Economics",
+    "confidence": 85,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Primary Subject Match (150 pts total score)",
+    "signals": [
+      "Primary title subject: Economics (bitcoin)",
+      "Body economics signals: federal reserve, market cap"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "7d20f668-393b-49c0-8ae7-f8747dcdb70e",
+    "slug": "germanys-pension-tsunami-why-your-retirement-income-just-got-a-reality-check",
+    "title": "Germany's Pension Tsunami: Why Your Retirement Income Just Got a Reality Check",
+    "summary": "Germany's top economic advisors are sounding the alarm on the pension system, proposing a radical shift: tying existing pension increases to inflation, not wage growth. This controversial move could reshape retirement for millions, potentially slowing income rises and sparking a major generational d",
+    "contentSnippet": "## Germany's Looming Pension Crisis: Why Reform is on the Table\r\n\r\nGermany's carefully constructed pension system is facing a perfect storm, and the nation's top economic advisors are ringing the alarm bells. The \"Wirtschaftsweise,\" or Council of Economic Experts, has issued a stark warning: without",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (pension)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "5ab986b6-910a-42f1-97b5-f34465d153a5",
+    "slug": "ucl-finals-power-play-why-brandon-flowers-and-david-beckham-are-racing-to-budapest",
+    "title": "UCL Final's Power Play: Why Brandon Flowers & David Beckham Are Racing to Budapest",
+    "summary": "The UEFA Champions League Final 2026 is heating up off the pitch, thanks to a cinematic short film starring The Killers' frontman Brandon Flowers and football legend David Beckham. This high-octane promo announces The Killers as headliners for the pre-match Kick Off Show, blending sport, music, and ",
+    "contentSnippet": "The UEFA Champions League Final isn't just a football match; it's a global spectacle, and for 2026, it's getting a serious dose of star power. In a move that brilliantly blurs the lines between sport and pop culture, a new cinematic short film, **\"The Race Begins,\"** features none other than The Kil",
+    "currentCategory": "Entertainment",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (ucl final)",
+      "Body sports signals: halftime"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "29fdadf6-1618-492e-998c-a062b2eac834",
+    "slug": "scott-adams-dilbert-creator-life-career-controversy",
+    "title": "Scott Adams Dies at 68: How Dilbert Made Him Famous and What Led to Its End",
+    "summary": "A clear look at Scott Adams’ rise through the Dilbert comic strip, his cultural impact, and the controversy that ultimately ended its newspaper run.",
+    "contentSnippet": "Scott Adams, the creator of the globally popular comic strip **Dilbert**, has died at the age of 68 after battling aggressive prostate cancer. His death has renewed discussion around both his lasting influence on workplace humor and the controversy that ultimately ended the strip’s decades-long news",
+    "currentCategory": "World",
+    "proposedCategory": "World Affairs",
+    "confidence": 72,
+    "method": "EXPLICIT_SOURCE",
+    "reason": "Trusted explicit source category \"World\"",
+    "signals": [
+      "Explicit Source: \"World\""
+    ],
+    "isLegacy": true
+  },
+  {
+    "id": "35e5cdc1-36e4-4c02-b7f1-e79c7c88f96b",
+    "slug": "inside-awarapan-2-what-you-need-to-know",
+    "title": "Inside Awarapan 2: What You Need to Know",
+    "summary": "Emraan Hashmi returns as Shivam in Awarapan 2, but the long-awaited sequel struggles to capture the poetic emotional depth of the 2007 cult classic.",
+    "contentSnippet": "Almost two decades after its initial release, the 2007 film *Awarapan* remains a cult masterpiece in Indian cinema. More than just a movie, it was a haunting exploration of heartbreak, redemption, and profound loneliness. Emraan Hashmi’s portrayal of Shivam—a lethal yet deeply melancholic gangster d",
+    "currentCategory": "Movies",
+    "proposedCategory": "Entertainment",
+    "confidence": 74,
+    "method": "EXPLICIT_SOURCE",
+    "reason": "Primary Subject Match (45 pts total score)",
+    "signals": [
+      "Body entertainment signals: musical",
+      "Explicit source category: Movies"
+    ],
+    "isLegacy": true
+  },
+  {
+    "id": "381873a2-3058-4140-8c8f-425075acd6ff",
+    "slug": "why-ai-video-generators-are-taking-over-tiktok-right-now",
+    "title": "Why AI Video Generators Are Taking Over TikTok Right Now",
+    "summary": "AI Inspo has launched an accessible AI video generator designed to help everyday creators instantly produce viral TikToks and Reels, transforming social media content creation.",
+    "contentSnippet": "## What Happened\n\nAI Inspo has officially launched a new artificial intelligence video generator tailored specifically for social media creators. The platform aims to democratize content creation, allowing anyone—regardless of technical skill or video editing experience—to produce professional-grade",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (tiktok)",
+      "Body social-media signals: content creation, feed"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "d16223e0-98a7-42ec-8588-5b15b0456eb9",
+    "slug": "why-marcus-rashfords-man-utd-future-is-hanging-in-the-balance",
+    "title": "Why Marcus Rashford's Man Utd Future is Hanging in the Balance",
+    "summary": "Harry Maguire breaks the silence on Marcus Rashford's uncertain Old Trafford future as the September 1 transfer deadline fast approaches.",
+    "contentSnippet": "The transfer window drama at Old Trafford is heating up, and the clock is ticking down to September 1. Amid mounting speculation, Manchester United defender Harry Maguire has broken his silence, revealing that the dressing room desperately hopes Marcus Rashford chooses to stay.\n\nRashford recently ma",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (man utd)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "3a1b075e-7726-4fb8-b722-50011eb2b44a",
+    "slug": "how-mp-josh-burns-unexpectedly-navigated-his-hardest-year-yet",
+    "title": "How MP Josh Burns Unexpectedly Navigated His Hardest Year Yet",
+    "summary": "Labor MP Josh Burns opens up about co-parenting with a political rival, surviving targeted threats, and how a surprising medical diagnosis changed everything.",
+    "contentSnippet": "On paper, it sounds like the setup for a high-stakes political drama. \n\nHe is a federal Labor MP, raised in Melbourne's vibrant Jewish heartland. She is a state MP for the Animal Justice Party, a staunch vegan, and an outspoken advocate for Palestinian rights. Yet, despite their radically different ",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Politics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Politics (mp)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "aff77011-4cdc-4970-b0f6-dff298773a2e",
+    "slug": "pogacars-unstoppable-reign-continues-as-young-gun-seixas-shakes-up-tour-de-france-podium-battle",
+    "title": "Pogacar's Unstoppable Reign Continues as Young Gun Seixas Shakes Up Tour de France Podium Battle",
+    "summary": "Tadej Pogacar secured his fourth stage win, solidifying his grip on the yellow jersey, while 19-year-old Paul Seixas made a dramatic move, snatching the white jersey and intensifying the fight for the Tour de France podium.",
+    "contentSnippet": "The 2026 Tour de France continues to be a masterclass in domination by Tadej Pogacar, who once again proved untouchable in the Vosges mountains. But while the Slovenian superstar adds to his already impressive tally, a thrilling new narrative is unfolding just behind him, with 19-year-old Paul Seixa",
+    "currentCategory": "Entertainment",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (tour de france)",
+      "Body sports signals: standings"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "8f88d99f-5f4a-4a2b-9395-243b7fb050c2",
+    "slug": "pogacars-pyrenean-power-play-how-he-seized-tour-de-france-control",
+    "title": "Pogacar's Pyrenean Power Play: How He Seized Tour De France Control",
+    "summary": "Tadej Pogačar launched a devastating attack on the Tour de France's first Pyrenean stage, not only claiming victory but also snatching the coveted yellow jersey from rival Jonas Vingegaard in a stunning display of tactical brilliance.",
+    "contentSnippet": "## Tadej Pogačar's Pyrenean Blitz: Yellow Jersey Snagged in Thrilling Stage 3 Showdown\r\n\r\nHold onto your handlebars, cycling fans! The Tour de France just got a whole lot more electrifying. Slovenian superstar Tadej Pogačar, riding for UAE Team Emirates, didn't just win the third stage – he *dominat",
+    "currentCategory": "Entertainment",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (tour de france)",
+      "Body sports signals: assist"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "4cac710d-433d-4d59-8cb4-0c691a43ab64",
+    "slug": "why-the-2026-stock-market-under-trump-is-shifting-right-now",
+    "title": "Why the 2026 Stock Market Under Trump is Shifting Right Now",
+    "summary": "As the 2026 economic landscape unfolds under the Trump administration, Wall Street is reacting to shifting fiscal policies and market drivers. Here is what investors need to know about the current financial climate.",
+    "contentSnippet": "The financial landscape of 2026 is moving at a breakneck pace, and Wall Street is paying close attention. As markets react to the economic strategies of the Trump administration, investors are trying to decode what lies ahead for their portfolios. According to recent insights from U.S. Bank, a uniqu",
+    "currentCategory": "Politics",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (stock market)",
+      "Body economics signals: federal reserve"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "496aa117-ea67-4950-a58b-9d816d1fc1c1",
+    "slug": "why-ai-video-generators-are-suddenly-taking-over-tiktok",
+    "title": "Why AI Video Generators Are Suddenly Taking Over TikTok",
+    "summary": "AI Inspo has launched an accessible AI video generator designed to help everyday creators effortlessly produce viral TikToks and Reels.",
+    "contentSnippet": "## What Happened\n\nAI Inspo has officially rolled out a brand-new AI video generator designed specifically to lower the technical barrier for short-form content creation. Unlike complex editing suites that demand hours of training and professional video-editing skills, this newly released tool enable",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (tiktok)",
+      "Body social-media signals: content creation, post, algorithm"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "4bd71211-4b02-47c2-b97c-c6fa9fa61f61",
+    "slug": "why-ai-inspos-new-video-tool-is-shaking-up-tiktok-and-reels-right-now",
+    "title": "Why AI Inspo’s New Video Tool is Shaking Up TikTok and Reels Right Now",
+    "summary": "AI Inspo has launched an accessible, user-friendly AI video generator designed to help creators and brands pump out viral-ready content for TikTok and Instagram Reels.",
+    "contentSnippet": "The modern creator economy runs on a single, relentless currency: attention. On platforms like TikTok and Instagram Reels, a single viral video can launch a business, build a massive personal brand, or reshape digital culture overnight. Yet, the barrier to producing this high-impact content has hist",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 95,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (200 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (tiktok, reels)",
+      "Body social-media signals: content creation, post"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "f93f787d-4e63-46a9-8131-147d714bdae8",
+    "slug": "what-binances-new-ai-trading-launch-means-for-crypto",
+    "title": "What Binance's New AI Trading Launch Means for Crypto",
+    "summary": "Binance has launched Agent OS, allowing autonomous AI agents to manage and trade real money. Here is how the crypto giant plans to keep these digital traders in check.",
+    "contentSnippet": "The world’s largest cryptocurrency exchange, Binance, is taking a massive leap into the future of autonomous finance. The company has officially launched **Agent OS**, a new platform that allows artificial intelligence agents to analyze market trends and execute live trades on behalf of users. \n\nWit",
+    "currentCategory": "Technology",
+    "proposedCategory": "Economics",
+    "confidence": 95,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (200 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (binance, crypto)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "70677166-1df8-4031-a52e-4cc2326332c0",
+    "slug": "inside-the-canada-us-tariff-talks-what-you-need-to-know",
+    "title": "Inside the Canada-U.S. Tariff Talks: What You Need to Know",
+    "summary": "As Canada and the U.S. finalize high-stakes trade negotiations, provincial leaders clash over concessions on dairy, steel quotas, and American alcohol.",
+    "contentSnippet": "Canadian and U.S. trade negotiators are locked in intense final talks in Washington to iron out a tentative agreement. The high-stakes negotiations address lingering retaliatory tariffs, aluminum and steel limits, and cross-border access for dairy and consumer goods. \n\nWhile federal officials push t",
+    "currentCategory": "Politics",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (tariff)",
+      "Body economics signals: tariffs"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "87c233a6-3d5a-4707-99f5-9417695f6d23",
+    "slug": "why-binances-new-ai-agent-platform-changes-crypto-trading",
+    "title": "Why Binance's New AI Agent Platform Changes Crypto Trading",
+    "summary": "Binance has launched Agent OS, allowing AI agents to analyze markets and execute crypto trades on behalf of users through dedicated subaccounts.",
+    "contentSnippet": "## What Happened\n\nBinance has officially launched **Agent OS**, a new platform that allows developers to connect artificial intelligence applications and agents directly to the exchange's financial infrastructure. \n\nWith over 300 million registered users, the world's largest crypto exchange is offic",
+    "currentCategory": "Technology",
+    "proposedCategory": "Economics",
+    "confidence": 95,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (200 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (binance, crypto)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "cfccc90f-dcfa-4d1c-b8e2-fea3fe7f8c26",
+    "slug": "why-ai-inspos-new-video-generator-is-winning-tiktok",
+    "title": "Why AI Inspo's New Video Generator Is Winning TikTok",
+    "summary": "AI Inspo has launched an accessible AI video generator designed to help everyday creators produce viral TikTok and Instagram Reels instantly.",
+    "contentSnippet": "Content creation is shifting gears once again. Platform developer AI Inspo has officially launched a brand-new AI video generator designed to remove the technical hurdles of making short-form video content. Aimed at everyday users rather than professional editors, the tool arrives as demand for rapi",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (tiktok)",
+      "Body social-media signals: content creation"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "5d52163d-a37c-4732-a5e5-52e44101ff0c",
+    "slug": "why-cz-binance-is-making-an-unexpected-move-in-bhutan-right-now",
+    "title": "Why CZ Binance is Making an Unexpected Move in Bhutan Right Now",
+    "summary": "Binance founder Changpeng Zhao (CZ) is set to open the YZi Labs Demo Day in Bhutan, marking a rare public appearance to discuss the future of Web3, stablecoins, and AI.",
+    "contentSnippet": "Changpeng \"CZ\" Zhao, the founder and former CEO of Binance, is stepping back into the spotlight. In a surprising development, the crypto pioneer is heading to Bhutan to kick off a major Web3 startup event. \n\nCZ will officially open the YZi Labs EASY Residency S4 Demo Day on August 26 at 11:45 AM GMT",
+    "currentCategory": "Technology",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (binance)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "1c9cec28-39f2-4939-a929-1a96767dc23d",
+    "slug": "the-real-reason-behind-the-sudden-us-canada-trade-war",
+    "title": "The Real Reason Behind the Sudden US-Canada Trade War",
+    "summary": "Trade talks between Donald Trump and Canadian PM Mark Carney have collapsed, triggering a multi-billion dollar tariff battle and reigniting talk of Canada as the '51st state.'",
+    "contentSnippet": "Relations between the US and Canada have hit a historic low after trade negotiations abruptly collapsed, triggering a multi-billion-dollar tariff battle. Following the breakdown, US President Donald Trump claimed Canada wants “the benefits of being a State, without being one,” once again raising his",
+    "currentCategory": "Politics",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (trade war)",
+      "Body economics signals: tariff, tariffs"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "79ffe6d4-a42b-458c-8bfb-135346e07179",
+    "slug": "why-rosenheims-diy-fireworks-blast-left-teens-critical",
+    "title": "Why Rosenheim's DIY Fireworks Blast Left Teens Critical",
+    "summary": "An amateur attempt to mix pyrotechnic chemicals in Rosenheim triggered a dangerous deflagration, sending multiple teenagers to specialty clinics.",
+    "contentSnippet": "## What Happened in Rosenheim\n\nAn evening gathering in Rosenheim turned into a critical emergency after three teenagers attempted to mix chemical substances intended for pyrotechnics. According to local police reports, the unauthorized handling of these materials resulted in an unpredicted, violent ",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (rosenheim)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "f5db2ef3-5de0-4634-9f72-48f5eacebaaa",
+    "slug": "the-real-reason-behind-frances-sweeping-school-smartphone-ban",
+    "title": "The Real Reason Behind France’s Sweeping School Smartphone Ban",
+    "summary": "France's Ministry of National Education is rolling out a total smartphone ban in middle schools. Here is how the 'digital pause' works and why the government is enforcing it.",
+    "contentSnippet": "France is taking a decisive stand against screen time in classrooms. The Ministry of National Education is actively rolling out a policy known as the **\"pause numérique\" (digital pause)**—a complete ban on smartphones for middle school students. \n\nWhile France previously banned phone use during clas",
+    "currentCategory": "Politics",
+    "proposedCategory": "Technology",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Technology\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Technology (smartphone)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "f8a8ff0a-8104-4e5b-8467-26766eb3d75f",
+    "slug": "the-real-reason-behind-nvidias-unreal-dollar96-billion-revenue-surge",
+    "title": "The Real Reason Behind Nvidia’s Unreal $96 Billion Revenue Surge",
+    "summary": "Nvidia shattered expectations yet again, posting an astronomical $96.2 billion in Q2 revenue as global demand for AI infrastructure hits full steam.",
+    "contentSnippet": "Nvidia has done it again. The undisputed titan of the artificial intelligence boom has delivered another blockbuster earnings report, proving that the global appetite for AI hardware is nowhere near satisfied.\n\nThe Silicon Valley giant reported a staggering second-quarter revenue of **$96.2 billion*",
+    "currentCategory": "Economics",
+    "proposedCategory": "Technology",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Technology\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Technology (nvidia)",
+      "Body technology signals: silicon, tech sector"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "f2be2a55-4bad-4f00-a640-de84d53362d4",
+    "slug": "inside-manchester-pride-2026-what-you-need-to-know",
+    "title": "Inside Manchester Pride 2026: What You Need to Know",
+    "summary": "After its previous operator went bust, Manchester Pride is back with a fresh community-led approach for 2026. Here is what to expect.",
+    "contentSnippet": "## What Happened\n\nManchester Pride is officially back for the August bank holiday weekend, securing its place as one of the UK's biggest LGBTQ+ celebrations. Fears sparked last year when the previous operating company went into voluntary liquidation, leaving the festival's future in doubt and castin",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Entertainment",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Entertainment\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Entertainment (manchester pride)",
+      "Body entertainment signals: casting"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "19b10a3b-f9b0-4a99-8c85-0bd551e93a9b",
+    "slug": "why-social-media-influencer-manjeet-kaurs-tragic-murder-shocked-us",
+    "title": "Why Social Media Influencer Manjeet Kaur's Tragic Murder Shocked Us",
+    "summary": "Social media influencer Manjeet Kaur tragically passed away after being abducted and set on fire. Here is what we know about the ongoing police investigation and the growing concerns over digital creator safety.",
+    "contentSnippet": "## What Happened\n\nSocial media influencer and makeup artist Manjeet Kaur passed away on August 26, 2026, while receiving specialized treatment at the Postgraduate Institute of Medical Education and Research (PGIMER) in Chandigarh. Kaur, who lived in a rented house in Kharar, Mohali, had been hospita",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (influencer)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "4c49545e-2f85-4de2-8472-3b9221fff340",
+    "slug": "why-6th-generation-fighters-are-transforming-air-warfare",
+    "title": "Why 6th-Generation Fighters Are Transforming Air Warfare",
+    "summary": "Discover the cutting-edge capabilities and strategic shifts driving the global race for next-generation combat aircraft.",
+    "contentSnippet": "## The Evolution of Air Superiority\n\nThe global defense landscape is rapidly shifting as major aerospace powers accelerate the development of 6th-generation fighter jets. Building upon the low-observable foundations of 5th-generation platforms like the F-35 and J-20, these upcoming aircraft are engi",
+    "currentCategory": "Technology",
+    "proposedCategory": "World Affairs",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"World Affairs\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: World Affairs (warfare)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "a4766a13-7258-4180-845b-dc2aefa2e5df",
+    "slug": "why-the-binance-app-is-trending-right-now",
+    "title": "Why the Binance App Is Trending Right Now",
+    "summary": "The world's largest cryptocurrency app is experiencing a massive global surge in downloads and key regulatory breakthroughs. Here is what is driving the sudden momentum.",
+    "contentSnippet": "The Binance app is dominating mobile app stores once again. As the world’s largest cryptocurrency exchange by trading volume, its mobile platform remains the primary gateway for millions of retail investors entering the digital asset market. \n\nRecent updates, regulatory shifts, and a broader market ",
+    "currentCategory": "Technology",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (binance)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "502571da-866e-4ec5-a777-7ba5a5b85aa8",
+    "slug": "the-real-reason-behind-frances-new-pension-reform-plan",
+    "title": "The Real Reason Behind France’s New Pension Reform Plan",
+    "summary": "France is targeting an unexpected inequality in its retirement system where fathers currently receive larger pension bonuses than mothers.",
+    "contentSnippet": "In France's ongoing retirement debate, a surprising statistic has taken center stage: **having children currently boosts retirement payouts more for men than for women.**\n\nFrench Labor Minister Jean-Pierre Farandou recently called out this disparity, labeling it \"not normal.\" Now, the government is ",
+    "currentCategory": "Politics",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (pension)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "e0ba4bbc-fa6e-490a-b10a-86b8ff9bf29d",
+    "slug": "the-real-reason-behind-grian-chattens-viral-welsh-football-shirt",
+    "title": "The Real Reason Behind Grian Chatten's Viral Welsh Football Shirt",
+    "summary": "When Fontaines D.C. headlined Reading Festival, frontman Grian Chatten stunned fans by wearing a niche Welsh football shirt. Here is the story behind the fashion choice that is boosting grassroots clubs and music venues.",
+    "contentSnippet": "When Irish rock sensations Fontaines D.C. took the stage to headline the Reading Festival, fans expected a high-energy performance. What they did not expect was a major fashion statement supporting a semi-professional Welsh football club. \n\nFrontman Grian Chatten performed the entire set wearing a g",
+    "currentCategory": "Entertainment",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (football)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "0a1f9a88-a4a4-4866-8569-43d3f15a99e2",
+    "slug": "the-real-reason-behind-trumps-bold-new-tariff-strategy",
+    "title": "The Real Reason Behind Trump's Bold New Tariff Strategy",
+    "summary": "As Donald Trump doubles down on aggressive tariff proposals, we break down his economic playbook, the leveraging tactics at play, and what it actually means for your wallet.",
+    "contentSnippet": "Donald Trump’s return to the forefront of economic policy has reignited a fierce global debate over trade. His administration’s aggressive push for sweeping tariffs on key trading partners—including Canada, Mexico, and China—has sent shockwaves through international markets. \n\nBut behind the intense",
+    "currentCategory": "Politics",
+    "proposedCategory": "Economics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Economics (tariff)",
+      "Body economics signals: tariff, tariffs"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "2e74ca89-1a04-497c-9b2f-0a736aafcd24",
+    "slug": "why-ai-inspos-new-video-generator-is-winning-over-tiktok",
+    "title": "Why AI Inspo's New Video Generator Is Winning Over TikTok",
+    "summary": "AI Inspo has launched an accessible AI video generator designed to help everyday creators easily produce viral TikToks and Instagram Reels.",
+    "contentSnippet": "## What Happened\n\nAI Inspo has officially rolled out a user-friendly AI video generator tailored specifically for social media creators targeting platforms like TikTok and Instagram Reels. Engineered to eliminate traditional technical barriers, the software allows users with zero prior editing exper",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (tiktok)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "7d4cc979-234a-45fa-94cf-c5a52d55ae95",
+    "slug": "why-starbucks-snoopy-merchandise-is-going-viral-right-now",
+    "title": "Why Starbucks' Snoopy Merchandise is Going Viral Right Now",
+    "summary": "Starbucks has teamed up with Peanuts for an exclusive Snoopy collection, sparking a massive global frenzy as merchandise sells out in record time.",
+    "contentSnippet": "Starbucks is no stranger to viral merchandise drops, but its latest collaboration has triggered an unprecedented wave of internet hype. The global coffee giant has teamed up with the beloved *Peanuts* franchise, putting Snoopy, Charlie Brown, and Woodstock front and center on a highly coveted line o",
+    "currentCategory": "Entertainment",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (going viral)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "f7bbd0b0-2fb8-479b-8213-1668265a7e16",
+    "slug": "why-donald-trump-is-threatening-to-cut-off-us-trade",
+    "title": "Why Donald Trump Is Threatening to Cut Off US Trade",
+    "summary": "President Trump issued a stark warning to the Federal Reserve, threatening broad trade shutdowns unless interest rates are lowered.",
+    "contentSnippet": "President Donald Trump has issued a high-stakes ultimatum to the Federal Reserve. The administration is threatening to block US trade with deficit nations unless central bank officials lower interest rates, setting up a major institutional clash over monetary policy and executive authority.\n\n## What",
+    "currentCategory": "Economics",
+    "proposedCategory": "Politics",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Politics (donald trump)",
+      "Body politics signals: presidential"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "72df3686-1911-444f-a776-e3c1655bdc5c",
+    "slug": "why-ai-inspos-new-video-generator-is-changing-tiktok",
+    "title": "Why AI Inspo's New Video Generator Is Changing TikTok",
+    "summary": "AI Inspo has launched an accessible video generator designed to help everyday creators produce viral TikToks and Reels with minimal effort.",
+    "contentSnippet": "Content creation is shifting rapidly. AI Inspo has officially launched a brand-new artificial intelligence video generator aimed at making short-form video production effortless. Designed specifically for platforms like TikTok and Instagram Reels, the tool removes technical barriers so everyday user",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (tiktok)",
+      "Body social-media signals: content creation, feed"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "6b02481b-a7e9-42ae-aa76-fc59dd8729d1",
+    "slug": "why-ai-inspos-new-video-generator-is-going-viral",
+    "title": "Why AI Inspo's New Video Generator Is Going Viral",
+    "summary": "AI Inspo has launched an accessible AI video generator designed to help anyone create viral content for TikTok and Instagram Reels instantly.",
+    "contentSnippet": "## What Happened\n\nAI Inspo has officially launched a brand-new, mobile-friendly artificial intelligence video generator tailored specifically for everyday creators. The platform allows users with zero video editing experience to produce polished, high-performing vertical videos for TikTok, Instagram",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (going viral)",
+      "Body social-media signals: algorithm"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "f0ffbba3-245e-4b5c-ad80-7a01b6cf2133",
+    "slug": "inside-the-sacramento-state-football-scare-what-you-need-to-know",
+    "title": "Inside the Sacramento State Football Scare: What You Need to Know",
+    "summary": "A scary situation unfolded at Sacramento State's home opener when reports of shots fired triggered an emergency shelter-in-place alert—even as the football game kept playing.",
+    "contentSnippet": "Panic and confusion swept through Sacramento State’s Hornet Stadium on Saturday night during the university's first home football game of the season. What was meant to be a celebratory home opener quickly turned into a chaotic safety scare when students and fans received urgent, automated alerts war",
+    "currentCategory": "World Affairs",
+    "proposedCategory": "Sports",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Sports (football)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "299d02bd-100c-4cbe-9ef4-36a2da2930bd",
+    "slug": "why-russias-foreign-minister-accuses-germany-of-war",
+    "title": "Why Russia's Foreign Minister Accuses Germany of War",
+    "summary": "Russian Foreign Minister Sergei Lavrov accuses Berlin of steering toward war after Germany blamed Moscow for a planned drone attack.",
+    "contentSnippet": "## What Happened\n\nRussian Foreign Minister Sergei Lavrov has sharply escalated diplomatic tensions, accusing the German federal government of wanting to \"wage war again\" against Russia. The aggressive rhetoric follows Berlin's recent decision to close the Russian Consulate General in Bonn and direct",
+    "currentCategory": "Politics",
+    "proposedCategory": "World Affairs",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"World Affairs\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: World Affairs (russia)"
+    ],
+    "isLegacy": false
+  },
+  {
+    "id": "ca41e707-35b6-432f-861f-32edc2814cda",
+    "slug": "why-ai-inspos-new-video-tool-is-changing-tiktok",
+    "title": "Why AI Inspo’s New Video Tool is Changing TikTok",
+    "summary": "AI Inspo has launched an accessible AI video generator designed to help everyday creators effortlessly produce viral TikTok and Instagram Reels content.",
+    "contentSnippet": "## What Happened\n\nAI Inspo has officially launched a user-friendly AI video generator tailored specifically for short-form social media creators. The platform aims to streamline the entire video production process, allowing individuals with zero traditional editing experience to generate engaging, p",
+    "currentCategory": "Technology",
+    "proposedCategory": "Social-Media",
+    "confidence": 90,
+    "method": "PRIMARY_SUBJECT",
+    "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+    "signals": [
+      "Primary title subject: Social-Media (tiktok)",
+      "Body social-media signals: feed"
+    ],
+    "isLegacy": false
+  }
+]

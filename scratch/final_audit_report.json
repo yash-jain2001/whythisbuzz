@@ -1,0 +1,1247 @@
+{
+  "totalAudited": 2467,
+  "currentCategoryDist": {
+    "Entertainment": 429,
+    "Technology": 239,
+    "Economics": 124,
+    "Sports": 944,
+    "Politics": 178,
+    "World Affairs": 483,
+    "Social-Media": 68,
+    "World": 1,
+    "Movies": 1
+  },
+  "alreadyCorrectCount": 2374,
+  "legacyCount": 2,
+  "legacyArticles": [
+    {
+      "id": "29fdadf6-1618-492e-998c-a062b2eac834",
+      "slug": "scott-adams-dilbert-creator-life-career-controversy",
+      "title": "Scott Adams Dies at 68: How Dilbert Made Him Famous and What Led to Its End",
+      "oldCategory": "World",
+      "newCategory": "World Affairs",
+      "confidence": 72,
+      "reason": "Legacy non-canonical category \"World\" mapped to \"World Affairs\""
+    },
+    {
+      "id": "35e5cdc1-36e4-4c02-b7f1-e79c7c88f96b",
+      "slug": "inside-awarapan-2-what-you-need-to-know",
+      "title": "Inside Awarapan 2: What You Need to Know",
+      "oldCategory": "Movies",
+      "newCategory": "Entertainment",
+      "confidence": 74,
+      "reason": "Legacy non-canonical category \"Movies\" mapped to \"Entertainment\""
+    }
+  ],
+  "safeMigrationsCount": 46,
+  "safeMigrations": [
+    {
+      "id": "90621cea-6254-445b-97a3-f69d7c8432e4",
+      "slug": "power-play-why-virginias-governor-is-fighting-a-massive-utility-merger",
+      "title": "Power Play: Why Virginia's Governor Is Fighting a Massive Utility Merger",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Politics (governor)",
+        "Body politics signals: governor"
+      ]
+    },
+    {
+      "id": "78368796-970b-4269-8eed-239161d1184a",
+      "slug": "middle-east-meltdown-trumps-claims-oil-price-chaos-and-recession-fears",
+      "title": "Middle East Meltdown: Trump's Claims, Oil Price Chaos, & Recession Fears",
+      "oldCategory": "Politics",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (recession)"
+      ]
+    },
+    {
+      "id": "3ab4d3fd-aa59-4d51-88c5-0b658d1a03bf",
+      "slug": "lipowitz-reigns-in-slovenia-a-tour-de-france-dark-horse-emerges",
+      "title": "Lipowitz Reigns in Slovenia: A Tour de France Dark Horse Emerges?",
+      "oldCategory": "Entertainment",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (tour de france)"
+      ]
+    },
+    {
+      "id": "6d6dbd50-e7b6-4a28-883c-8fb88230fbed",
+      "slug": "scooter-shenanigans-nascar-rivals-ryan-blaney-and-chase-elliott-go-viral",
+      "title": "Scooter Shenanigans: NASCAR Rivals Ryan Blaney & Chase Elliott Go Viral",
+      "oldCategory": "Social-Media",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (nascar)"
+      ]
+    },
+    {
+      "id": "12793c97-b23e-4a12-b790-c73da8c78d65",
+      "slug": "kylian-mbappe-french-footballs-troubled-genius-or-political-game-changer",
+      "title": "Kylian Mbappé: French Football's Troubled Genius or Political Game-Changer?",
+      "oldCategory": "Sports",
+      "newCategory": "Politics",
+      "confidence": 85,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (150 pts total score)",
+      "signals": [
+        "Primary title subject: Politics (political)",
+        "Body politics signals: parliamentary, presidential"
+      ]
+    },
+    {
+      "id": "7f1ce5a9-2a4b-4592-b6e6-22126dedab0b",
+      "slug": "lindner-unloads-on-merz-germanys-pension-war-heats-up",
+      "title": "Lindner Unloads on Merz: Germany's Pension War Heats Up!",
+      "oldCategory": "World Affairs",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (pension)"
+      ]
+    },
+    {
+      "id": "c2da9998-3136-4984-8567-b23377bc16f8",
+      "slug": "snooker-shockwave-judd-trumps-world-no-1-reign-rocked-by-china-open-upset",
+      "title": "Snooker Shockwave: Judd Trump's World No. 1 Reign Rocked by China Open Upset",
+      "oldCategory": "World Affairs",
+      "newCategory": "Sports",
+      "confidence": 95,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (200 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (snooker, judd trump)"
+      ]
+    },
+    {
+      "id": "018872e5-c0e8-4e69-af18-00ad9dafdc5b",
+      "slug": "spacex-bags-dollar920mmonth-google-deal-an-ai-lifeline-before-ipo",
+      "title": "SpaceX Bags $920M/Month Google Deal: An AI Lifeline Before IPO?",
+      "oldCategory": "Technology",
+      "newCategory": "Economics",
+      "confidence": 85,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (150 pts total score)",
+      "signals": [
+        "Primary title subject: Economics (ipo)",
+        "Body economics signals: ipo, initial public offering"
+      ]
+    },
+    {
+      "id": "8a8eaaca-db2e-4af8-a81a-0b6968fa05f7",
+      "slug": "why-cambridges-vice-chancellor-just-admitted-to-deep-concerns-over-high-profile-resignation",
+      "title": "Why Cambridge's Vice-Chancellor Just Admitted to Deep Concerns Over High-Profile Resignation",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Politics (chancellor)"
+      ]
+    },
+    {
+      "id": "1bdac501-9dc8-48a9-8c4a-4b8bbe89d353",
+      "slug": "sandp-500-sinks-the-perfect-storm-that-crushed-markets",
+      "title": "S&P 500 Sinks: The Perfect Storm That Crushed Markets",
+      "oldCategory": "World Affairs",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (s&p 500)"
+      ]
+    },
+    {
+      "id": "052b7d76-a754-465e-a87e-e1a76ca5e929",
+      "slug": "why-marvel-rivals-season-10-is-changing-everything",
+      "title": "Why Marvel Rivals Season 10 is Changing Everything",
+      "oldCategory": "Technology",
+      "newCategory": "Entertainment",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Entertainment\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Entertainment (marvel)"
+      ]
+    },
+    {
+      "id": "9ca89fc8-adf5-4af2-8247-56f6a35f7944",
+      "slug": "trumps-iran-pause-how-geopolitics-ignited-bitcoins-wild-ride",
+      "title": "Trump's Iran Pause: How Geopolitics Ignited Bitcoin's Wild Ride",
+      "oldCategory": "World Affairs",
+      "newCategory": "Economics",
+      "confidence": 85,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (150 pts total score)",
+      "signals": [
+        "Primary title subject: Economics (bitcoin)",
+        "Body economics signals: federal reserve, market cap"
+      ]
+    },
+    {
+      "id": "7d20f668-393b-49c0-8ae7-f8747dcdb70e",
+      "slug": "germanys-pension-tsunami-why-your-retirement-income-just-got-a-reality-check",
+      "title": "Germany's Pension Tsunami: Why Your Retirement Income Just Got a Reality Check",
+      "oldCategory": "World Affairs",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (pension)"
+      ]
+    },
+    {
+      "id": "5ab986b6-910a-42f1-97b5-f34465d153a5",
+      "slug": "ucl-finals-power-play-why-brandon-flowers-and-david-beckham-are-racing-to-budapest",
+      "title": "UCL Final's Power Play: Why Brandon Flowers & David Beckham Are Racing to Budapest",
+      "oldCategory": "Entertainment",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (ucl final)",
+        "Body sports signals: halftime"
+      ]
+    },
+    {
+      "id": "381873a2-3058-4140-8c8f-425075acd6ff",
+      "slug": "why-ai-video-generators-are-taking-over-tiktok-right-now",
+      "title": "Why AI Video Generators Are Taking Over TikTok Right Now",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (tiktok)",
+        "Body social-media signals: content creation, feed"
+      ]
+    },
+    {
+      "id": "d16223e0-98a7-42ec-8588-5b15b0456eb9",
+      "slug": "why-marcus-rashfords-man-utd-future-is-hanging-in-the-balance",
+      "title": "Why Marcus Rashford's Man Utd Future is Hanging in the Balance",
+      "oldCategory": "World Affairs",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (man utd)"
+      ]
+    },
+    {
+      "id": "3a1b075e-7726-4fb8-b722-50011eb2b44a",
+      "slug": "how-mp-josh-burns-unexpectedly-navigated-his-hardest-year-yet",
+      "title": "How MP Josh Burns Unexpectedly Navigated His Hardest Year Yet",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Politics (mp)"
+      ]
+    },
+    {
+      "id": "aff77011-4cdc-4970-b0f6-dff298773a2e",
+      "slug": "pogacars-unstoppable-reign-continues-as-young-gun-seixas-shakes-up-tour-de-france-podium-battle",
+      "title": "Pogacar's Unstoppable Reign Continues as Young Gun Seixas Shakes Up Tour de France Podium Battle",
+      "oldCategory": "Entertainment",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (tour de france)",
+        "Body sports signals: standings"
+      ]
+    },
+    {
+      "id": "8f88d99f-5f4a-4a2b-9395-243b7fb050c2",
+      "slug": "pogacars-pyrenean-power-play-how-he-seized-tour-de-france-control",
+      "title": "Pogacar's Pyrenean Power Play: How He Seized Tour De France Control",
+      "oldCategory": "Entertainment",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (tour de france)",
+        "Body sports signals: assist"
+      ]
+    },
+    {
+      "id": "4cac710d-433d-4d59-8cb4-0c691a43ab64",
+      "slug": "why-the-2026-stock-market-under-trump-is-shifting-right-now",
+      "title": "Why the 2026 Stock Market Under Trump is Shifting Right Now",
+      "oldCategory": "Politics",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (stock market)",
+        "Body economics signals: federal reserve"
+      ]
+    },
+    {
+      "id": "496aa117-ea67-4950-a58b-9d816d1fc1c1",
+      "slug": "why-ai-video-generators-are-suddenly-taking-over-tiktok",
+      "title": "Why AI Video Generators Are Suddenly Taking Over TikTok",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (tiktok)",
+        "Body social-media signals: content creation, post, algorithm"
+      ]
+    },
+    {
+      "id": "4bd71211-4b02-47c2-b97c-c6fa9fa61f61",
+      "slug": "why-ai-inspos-new-video-tool-is-shaking-up-tiktok-and-reels-right-now",
+      "title": "Why AI Inspo’s New Video Tool is Shaking Up TikTok and Reels Right Now",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 95,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (200 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (tiktok, reels)",
+        "Body social-media signals: content creation, post"
+      ]
+    },
+    {
+      "id": "f93f787d-4e63-46a9-8131-147d714bdae8",
+      "slug": "what-binances-new-ai-trading-launch-means-for-crypto",
+      "title": "What Binance's New AI Trading Launch Means for Crypto",
+      "oldCategory": "Technology",
+      "newCategory": "Economics",
+      "confidence": 95,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (200 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (binance, crypto)"
+      ]
+    },
+    {
+      "id": "70677166-1df8-4031-a52e-4cc2326332c0",
+      "slug": "inside-the-canada-us-tariff-talks-what-you-need-to-know",
+      "title": "Inside the Canada-U.S. Tariff Talks: What You Need to Know",
+      "oldCategory": "Politics",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (tariff)",
+        "Body economics signals: tariffs"
+      ]
+    },
+    {
+      "id": "87c233a6-3d5a-4707-99f5-9417695f6d23",
+      "slug": "why-binances-new-ai-agent-platform-changes-crypto-trading",
+      "title": "Why Binance's New AI Agent Platform Changes Crypto Trading",
+      "oldCategory": "Technology",
+      "newCategory": "Economics",
+      "confidence": 95,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (200 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (binance, crypto)"
+      ]
+    },
+    {
+      "id": "cfccc90f-dcfa-4d1c-b8e2-fea3fe7f8c26",
+      "slug": "why-ai-inspos-new-video-generator-is-winning-tiktok",
+      "title": "Why AI Inspo's New Video Generator Is Winning TikTok",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (tiktok)",
+        "Body social-media signals: content creation"
+      ]
+    },
+    {
+      "id": "5d52163d-a37c-4732-a5e5-52e44101ff0c",
+      "slug": "why-cz-binance-is-making-an-unexpected-move-in-bhutan-right-now",
+      "title": "Why CZ Binance is Making an Unexpected Move in Bhutan Right Now",
+      "oldCategory": "Technology",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (binance)"
+      ]
+    },
+    {
+      "id": "1c9cec28-39f2-4939-a929-1a96767dc23d",
+      "slug": "the-real-reason-behind-the-sudden-us-canada-trade-war",
+      "title": "The Real Reason Behind the Sudden US-Canada Trade War",
+      "oldCategory": "Politics",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (trade war)",
+        "Body economics signals: tariff, tariffs"
+      ]
+    },
+    {
+      "id": "79ffe6d4-a42b-458c-8bfb-135346e07179",
+      "slug": "why-rosenheims-diy-fireworks-blast-left-teens-critical",
+      "title": "Why Rosenheim's DIY Fireworks Blast Left Teens Critical",
+      "oldCategory": "World Affairs",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (rosenheim)"
+      ]
+    },
+    {
+      "id": "f5db2ef3-5de0-4634-9f72-48f5eacebaaa",
+      "slug": "the-real-reason-behind-frances-sweeping-school-smartphone-ban",
+      "title": "The Real Reason Behind France’s Sweeping School Smartphone Ban",
+      "oldCategory": "Politics",
+      "newCategory": "Technology",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Technology\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Technology (smartphone)"
+      ]
+    },
+    {
+      "id": "f8a8ff0a-8104-4e5b-8467-26766eb3d75f",
+      "slug": "the-real-reason-behind-nvidias-unreal-dollar96-billion-revenue-surge",
+      "title": "The Real Reason Behind Nvidia’s Unreal $96 Billion Revenue Surge",
+      "oldCategory": "Economics",
+      "newCategory": "Technology",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Technology\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Technology (nvidia)",
+        "Body technology signals: silicon, tech sector"
+      ]
+    },
+    {
+      "id": "f2be2a55-4bad-4f00-a640-de84d53362d4",
+      "slug": "inside-manchester-pride-2026-what-you-need-to-know",
+      "title": "Inside Manchester Pride 2026: What You Need to Know",
+      "oldCategory": "World Affairs",
+      "newCategory": "Entertainment",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Entertainment\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Entertainment (manchester pride)",
+        "Body entertainment signals: casting"
+      ]
+    },
+    {
+      "id": "19b10a3b-f9b0-4a99-8c85-0bd551e93a9b",
+      "slug": "why-social-media-influencer-manjeet-kaurs-tragic-murder-shocked-us",
+      "title": "Why Social Media Influencer Manjeet Kaur's Tragic Murder Shocked Us",
+      "oldCategory": "World Affairs",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (influencer)"
+      ]
+    },
+    {
+      "id": "4c49545e-2f85-4de2-8472-3b9221fff340",
+      "slug": "why-6th-generation-fighters-are-transforming-air-warfare",
+      "title": "Why 6th-Generation Fighters Are Transforming Air Warfare",
+      "oldCategory": "Technology",
+      "newCategory": "World Affairs",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"World Affairs\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: World Affairs (warfare)"
+      ]
+    },
+    {
+      "id": "a4766a13-7258-4180-845b-dc2aefa2e5df",
+      "slug": "why-the-binance-app-is-trending-right-now",
+      "title": "Why the Binance App Is Trending Right Now",
+      "oldCategory": "Technology",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (binance)"
+      ]
+    },
+    {
+      "id": "502571da-866e-4ec5-a777-7ba5a5b85aa8",
+      "slug": "the-real-reason-behind-frances-new-pension-reform-plan",
+      "title": "The Real Reason Behind France’s New Pension Reform Plan",
+      "oldCategory": "Politics",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (pension)"
+      ]
+    },
+    {
+      "id": "e0ba4bbc-fa6e-490a-b10a-86b8ff9bf29d",
+      "slug": "the-real-reason-behind-grian-chattens-viral-welsh-football-shirt",
+      "title": "The Real Reason Behind Grian Chatten's Viral Welsh Football Shirt",
+      "oldCategory": "Entertainment",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (football)"
+      ]
+    },
+    {
+      "id": "0a1f9a88-a4a4-4866-8569-43d3f15a99e2",
+      "slug": "the-real-reason-behind-trumps-bold-new-tariff-strategy",
+      "title": "The Real Reason Behind Trump's Bold New Tariff Strategy",
+      "oldCategory": "Politics",
+      "newCategory": "Economics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Economics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Economics (tariff)",
+        "Body economics signals: tariff, tariffs"
+      ]
+    },
+    {
+      "id": "2e74ca89-1a04-497c-9b2f-0a736aafcd24",
+      "slug": "why-ai-inspos-new-video-generator-is-winning-over-tiktok",
+      "title": "Why AI Inspo's New Video Generator Is Winning Over TikTok",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (tiktok)"
+      ]
+    },
+    {
+      "id": "7d4cc979-234a-45fa-94cf-c5a52d55ae95",
+      "slug": "why-starbucks-snoopy-merchandise-is-going-viral-right-now",
+      "title": "Why Starbucks' Snoopy Merchandise is Going Viral Right Now",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (going viral)"
+      ]
+    },
+    {
+      "id": "f7bbd0b0-2fb8-479b-8213-1668265a7e16",
+      "slug": "why-donald-trump-is-threatening-to-cut-off-us-trade",
+      "title": "Why Donald Trump Is Threatening to Cut Off US Trade",
+      "oldCategory": "Economics",
+      "newCategory": "Politics",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Politics\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Politics (donald trump)",
+        "Body politics signals: presidential"
+      ]
+    },
+    {
+      "id": "72df3686-1911-444f-a776-e3c1655bdc5c",
+      "slug": "why-ai-inspos-new-video-generator-is-changing-tiktok",
+      "title": "Why AI Inspo's New Video Generator Is Changing TikTok",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (tiktok)",
+        "Body social-media signals: content creation, feed"
+      ]
+    },
+    {
+      "id": "6b02481b-a7e9-42ae-aa76-fc59dd8729d1",
+      "slug": "why-ai-inspos-new-video-generator-is-going-viral",
+      "title": "Why AI Inspo's New Video Generator Is Going Viral",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (going viral)",
+        "Body social-media signals: algorithm"
+      ]
+    },
+    {
+      "id": "f0ffbba3-245e-4b5c-ad80-7a01b6cf2133",
+      "slug": "inside-the-sacramento-state-football-scare-what-you-need-to-know",
+      "title": "Inside the Sacramento State Football Scare: What You Need to Know",
+      "oldCategory": "World Affairs",
+      "newCategory": "Sports",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Sports\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Sports (football)"
+      ]
+    },
+    {
+      "id": "299d02bd-100c-4cbe-9ef4-36a2da2930bd",
+      "slug": "why-russias-foreign-minister-accuses-germany-of-war",
+      "title": "Why Russia's Foreign Minister Accuses Germany of War",
+      "oldCategory": "Politics",
+      "newCategory": "World Affairs",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"World Affairs\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: World Affairs (russia)"
+      ]
+    },
+    {
+      "id": "ca41e707-35b6-432f-861f-32edc2814cda",
+      "slug": "why-ai-inspos-new-video-tool-is-changing-tiktok",
+      "title": "Why AI Inspo’s New Video Tool is Changing TikTok",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 90,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Strong Primary Title Subject \"Social-Media\" (100 pts title score)",
+      "signals": [
+        "Primary title subject: Social-Media (tiktok)",
+        "Body social-media signals: feed"
+      ]
+    }
+  ],
+  "manualReviewCount": 45,
+  "manualReview": [
+    {
+      "id": "9322b934-e3e5-46ee-a385-c00b3bb22d6b",
+      "slug": "jeanette-biedermanns-shocking-baby-announcement-a-first-at-46",
+      "title": "Jeanette Biedermann's Shocking Baby Announcement: A First at 46!",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body social-media signals: posted, followers, post"
+      ]
+    },
+    {
+      "id": "f60392b2-b92c-43cb-b433-4e720455b780",
+      "slug": "tears-pranks-and-surprise-romances-lets-dance-stars-bare-all",
+      "title": "Tears, Pranks & Surprise Romances: 'Let's Dance' Stars Bare All!",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body social-media signals: followers, feed, meme"
+      ]
+    },
+    {
+      "id": "ef4ed36c-1be4-4c7d-a9e4-b320957beac9",
+      "slug": "24-years-of-buzz-claudia-schiffer-and-matthew-vaughns-enduring-love-story",
+      "title": "24 Years of Buzz: Claudia Schiffer & Matthew Vaughn's Enduring Love Story",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: followers, post"
+      ]
+    },
+    {
+      "id": "b1e0b12d-1cf3-4c73-acfd-0220385d1040",
+      "slug": "no-silver-bullet-why-new-hampshires-housing-market-just-hit-a-record-dollar580000",
+      "title": "No Silver Bullet: Why New Hampshire’s Housing Market Just Hit a Record $580,000",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: lawmakers, legislative"
+      ]
+    },
+    {
+      "id": "8eee2dcb-de3b-4677-abfa-d01ec5a1e782",
+      "slug": "spy-upgrades-or-state-overreach-germanys-new-intelligence-reform-explained",
+      "title": "Spy Upgrades or State Overreach? Germany's New Intelligence Reform Explained",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: constitutional, parliamentary"
+      ]
+    },
+    {
+      "id": "4a462940-87a7-4cf4-bcaf-e442b2fb5488",
+      "slug": "disney-shake-up-price-hikes-new-plans-and-the-end-of-free-account-sharing",
+      "title": "Disney+ Shake-Up: Price Hikes, New Plans & The End of Free Account Sharing?",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: subscribers, content creation"
+      ]
+    },
+    {
+      "id": "0be4b9ca-137f-45ed-86dc-77809363834c",
+      "slug": "adollarap-rocky-fires-back-drake-beef-rihanna-and-why-hes-over-it",
+      "title": "A$AP Rocky Fires Back: Drake Beef, Rihanna & Why He's 'Over It!'",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: post, posted"
+      ]
+    },
+    {
+      "id": "845d2a7f-c345-48c3-947e-72634fc7a7ca",
+      "slug": "jared-mccains-thunderous-ascent-from-trade-shock-to-okcs-game-changer",
+      "title": "Jared McCain's Thunderous Ascent: From Trade Shock to OKC's Game Changer",
+      "oldCategory": "Sports",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: post, vlog"
+      ]
+    },
+    {
+      "id": "c03b7dd5-bba1-4964-a70d-6b68313a05df",
+      "slug": "why-laufey-is-taking-over-rock-in-rio-2026-right-now",
+      "title": "Why Laufey is Taking Over Rock in Rio 2026 Right Now",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: subscribers, feed"
+      ]
+    },
+    {
+      "id": "5ce07f7d-8e60-4809-a39d-0db64165164a",
+      "slug": "bon-jovis-heartbreak-on-stage-why-his-msg-show-ended-abruptly",
+      "title": "Bon Jovi's Heartbreak on Stage: Why His MSG Show Ended Abruptly",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: post, posted"
+      ]
+    },
+    {
+      "id": "2e28f429-9a0e-45e2-a55d-9e65a5a502cf",
+      "slug": "britney-spears-unpacks-motherhood-faith-and-freedoms-cost",
+      "title": "Britney Spears Unpacks Motherhood, Faith, and Freedom's Cost",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: post, posted"
+      ]
+    },
+    {
+      "id": "3508e2af-5f04-438e-98ce-49cacd81f962",
+      "slug": "behind-the-buzz-unpacking-how-your-local-news-stays-afloat-and-accountable",
+      "title": "Behind the Buzz: Unpacking How Your Local News Stays Afloat (and Accountable)",
+      "oldCategory": "World Affairs",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: subscribers, feed"
+      ]
+    },
+    {
+      "id": "26cf7038-50ba-4c2f-81b3-36f2b8d52644",
+      "slug": "germanys-massive-intelligence-overhaul-spies-sabotage-and-a-high-stakes-bet",
+      "title": "Germany’s Massive Intelligence Overhaul: Spies, Sabotage, and a High-Stakes Bet",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body politics signals: legislative, constitution, constitutional"
+      ]
+    },
+    {
+      "id": "a2f992c1-0810-43b8-aa2b-045d919920a6",
+      "slug": "hawaii-braces-for-hernan-why-this-extreme-storm-season-is-running-ahead-of-schedule",
+      "title": "Hawaii Braces for Hernan: Why This Extreme Storm Season Is Running Ahead of Schedule",
+      "oldCategory": "World Affairs",
+      "newCategory": "Entertainment",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body entertainment signals: behind the scenes, acting"
+      ]
+    },
+    {
+      "id": "6eecd6de-d5a2-45f7-9ffc-cfdec52151b7",
+      "slug": "lebanons-inferno-the-escalating-crisis-pushing-a-nation-to-the-brink",
+      "title": "Lebanon's Inferno: The Escalating Crisis Pushing a Nation to the Brink",
+      "oldCategory": "Politics",
+      "newCategory": "World Affairs",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body world affairs signals: casualties, airstrike"
+      ]
+    },
+    {
+      "id": "1934137a-e17a-4c1e-bece-c0efd6949330",
+      "slug": "why-the-nations-biggest-police-surveillance-network-is-suddenly-restricting-officers",
+      "title": "Why the Nation’s Biggest Police Surveillance Network Is Suddenly Restricting Officers",
+      "oldCategory": "Technology",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: jurisdiction, lawmakers"
+      ]
+    },
+    {
+      "id": "4596e0a0-d50b-4699-8170-cbde583b302d",
+      "slug": "architect-of-war-admiral-coopers-ascent-to-lead-centcom-amid-mideast-turmoil",
+      "title": "Architect of War: Admiral Cooper's Ascent to Lead CENTCOM Amid Mideast Turmoil",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body politics signals: bipartisan, lawmakers, legislative"
+      ]
+    },
+    {
+      "id": "84f184a0-8398-467c-b533-7082f6b3fbd6",
+      "slug": "the-invisible-dragnet-why-the-fight-to-map-flock-cameras-is-exploding",
+      "title": "The Invisible Dragnet: Why the Fight to Map Flock Cameras Is Exploding",
+      "oldCategory": "Technology",
+      "newCategory": "Politics",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body politics signals: constitution, constitutional, legislative"
+      ]
+    },
+    {
+      "id": "81f10a7c-d8d3-4c4a-9bbc-33cc7b9e074a",
+      "slug": "germanys-welfare-reckoning-dobrindt-demands-burgergeld-cuts",
+      "title": "Germany's Welfare Reckoning: Dobrindt Demands Bürgergeld Cuts",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: legislative, lawmakers"
+      ]
+    },
+    {
+      "id": "336e191f-216a-4b0d-beaa-51e624f3a753",
+      "slug": "german-healthcare-shockwave-billions-in-cuts-to-stabilize-contributions-and-what-it-means-for-you",
+      "title": "German Healthcare Shockwave: Billions in Cuts to Stabilize Contributions (And What It Means For YOU)",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: legislative, constitutional"
+      ]
+    },
+    {
+      "id": "38708f0c-96b9-42bb-b548-f33cf27801f0",
+      "slug": "mls-stunner-columbus-crew-lands-laliga-star-brais-mendez-in-blockbuster-transfer",
+      "title": "MLS Stunner: Columbus Crew Lands LaLiga Star Brais Méndez in Blockbuster Transfer",
+      "oldCategory": "Entertainment",
+      "newCategory": "Sports",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body sports signals: standings, playoffs"
+      ]
+    },
+    {
+      "id": "8e685907-ac71-42b7-b5a9-4fb7a4ada8d0",
+      "slug": "why-tropical-storm-lala-is-threatening-hawaii-right-now",
+      "title": "Why Tropical Storm Lala is Threatening Hawaii Right Now",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: governor, mayor"
+      ]
+    },
+    {
+      "id": "c6afdca1-0e3e-4d3c-92eb-7b89e67d845c",
+      "slug": "grrms-candid-confession-a-stressful-year-wins-and-winds-of-winter-woes",
+      "title": "GRRM's Candid Confession: A 'Stressful' Year, Wins, and Winds of Winter Woes",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: post, followers"
+      ]
+    },
+    {
+      "id": "da16ead6-d90c-466c-b2d3-d78c3c36deaf",
+      "slug": "baltimore-unleashes-legal-firestorm-on-elon-musks-xai-over-groks-deepfake-crisis",
+      "title": "Baltimore Unleashes Legal Firestorm on Elon Musk's xAI Over Grok's Deepfake Crisis",
+      "oldCategory": "Technology",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: mayor, democrats"
+      ]
+    },
+    {
+      "id": "b044936c-2f5e-4828-be73-6df46d52a8b6",
+      "slug": "texas-hemp-wars-multi-billion-dollar-industry-fights-back-against-sweeping-thc-ban",
+      "title": "Texas Hemp Wars: Multi-Billion Dollar Industry Fights Back Against Sweeping THC Ban",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body politics signals: constitutional, constitution, legislative"
+      ]
+    },
+    {
+      "id": "c5e12d85-53f7-488b-a771-1173e1be8f16",
+      "slug": "trump-claims-irans-oil-tanker-gift-signals-de-escalation-amidst-hormuz-tensions",
+      "title": "Trump Claims Iran's 'Oil Tanker Gift' Signals De-escalation Amidst Hormuz Tensions",
+      "oldCategory": "Politics",
+      "newCategory": "World Affairs",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body world affairs signals: ceasefire, sovereignty"
+      ]
+    },
+    {
+      "id": "f0c4f146-f084-4575-99e8-d6d298536331",
+      "slug": "the-hype-machine-why-the-global-tech-gerucht-economy-dictates-what-you-buy",
+      "title": "The Hype Machine: Why the Global Tech 'Gerücht' Economy Dictates What You Buy",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body social-media signals: feed, posted, post"
+      ]
+    },
+    {
+      "id": "1b56ba03-867c-4c82-a07d-28910b78257a",
+      "slug": "why-vanillamace-is-exploding-across-twitch-right-now",
+      "title": "Why Vanillamace is Exploding Across Twitch Right Now",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: algorithm, meme"
+      ]
+    },
+    {
+      "id": "30bfe86c-9ef6-4e54-8fd5-913e0a631ad0",
+      "slug": "why-vimal-elaichi-is-sparking-massive-internet-debates-right-now",
+      "title": "Why Vimal Elaichi is Sparking Massive Internet Debates Right Now",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: meme, memes"
+      ]
+    },
+    {
+      "id": "b705a3fe-c268-4bf8-98a5-b8648adc32bc",
+      "slug": "why-stock-markets-are-surging-under-trump-in-2026",
+      "title": "Why Stock Markets Are Surging Under Trump in 2026",
+      "oldCategory": "Politics",
+      "newCategory": "Economics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body economics signals: federal reserve, tariffs"
+      ]
+    },
+    {
+      "id": "164e96ce-c209-43e1-9584-b005f75df6c9",
+      "slug": "why-xanddys-son-just-pulled-off-the-ultimate-bahian-wedding",
+      "title": "Why Xanddy's Son Just Pulled Off The Ultimate Bahian Wedding",
+      "oldCategory": "World Affairs",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: post, followers"
+      ]
+    },
+    {
+      "id": "f7be297e-41e3-490d-890e-d55e788bbfc8",
+      "slug": "the-real-reason-behind-laura-cardosos-legendary-legacy",
+      "title": "The Real Reason Behind Laura Cardoso's Legendary Legacy",
+      "oldCategory": "World Affairs",
+      "newCategory": "Entertainment",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body entertainment signals: acting, cinematic"
+      ]
+    },
+    {
+      "id": "108c2c96-6b57-4317-9e27-9a2f6fc9a5ed",
+      "slug": "why-the-traditional-9-to-5-job-is-quietly-disappearing-right-now",
+      "title": "Why the Traditional 9-to-5 Job is Quietly Disappearing Right Now",
+      "oldCategory": "World Affairs",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: posted, post"
+      ]
+    },
+    {
+      "id": "1034576c-422d-446f-9801-d0004bf543d1",
+      "slug": "why-joel-mvuka-unexpectedly-left-fc-lorient",
+      "title": "Why Joel Mvuka Unexpectedly Left FC Lorient",
+      "oldCategory": "World Affairs",
+      "newCategory": "Sports",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body sports signals: roster, playoffs"
+      ]
+    },
+    {
+      "id": "a4db0ef7-d59e-4efa-81ad-2cb6a567f9ac",
+      "slug": "the-real-reason-behind-high-potentials-delay-to-2027",
+      "title": "The Real Reason Behind High Potential's Delay to 2027",
+      "oldCategory": "World Affairs",
+      "newCategory": "Entertainment",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body entertainment signals: behind the scenes, premiere"
+      ]
+    },
+    {
+      "id": "db1ad36b-39ec-4b35-a4eb-7692b5599364",
+      "slug": "why-bangalores-weather-disruptions-hit-workers-hardest",
+      "title": "Why Bangalore's Weather Disruptions Hit Workers Hardest",
+      "oldCategory": "Economics",
+      "newCategory": "Technology",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body technology signals: silicon, vulnerability"
+      ]
+    },
+    {
+      "id": "a104b6bf-c079-4245-8918-031a8669d548",
+      "slug": "why-jyp-entertainment-investors-are-double-down-buying-now",
+      "title": "Why JYP Entertainment Investors Are Double-Down Buying Now",
+      "oldCategory": "Entertainment",
+      "newCategory": "Economics",
+      "confidence": 74,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (45 pts total score)",
+      "signals": [
+        "Primary title subject: Economics (investors)",
+        "Body economics signals: shareholders"
+      ]
+    },
+    {
+      "id": "b1afaa7e-f91e-49a5-8dfd-baf68389b558",
+      "slug": "how-jean-luc-lemoine-unexpectedly-lost-his-hit-tv-show",
+      "title": "How Jean-Luc Lemoine Unexpectedly Lost His Hit TV Show",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: followers, post"
+      ]
+    },
+    {
+      "id": "5b580d34-c93a-4171-b080-2c615607ebb1",
+      "slug": "inside-jp-kraemers-shocking-domestic-violence-scandal",
+      "title": "Inside JP Kraemer's Shocking Domestic Violence Scandal",
+      "oldCategory": "Entertainment",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: followers, subscribers"
+      ]
+    },
+    {
+      "id": "1391449f-f895-40af-8c9a-5c5105054a72",
+      "slug": "inside-the-us-strike-on-iran-what-you-need-to-know",
+      "title": "Inside the US Strike on Iran: What You Need to Know",
+      "oldCategory": "World Affairs",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: posted, post"
+      ]
+    },
+    {
+      "id": "58d7770c-efc0-4396-82f7-943855a1c94d",
+      "slug": "inside-king-haakon-viiis-historic-oath-what-you-need-to-know",
+      "title": "Inside King Haakon VIII’s Historic Oath: What You Need to Know",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 77,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (75 pts total score)",
+      "signals": [
+        "Body politics signals: constitutional, constitution, lawmakers"
+      ]
+    },
+    {
+      "id": "603d903b-edfa-4413-a5c6-b1a3adb0be13",
+      "slug": "the-real-reason-behind-the-death-of-the-pastors-wife-docuseries",
+      "title": "The Real Reason Behind the 'Death of the Pastor’s Wife' Docuseries",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: legislative, lawmakers"
+      ]
+    },
+    {
+      "id": "03a71f3a-c58a-4acd-9655-18fcb3d5023b",
+      "slug": "inside-the-pete-hegseth-cadet-controversy-what-you-need-to-know",
+      "title": "Inside the Pete Hegseth Cadet Controversy: What You Need to Know",
+      "oldCategory": "Politics",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: post, memes"
+      ]
+    },
+    {
+      "id": "f6b81bf4-8870-4f9a-a57e-dbfb8048296d",
+      "slug": "inside-operation-economic-outcast-what-you-need-to-know",
+      "title": "Inside Operation Economic Outcast: What You Need to Know",
+      "oldCategory": "World Affairs",
+      "newCategory": "Politics",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body politics signals: presidential, parliamentary"
+      ]
+    },
+    {
+      "id": "ab3ac4c4-4391-44b7-9712-2046af906e56",
+      "slug": "why-gpt-6-astra-is-changing-everything-you-know-about-ai-right-now",
+      "title": "Why GPT-6 Astra is Changing Everything You Know About AI Right Now",
+      "oldCategory": "Technology",
+      "newCategory": "Social-Media",
+      "confidence": 75,
+      "method": "PRIMARY_SUBJECT",
+      "reason": "Primary Subject Match (50 pts total score)",
+      "signals": [
+        "Body social-media signals: posted, subscribers"
+      ]
+    }
+  ]
+}
