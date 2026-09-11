@@ -77,7 +77,7 @@ async function postToTwitter(title: string, summary: string, slug: string) {
       accessSecret: accessSecret,
     });
 
-    const articleUrl = `https://whythisbuzz.com/article/${slug}`;
+    const articleUrl = `https://www.whythisbuzz.com/article/${slug}`;
     const cleanSummary = summary.length > 120 ? summary.substring(0, 117) + '...' : summary;
     const tweetText = `⚡ ${title}\n\n${cleanSummary}\n\nRead full story ⤵️\n${articleUrl}`;
 
@@ -98,7 +98,7 @@ async function sendOneSignalPushNotification(title: string, summary: string, slu
   }
 
   try {
-    const articleUrl = `https://whythisbuzz.com/article/${slug}`;
+    const articleUrl = `https://www.whythisbuzz.com/article/${slug}`;
     const response = await fetch("https://onesignal.com/api/v1/notifications", {
       method: "POST",
       headers: {
@@ -390,7 +390,7 @@ async function getGoogleAccessToken(email: string, privateKey: string): Promise<
 async function pingGoogleIndexingApi(articleSlug: string): Promise<void> {
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_CLIENT_EMAIL;
   const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || process.env.GOOGLE_PRIVATE_KEY;
-  const articleUrl = `https://whythisbuzz.com/article/${articleSlug}`;
+  const articleUrl = `https://www.whythisbuzz.com/article/${articleSlug}`;
 
   if (!email || !privateKey) {
     console.log(`ℹ️ [Google Indexing API] GOOGLE_CLIENT_EMAIL / GOOGLE_PRIVATE_KEY not configured. Skipping Google Indexing API ping.`);
@@ -428,7 +428,7 @@ async function pingGoogleIndexingApi(articleSlug: string): Promise<void> {
 }
 
 async function pingIndexNow(articleSlug: string): Promise<void> {
-  const host = 'whythisbuzz.com';
+  const host = 'www.whythisbuzz.com';
   const key = '6ea9ba6038e2e553b2af64adf7d6fcec09fb0554';
   const articleUrl = `https://${host}/article/${articleSlug}`;
 
