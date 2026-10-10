@@ -178,9 +178,9 @@ export async function getAllArticles(limit: number = 50): Promise<Article[]> {
     });
 }
 
-export async function getRelatedArticles(currentId: string, category?: string, limit: number = 3): Promise<ArticleMetadata[]> {
+export async function getRelatedArticles(currentId: string, category?: string, limit: number = 6): Promise<ArticleMetadata[]> {
     if (isSupabaseConfigured()) {
-        const supabaseArticles = await getSupabaseArticles(20);
+        const supabaseArticles = await getSupabaseArticles(100);
         if (supabaseArticles.length > 0) {
             const filtered = supabaseArticles
                 .filter(a => a.metadata.id !== currentId)
@@ -208,6 +208,34 @@ export async function getRelatedArticles(currentId: string, category?: string, l
     }
 
     return allMeta.slice(0, limit);
+}
+
+export async function getAdjacentArticles(currentId: string): Promise<{ prev?: ArticleMetadata; next?: ArticleMetadata }> {
+    if (isSupabaseConfigured()) {
+        const supabaseArticles = await getSupabaseArticles(5000);
+        const index = supabaseArticles.findIndex(a => a.metadata.id === currentId);
+        if (index !== -1) {
+            return {
+                prev: index > 0 ? supabaseArticles[index - 1].metadata : undefined,
+                next: index < supabaseArticles.length - 1 ? supabaseArticles[index + 1].metadata : undefined,
+            };
+        }
+    }
+
+    const metaMap = getAllLocalMetadata();
+    const allMeta = Array.from(metaMap.values()).sort((a, b) => {
+        const timeA = new Date(a.date).getTime() || 0;
+        const timeB = new Date(b.date).getTime() || 0;
+        return timeB - timeA;
+    });
+
+    const index = allMeta.findIndex(a => a.id === currentId);
+    if (index === -1) return {};
+
+    return {
+        prev: index > 0 ? allMeta[index - 1] : undefined,
+        next: index < allMeta.length - 1 ? allMeta[index + 1] : undefined,
+    };
 }
 
 export async function getArticlesByCategory(category: string, limit: number = 1000): Promise<ArticleMetadata[]> {

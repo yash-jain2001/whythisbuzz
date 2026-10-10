@@ -500,14 +500,22 @@ async function main() {
     return classifyArticle({ title }).category;
   }
 
-  const categoryTopicFeeds: Record<string, string> = {
-    "Politics": "https://news.google.com/rss/search?q=politics+election+government+president&hl=en-US&gl=US&ceid=US:en",
-    "Economics": "https://news.google.com/rss/search?q=economy+inflation+stock+markets+bank&hl=en-US&gl=US&ceid=US:en",
-    "Technology": "https://news.google.com/rss/search?q=technology+ai+software+cyber+apple&hl=en-US&gl=US&ceid=US:en",
-    "Sports": "https://news.google.com/rss/search?q=sports+match+championship+league&hl=en-US&gl=US&ceid=US:en",
-    "Entertainment": "https://news.google.com/rss/search?q=entertainment+movies+celebrity+hollywood&hl=en-US&gl=US&ceid=US:en",
+  // Targeted Google News Category Feeds for US and UK
+  const usCategoryTopicFeeds: Record<string, string> = {
+    "Politics": "https://news.google.com/rss/search?q=politics+election+white+house+congress&hl=en-US&gl=US&ceid=US:en",
+    "Economics": "https://news.google.com/rss/search?q=economy+inflation+stock+markets+wall+street&hl=en-US&gl=US&ceid=US:en",
+    "Technology": "https://news.google.com/rss/search?q=technology+ai+apple+nvidia+google&hl=en-US&gl=US&ceid=US:en",
+    "Sports": "https://news.google.com/rss/search?q=nfl+nba+mlb+sports+championship&hl=en-US&gl=US&ceid=US:en",
+    "Entertainment": "https://news.google.com/rss/search?q=hollywood+movies+celebrity+netflix&hl=en-US&gl=US&ceid=US:en",
     "Social-Media": "https://news.google.com/rss/search?q=viral+tiktok+instagram+youtube+creator&hl=en-US&gl=US&ceid=US:en",
     "World Affairs": "https://news.google.com/rss/search?q=world+news+international+diplomacy&hl=en-US&gl=US&ceid=US:en",
+  };
+
+  const ukCategoryTopicFeeds: Record<string, string> = {
+    "Politics": "https://news.google.com/rss/search?q=uk+politics+starmer+parliament&hl=en-GB&gl=GB&ceid=GB:en",
+    "Economics": "https://news.google.com/rss/search?q=uk+economy+inflation+bank+of+england&hl=en-GB&gl=GB&ceid=GB:en",
+    "Sports": "https://news.google.com/rss/search?q=premier+league+football+arsenal+chelsea+liverpool&hl=en-GB&gl=GB&ceid=GB:en",
+    "Entertainment": "https://news.google.com/rss/search?q=uk+celebrity+film+tv+bbc&hl=en-GB&gl=GB&ceid=GB:en",
   };
 
   const candidates: TrendCandidate[] = [];
@@ -553,21 +561,66 @@ async function main() {
 
   console.log(`🔍 Total unique candidate trends collected globally: ${candidates.length}`);
 
-  // Pure Category-Driven Strategy: Select top trending topics per category without regional caps
+  // USA & UK First Strategy:
+  // Allocate target quotas: US >= 8, UK >= 4, Global >= 3 (Total = 15)
   const selectedTrends: TrendCandidate[] = [];
-  const TARGET_PER_CATEGORY = 2;
+  const TARGET_US = 8;
+  const TARGET_UK = 4;
 
-  for (const cat of CORE_CATEGORIES) {
-    const catCandidates = candidates.filter(c => c.assignedCategory === cat).sort((a, b) => b.traffic - a.traffic);
-    const selectedForCat: TrendCandidate[] = catCandidates.slice(0, TARGET_PER_CATEGORY);
+  // 1. Select US Trends
+  const usCandidates = candidates.filter(c => c.region === 'US').sort((a, b) => b.traffic - a.traffic);
+  const selectedUS = usCandidates.slice(0, TARGET_US);
+  selectedTrends.push(...selectedUS);
 
-    // If Google Trends didn't yield 2 items for this category, fetch Google News Topic RSS Feed for this category!
-    if (selectedForCat.length < TARGET_PER_CATEGORY && categoryTopicFeeds[cat]) {
+  // If fewer than TARGET_US, supplement from US topic feeds
+  if (selectedTrends.filter(c => c.region === 'US').length < TARGET_US) {
+    for (const cat of CORE_CATEGORIES) {
+      if (selectedTrends.filter(c => c.region === 'US').length >= TARGET_US) break;
+      if (usCategoryTopicFeeds[cat]) {
+        try {
+          const feed = await parser.parseURL(usCategoryTopicFeeds[cat]);
+          if (feed.items) {
+            for (const item of feed.items) {
+              if (selectedTrends.filter(c => c.region === 'US').length >= TARGET_US) break;
+              const title = item.title || '';
+              if (!title) continue;
+              const slugifiedTitle = slugify(title, { lower: true, strict: true });
+              if (publishedSlugs.has(slugifiedTitle) || seenSlugsInRun.has(slugifiedTitle)) continue;
+              const link = item.link || '';
+              if (!link) continue;
+
+              seenSlugsInRun.add(slugifiedTitle);
+              selectedTrends.push({
+                title,
+                slug: slugifiedTitle,
+                region: 'US',
+                traffic: 60000,
+                newsLink: link,
+                assignedCategory: cat,
+              });
+            }
+          }
+        } catch (err: any) {
+          console.warn(`Could not fetch US topic feed for ${cat}:`, err?.message || err);
+        }
+      }
+    }
+  }
+
+  // 2. Select UK Trends
+  const ukCandidates = candidates.filter(c => c.region === 'GB').sort((a, b) => b.traffic - a.traffic);
+  const selectedUK = ukCandidates.slice(0, TARGET_UK);
+  selectedTrends.push(...selectedUK);
+
+  // If fewer than TARGET_UK, supplement from UK topic feeds
+  if (selectedTrends.filter(c => c.region === 'GB').length < TARGET_UK) {
+    for (const cat of Object.keys(ukCategoryTopicFeeds)) {
+      if (selectedTrends.filter(c => c.region === 'GB').length >= TARGET_UK) break;
       try {
-        const feed = await parser.parseURL(categoryTopicFeeds[cat]);
+        const feed = await parser.parseURL(ukCategoryTopicFeeds[cat]);
         if (feed.items) {
           for (const item of feed.items) {
-            if (selectedForCat.length >= TARGET_PER_CATEGORY) break;
+            if (selectedTrends.filter(c => c.region === 'GB').length >= TARGET_UK) break;
             const title = item.title || '';
             if (!title) continue;
             const slugifiedTitle = slugify(title, { lower: true, strict: true });
@@ -576,37 +629,34 @@ async function main() {
             if (!link) continue;
 
             seenSlugsInRun.add(slugifiedTitle);
-            const candidateObj: TrendCandidate = {
+            selectedTrends.push({
               title,
               slug: slugifiedTitle,
-              region: 'US',
-              traffic: 50000,
+              region: 'GB',
+              traffic: 45000,
               newsLink: link,
               assignedCategory: cat,
-            };
-            selectedForCat.push(candidateObj);
+            });
           }
         }
       } catch (err: any) {
-        console.warn(`Could not fetch topic feed for ${cat}:`, err?.message || err);
+        console.warn(`Could not fetch UK topic feed for ${cat}:`, err?.message || err);
       }
     }
-
-    selectedTrends.push(...selectedForCat);
   }
 
-  // Fill candidate pool up to 30 to provide ample backup candidates if any no-image trends are skipped
-  const selectedSlugs = new Set(selectedTrends.map(s => s.slug));
-  const remaining = candidates
-    .filter(c => !selectedSlugs.has(c.slug))
+  // 3. Fill remaining slots up to TOTAL_TARGET (15) from global candidates
+  const currentSlugs = new Set(selectedTrends.map(s => s.slug));
+  const remainingCandidates = candidates
+    .filter(c => !currentSlugs.has(c.slug))
     .sort((a, b) => b.traffic - a.traffic);
 
-  for (const cand of remaining) {
-    if (selectedTrends.length >= 30) break;
+  for (const cand of remainingCandidates) {
+    if (selectedTrends.length >= 25) break;
     selectedTrends.push(cand);
   }
 
-  console.log(`🚀 [Category-Driven Publisher] Candidate pool prepared with ${selectedTrends.length} Global Trends across all 7 Categories:`);
+  console.log(`🚀 [USA & UK Priority Publisher] Candidate pool prepared with ${selectedTrends.length} Trends (${selectedTrends.filter(c => c.region === 'US').length} US, ${selectedTrends.filter(c => c.region === 'GB').length} UK):`);
 
   const targetTrendsToProcess: TrendCandidate[] = [];
   let noImageCount = 0;
@@ -674,8 +724,11 @@ CRITICAL ARTICLE STYLE & LENGTH REQUIREMENTS:
   * "Stay tuned to WhyThisBuzz..."
   * "In today's rapidly changing world..."
   * "This development has captured global attention..."
-- DO NOT use repetitive AI-style conclusions.
 - DO NOT invent unverified facts not supported by the raw scraped text or public record.
+
+CRITICAL USA & UK AUDIENCE TARGETING:
+- Target Audience: Primarily readers in the United States and United Kingdom searching Google and browsing Google Discover.
+- Clearly contextualize all organizations, sporting leagues, political offices, financial numbers, and cultural references so they immediately resonate with US and UK audiences.
 
 CRITICAL GOOGLE DISCOVER HEADLINE FORMULAS:
 Create a magnetic, high-CTR headline (50-70 characters) tailored for Google Discover recommendations.
@@ -906,6 +959,14 @@ ${output}
 }
 
   console.log("✅ All articles processed and saved directly to Supabase DB!");
+  try {
+    console.log("📡 Pinging Google Sitemaps for new publication batch...");
+    await fetch('https://www.google.com/ping?sitemap=https://www.whythisbuzz.com/sitemap.xml').catch(() => {});
+    await fetch('https://www.google.com/ping?sitemap=https://www.whythisbuzz.com/news-sitemap.xml').catch(() => {});
+    console.log("✅ Google Sitemaps ping sent!");
+  } catch (err) {
+    console.warn("⚠️ Google Sitemap ping note:", err);
+  }
   try {
     console.log("🔄 Updating public/search-data.json...");
     execSync('node scripts/generate-search-data.mjs', { stdio: 'inherit' });

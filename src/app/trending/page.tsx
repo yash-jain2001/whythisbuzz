@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   keywords: ['trending news', 'viral news', 'digital culture', 'WhyThisBuzz', 'technology', 'world affairs'],
   alternates: {
     canonical: 'https://www.whythisbuzz.com/trending',
+    languages: {
+      'en': 'https://www.whythisbuzz.com/trending',
+      'en-US': 'https://www.whythisbuzz.com/trending',
+      'en-GB': 'https://www.whythisbuzz.com/trending',
+      'x-default': 'https://www.whythisbuzz.com/trending',
+    },
   },
   openGraph: {
     type: 'website',
@@ -18,15 +24,28 @@ export const metadata: Metadata = {
     title: 'Trending News & Articles | WhyThisBuzz',
     description: 'Explore all trending news, viral stories, technology breakthroughs, and global affairs on WhyThisBuzz.',
     siteName: 'WhyThisBuzz',
+    locale: 'en_US',
+    images: [
+      {
+        url: 'https://www.whythisbuzz.com/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Trending News & Articles - WhyThisBuzz',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Trending News & Articles | WhyThisBuzz',
     description: 'Explore all trending news, viral stories, technology breakthroughs, and global affairs on WhyThisBuzz.',
+    images: ['https://www.whythisbuzz.com/images/og-image.jpg'],
+    site: '@whythisbuzz',
   },
   robots: {
     index: true,
     follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
   },
 };
 

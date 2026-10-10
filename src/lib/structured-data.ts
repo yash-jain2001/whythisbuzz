@@ -25,6 +25,11 @@ export function generateOrganizationSchema() {
             'https://x.com/whythisbuzz',
             'https://twitter.com/whythisbuzz',
         ],
+        publishingPrinciples: `${SITE_URL}/about`,
+        correctionsPolicy: `${SITE_URL}/disclaimer`,
+        ethicsPolicy: `${SITE_URL}/terms`,
+        diversityPolicy: `${SITE_URL}/about`,
+        masthead: `${SITE_URL}/about`,
         contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'Customer Service',
@@ -113,8 +118,12 @@ export function generateArticleSchema(
         ].join(', '),
         wordCount: content.trim().split(/\s+/).length,
         timeRequired: article.readTime,
-        inLanguage: 'en-US',
+        inLanguage: article.country?.toUpperCase() === 'GB' ? 'en-GB' : 'en-US',
         isAccessibleForFree: true,
+        speakable: {
+            '@type': 'SpeakableSpecification',
+            cssSelector: ['h1', 'header p', '.article-content > p:first-of-type'],
+        },
     };
 }
 
@@ -182,6 +191,36 @@ export function generateCollectionPageSchema(
             '@type': 'WebSite',
             name: SITE_NAME,
             url: SITE_URL,
+        },
+        numberOfItems: articleCount,
+    };
+}
+
+/**
+ * Generate CollectionPage schema for country/regional hubs
+ */
+export function generateCountryPageSchema(
+    countryName: string,
+    countryCode: string,
+    articleCount: number
+): object {
+    const countryUrl = `${SITE_URL}/country/${countryCode.toLowerCase()}`;
+
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: `${countryName} Breaking News & Trends - ${SITE_NAME}`,
+        description: `Explore the latest breaking news, viral stories, and trending topics from ${countryName}.`,
+        url: countryUrl,
+        inLanguage: countryCode.toUpperCase() === 'GB' ? 'en-GB' : 'en-US',
+        isPartOf: {
+            '@type': 'WebSite',
+            name: SITE_NAME,
+            url: SITE_URL,
+        },
+        about: {
+            '@type': 'Place',
+            name: countryName,
         },
         numberOfItems: articleCount,
     };

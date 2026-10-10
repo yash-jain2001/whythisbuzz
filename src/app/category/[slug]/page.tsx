@@ -3,6 +3,7 @@ import { getArticlesByCategory, getAllCategories } from '@/lib/mdx';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import Link from 'next/link';
 import { CategoryPageClient } from './CategoryPageClient';
 
 interface PageProps {
@@ -32,6 +33,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         keywords: [categoryName, 'WhyThisBuzz', 'trending news', 'digital culture'],
         alternates: {
             canonical: categoryUrl,
+            languages: {
+                'en': categoryUrl,
+                'en-US': categoryUrl,
+                'en-GB': categoryUrl,
+                'x-default': categoryUrl,
+            },
         },
         openGraph: {
             type: 'website',
@@ -39,15 +46,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             title: `${categoryName} Articles | WhyThisBuzz`,
             description: description,
             siteName: 'WhyThisBuzz',
+            locale: 'en_US',
+            images: [
+                {
+                    url: 'https://www.whythisbuzz.com/images/og-image.jpg',
+                    width: 1200,
+                    height: 630,
+                    alt: `${categoryName} Articles - WhyThisBuzz`,
+                },
+            ],
         },
         twitter: {
             card: 'summary_large_image',
             title: `${categoryName} Articles | WhyThisBuzz`,
             description: description,
+            images: ['https://www.whythisbuzz.com/images/og-image.jpg'],
+            site: '@whythisbuzz',
         },
         robots: {
             index: true,
             follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
         },
     };
 }
@@ -120,6 +140,36 @@ export default async function CategoryPage({ params }: PageProps) {
 
                         {/* Articles Grid & 10-Article Crawlable Pagination */}
                         <CategoryPageClient category={category} slug={slug} initialArticles={articles} />
+
+                        {/* Complete Category Story Directory for Search Engine Crawlers & Full Indexation */}
+                        {articles.length > 0 && (
+                            <div className="mt-16 pt-8 border-t border-border">
+                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                                    <h2 className="text-xl font-serif font-bold text-foreground">
+                                        Complete {category} Directory
+                                    </h2>
+                                    <span className="text-xs text-muted-foreground font-mono bg-secondary px-2.5 py-1 rounded-full border border-border/60 self-start sm:self-auto">
+                                        {articles.length} Stories Indexed
+                                    </span>
+                                </div>
+                                <p className="text-xs text-muted-foreground mb-6">
+                                    Crawlable index of all published {category} analyses, breaking coverage, and trending explainers.
+                                </p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 text-xs">
+                                    {articles.map((art) => (
+                                        <Link
+                                            key={art.id}
+                                            href={`/article/${art.id}`}
+                                            className="text-muted-foreground hover:text-accent transition-colors truncate py-1.5 border-b border-border/30 hover:border-accent/40 flex items-center justify-between gap-3 group"
+                                            title={art.title}
+                                        >
+                                            <span className="truncate group-hover:text-foreground">{art.title}</span>
+                                            <span className="text-[10px] text-muted-foreground/60 flex-shrink-0 font-mono">{art.date}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </main>
 

@@ -9,6 +9,7 @@
     "postbuild": "node scripts/verify-static-export.mjs",
     "migrate:supabase": "node scripts/migrate-to-supabase.mjs",
     "publish": "npx tsx scripts/auto-publisher.ts",
+    "reindex": "npx tsx scripts/reindex-all.ts",
     "start": "next start",
     "lint": "eslint"
   },

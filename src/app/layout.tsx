@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   creator: "Why This Buzz",
   publisher: "Why This Buzz",
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.whythisbuzz.com',
   },
   openGraph: {
     type: "website",
@@ -99,6 +99,9 @@ export default async function RootLayout({
         <link rel="llms" href="https://www.whythisbuzz.com/llms.txt" />
         {/* RSS Feed Autodiscovery */}
         <link rel="alternate" type="application/rss+xml" title="WhyThisBuzz RSS Feed" href="https://www.whythisbuzz.com/feed.xml" />
+        {/* Sitemaps Autodiscovery */}
+        <link rel="sitemap" type="application/xml" title="WhyThisBuzz Sitemap" href="https://www.whythisbuzz.com/sitemap.xml" />
+        <link rel="sitemap" type="application/xml" title="WhyThisBuzz Google News Sitemap" href="https://www.whythisbuzz.com/news-sitemap.xml" />
 
         {/* Google AdSense Script */}
         <script

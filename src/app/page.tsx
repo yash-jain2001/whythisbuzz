@@ -4,15 +4,22 @@ import { ArticleGrid } from "@/components/ArticleGrid";
 import { CategorySection } from "@/components/CategorySection";
 import { getAllArticles, getArticlesByCategory } from "@/lib/mdx";
 import { Metadata } from "next";
+import Link from "next/link";
 
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "WhyThisBuzz - Trending News, Digital Culture & Tech Explained",
   description: "Your daily guide to the internet. We break down complex news, pop culture drama, tech innovations, and global affairs into easy-to-understand stories.",
-  keywords: ["trending news", "digital culture", "technology explained", "pop culture", "world affairs", "WhyThisBuzz"],
+  keywords: ["trending news", "digital culture", "technology explained", "pop culture", "world affairs", "WhyThisBuzz", "US breaking news", "UK trending news"],
   alternates: {
-    canonical: 'https://www.whythisbuzz.com/',
+    canonical: 'https://www.whythisbuzz.com',
+    languages: {
+      'en': 'https://www.whythisbuzz.com',
+      'en-US': 'https://www.whythisbuzz.com',
+      'en-GB': 'https://www.whythisbuzz.com',
+      'x-default': 'https://www.whythisbuzz.com',
+    },
   },
   openGraph: {
     title: "WhyThisBuzz - Trending News, Digital Culture & Tech Explained",
@@ -20,6 +27,23 @@ export const metadata: Metadata = {
     url: "https://www.whythisbuzz.com",
     siteName: "WhyThisBuzz",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "https://www.whythisbuzz.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "WhyThisBuzz - Trending News Explained",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WhyThisBuzz - Trending News, Digital Culture & Tech Explained",
+    description: "Your daily guide to the internet. We break down complex news, pop culture drama, tech innovations, and global affairs.",
+    images: ["https://www.whythisbuzz.com/images/og-image.jpg"],
+    site: "@whythisbuzz",
+    creator: "@whythisbuzz",
   },
 };
 
@@ -52,6 +76,47 @@ export default async function Home() {
 
       <main className="flex-1">
         <ArticleGrid articles={gridArticles} />
+
+        {/* Regional Hubs Spotlight (US, UK, Global) */}
+        <section className="container max-w-7xl py-6 my-4">
+          <div className="bg-gradient-to-r from-accent/10 via-primary/5 to-accent/10 rounded-2xl p-6 sm:p-8 border border-border/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-accent block mb-1">
+                Regional News Desks
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-foreground">
+                Trending Stories by Country
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1 max-w-xl">
+                Explore dedicated real-time coverage tailored specifically for readers in the United States and the United Kingdom.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 flex-wrap">
+              <Link
+                href="/country/us"
+                className="px-4 py-2.5 rounded-xl bg-card hover:bg-accent hover:text-accent-foreground text-foreground border border-border/80 shadow-xs transition-all flex items-center gap-2 font-medium text-sm"
+              >
+                <span className="text-lg">🇺🇸</span>
+                <span>United States Hub</span>
+              </Link>
+              <Link
+                href="/country/gb"
+                className="px-4 py-2.5 rounded-xl bg-card hover:bg-accent hover:text-accent-foreground text-foreground border border-border/80 shadow-xs transition-all flex items-center gap-2 font-medium text-sm"
+              >
+                <span className="text-lg">🇬🇧</span>
+                <span>United Kingdom Hub</span>
+              </Link>
+              <Link
+                href="/country/global"
+                className="px-4 py-2.5 rounded-xl bg-card hover:bg-accent hover:text-accent-foreground text-foreground border border-border/80 shadow-xs transition-all flex items-center gap-2 font-medium text-sm"
+              >
+                <span className="text-lg">🌐</span>
+                <span>Global Edition</span>
+              </Link>
+            </div>
+          </div>
+        </section>
 
         <CategorySection
           id="world-affairs"

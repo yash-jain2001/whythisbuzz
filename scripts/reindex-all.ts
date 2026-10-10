@@ -147,8 +147,24 @@ async function main() {
     `${SITE_URL}/category/movies-entertainment`,
   ];
 
+  const countryUrls = [
+    `${SITE_URL}/country/us`,
+    `${SITE_URL}/country/gb`,
+    `${SITE_URL}/country/ca`,
+    `${SITE_URL}/country/au`,
+    `${SITE_URL}/country/in`,
+    `${SITE_URL}/country/de`,
+    `${SITE_URL}/country/fr`,
+    `${SITE_URL}/country/jp`,
+    `${SITE_URL}/country/kr`,
+    `${SITE_URL}/country/br`,
+    `${SITE_URL}/country/global`,
+  ];
+
   const staticUrls = [
     `${SITE_URL}/`,
+    `${SITE_URL}/archive`,
+    `${SITE_URL}/trending`,
     `${SITE_URL}/about`,
     `${SITE_URL}/contact`,
     `${SITE_URL}/privacy`,
@@ -157,11 +173,12 @@ async function main() {
     `${SITE_URL}/cookies`,
   ];
 
-  const allUrls = Array.from(new Set([...staticUrls, ...categoryUrls, ...articleUrls]));
+  const allUrls = Array.from(new Set([...staticUrls, ...categoryUrls, ...countryUrls, ...articleUrls]));
 
   console.log(`📌 Found ${allUrls.length} total URLs on whythisbuzz.com!`);
   console.log(` - Static pages: ${staticUrls.length}`);
   console.log(` - Category pages: ${categoryUrls.length}`);
+  console.log(` - Country hub pages: ${countryUrls.length}`);
   console.log(` - Article pages: ${articleUrls.length}`);
 
   // 1. Submit to IndexNow
@@ -170,11 +187,15 @@ async function main() {
   // 2. Submit to Google Indexing API
   await submitGoogleIndexing(allUrls);
 
-  // 3. Ping Google Sitemap
+  // 3. Ping Google Sitemaps (Standard & Google News)
   try {
-    console.log('📡 Pinging Google Sitemaps service...');
+    console.log('📡 Pinging Google Sitemaps service for sitemap.xml...');
     await fetch(`https://www.google.com/ping?sitemap=${SITE_URL}/sitemap.xml`);
-    console.log('✅ Google Sitemap Ping sent!');
+    console.log('✅ Google Sitemap Ping sent for sitemap.xml!');
+
+    console.log('📡 Pinging Google Sitemaps service for news-sitemap.xml...');
+    await fetch(`https://www.google.com/ping?sitemap=${SITE_URL}/news-sitemap.xml`);
+    console.log('✅ Google News Sitemap Ping sent for news-sitemap.xml!');
   } catch (e) {
     console.warn('Sitemap ping note:', e);
   }
