@@ -9,8 +9,10 @@ export async function GET() {
     const siteTitle = 'WhyThisBuzz - Trending News, Digital Culture & Tech Explained';
     const siteDescription = 'Clear explanations of trending topics in technology, movies, entertainment, and digital culture.';
 
+    const { getArticleSeoImage } = await import('@/lib/country-utils');
+
     const feedXml = `<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title><![CDATA[${siteTitle}]]></title>
     <link>${siteUrl}</link>
@@ -26,6 +28,7 @@ export async function GET() {
         const itemSummary = article.metadata.description || article.metadata.summary || '';
         const itemCategory = article.metadata.category || 'General';
         const itemAuthor = article.metadata.author || 'WhyThisBuzz Editorial';
+        const seoImage = getArticleSeoImage(article.metadata);
 
         return `
     <item>
@@ -36,6 +39,8 @@ export async function GET() {
       <description><![CDATA[${itemSummary}]]></description>
       <category><![CDATA[${itemCategory}]]></category>
       <author><![CDATA[editor@whythisbuzz.com (${itemAuthor})]]></author>
+      <media:content url="${seoImage}" medium="image" width="1200" height="630" />
+      <enclosure url="${seoImage}" type="image/jpeg" length="102400" />
     </item>`;
     }).join('')}
   </channel>

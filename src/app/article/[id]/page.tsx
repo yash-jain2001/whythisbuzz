@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getArticleBySlug, getRelatedArticles, getArticleSlugs } from '@/lib/mdx';
+import { getArticleBySlug, getRelatedArticles, getArticleSlugs, getAdjacentArticles } from '@/lib/mdx';
 import { renderMarkdown } from '@/lib/markdown';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { ArticleView } from '@/components/ArticleView';
@@ -11,9 +11,9 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-    // Pre-build top 500 articles at build time for instant loading,
+    // Pre-build top 1,500 articles at build time for instant loading and Google indexing,
     // while remaining/new articles are dynamically rendered on-demand (ISR/SSR).
-    const slugs = await getArticleSlugs(500);
+    const slugs = await getArticleSlugs(1500);
     return slugs.map((slug) => ({
         id: slug.replace(/\.mdx$/, ''),
     }));
@@ -58,6 +58,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const seoImage = getArticleSeoImage(article.metadata);
 
+    const isUK = article.metadata.country?.toUpperCase() === 'GB';
+    const isUS = article.metadata.country?.toUpperCase() === 'US' || !article.metadata.country;
+
     return {
         title: seoTitle,
         description: description,
@@ -67,6 +70,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         publisher: 'WhyThisBuzz',
         alternates: {
             canonical: articleUrl,
+            languages: {
+                'en': articleUrl,
+                'en-US': articleUrl,
+                'en-GB': articleUrl,
+                'x-default': articleUrl,
+            },
         },
         openGraph: {
             type: 'article',
@@ -81,13 +90,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
                     alt: article.metadata.title,
                 },
             ],
-            publishedTime: new Date(article.metadata.date).toISOString(),
-            modifiedTime: new Date(article.metadata.date).toISOString(),
+            publishedTime: !isNaN(new Date(article.metadata.date).getTime()) ? new Date(article.metadata.date).toISOString() : new Date().toISOString(),
+            modifiedTime: !isNaN(new Date(article.metadata.date).getTime()) ? new Date(article.metadata.date).toISOString() : new Date().toISOString(),
             authors: [article.metadata.author || 'WhyThisBuzz Editorial'],
             section: category,
             tags: finalKeywords,
             siteName: 'WhyThisBuzz',
-            locale: 'en_US',
+            locale: isUK ? 'en_GB' : 'en_US',
         },
         twitter: {
             card: 'summary_large_image',
@@ -96,6 +105,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             images: [seoImage],
             creator: '@whythisbuzz',
             site: '@whythisbuzz',
+        },
+        other: {
+            ...(isUK ? { 'geo.region': 'GB', 'geo.placename': 'United Kingdom' } : {}),
+            ...(isUS ? { 'geo.region': 'US', 'geo.placename': 'United States' } : {}),
         },
         robots: {
             index: true,
@@ -116,7 +129,10 @@ export default async function ArticlePage({ params }: PageProps) {
         notFound();
     }
 
-    const relatedArticles = await getRelatedArticles(article.metadata.id, article.metadata.category);
+    const [relatedArticles, { prev, next }] = await Promise.all([
+        getRelatedArticles(article.metadata.id, article.metadata.category, 6),
+        getAdjacentArticles(article.metadata.id),
+    ]);
 
     // Import structured data utilities
     const { generateArticleSchema, generateBreadcrumbSchema, generateJsonLd, generateCombinedSchema } = await import('@/lib/structured-data');
@@ -152,7 +168,12 @@ export default async function ArticlePage({ params }: PageProps) {
                 dangerouslySetInnerHTML={{ __html: generateJsonLd(combinedSchema) }}
             />
 
-            <ArticleView article={articleForView} relatedArticles={relatedArticles} />
+            <ArticleView
+                article={articleForView}
+                relatedArticles={relatedArticles}
+                prevArticle={prev}
+                nextArticle={next}
+            />
         </>
     );
 }

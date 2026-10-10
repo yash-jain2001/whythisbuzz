@@ -66,10 +66,10 @@ async function generate() {
       const supabase = createClient(supabaseUrl, supabaseKey);
       const { data, error } = await supabase
         .from('articles')
-        .select('slug, title, summary, meta_description, category, image_url, read_time, date')
+        .select('slug, title, summary, meta_description, category, image_url, read_time, date, country')
         .order('date', { ascending: false })
         .order('created_at', { ascending: false })
-        .limit(100);
+        .limit(1000);
 
       if (!error && data && data.length > 0) {
         for (const doc of data) {
@@ -81,6 +81,7 @@ async function generate() {
             imageUrl: doc.image_url || '',
             readTime: doc.read_time || '3 min read',
             date: doc.date || '',
+            country: doc.country || '',
           });
         }
         console.log(`✅ Fetched ${searchData.length} articles from Supabase in 1 batch.`);

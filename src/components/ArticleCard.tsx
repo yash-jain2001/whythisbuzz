@@ -53,7 +53,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             )}
             <img
               src={imageSrc}
-              alt=""
+              alt={article.title}
               onLoad={handleImageLoad}
               onError={handleImageError}
               className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -86,7 +86,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         )}
         <img
           src={imageSrc}
-          alt=""
+          alt={article.title}
           onLoad={handleImageLoad}
           onError={handleImageError}
           className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}

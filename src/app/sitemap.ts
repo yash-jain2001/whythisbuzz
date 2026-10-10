@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Static pages
     const staticPages = [
+        { path: '/archive', priority: 0.85 },
         { path: '/about', priority: 0.6 },
         { path: '/contact', priority: 0.6 },
         { path: '/privacy', priority: 0.4 },
@@ -55,6 +56,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: page.priority,
     }));
 
+    // Country URLs (Priority for USA & UK regional indexation)
+    const { COUNTRY_DATA } = await import('@/lib/country-utils');
+    const countryCodes = Object.keys(COUNTRY_DATA).map(c => c.toLowerCase());
+    const countryUrls = countryCodes.map((code) => ({
+        url: `${baseUrl}/country/${code}`,
+        changeFrequency: 'daily' as const,
+        priority: (code === 'us' || code === 'gb') ? 0.95 : 0.85,
+    }));
+
     return [
         {
             url: baseUrl,
@@ -62,6 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 1.0,
         },
         ...categoryUrls,
+        ...countryUrls,
         ...articleUrls,
         ...staticUrls,
     ];

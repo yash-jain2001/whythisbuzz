@@ -1,19 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, Search, Flame, Rss, ArrowRight, Info, Mail } from "lucide-react";
+import { Menu, Search, Flame, Rss, ArrowRight, Info, Mail, Archive } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
+import Link from "next/link";
 
 const categories = [
-  { name: "Sports", href: "/#sports" },
-  { name: "World Affairs", href: "/#world-affairs" },
-  { name: "Politics", href: "/#politics" },
-  { name: "Economics", href: "/#economics" },
-  { name: "Technology", href: "/#technology" },
-  { name: "Social Media", href: "/#social-media" },
-  { name: "Movies & Entertainment", href: "/#movies" },
+  { name: "Sports", href: "/category/sports" },
+  { name: "World Affairs", href: "/category/world-affairs" },
+  { name: "Politics", href: "/category/politics" },
+  { name: "Economics", href: "/category/economics" },
+  { name: "Technology", href: "/category/technology" },
+  { name: "Social Media", href: "/category/social-media" },
+  { name: "Movies & Entertainment", href: "/category/movies" },
 ];
 
 export function Navbar() {
@@ -81,30 +82,61 @@ export function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className="flex items-center gap-2 group"
           >
             <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
               WhyThisBuzz
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {categories.map((category) => (
-              <a
+              <Link
                 key={category.name}
                 href={category.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline"
               >
                 {category.name}
-              </a>
+              </Link>
             ))}
           </div>
 
-          {/* Search & Mobile Menu Toggle */}
-          <div className="flex items-center gap-4">
+          {/* Regional Edition Selector & Actions */}
+          <div className="flex items-center gap-3">
+            {/* Desktop Regional Editions Switcher */}
+            <div className="hidden lg:flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/80 border border-border/80 text-xs font-medium">
+              <span className="text-muted-foreground mr-1 text-[11px] uppercase tracking-wider">Edition:</span>
+              <Link
+                href="/country/us"
+                className="px-2 py-0.5 rounded-full hover:bg-accent hover:text-accent-foreground transition-all flex items-center gap-1 font-semibold"
+                title="United States Edition - Breaking US News & Trends"
+              >
+                <span>🇺🇸</span>
+                <span>US</span>
+              </Link>
+              <span className="text-border">·</span>
+              <Link
+                href="/country/gb"
+                className="px-2 py-0.5 rounded-full hover:bg-accent hover:text-accent-foreground transition-all flex items-center gap-1 font-semibold"
+                title="United Kingdom Edition - Breaking UK News & Trends"
+              >
+                <span>🇬🇧</span>
+                <span>UK</span>
+              </Link>
+              <span className="text-border">·</span>
+              <Link
+                href="/country/global"
+                className="px-2 py-0.5 rounded-full hover:bg-accent hover:text-accent-foreground transition-all flex items-center gap-1"
+                title="Global Edition"
+              >
+                <span>🌐</span>
+                <span>Global</span>
+              </Link>
+            </div>
+
             <button
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Search"
@@ -131,10 +163,38 @@ export function Navbar() {
                     <p className="text-xs text-muted-foreground">Digital · Culture · Trends</p>
                   </SheetHeader>
 
+                  {/* Mobile Regional Editions */}
+                  <div className="py-4 border-b border-border/60">
+                    <span className="text-xs font-semibold text-accent uppercase tracking-wider block mb-2.5">Regional Editions</span>
+                    <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                      <Link
+                        href="/country/us"
+                        className="py-1.5 px-2 rounded-lg bg-secondary/80 hover:bg-accent hover:text-accent-foreground transition-all font-medium flex items-center justify-center gap-1"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span>🇺🇸</span> US
+                      </Link>
+                      <Link
+                        href="/country/gb"
+                        className="py-1.5 px-2 rounded-lg bg-secondary/80 hover:bg-accent hover:text-accent-foreground transition-all font-medium flex items-center justify-center gap-1"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span>🇬🇧</span> UK
+                      </Link>
+                      <Link
+                        href="/country/global"
+                        className="py-1.5 px-2 rounded-lg bg-secondary/80 hover:bg-accent hover:text-accent-foreground transition-all font-medium flex items-center justify-center gap-1"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span>🌐</span> Global
+                      </Link>
+                    </div>
+                  </div>
+
                   <div className="py-6 flex flex-col gap-4">
                     <span className="text-xs font-semibold text-accent uppercase tracking-wider">Categories</span>
                     {categories.map((category) => (
-                      <a
+                      <Link
                         key={category.name}
                         href={category.href}
                         className="flex items-center justify-between text-base font-medium text-foreground/90 hover:text-accent transition-colors py-1.5"
@@ -142,36 +202,44 @@ export function Navbar() {
                       >
                         <span>{category.name}</span>
                         <ArrowRight className="w-4 h-4 text-muted-foreground" />
-                      </a>
+                      </Link>
                     ))}
                   </div>
 
                   <div className="pt-4 border-t border-border flex flex-col gap-3">
                     <span className="text-xs font-semibold text-accent uppercase tracking-wider">Quick Links</span>
-                    <a
+                    <Link
                       href="/trending"
                       className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       <Flame className="w-4 h-4 text-accent" />
                       <span>Trending Topics</span>
-                    </a>
-                    <a
+                    </Link>
+                    <Link
+                      href="/archive"
+                      className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Archive className="w-4 h-4 text-accent" />
+                      <span>News Archive</span>
+                    </Link>
+                    <Link
                       href="/about"
                       className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       <Info className="w-4 h-4 text-accent" />
                       <span>About Us</span>
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/contact"
                       className="flex items-center gap-3 text-sm text-foreground/80 hover:text-accent transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       <Mail className="w-4 h-4 text-accent" />
                       <span>Contact Us</span>
-                    </a>
+                    </Link>
                     <a
                       href="/feed.xml"
                       target="_blank"
@@ -208,7 +276,7 @@ export function Navbar() {
             {searchQuery && searchResults.length > 0 && (
               <div className="mt-3 max-h-[360px] overflow-y-auto pr-2 space-y-2">
                 {searchResults.map((article) => (
-                  <a
+                  <Link
                     key={article.id}
                     href={`/article/${article.id}`}
                     className="block p-3 rounded-lg hover:bg-secondary/50 transition-colors"
@@ -235,7 +303,7 @@ export function Navbar() {
                         </p>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
